@@ -15,7 +15,7 @@ class CreatePrivilegesTable extends Migration
     {
         Schema::create('privileges', function (Blueprint $table) {
             $table->bigIncrements('id')->startingValue(1000001);
-            $table->string('name', 70);
+            $table->string('name', 70); // create read update delete assign revoke
             $table->string('description', 100);
             $table->unsignedBigInteger('user_type_id');
             $table->timestamps();

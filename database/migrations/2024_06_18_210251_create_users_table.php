@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string('phone', 255)->unique();
             $table->string('phone_code', 5);
             $table->string('password', 255);
+            $table->string('adresse')->nullable();
+            $table->string('bp')->nullable();
+            $table->string('thumb_url')->nullable();
+            $table->string('piece_identite')->nullable();
+            $table->string('numero_piece')->nullable();
             $table->timestamp('verified_at')->nullable();
             $table->string('source_ip_address', 40)->nullable();
             $table->text('source_server_info')->nullable();
