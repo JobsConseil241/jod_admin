@@ -43,7 +43,7 @@ class UserController extends Controller
 
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_users');
+        ])->get(env('SERVER_PC') . 'get_users', ['user_type' => 1000001]);
 
         $object = json_decode($response->body());
 
