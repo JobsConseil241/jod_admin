@@ -8,11 +8,9 @@ use App\Models\Role;
 use App\Models\RolePrivilege;
 use App\Models\UserType;
 use App\Services\LanguageService;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -22,41 +20,20 @@ class RoleController extends Controller
 
     public function userType()
     {
-        try {
-            // Récupérer le token depuis la session
-            $access_token = Session::get('personnalToken');
+        $access_token = Session::get('personnalToken');
 
-            // Vérifiez que le token existe
-            if (!$access_token) {
-                throw new Exception('Token d\'authentification introuvable dans la session.');
-            }
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_user_type');
+        dd($response);
+        $object = json_decode($response->body());
 
-            // Effectuer la requête HTTP avec délai et gestion des exceptions
-            $response = Http::withHeaders([
-                "Authorization" => "Bearer " . $access_token,
-            ])->get(env('SERVER_PC') . 'get_user_type');
-
-            // Vérifiez le statut de la réponse
-            if ($response->failed()) {
-                throw new Exception('La requête a échoué avec le statut HTTP : ' . $response->status());
-            }
-
-            // Décoder la réponse JSON
-            $object = json_decode($response->body());
-
-            // Vérifiez si la réponse est valide et contient les données attendues
-            if ($object && $object->success === true && isset($object->data->usertypes)) {
-                $types = $object->data->usertypes;
-            } else {
-                $types = [];
-            }
-        } catch (Exception $e) {
-            // Gestion des erreurs : journalisation et définition d'une réponse par défaut
-            Log::error('Erreur lors de la récupération des types d\'utilisateurs : ' . $e->getMessage());
+        if ($object && $object->success == true) {
+            $types = $object->data->usertypes;
+        } else {
             $types = [];
         }
 
-        // Retourner la vue avec les types
         return view('back.user.usertype', compact('types'));
     }
 
