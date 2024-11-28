@@ -241,7 +241,7 @@ class RoleController extends Controller
 
                     <div class="ti-modal-header">
                         <h3 class="ti-modal-title">
-                            Modifier un role
+                            Modifier un rôle
                         </h3>
                         <button type="button" class="hs-dropdown-toggle ti-modal-clode-btn"
                             data-hs-overlay="#hs-basic-modal">
