@@ -106,6 +106,7 @@ class RoleController extends BaseController
 
             $data['count'] = $roles->count();
             $data['roles'] = $roles->get();
+
             Log::debug('Get roles Endpoint - Response: ' . json_encode($data));
             return $this->sendResponse($data, "roles retrieved successfully");
         } catch (Exception $e) {
