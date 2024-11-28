@@ -270,7 +270,7 @@ class RoleController extends Controller
 
                         <div class="mb-3">
                             <label for="input-label" class="ti-form-label">Nom</label>
-                            <input type="text" id="input-label" class="ti-form-input" value="' . $role->name . '">
+                            <input type="text" name="name" id="input-label" class="ti-form-input" value="' . $role->name . '">
                         </div>
 
                         <div class="mb-3">
@@ -386,6 +386,7 @@ class RoleController extends Controller
     {
         //dd($request);
         $access_token = Session::get('personnalToken');
+
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
         ])->post(env('SERVER_PC') . 'update_role', [

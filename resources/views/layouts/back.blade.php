@@ -594,7 +594,7 @@
                 <p class="text-center">Copyright © <span id="year"></span> <a href="javascript:void(0)"
                         class="text-primary">JOD</a>. Développer avec <span
                         class="ri ri-heart-fill text-red-500"></span> Par <a class="text-primary"
-                        href="javascript:void(0)"> JOBS </a> Tous Droits Réservés </p>
+                        href="javascript:void(0)"> JOBS </a> - Tous Droits Réservés </p>
             </div>
         </footer>
 

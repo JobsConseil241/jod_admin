@@ -121,7 +121,7 @@
 
                         <div class="mb-3">
                             <label for="input-label" class="ti-form-label">Nom</label>
-                            <input type="text" id="input-label" class="ti-form-input">
+                            <input type="text" name="name" id="input-label" class="ti-form-input">
                         </div>
 
                         <div class="mb-3">
