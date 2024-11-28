@@ -48,11 +48,11 @@
         <div class="col-span-12">
             <div class="box">
                 <div class="box-header">
-                    <h5 class="box-title">Liste des Administrateurs</h5>
+                    <h5 class="box-title">Liste des Client</h5>
                     <div class="flex justify-end">
                         <button type="button" class="hs-dropdown-toggle ti-btn ti-btn-primary"
                             data-hs-overlay="#hs-basic-modal">
-                            Ajouter un Admin
+                            Ajouter un client
                         </button>
                     </div>
                 </div>
