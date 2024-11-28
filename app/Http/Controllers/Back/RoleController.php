@@ -34,7 +34,6 @@ class RoleController extends Controller
             $types = [];
         }
 
-
         return view('back.user.usertype', compact('types'));
     }
 

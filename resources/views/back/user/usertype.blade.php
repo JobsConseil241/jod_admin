@@ -1,51 +1,54 @@
-@extends('layouts.front')
+@extends('layouts.back')
 
 @push('styles')
     <!--datatable css-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
-    <!--datatable responsive css-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.tailwindcss.css" />
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+    <style>
+        .col-start-2 {
+            grid-column-start: 3 !important;
+        }
+    </style>
 @endpush
 
 @inject('Lang', 'App\Services\LanguageService')
 
 @section('content')
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">{{ $Lang->trans('user_types') }}</h4>
-
-                <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">{{ $Lang->trans('management_user') }}</a>
-                        </li>
-                        <li class="breadcrumb-item active">{{ $Lang->trans('user_types') }}</li>
-                    </ol>
-                </div>
-
-            </div>
+    <!-- Page Header -->
+    <div class="block justify-between page-header md:flex">
+        <div>
+            <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
+                Types d'Utilisateurs</h3>
         </div>
+        <ol class="flex items-center whitespace-nowrap min-w-0">
+            <li class="text-sm">
+                <a class="flex items-center font-semibold text-primary hover:text-primary dark:text-primary truncate"
+                    href="{{ route('dashboard') }}">
+                    Tableau de Bord
+                    <i
+                        class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i>
+                </a>
+            </li>
+            <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">
+                Types d'Utilisateurs
+            </li>
+        </ol>
     </div>
-    <!-- end page title -->
+    <!-- Page Header Close -->
 
-    <!--begin::Container-->
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">{{ $Lang->trans('list_user_type') }}</h5>
+    <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12">
+            <div class="box">
+                <div class="box-header">
+                    <h5 class="box-title">Liste des Types</h5>
                 </div>
-                <div class="card-body">
-                    <table id="data" class="table table-bordered dt-responsive nowrap table-striped align-middle"
-                        style="width:100%">
+                <div class="box-body">
+                    <table id="data" class="display" style="width:100%">
                         <thead>
                             <tr>
-                                <th data-ordering="false">{{ $Lang->trans('id') }}</th>
-                                <th>{{ $Lang->trans('name') }}</th>
-                                <th>{{ $Lang->trans('description') }}</th>
+                                <th data-ordering="false">ID</th>
+                                <th>Nom</th>
+                                <th>Description</th>
 
                             </tr>
                         </thead>
@@ -61,21 +64,15 @@
                     </table>
                 </div>
             </div>
-        </div><!--end col-->
-    </div><!--end row-->
-    <!--end::Container-->
+        </div>
+    </div>
 @endsection
 
 @push('scripts')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-
     <!--datatable js-->
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.tailwindcss.js"></script>
     <script>
         $(document).ready(function() {
             $("#data").DataTable({

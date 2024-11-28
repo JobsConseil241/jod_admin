@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\V1\BaseController;
 use App\Models\Language;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
