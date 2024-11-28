@@ -92,7 +92,7 @@
                         <!-- Start::slide -->
                         <li class="slide has-sub">
                             <a href="javascript:void(0);" class="side-menu__item">
-                                <i class="ri-inbox-line side-menu__icon"></i>
+                                <i class="ti ti-car side-menu__icon"></i>
                                 <span class="side-menu__label">Véhicules</span>
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
@@ -113,7 +113,7 @@
                         <!-- Start::slide -->
                         <li class="slide has-sub">
                             <a href="javascript:void(0);" class="side-menu__item">
-                                <i class="ri-node-tree side-menu__icon"></i>
+                                <i class="ri-inbox-tree side-menu__icon"></i>
                                 <span class="side-menu__label">Réservations</span>
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
@@ -130,7 +130,7 @@
                         <!-- Start::slide -->
                         <li class="slide has-sub">
                             <a href="javascript:void(0);" class="side-menu__item">
-                                <i class="ri-map-pin-user-line side-menu__icon"></i>
+                                <i class="ri-bar-chart-2-line side-menu__icon"></i>
                                 <span class="side-menu__label">Paiements</span>
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
@@ -144,7 +144,7 @@
                         <!-- Start::slide -->
                         <li class="slide has-sub">
                             <a href="javascript:void(0);" class="side-menu__item">
-                                <i class="ri-pie-chart-2-line side-menu__icon"></i>
+                                <i class="ri-inbox-unarchive-line side-menu__icon"></i>
                                 <span class="side-menu__label">Recouvrements</span>
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
@@ -163,7 +163,7 @@
                         <!-- Start::slide -->
                         <li class="slide has-sub">
                             <a href="javascript:void(0);" class="side-menu__item">
-                                <i class="ri-book-open-line side-menu__icon"></i>
+                                <i class="ti ti-user-check side-menu__icon"></i>
                                 <span class="side-menu__label">Gestion de Rôles</span>
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
@@ -183,7 +183,7 @@
                         <!-- Start::slide -->
                         <li class="slide">
                             <a href="{{ route('backend.list.administrator') }}" class="side-menu__item">
-                                <i class="ri-home-8-line side-menu__icon"></i>
+                                <i class="ti ti-user-exclamation side-menu__icon"></i>
                                 <span class="side-menu__label">Administrateurs</span>
                             </a>
                         </li>
@@ -192,7 +192,7 @@
                         <!-- Start::slide -->
                         <li class="slide">
                             <a href="{{ route('backend.list.user') }}" class="side-menu__item">
-                                <i class="ri-home-8-line side-menu__icon"></i>
+                                <i class="ti ti-users side-menu__icon"></i>
                                 <span class="side-menu__label">Clients</span>
                             </a>
                         </li>
