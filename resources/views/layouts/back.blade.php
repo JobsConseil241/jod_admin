@@ -8,10 +8,8 @@
     <title> JOD - Administration </title>
     <meta name="author" content="codeur X">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description"
-        content="A Tailwind CSS admin template is a pre-designed web page for an admin dashboard. Optimizing it for SEO includes using meta descriptions and ensuring it's responsive and fast-loading.">
-    <meta name="keywords"
-        content="analytics dashboard,jobs dashboard,crm dashboard examples,personal dashboard,sales dashboard sample,best crm dashboard,crypto dashboard template,sales analytics dashboard,stocks dashboard,hrm dashboard,ecommerce admin panel template,sales admin dashboard,admin panel for ecommerce website,website template ecommerce,template dashboard,course dashboard,template ecommerce website">
+    <meta name="description" content="#">
+    <meta name="keywords" content="#">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('back/img/brand-logos/favicon.ico') }}">
