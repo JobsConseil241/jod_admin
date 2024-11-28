@@ -66,26 +66,17 @@
                                     <td>{{ $role->name }}</td>
                                     <td>{{ $role->description }}</td>
                                     <td>
-                                        <div class="dropdown d-inline-block">
-                                            <button class="btn btn-soft-secondary btn-sm dropdown" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="ri-more-fill align-middle"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a href="#!" class="dropdown-item view_action"><i
-                                                            class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a>
-                                                </li>
-                                                <li><a class="dropdown-item edit-item-btn edit_action"><i
-                                                            class="ri-pencil-fill align-bottom me-2 text-muted"></i>
-                                                        Edit</a></li>
-                                                <li>
-                                                    <a class="dropdown-item remove-item-btn delete_action">
-                                                        <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i>
-                                                        Delete
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        <button type="button" class="ti-btn ti-btn-soft-primary">
+                                            <i class="ri-eye-fill align-bottom me-2 text-muted"></i> Voir
+                                        </button>
+
+                                        <button type="button" class="ti-btn ti-btn-soft-secondary">
+                                            <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Modifier
+                                        </button>
+
+                                        <button type="button" class="ti-btn ti-btn-soft-danger">
+                                            <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Supprimer
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach

@@ -86,8 +86,6 @@ class RoleController extends Controller
             $roles = [];
         }
 
-
-
         //privileges
         $response_pr = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
