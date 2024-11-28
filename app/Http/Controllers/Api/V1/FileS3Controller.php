@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\V1\BaseController;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
