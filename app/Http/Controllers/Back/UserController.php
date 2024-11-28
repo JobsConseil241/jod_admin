@@ -200,73 +200,6 @@ class UserController extends Controller
             $user = $object->data->users[0];
             if ($request->action == "edit") {
                 $body = '
-                    <!--begin::Form-->
-                    <form id="kt_modal_add_user_form" class="form" method="post" action="' . url('backend/user-update/' . $request->id) . '">
-                        <input type="hidden" name="_token" value="' . csrf_token() . '">
-
-                        <!--begin::Scroll-->
-                        <div class="d-flex flex-column scroll-y px-5 px-lg-10" id="kt_modal_add_user_scroll"
-                            data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-max-height="auto"
-                            data-kt-scroll-dependencies="#kt_modal_add_user_header"
-                            data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
-                            <!--begin::Input group-->
-                            <div class="fv-row mb-7">
-                                <!--begin::Label-->
-                                <label class="required fw-semibold fs-6 mb-2">Prénom</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <input type="text" name="firstname" value="' . $user->first_name . '"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" />
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
-                            <div class="fv-row mb-7">
-                                <!--begin::Label-->
-                                <label class="required fw-semibold fs-6 mb-2">Nom</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <input type="text" name="lastname" value="' . $user->last_name . '"
-                                    class="form-control form-control-solid mb-3 mb-lg-0" />
-                                <!--end::Input-->
-                            </div>
-                            <!--begin::Input group-->
-                            <div class="fv-row mb-7">
-                                <!--begin::Label-->
-                                <label class="required fw-semibold fs-6 mb-2">Email</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <input type="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0" value="' . $user->email . '" />
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
-                            <div class="fv-row mb-7">
-                                <!--begin::Label-->
-                                <label class="required fw-semibold fs-6 mb-2">Téléphone</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <input type="tel" id="_phone" name="phone" value="' . $user->phone . '" class="form-control form-control-solid mb-3 mb-lg-0" />
-                                <input id="_phone_code" type="hidden" name="phone_code" value="' . $user->phone_code . '" />
-                                <!--end::Input-->
-                            </div>
-                            <!--end::Input group-->
-                        </div>
-                        <!--end::Scroll-->
-                        <!--begin::Actions-->
-                        <div class="text-center pt-10">
-                            <button type="reset" class="btn btn-light me-3"
-                                data-kt-users-modal-action="cancel">Annuler</button>
-                            <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
-                                <span class="indicator-label">Soumettre</span>
-                                <span class="indicator-progress">Patientez ...
-                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                            </button>
-                        </div>
-                        <!--end::Actions-->
-                    </form>
-                    <!--end::Form-->
-
                     <form action="' . url('backend/user-update/' . $request->id) . '" method="POST">
                     <input type="hidden" name="_token" value="' . csrf_token() . '">
 
@@ -324,9 +257,6 @@ class UserController extends Controller
             } elseif ($request->action == "delete") {
 
                 $body = '
-                  <!--begin::Form-->
-
-
                   <div class="ti-modal-header">
                         <h3 class="ti-modal-title">
                         Supprimer un administrateur
