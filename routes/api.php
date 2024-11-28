@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\API\V1\LanguageController;
+use App\Http\Controllers\Api\V1\LanguageController;
 use App\Http\Controllers\Api\V1\PrivilegeController;
 use App\Http\Controllers\Api\V1\RoleController;
 use App\Http\Controllers\API\V1\UserController;
