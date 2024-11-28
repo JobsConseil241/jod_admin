@@ -65,7 +65,6 @@ class RoleController extends Controller
             $types = [];
         }
 
-
         return view('back.user.privilege', compact('privileges', 'types'));
     }
 
@@ -86,6 +85,8 @@ class RoleController extends Controller
         } else {
             $roles = [];
         }
+
+        dd($object);
 
         //privileges
         $response_pr = Http::withHeaders([

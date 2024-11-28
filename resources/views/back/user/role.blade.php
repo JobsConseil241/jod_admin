@@ -41,7 +41,7 @@
             <div class="box">
                 <div class="box-header">
                     <h5 class="box-title">Liste des Rôles</h5>
-                    <button type="button" class="hs-dropdown-toggle ti-btn ti-btn-primary justify-end"
+                    <button type="button" class="hs-dropdown-toggle ti-btn ti-btn-primary"
                         data-hs-overlay="#hs-basic-modal">
                         Ajouter un Rôle
                     </button>
