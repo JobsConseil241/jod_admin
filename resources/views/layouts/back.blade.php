@@ -128,7 +128,7 @@
                         <!-- Start::slide -->
                         <li class="slide has-sub">
                             <a href="javascript:void(0);" class="side-menu__item">
-                                <i class="ri-bar-chart-2-line side-menu__icon"></i>
+                                <i class="ti ti-cash side-menu__icon"></i>
                                 <span class="side-menu__label">Paiements</span>
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
