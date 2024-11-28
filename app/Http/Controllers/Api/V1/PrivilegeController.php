@@ -1,171 +1,355 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\V1\Privilege;
-use App\Models\V1\Role;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Models\Privilege;
+use App\Models\Role;
+use App\Models\RolePrivilege;
+use Exception;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
-class PrivilegeController extends Controller
+class PrivilegeController extends BaseController
 {
+
+
+    //
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Get(
+     *     path="/api/v1/get_privilege",
+     *     summary="Get Privilege",
+     *      tags={"Privilege"},
+     *     description="Get Privilege",
+     *     @OA\Parameter(
+     *         name="privilege_id",
+     *         in="query",
+     *         required=false,
+     *         description="Filter by privilege_id",
+     *         @OA\Schema(type="number")
+     *     ),
+     *     @OA\Parameter(
+     *         name="user_type_id",
+     *         in="query",
+     *         required=false,
+     *         description="Filter by user_type_id",
+     *         @OA\Schema(type="number")
+     *     ),
+     *     @OA\Parameter(
+     *         name="name",
+     *         in="query",
+     *         required=false,
+     *         description="Filter by name",
+     *         @OA\Schema(type="string")
+     *     ),
+     * @OA\Response(
+     *     response=200,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *         @OA\Property(property="success", type="bool"),
+     *         @OA\Property(property="code", type="string"),
+     *         @OA\Property(
+     *             property="data",
+     *             type="object",
+     *             @OA\Property(property="count", type="integer"),
+     *             @OA\Property(
+     *                 property="privileges",
+     *                 type="array",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(
+     *                         property="privilege",
+     *                         type="object",
+     *                         ref="#/components/schemas/Privilege"
+     *                     )
+     *                 )
+     *             )
+     *         ),
+     *         @OA\Property(property="message", type="string"),
+     *     )
+     * ),
+     *     @OA\Response(
+     *         response=201,
+     *         ref="#/components/responses/Requestfails"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         ref="#/components/responses/TokenIvalid"
+     *     ),
+     *     @OA\Response(
+     *         response=202,
+     *         ref="#/components/responses/ApplicationUnknown"
+     *     ),
+     * )
      */
-    public function index()
+    public function get_privilege(Request $request)
     {
-        return response()->json([
-            'data' => Privilege::with('userType')->get()
-        ], 200);
-    }
+        try {
+            Log::info('Get privilege Endpoint Entered.');
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse|void
-     */
-    public function store(Request $request)
-    {
-        $validateData = Validator::make($request->all(),[
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'user_type_id' => 'required|numeric'
-        ]);
+            Log::debug('Get privilege Endpoint - All Params: ' . json_encode($request->all()));
+            $privileges = Privilege::with('user_type')->select("*");
 
-        if (!$validateData->fails()) {
-
-            $validated = $validateData->validated();
-
-            $creation = Privilege::create([
-                'name' => $validated['name'],
-                'description' => $validated['description'],
-                'user_type_id' => $validated['user_type_id']
-            ]);
-
-            if ($creation) {
-                return response()->json([
-                    'data' => $creation,
-                    'message' => 'Privilege crée avec succès.'
-                ], 200);
+            if ($request->has('privilege_id') && $request->privilege_id != null) {
+                $privileges->where('id', $request->privilege_id);
             }
-        } else {
-            return response()->json([
-                'message' => 'Bad request',
-                'errors' => $validateData->errors()
-            ], 422);
+            if ($request->has('user_type_id') && $request->user_type_id != null) {
+                $privileges->where('user_type_id', $request->user_type_id);
+            }
+            if ($request->has('name') && $request->name != null) {
+                $privileges->where('name', 'like', '%' . $request->name . '%');
+            }
+            $data['count'] = $privileges->count();
+            $data['privileges'] = $privileges->get();
+            Log::debug('Get privilege Endpoint - Response: ' . json_encode($data));
+            return $this->sendResponse($data, "Privileges retrieved successfully");
+        } catch (Exception $e) {
+            Log::error('Get privilege Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Get privilege Endpoint Exited.');
         }
     }
 
+    //
     /**
-     * @param string $id
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Post(
+     *     path="/api/v1/assign_privilege",
+     *     security={{"bearerAuth":{}}},
+     *     summary="Assign privilege to roles",
+     *     description="Assign privilege to role",
+     *      tags={"Role"},
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *              required={"privilege_id","role_id","user_type_id"},
+     *              @OA\Property(property="privilege_id", type="integer"),
+     *              @OA\Property(property="role_id", type="integer"),
+     *              @OA\Property(property="user_type_id", type="integer"),
+     *              )
+     *          )
+     *      ),
+     * @OA\Response(
+     *     response=200,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *         @OA\Property(property="success", type="bool"),
+     *         @OA\Property(property="code", type="string"),
+     *         @OA\Property(
+     *             property="data",
+     *             type="object",
+     *                     @OA\Property(
+     *                         property="role",
+     *                         type="object",
+     *                         ref="#/components/schemas/Role"
+     *                     )
+     *         ),
+     *         @OA\Property(property="message", type="string"),
+     *     )
+     * ),
+     *     @OA\Response(
+     *         response=201,
+     *         ref="#/components/responses/Requestfails"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         ref="#/components/responses/TokenIvalid"
+     *     ),
+     *     @OA\Response(
+     *         response=202,
+     *         ref="#/components/responses/ApplicationUnknown"
+     *     ),
+     * )
      */
-    public function show(string $id)
+    public function assign_privilege(Request $request)
     {
-        if (!is_numeric($id) || $id <= 0) {
-            return response()->json([
-                'message' => 'Invalide ID fournit',
-            ], 403); // Bad Request 403
+        try {
+            Log::info('Assign privilege member Endpoint Entered.');
+
+            Log::debug('Assign privilege Endpoint - All Params: ' . json_encode($request->all()));
+            $rules = [
+                'role_id' => ['required', 'integer', 'exists:roles,id,deleted,NULL'],
+                'privilege_id' => ['required', 'integer', 'exists:privileges,id', Rule::unique('role_privileges')->where('role_id', $request->role_id)],
+                'user_type_id' => ['required', 'integer', 'exists:user_types,id']
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+            RolePrivilege::create($request->all());
+            $role =  Role::with('user_type', 'privileges')->find($request->role_id);
+            $data['role'] = $role;
+            Log::debug('Assign privilege Endpoint - Response: ' . json_encode($data));
+            return $this->sendResponse($data, "Role updated successfully");
+        } catch (Exception $e) {
+            Log::error('Assign privilege Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Assign privilege Endpoint Exited.');
         }
-
-        // Rechercher la ressource
-        $data = Privilege::find($id);
-
-        // Vérifier si la ressource existe
-        if (!$data) {
-            return response()->json([
-                'message' => 'Privilege pas trouvé',
-            ], 404); // Ressource non trouvée
-        }
-
-        // Retourner la ressource si tout va bien
-        return response()->json([
-            'data' => $data,
-        ], 200);
     }
 
+
+    //
     /**
-     * @param Request $request
-     * @param string $id
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Post(
+     *     path="/api/v1/remove_privilege",
+     *     security={{"bearerAuth":{}}},
+     *     summary="Remove privilege to role",
+     *     description="Remove privilege to role",
+     *      tags={"Role"},
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *              required={"privilege_id","role_id"},
+     *              @OA\Property(property="privilege_id", type="integer"),
+     *              @OA\Property(property="role_id", type="integer"),
+     *              )
+     *          )
+     *      ),
+     * @OA\Response(
+     *     response=200,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *         @OA\Property(property="success", type="bool"),
+     *         @OA\Property(property="code", type="string"),
+     *         @OA\Property(
+     *             property="data",
+     *             type="object",
+     *                     @OA\Property(
+     *                         property="role",
+     *                         type="object",
+     *                         ref="#/components/schemas/Role"
+     *                     )
+     *         ),
+     *         @OA\Property(property="message", type="string"),
+     *     )
+     * ),
+     *     @OA\Response(
+     *         response=201,
+     *         ref="#/components/responses/Requestfails"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         ref="#/components/responses/TokenIvalid"
+     *     ),
+     *     @OA\Response(
+     *         response=202,
+     *         ref="#/components/responses/ApplicationUnknown"
+     *     ),
+     * )
      */
-    public function update(Request $request, string $id)
+    public function remove_privilege(Request $request)
     {
-        // Trouver le formulaire par son ID
-        $data = Privilege::find($id);
+        try {
+            Log::info('Remove roles member Endpoint Entered.');
 
-        // Vérifier si le formulaire existe
-        if (!$data) {
-            return response()->json([
-                'message' => 'Privilège n\'existe pas',
-            ], 404); // Ressource non trouvée
+            Log::debug('Remove roles Endpoint - All Params: ' . json_encode($request->all()));
+            $rules = [
+                'role_id' => ['required', 'integer', 'exists:roles,id,deleted,NULL'],
+                'privilege_id' => ['required', 'integer', 'exists:privileges,id,deleted,NULL', Rule::exists('role_privileges')->where('role_id', $request->role_id)],
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+            RolePrivilege::where('role_id', $request->role_id)->where('privilege_id', $request->privilege_id)->delete();
+            $role =  Role::with('user_type', 'privileges')->find($request->role_id);
+            $data['role'] = $role;
+            Log::debug('Remove roles Endpoint - Response: ' . json_encode($data));
+            return $this->sendResponse($data, "Role updated successfully");
+        } catch (Exception $e) {
+            Log::error('Remove roles Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Remove roles Endpoint Exited.');
         }
-
-        // Valider les données entrantes (partielle)
-        $validatedData = $request->validate([
-            'name' => 'sometimes|string',
-            'description' => 'sometimes|string',
-            'user_type_id' => 'sometimes|numeric'
-        ]);
-
-        // Mettre à jour uniquement les champs présents dans la requête
-        $data->update($validatedData);
-
-        // Retourner la réponse
-        return response()->json([
-            'message' => 'données partiellement mis à jour avec succès',
-            'data' => $data,
-        ], 200);
     }
 
+
+    //
     /**
-     * Remove the specified resource from storage.
+     * @OA\Post(
+     *     path="/api/v1/clear_privilege",
+     *     security={{"bearerAuth":{}}},
+     *     summary="Clear all privilege for this role",
+     *     description="Clear all privilege for this role",
+     *      tags={"Role"},
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *              required={"role_id"},
+     *              @OA\Property(property="role_id", type="integer"),
+     *              )
+     *          )
+     *      ),
+     * @OA\Response(
+     *     response=200,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *         @OA\Property(property="success", type="bool"),
+     *         @OA\Property(property="code", type="string"),
+     *         @OA\Property(
+     *             property="data",
+     *             type="object",
+     *                     @OA\Property(
+     *                         property="role",
+     *                         type="object",
+     *                         ref="#/components/schemas/Role"
+     *                     )
+     *         ),
+     *         @OA\Property(property="message", type="string"),
+     *     )
+     * ),
+     *     @OA\Response(
+     *         response=201,
+     *         ref="#/components/responses/Requestfails"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         ref="#/components/responses/TokenIvalid"
+     *     ),
+     *     @OA\Response(
+     *         response=202,
+     *         ref="#/components/responses/ApplicationUnknown"
+     *     ),
+     * )
      */
-    public function destroy(string $id)
+    public function clear_privilege(Request $request)
     {
-        //
-    }
+        try {
+            Log::info('Clear privilege member Endpoint Entered.');
 
-    /**
-     * @param Request $request
-     * @param Privilege $privilege
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function assign(Request $request, Privilege $privilege) {
-
-
-        $validateData = Validator::make($request->all(),[
-            'role_id' => 'required|exists:roles,id',
-        ]);
-
-        if (!$validateData->fails()) {
-            $validated = $validateData->validated();
-
-            $associe  = $privilege->roles()->attach($validated['role_id']);
-
-            return response()->json([
-                'message' => 'Privilège ajouté au role.'
-            ], 200);
-
-        } else {
-            return response()->json([
-                'message' => 'Bad request',
-                'errors' => $validateData->errors()
-            ], 422);
+            Log::debug('Clear privilege Endpoint - All Params: ' . json_encode($request->all()));
+            $rules = [
+                'role_id' => ['required', 'integer', 'exists:roles,id,deleted,NULL'],
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+            RolePrivilege::where('role_id', $request->role_id)->delete();
+            $role =  Role::with('user_type', 'privileges')->find($request->role_id);
+            $data['role'] = $role;
+            Log::debug('Clear privilege Endpoint - Response: ' . json_encode($data));
+            return $this->sendResponse($data, "Role cleared successfully");
+        } catch (Exception $e) {
+            Log::error('Clear privilege Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Clear privilege Endpoint Exited.');
         }
-    }
-
-    /**
-     * @param Request $request
-     * @param Privilege $privilege
-     * @param Role $role
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function remove(Request $request, Privilege $privilege, Role $role) {
-
-        $privilege->roles()->detach($role);
-
-        return response()->json(['message' => 'Privilège ajouté au role supprimé avec succès.']);
     }
 }

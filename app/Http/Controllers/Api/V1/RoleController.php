@@ -1,130 +1,532 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1;
+namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\V1\Privilege;
-use App\Models\V1\Role;
+use App\Models\Role;
+use App\Models\User;
+use App\Models\UserRole;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
-class RoleController extends Controller
+class RoleController extends BaseController
 {
+    //
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Get(
+     *     path="/api/v1/get_roles",
+     *     summary="Get All Roles",
+     *      tags={"Role"},
+     *     description="Get All Roles",
+     *     @OA\Parameter(
+     *         name="role_id",
+     *         in="query",
+     *         required=false,
+     *         description="Role id",
+     *         @OA\Schema(type="number")
+     *     ),
+     *     @OA\Parameter(
+     *         name="user_type_id",
+     *         in="query",
+     *         required=false,
+     *         description="Filter by user_type_id",
+     *         @OA\Schema(type="number")
+     *     ),
+     *     @OA\Parameter(
+     *         name="name",
+     *         in="query",
+     *         required=false,
+     *         description="Filter by name",
+     *         @OA\Schema(type="string")
+     *     ),
+     * @OA\Response(
+     *     response=200,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *         @OA\Property(property="success", type="bool"),
+     *         @OA\Property(property="code", type="string"),
+     *         @OA\Property(
+     *             property="data",
+     *             type="object",
+     *             @OA\Property(property="count", type="integer"),
+     *             @OA\Property(
+     *                 property="roles",
+     *                 type="array",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(
+     *                         property="role",
+     *                         type="object",
+     *                         ref="#/components/schemas/Role"
+     *                     )
+     *                 )
+     *             )
+     *         ),
+     *         @OA\Property(property="message", type="string"),
+     *     )
+     * ),
+     *     @OA\Response(
+     *         response=201,
+     *         ref="#/components/responses/Requestfails"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         ref="#/components/responses/TokenIvalid"
+     *     ),
+     *     @OA\Response(
+     *         response=202,
+     *         ref="#/components/responses/ApplicationUnknown"
+     *     ),
+     * )
      */
-    public function index()
+
+    public function get_roles(Request $request)
     {
-        $roles  = Role::with('userType')->get();
 
-        return response()->json([
-            'data' => $roles
-        ], 200);
-    }
+        try {
+            Log::info('Get roles member Endpoint Entered.');
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse|void
-     */
-    public function store(Request $request)
-    {
-        $validateData = Validator::make($request->all(),[
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'user_type_id' => 'required|numeric'
-        ]);
+            Log::debug('Get roles Endpoint - All Params: ' . json_encode($request->all()));
+            $roles = Role::with('userType', 'privileges', 'users')->select('*');
 
-        if (!$validateData->fails()) {
+            $roles->where('deleted', NULL);
 
-            $validated = $validateData->validated();
-
-            $creation = Role::create([
-                'name' => $validated['name'],
-                'description' => $validated['description'],
-                'active' => 1,
-                'user_type_id' => $validated['user_type_id'],
-            ]);
-
-            if ($creation) {
-                return response()->json([
-                    'data' => $creation,
-                    'message' => 'Role crée avec succès.'
-                ], 200);
+            if ($request->has('role_id') && $request->role_id != null) {
+                $roles->where('id', $request->role_id);
             }
-        } else {
-            return response()->json([
-                'message' => 'Mauvaise requête',
-                'errors' => $validateData->errors()
-            ], 422);
+            if ($request->has('user_type_id') && $request->user_type_id != null) {
+                $roles->where('user_type_id', $request->user_type_id);
+            }
+            if ($request->has('name') && $request->name != null) {
+                $roles->where('name', 'like', '%' . $request->name . '%');
+            }
+
+            $data['count'] = $roles->count();
+            $data['roles'] = $roles->get();
+            Log::debug('Get roles Endpoint - Response: ' . json_encode($data));
+            return $this->sendResponse($data, "roles retrieved successfully");
+        } catch (Exception $e) {
+            Log::error('Get roles Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Get roles Endpoint Exited.');
         }
     }
 
+    //
     /**
-     * @param string $id
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Post(
+     *     path="/api/v1/add_role",
+     *     security={{"bearerAuth":{}}},
+     *     summary="Add Role",
+     *     description="Add Role",
+     *      tags={"Role"},
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *              required={"name","description","user_type_id"},
+     *              @OA\Property(property="name", type="string"),
+     *              @OA\Property(property="description", type="string"),
+     *              @OA\Property(property="user_type_id", type="integer"),
+     *              )
+     *          )
+     *      ),
+     * @OA\Response(
+     *     response=200,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *         @OA\Property(property="success", type="bool"),
+     *         @OA\Property(property="code", type="string"),
+     *         @OA\Property(
+     *             property="data",
+     *             type="object",
+     *                     @OA\Property(
+     *                         property="role",
+     *                         type="object",
+     *                         ref="#/components/schemas/Role"
+     *                     )
+     *         ),
+     *         @OA\Property(property="message", type="string"),
+     *     )
+     * ),
+     *     @OA\Response(
+     *         response=201,
+     *         ref="#/components/responses/Requestfails"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         ref="#/components/responses/TokenIvalid"
+     *     ),
+     *     @OA\Response(
+     *         response=202,
+     *         ref="#/components/responses/ApplicationUnknown"
+     *     ),
+     * )
      */
-    public function show(string $id)
+
+    public function add_role(Request $request)
     {
-        if (!is_numeric($id) || $id <= 0) {
-            return response()->json([
-                'message' => 'Invalide ID fournit',
-            ], 403); // Bad Request 403
+        try {
+            Log::info('Add roles member Endpoint Entered.');
+
+            Log::debug('Add roles Endpoint - All Params: ' . json_encode($request->all()));
+            $rules = [
+                'name' => ['required', 'string', 'unique:roles'],
+                'description' => ['required', 'string'],
+                'user_type_id' => ['required', 'exists:user_types,id'],
+            ];
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+
+            $update_data = $request->all();
+            $role = Role::create($update_data);
+            $data['role'] = $role;
+
+            Log::debug('Add roles Endpoint - Response: ' . json_encode($data));
+            return $this->sendResponse($data, "Role created successfully");
+        } catch (Exception $e) {
+            Log::error('Add roles Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Add roles Endpoint Exited.');
         }
-
-        // Rechercher la ressource
-        $data = Role::with(['userType', 'privileges'])->find($id);
-
-        // Vérifier si la ressource existe
-        if (!$data) {
-            return response()->json([
-                'message' => 'Rôle pas trouvé',
-            ], 404); // Ressource non trouvée
-        }
-
-        // Retourner la ressource si tout va bien
-        return response()->json([
-            'data' => $data,
-            'privileges' => $data->privileges
-        ], 200);
     }
 
+    //
     /**
-     * @param Request $request
-     * @param string $id
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Post(
+     *     path="/api/v1/update_role",
+     *     security={{"bearerAuth":{}}},
+     *     summary="Update Role",
+     *     description="Update Role",
+     *      tags={"Role"},
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *              required={"id"},
+     *              @OA\Property(property="id", type="integer"),
+     *              @OA\Property(property="name", type="string"),
+     *              @OA\Property(property="description", type="string"),
+     *              @OA\Property(property="user_type_id", type="integer"),
+     *              )
+     *          )
+     *      ),
+     * @OA\Response(
+     *     response=200,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *         @OA\Property(property="success", type="bool"),
+     *         @OA\Property(property="code", type="string"),
+     *         @OA\Property(
+     *             property="data",
+     *             type="object",
+     *                     @OA\Property(
+     *                         property="role",
+     *                         type="object",
+     *                         ref="#/components/schemas/Role"
+     *                     )
+     *         ),
+     *         @OA\Property(property="message", type="string"),
+     *     )
+     * ),
+     *     @OA\Response(
+     *         response=201,
+     *         ref="#/components/responses/Requestfails"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         ref="#/components/responses/TokenIvalid"
+     *     ),
+     *     @OA\Response(
+     *         response=202,
+     *         ref="#/components/responses/ApplicationUnknown"
+     *     ),
+     * )
      */
-    public function update(Request $request, string $id)
+
+    public function update_role(Request $request)
     {
-        $data = Role::find($id);
+        try {
+            Log::info('Update roles member Endpoint Entered.');
 
-        if (!$data) {
-            return response()->json([
-                'message' => 'Le Role n\'existe pas',
-            ], 404);
+            Log::debug('Update roles Endpoint - All Params: ' . json_encode($request->all()));
+            $rules = [
+                'id' => ['required', 'exists:roles,id,deleted,NULL'],
+            ];
+            if ($request->has('name') && $request->name != null) {
+                $rules['name'] = ['required', 'unique:roles,name,' . $request->id];
+            }
+            if ($request->has('user_type_id') && $request->user_type_id != null) {
+                $rules['user_type_id'] = ['required', 'exists:user_types,id'];
+            }
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+            $update_data = $request->all();
+            unset($update_data['id']);
+            Role::find($request->id)->update($update_data);
+            $role = Role::with('user_type', 'privileges')->find($request->id);
+            $data['role'] = $role;
+            Log::debug('Update roles Endpoint - Response: ' . json_encode($data));
+            return $this->sendResponse($data, "Role updated Successfully");
+        } catch (Exception $e) {
+            Log::error('Update roles Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Update roles Endpoint Exited.');
         }
-
-        $validatedData = $request->validate([
-            'name' => 'sometimes|string',
-            'description' => 'sometimes|string',
-            'user_type_id' => 'sometimes|numeric'
-        ]);
-
-        $data->update($validatedData);
-
-        return response()->json([
-            'message' => 'données partiellement mis à jour avec succès',
-            'data' => $data,
-        ], 200);
     }
 
+    //
     /**
-     * @param Role $id
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Post(
+     *     path="/api/v1/delete_role",
+     *     security={{"bearerAuth":{}}},
+     *     summary="Delete Role",
+     *     description="Delete Role",
+     *      tags={"Role"},
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *              required={"role_id"},
+     *              @OA\Property(property="role_id", type="integer"),
+     *              )
+     *          )
+     *      ),
+     * @OA\Response(
+     *     response=200,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *         @OA\Property(property="success", type="bool"),
+     *         @OA\Property(property="code", type="string"),
+     *         @OA\Property(
+     *             property="data",
+     *             type="object",
+     *                     @OA\Property(
+     *                         property="role",
+     *                         type="object",
+     *                         ref="#/components/schemas/Role"
+     *                     )
+     *         ),
+     *         @OA\Property(property="message", type="string"),
+     *     )
+     * ),
+     *     @OA\Response(
+     *         response=201,
+     *         ref="#/components/responses/Requestfails"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         ref="#/components/responses/TokenIvalid"
+     *     ),
+     *     @OA\Response(
+     *         response=202,
+     *         ref="#/components/responses/ApplicationUnknown"
+     *     ),
+     * )
      */
-    public function destroy(Role $id)
+    public function delete_role(Request $request)
     {
-        $id->delete();
+        try {
+            Log::info('Delete roles member Endpoint Entered.');
 
-        return response()->json(['message' => 'Role supprimé avec succès.'], 200);
+            Log::debug('Delete roles Endpoint - All Params: ' . json_encode($request->all()));
+            $rules = [
+                'role_id' => ['required', 'integer', 'exists:roles,id,deleted,NULL'],
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+            Role::find($request->role_id)->update([
+                'deleted' => 1,
+                'deleted_at' => now()
+            ]);
+            $role =  Role::with('user_type', 'privileges')->find($request->role_id);
+            $data['role'] = $role;
+            Log::debug('Delete roles Endpoint - Response: ' . json_encode($data));
+            return $this->sendResponse($data, "Role deleted successfully");
+        } catch (Exception $e) {
+            Log::error('Delete roles Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Delete roles Endpoint Exited.');
+        }
+    }
+
+    //
+    /**
+     * @OA\Post(
+     *     path="/api/v1/assign_role",
+     *     security={{"bearerAuth":{}}},
+     *     summary="Assign role to user",
+     *     description="Assign role to user",
+     *      tags={"User"},
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *              required={"user_id","role_id"},
+     *              @OA\Property(property="user_id", type="integer"),
+     *              @OA\Property(property="role_id", type="integer"),
+     *              )
+     *          )
+     *      ),
+     * @OA\Response(
+     *     response=200,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *         @OA\Property(property="success", type="bool"),
+     *         @OA\Property(property="code", type="string"),
+     *         @OA\Property(
+     *             property="data",
+     *             type="object",
+     *                     @OA\Property(
+     *                         property="user",
+     *                         type="object",
+     *                         ref="#/components/schemas/User"
+     *                     )
+     *         ),
+     *         @OA\Property(property="message", type="string"),
+     *     )
+     * ),
+     *     @OA\Response(
+     *         response=201,
+     *         ref="#/components/responses/Requestfails"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         ref="#/components/responses/TokenIvalid"
+     *     ),
+     *     @OA\Response(
+     *         response=202,
+     *         ref="#/components/responses/ApplicationUnknown"
+     *     ),
+     * )
+     */
+    public function assign_role(Request $request)
+    {
+        try {
+            Log::info('Assign role Endpoint Entered.');
+
+            Log::debug('Assign role Endpoint - All Params: ' . json_encode($request->all()));
+            $rules = [
+                'user_id' => ['required', 'integer', 'exists:users,id,deleted,NULL'],
+                'role_id' => ['required', 'integer', 'exists:roles,id,deleted,NULL', Rule::unique('user_roles')->where('user_id', $request->user_id)],
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+            UserRole::create($request->all());
+            $data['user'] = User::with('user_type', 'roles', 'roles.privileges', 'provider', 'order_budget_treshold', 'offer_amount_treshold')->find($request->user_id);
+
+            Log::debug('Assign role Endpoint - Response: ' . json_encode($data));
+            return $this->sendResponse($data, "Role updated successfully");
+        } catch (Exception $e) {
+            Log::error('Assign role Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Assign role Endpoint Exited.');
+        }
+    }
+
+
+    //
+    /**
+     * @OA\Post(
+     *     path="/api/v1/remove_role",
+     *     security={{"bearerAuth":{}}},
+     *     summary="remove role to user",
+     *     description="remove role to user",
+     *      tags={"User"},
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *              required={"user_id","role_id"},
+     *              @OA\Property(property="user_id", type="integer"),
+     *              @OA\Property(property="role_id", type="integer"),
+     *              )
+     *          )
+     *      ),
+     * @OA\Response(
+     *     response=200,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *         @OA\Property(property="success", type="bool"),
+     *         @OA\Property(property="code", type="string"),
+     *         @OA\Property(
+     *             property="data",
+     *             type="object",
+     *                     @OA\Property(
+     *                         property="user",
+     *                         type="object",
+     *                         ref="#/components/schemas/User"
+     *                     )
+     *         ),
+     *         @OA\Property(property="message", type="string"),
+     *     )
+     * ),
+     *     @OA\Response(
+     *         response=201,
+     *         ref="#/components/responses/Requestfails"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         ref="#/components/responses/TokenIvalid"
+     *     ),
+     *     @OA\Response(
+     *         response=202,
+     *         ref="#/components/responses/ApplicationUnknown"
+     *     ),
+     * )
+     */
+    public function remove_role(Request $request)
+    {
+        try {
+            Log::info('Remove role Endpoint Entered.');
+
+            Log::debug('Remove role Endpoint - All Params: ' . json_encode($request->all()));
+            $rules = [
+                'user_id' => ['required', 'integer', 'exists:users,id,deleted,NULL'],
+                'role_id' => ['required', 'integer', 'exists:roles,id,deleted,NULL', Rule::exists('user_roles')->where('user_id', $request->user_id)],
+            ];
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+            UserRole::where("user_id", $request->user_id)->where("role_id", $request->role_id)->delete();
+            $data['user'] = User::with('user_type', 'roles', 'roles.privileges', 'provider', 'order_budget_treshold', 'offer_amount_treshold')->find($request->user_id);
+
+            Log::debug('Remove role Endpoint - Response: ' . json_encode($data));
+            return $this->sendResponse($data, "Role updated successfully");
+        } catch (Exception $e) {
+            Log::error('Remove role Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Remove role Endpoint Exited.');
+        }
     }
 }
