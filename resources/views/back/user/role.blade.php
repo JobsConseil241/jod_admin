@@ -251,7 +251,7 @@
                     var body = data.body;
                     //dynamic title
                     $('#cardModalView .ti-modal-content').html(body); //url to delete item
-                    $('#cardModalView').modal('show');
+                    $('#cardModalView').removeClass('hidden').addClass('block');
                 }
             });
 
@@ -276,7 +276,7 @@
                     var body = data.body;
                     //dynamic title
                     $('#cardModalView .ti-modal-content').html(body); //url to delete item
-                    $('#cardModalView').modal('show');
+                    $('#cardModalView').removeClass('hidden').addClass('block');
                 }
             });
 
