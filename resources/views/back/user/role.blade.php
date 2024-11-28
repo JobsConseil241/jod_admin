@@ -251,7 +251,7 @@
                     var body = data.body;
                     //dynamic title
                     $('#cardModalView .ti-modal-content').html(body); //url to delete item
-                    $('#cardModalView').removeClass('hidden').addClass('block');
+                    $('#cardModalView').removeClass('hidden').addClass('open');
                 }
             });
 
@@ -276,10 +276,17 @@
                     var body = data.body;
                     //dynamic title
                     $('#cardModalView .ti-modal-content').html(body); //url to delete item
-                    $('#cardModalView').removeClass('hidden').addClass('block');
+                    $('#cardModalView').removeClass('hidden').addClass('open');
                 }
             });
 
+        });
+
+        $(document).on("click", "#cardModalView", function(e) {
+            // Si l'utilisateur clique en dehors de la boîte modale
+            if ($(e.target).is('#cardModalView')) {
+                $('#cardModalView').removeClass('open').addClass('hidden');
+            }
         });
     </script>
 @endpush
