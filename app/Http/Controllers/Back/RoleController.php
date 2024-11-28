@@ -25,7 +25,7 @@ class RoleController extends Controller
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
         ])->get(env('SERVER_PC') . 'get_user_type');
-        dd($response);
+
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
