@@ -357,7 +357,7 @@ class RoleController extends Controller
                     <div class="ti-modal-footer">
                         <button type="button"
                         class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
-                        data-hs-overlay="#hs-basic-modal">
+                        data-hs-overlay="#cardModalView">
                         Fermer
                         </button>
                         <a class="ti-btn ti-btn-danger"
