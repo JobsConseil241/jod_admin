@@ -246,8 +246,8 @@
                     //get data value params
                     var body = data.body;
                     //dynamic title
-                    $('#kt_modal_edit_user .modal-content').html(body); //url to delete item
-                    $('#kt_modal_edit_user').modal('show');
+                    $('#cardModalView .ti-modal-content').html(body); //url to delete item
+                    $('#cardModalView').removeClass('hidden').addClass('open');
                 }
             });
         });
@@ -275,10 +275,16 @@
                     //get data value params
                     var body = data.body;
                     //dynamic title
-                    $('#kt_modal_edit_user .modal-content').html(body); //url to delete item
-                    $('#kt_modal_edit_user').modal('show');
+                    $('#cardModalView .ti-modal-content').html(body); //url to delete item
+                    $('#cardModalView').removeClass('hidden').addClass('open');
                 }
             });
+        });
+
+        $(document).on("click", "#cardModalView", function(e) {
+            if ($(e.target).is('#cardModalView')) {
+                $('#cardModalView').removeClass('open').addClass('hidden');
+            }
         });
     </script>
 @endpush
