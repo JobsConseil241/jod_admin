@@ -6,6 +6,7 @@ use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\LanguageController;
 use App\Http\Controllers\Back\RoleController;
 use App\Http\Controllers\Back\UserController;
+use App\Http\Controllers\Front\CarController;
 use App\Http\Controllers\WelcomeController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,8 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/complete-registration', [RegisterController::class, 'completeRegistration'])->name('complete.registration');
+Route::get('/about', [WelcomeController::class, 'about'])->name('about');
+Route::get('/cars', [CarController::class, 'index'])->name('cars');
+Route::get('/car/{car}', [CarController::class, 'show'])->name('car');
+Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
 
+Route::get('/complete-registration', [RegisterController::class, 'completeRegistration'])->name('complete.registration');
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
