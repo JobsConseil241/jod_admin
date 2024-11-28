@@ -67,15 +67,15 @@
                                     <td>{{ $role->description }}</td>
                                     <td>
                                         <button type="button" class="ti-btn ti-btn-soft-primary">
-                                            <i class="ri-eye-fill align-bottom me-2 text-muted"></i> Voir
+                                            <i class="ri-eye-fill align-bottom me-2"></i> Voir
                                         </button>
 
                                         <button type="button" class="ti-btn ti-btn-soft-secondary">
-                                            <i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Modifier
+                                            <i class="ri-pencil-fill align-bottom me-2"></i> Modifier
                                         </button>
 
                                         <button type="button" class="ti-btn ti-btn-soft-danger">
-                                            <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Supprimer
+                                            <i class="ri-delete-bin-fill align-bottom me-2"></i> Supprimer
                                         </button>
                                     </td>
                                 </tr>
