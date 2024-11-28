@@ -48,7 +48,7 @@
         <div class="col-span-12">
             <div class="box">
                 <div class="box-header">
-                    <h5 class="box-title">Liste des Client</h5>
+                    <h5 class="box-title">Liste des Clients</h5>
                     <div class="flex justify-end">
                         <button type="button" class="hs-dropdown-toggle ti-btn ti-btn-primary"
                             data-hs-overlay="#hs-basic-modal">
