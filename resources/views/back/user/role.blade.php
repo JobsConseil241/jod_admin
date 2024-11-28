@@ -51,11 +51,11 @@
                         style="width:100%">
                         <thead>
                             <tr>
-                                <th data-ordering="false">{{ $Lang->trans('id') }}</th>
-                                <th>{{ $Lang->trans('user_type') }}</th>
-                                <th>{{ $Lang->trans('name') }}</th>
-                                <th>{{ $Lang->trans('description') }}</th>
-                                <th>{{ $Lang->trans('actions') }}</th>
+                                <th data-ordering="false">ID</th>
+                                <th>Type d'Utilisateurs</th>
+                                <th>Nom</th>
+                                <th>Description</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,10 +66,6 @@
                                     <td>{{ $role->name }}</td>
                                     <td>{{ $role->description }}</td>
                                     <td>
-                                        <button type="button" class="ti-btn ti-btn-soft-primary view_action">
-                                            <i class="ri-eye-fill align-bottom me-2"></i> Voir
-                                        </button>
-
                                         <button type="button" class="ti-btn ti-btn-soft-warning edit_action">
                                             <i class="ri-pencil-fill align-bottom me-2"></i> Modifier
                                         </button>
@@ -254,7 +250,7 @@
                     //get data value params
                     var body = data.body;
                     //dynamic title
-                    $('#cardModalView .modal-content').html(body); //url to delete item
+                    $('#cardModalView .ti-modal-content').html(body); //url to delete item
                     $('#cardModalView').modal('show');
                 }
             });
@@ -279,7 +275,7 @@
                     //get data value params
                     var body = data.body;
                     //dynamic title
-                    $('#cardModalView .modal-content').html(body); //url to delete item
+                    $('#cardModalView .ti-modal-content').html(body); //url to delete item
                     $('#cardModalView').modal('show');
                 }
             });
