@@ -66,7 +66,7 @@
                                     <td>{{ $role->name }}</td>
                                     <td>{{ $role->description }}</td>
                                     <td>
-                                        <button type="button" class="ti-btn ti-btn-soft-warning edit_action">
+                                        <button type="button" class="ti-btn ti-btn-soft-primary edit_action">
                                             <i class="ri-pencil-fill align-bottom me-2"></i> Modifier
                                         </button>
 
