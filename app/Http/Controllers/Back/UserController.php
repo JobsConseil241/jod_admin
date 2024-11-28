@@ -122,7 +122,7 @@ class UserController extends Controller
             $roles = [];
         }
 
-        return view('back.user.list', compact('users', 'types', 'roles'));
+        return view('back.user.administrator', compact('users', 'types', 'roles'));
     }
 
     protected function validator(array $data)

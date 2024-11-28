@@ -68,11 +68,13 @@
                                     <td>{{ $role->name }}</td>
                                     <td>{{ $role->description }}</td>
                                     <td>
-                                        <button type="button" class="ti-btn ti-btn-soft-primary edit_action">
+                                        <button type="button" class="ti-btn ti-btn-soft-primary edit_action"
+                                            data-id="{{ $role->id }}">
                                             <i class="ri-pencil-fill align-bottom me-2"></i> Modifier
                                         </button>
 
-                                        <button type="button" class="ti-btn ti-btn-soft-danger delete_action">
+                                        <button type="button" class="ti-btn ti-btn-soft-danger delete_action"
+                                            data-id="{{ $role->id }}">
                                             <i class="ri-delete-bin-fill align-bottom me-2"></i> Supprimer
                                         </button>
                                     </td>

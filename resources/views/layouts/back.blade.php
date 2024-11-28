@@ -182,7 +182,7 @@
 
                         <!-- Start::slide -->
                         <li class="slide">
-                            <a href="{{ route('backend.list.user') }}" class="side-menu__item">
+                            <a href="{{ route('backend.list.administrator') }}" class="side-menu__item">
                                 <i class="ri-home-8-line side-menu__icon"></i>
                                 <span class="side-menu__label">Administrateurs</span>
                             </a>

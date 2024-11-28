@@ -83,6 +83,7 @@ Route::middleware(['auth'])->group(function () {
 
         //user
         Route::get('list-users', [UserController::class, 'users'])->name('backend.list.user');
+        Route::get('list-administrators', [UserController::class, 'administrators'])->name('backend.list.administrator');
         Route::post('user/create', [UserController::class, 'store'])->name('backend.user.create');
         Route::post('user/edit', [UserController::class, 'edit'])->name('backend.user.edit');
         Route::post('user/assign', [UserController::class, 'assign'])->name('backend.user.assign');
