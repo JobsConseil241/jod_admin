@@ -181,14 +181,6 @@
         </div>
     </div>
 
-    <div class="modal fade" id="cardModalView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelOne"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            </div>
-        </div>
-    </div>
-
     <div id="cardModalView" class="hs-overlay ti-modal hidden">
         <div class="ti-modal-box">
             <div class="ti-modal-content">
