@@ -3,6 +3,12 @@
 @push('styles')
     <!--datatable css-->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.tailwindcss.css" />
+
+    <style>
+        .col-start-2 {
+            grid-column-start: 3 !important;
+        }
+    </style>
 @endpush
 
 @inject('Lang', 'App\Services\LanguageService')
