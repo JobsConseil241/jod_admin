@@ -2,6 +2,7 @@
 
 @push('styles')
     <!--datatable css-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.tailwindcss.css" />
 @endpush
 
 @inject('Lang', 'App\Services\LanguageService')
@@ -64,7 +65,6 @@
 @push('scripts')
     <!--datatable js-->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="https://cdn.tailwindcss.com/"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.tailwindcss.js"></script>
     <script>
