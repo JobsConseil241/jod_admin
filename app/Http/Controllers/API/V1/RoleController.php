@@ -279,7 +279,7 @@ class RoleController extends BaseController
             $update_data = $request->all();
             unset($update_data['id']);
             Role::find($request->id)->update($update_data);
-            $role = Role::with('user_type', 'privileges')->find($request->id);
+            $role = Role::with('userType', 'privileges')->find($request->id);
             $data['role'] = $role;
             Log::debug('Update roles Endpoint - Response: ' . json_encode($data));
             return $this->sendResponse($data, "Role updated Successfully");
