@@ -56,7 +56,7 @@
     <div class="preloader">
         <div class="loading-container">
             <div class="loading"></div>
-            <div id="loading-icon"><img src="images/loader.svg" alt=""></div>
+            <div id="loading-icon"><img src="{{ asset('front/images/jod_white.png') }}" alt=""></div>
         </div>
     </div>
     <!-- Preloader End -->
@@ -67,7 +67,7 @@
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <!-- Logo Start -->
-                    <a class="navbar-brand" href="index-2.html">
+                    <a class="navbar-brand" href="{{ route('/') }}">
                         <img src="{{ asset('front/images/jod.png') }}" alt="Logo">
                     </a>
                     <!-- Logo End -->

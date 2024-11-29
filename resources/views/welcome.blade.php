@@ -52,7 +52,7 @@
     <div class="preloader">
         <div class="loading-container">
             <div class="loading"></div>
-            <div id="loading-icon"><img src="{{ asset('front/images/loader.svg') }}" alt=""></div>
+            <div id="loading-icon"><img src="{{ asset('front/images/jod_white.png') }}" alt=""></div>
         </div>
     </div>
     <!-- Preloader End -->
