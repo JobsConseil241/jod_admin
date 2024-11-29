@@ -32,7 +32,7 @@
     <style>
         .main-logo {
             width: 30%;
-            margin-top: -15px;
+            margin-top: -15px !important;
         }
     </style>
 
