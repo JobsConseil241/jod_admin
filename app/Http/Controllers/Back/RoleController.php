@@ -236,7 +236,9 @@ class RoleController extends Controller
             if ($request->action == "view") {
                 $body = '';
             } elseif ($request->action == "edit") {
+                dd($role);
                 $rolePrivileges = $role->privileges->pluck('id')->toArray();
+
                 $body = '
                 <form action="' . url('backend/role/edit/' . $role->id) . '" method="POST">
 
@@ -261,7 +263,7 @@ class RoleController extends Controller
                             <select name="user_type_id" id="hs-select-label" class="ti-form-select">';
                 foreach ($types as $type) {
                     $body .= '<option value="' . $type->id . '"
-                                            ' . ($type->id == $role->user_type->id ? 'selected' : '') . '>
+                                            ' . ($type->id == $role->userType->id ? 'selected' : '') . '>
                                             ' . $type->name . '</option>';
                 }
 
