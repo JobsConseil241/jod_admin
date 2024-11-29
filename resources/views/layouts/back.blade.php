@@ -30,9 +30,14 @@
     <link rel="stylesheet" href="{{ asset('back/libs/jsvectormap/css/jsvectormap.min.css') }}">
 
     <style>
-        .main-logo {
+        .header-logo .main-logo {
             width: 30%;
             margin-top: -15px !important;
+        }
+
+        .main-sidebar-header .main-logo {
+            width: 100%;
+            margin-top: 0px !important;
         }
     </style>
 
