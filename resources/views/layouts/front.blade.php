@@ -44,7 +44,6 @@
 
     @php
         $user = Auth::user();
-        $user->load(['roles']);
     @endphp
 
     @inject('Lang', 'App\Services\LanguageService')
