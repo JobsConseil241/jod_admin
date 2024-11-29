@@ -236,8 +236,9 @@ class RoleController extends Controller
             if ($request->action == "view") {
                 $body = '';
             } elseif ($request->action == "edit") {
-                dd($role->privileges->pluck('id')->toArray());
-                $rolePrivileges = $role->privileges->pluck('id')->toArray();
+                $rolePrivileges = array_map(function ($privilege) {
+                    return $privilege->id;
+                }, $role->privileges);
 
                 $body = '
                 <form action="' . url('backend/role/edit/' . $role->id) . '" method="POST">
