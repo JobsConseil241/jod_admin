@@ -20,6 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', [WelcomeController::class, 'index'])->name('home');
+
 Route::get('/about', [WelcomeController::class, 'about'])->name('about');
 Route::get('/cars', [CarController::class, 'index'])->name('cars');
 Route::get('/car/{car}', [CarController::class, 'show'])->name('car');
@@ -55,7 +57,6 @@ Route::middleware(['auth'])->group(function () {
 
     //auth
     Route::post('/2fa', [LoginController::class, 'two_fa'])->name('2fa');
-    Route::get('/home', [WelcomeController::class, 'index'])->name('home');
     Route::get('/profil', [CustomerController::class, 'index'])->name('profil');
 
     /*
