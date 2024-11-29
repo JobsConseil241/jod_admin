@@ -40,6 +40,11 @@
     <!-- custom CSS -->
     @stack('styles')
 
+    @php
+        $user = Auth::user();
+        $user->load(['roles']);
+    @endphp
+
     @inject('Lang', 'App\Services\LanguageService')
 </head>
 
@@ -69,74 +74,19 @@
                     <div class="collapse navbar-collapse main-menu">
                         <div class="nav-menu-wrapper">
                             <ul class="navbar-nav mr-auto" id="menu">
-                                <li class="nav-item submenu"><a class="nav-link" href="index-2.html">Home</a>
-                                    <ul>
-                                        <li class="nav-item submenu"><a class="nav-link" href="index.html">Home -
-                                                Light</a>
-                                            <ul>
-                                                <li class="nav-item"><a class="nav-link" href="index.html">Home -
-                                                        Background Image</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="index-3.html">Home -
-                                                        Background Video</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="index-4.html">Home -
-                                                        Background Slider</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="nav-item submenu"><a class="nav-link"
-                                                href="https://demo.awaikenthemes.com/html-preview/novaride/dark/index.html">Home
-                                                - Dark</a>
-                                            <ul>
-                                                <li class="nav-item"><a class="nav-link"
-                                                        href="https://demo.awaikenthemes.com/html-preview/novaride/dark/index.html">Home
-                                                        - Background Image</a></li>
-                                                <li class="nav-item"><a class="nav-link"
-                                                        href="https://demo.awaikenthemes.com/html-preview/novaride/dark/index-2.html">Home
-                                                        - Background Video</a></li>
-                                                <li class="nav-item"><a class="nav-link"
-                                                        href="https://demo.awaikenthemes.com/html-preview/novaride/dark/index-3.html">Home
-                                                        - Background Slider</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                                <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
-                                <li class="nav-item submenu"><a class="nav-link" href="#">Cars</a>
-                                    <ul>
-                                        <li class="nav-item"><a class="nav-link" href="cars.html">Car Lists</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="car-single.html">Car
-                                                Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="car-type.html">Cars Type</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item submenu"><a class="nav-link" href="#">Pages</a>
-                                    <ul>
-                                        <li class="nav-item"><a class="nav-link" href="service-single.html">Service
-                                                Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="blog-single.html">Blog
-                                                Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="drivers.html">Drivers</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="driver-single.html">Driver
-                                                Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="image-gallery.html">Image
-                                                Gallery</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="video-gallery.html">Video
-                                                Gallery</a></li>
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="testimonials.html">Testimonials</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="faqs.html">FAQ's</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="404.html">404</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Accueil</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">A Propos</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('cars') }}">Véhicule</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
                             </ul>
                         </div>
                         <!-- Let’s Start Button Start -->
                         <div class="header-btn d-inline-flex">
-                            <a href="#" class="btn-default">book a rental</a>
+                            @if ($user)
+                                <a href="{{ route('profil') }}" class="btn-default">{{ $user['last_name'] }}</a>
+                            @else
+                                <a href="{{ route('login') }}" class="btn-default">Connexion</a>
+                            @endif
                         </div>
                         <!-- Let’s Start Button End -->
                     </div>

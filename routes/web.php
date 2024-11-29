@@ -7,6 +7,7 @@ use App\Http\Controllers\Back\LanguageController;
 use App\Http\Controllers\Back\RoleController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\CarController;
+use App\Http\Controllers\Front\CustomerController;
 use App\Http\Controllers\WelcomeController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -55,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
     //auth
     Route::post('/2fa', [LoginController::class, 'two_fa'])->name('2fa');
     Route::get('/home', [WelcomeController::class, 'index'])->name('home');
-
+    Route::get('/profil', [CustomerController::class, 'index'])->name('profil');
 
     /*
     | Admlinistrateur
