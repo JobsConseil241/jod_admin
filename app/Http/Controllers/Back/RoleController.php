@@ -236,7 +236,7 @@ class RoleController extends Controller
             if ($request->action == "view") {
                 $body = '';
             } elseif ($request->action == "edit") {
-                dd($role);
+                dd($role->privileges->pluck('id')->toArray());
                 $rolePrivileges = $role->privileges->pluck('id')->toArray();
 
                 $body = '
