@@ -8,7 +8,15 @@ use Illuminate\Http\Request;
 class CarController extends Controller
 {
     //
-    public function index() {}
+    public function index()
+    {
 
-    public function show() {}
+        return view('front.car.list');
+    }
+
+    public function show()
+    {
+
+        return view('front.car.item');
+    }
 }
