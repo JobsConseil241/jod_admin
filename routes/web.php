@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-set_time_limit(120);
+set_time_limit(300);
 
 Route::get('/', function () {
     return view('welcome');
