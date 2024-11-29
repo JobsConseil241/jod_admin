@@ -14,11 +14,11 @@ class WelcomeController extends Controller
 
     public function about()
     {
-        return view('welcome');
+        return view('front.about');
     }
 
     public function contact()
     {
-        return view('welcome');
+        return view('front.contact');
     }
 }

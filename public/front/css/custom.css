@@ -6558,3 +6558,15 @@ header.main-header .header-sticky.active{
 		font-size: 28px;
 	}
 }
+
+.navbar-brand {
+    width: 10% !important;
+}
+
+.section-title h3 {
+    color: #FFFFFF;
+}
+
+.footer-logo img{
+    width:50%;
+}
