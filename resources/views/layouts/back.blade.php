@@ -29,6 +29,13 @@
     <!-- Vector Map Css-->
     <link rel="stylesheet" href="{{ asset('back/libs/jsvectormap/css/jsvectormap.min.css') }}">
 
+    <style>
+        .main-logo {
+            width: 30%;
+            margin-top: -15px;
+        }
+    </style>
+
     @stack('styles')
 
     @php
