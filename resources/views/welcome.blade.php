@@ -81,7 +81,8 @@
                         <!-- Let’s Start Button Start -->
                         <div class="header-btn d-inline-flex">
                             @if ($user)
-                                <a href="{{ route('profil') }}" class="btn-default">{{ $user['last_name'] }}</a>
+                                <a href="{{ $user['user_type_id'] == 1000002 ? route('profil') : route('dashboard') }}"
+                                    class="btn-default">{{ $user['last_name'] }}</a>
                             @else
                                 <a href="{{ route('login') }}" class="btn-default">Connexion</a>
                             @endif
