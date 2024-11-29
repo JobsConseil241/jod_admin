@@ -236,6 +236,7 @@ class RoleController extends Controller
             if ($request->action == "view") {
                 $body = '';
             } elseif ($request->action == "edit") {
+                $rolePrivileges = $role->privileges->pluck('id')->toArray();
                 $body = '
                 <form action="' . url('backend/role/edit/' . $role->id) . '" method="POST">
 
@@ -290,6 +291,7 @@ class RoleController extends Controller
                                     <!--begin::Table body-->
                                     <tbody class="text-gray-500 fw-semibold">';
                 foreach ($privileges as $pr) {
+                    $isChecked = in_array($pr->id, $rolePrivileges) ? 'checked' : '';
                     $body .= '<!--begin::Table row-->
                                             <tr>
                                                 <!--begin::Label-->
@@ -298,6 +300,7 @@ class RoleController extends Controller
                                                         class="max-w-xs flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
                                                         <input name="privileges[]" type="checkbox"
                                                             value="' . $pr->id . '"
+                                                             ' . $isChecked . '
                                                             class="shrink-0 mt-0.5 border-gray-200 rounded text-primary pointer-events-none focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:checked:bg-primary dark:checked:border-primary dark:focus:ring-offset-white/10"
                                                             id="vertical-checkbox-checked-in-form">
                                                         <span
@@ -306,8 +309,7 @@ class RoleController extends Controller
                                                 </td>
                                                 <!--end::Label-->
                                             </tr>
-                                            <!--end::Table row-->
-                                       ';
+                                            <!--end::Table row-->';
                 }
 
                 $body .= '
