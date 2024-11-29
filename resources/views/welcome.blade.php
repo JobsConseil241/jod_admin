@@ -11,14 +11,16 @@
     <meta name="author" content="Awaiken">
     <!-- Page Title -->
     <title>JOD Trade & Co</title>
+
     <!-- Favicon Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/images/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/images/jod_ico.png') }}">
     <!-- Google Fonts Css-->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Epilogue:ital,wght@0,100..900;1,100..900&amp;display=swap"
         rel="stylesheet">
+
     <!-- Bootstrap Css -->
     <link href="{{ asset('front/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
     <!-- SlickNav Css -->
@@ -62,7 +64,7 @@
                 <div class="container">
                     <!-- Logo Start -->
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        <img src="{{ asset('front/images/logo.svg') }}" alt="Logo">
+                        <img src="{{ asset('front/images/jod.png') }}" alt="Logo">
                     </a>
                     <!-- Logo End -->
 
@@ -1740,7 +1742,7 @@
                     <div class="about-footer">
                         <!-- Footer Logo Start -->
                         <div class="footer-logo">
-                            <img src="images/footer-logo.svg" alt="">
+                            <img src="{{ asset('front/images/jod_white.png') }}" alt="">
                         </div>
                         <!-- Footer Logo End -->
 
