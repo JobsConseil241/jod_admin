@@ -264,7 +264,7 @@ class RoleController extends Controller
                             <select name="user_type_id" id="hs-select-label" class="ti-form-select">';
                 foreach ($types as $type) {
                     $body .= '<option value="' . $type->id . '"
-                                            ' . ($type->id == $role->userType->id ? 'selected' : '') . '>
+                                            ' . ($type->id == $role->user_type->id ? 'selected' : '') . '>
                                             ' . $type->name . '</option>';
                 }
 
