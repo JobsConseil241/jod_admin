@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> JOD - Administration </title>
+    <title>JOD - Administration </title>
     <meta name="author" content="codeur X">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="#">
@@ -47,7 +47,7 @@
 
             <!-- Start::main-sidebar-header -->
             <div class="main-sidebar-header">
-                <a href="index.html" class="header-logo">
+                <a href="{{ route('dashboard') }}" class="header-logo">
                     <img src="{{ asset('back/img/brand-logos/desktop-logo.png') }}" alt="logo"
                         class="main-logo desktop-logo">
                     <img src="{{ asset('back/img/brand-logos/toggle-logo.png') }}" alt="logo"
@@ -172,8 +172,7 @@
                                         href="{{ route('backend.list.privilege') }}">Privilèges</a>
                                 </li>
                                 <li class="slide"><a class="side-menu__item"
-                                        href="{{ route('backend.list.user-type') }}">Types
-                                        d'utlisateurs</a></li>
+                                        href="{{ route('backend.list.user-type') }}">Types d'utlisateurs</a></li>
                             </ul>
                         </li>
                         <!-- End::slide -->
