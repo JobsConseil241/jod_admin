@@ -14,7 +14,7 @@
 
 @section('content')
     <main id="content" class="w-full max-w-md mx-auto p-6">
-        <a href="index.html" class="header-logo">
+        <a href="{{ route('home') }}" class="header-logo">
             <img src="{{ asset('front/images/jod.png') }}" alt="logo" class="mx-auto block dark:hidden">
             <img src="{{ asset('front/images/jod_white.png') }}" alt="logo" class="mx-auto hidden dark:block">
         </a>
