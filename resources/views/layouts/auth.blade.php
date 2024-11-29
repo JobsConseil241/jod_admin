@@ -9,7 +9,7 @@
     <meta name="keywords" content="jod, location vehicule">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('back/img/brand-logos/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/images/jod_ico.png') }}">
 
     <!-- Style Css -->
     <link rel="stylesheet" href="{{ asset('back/css/style.css') }}">

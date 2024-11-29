@@ -6,8 +6,8 @@
 @section('content')
     <main id="content" class="w-full max-w-md mx-auto p-6">
         <a href="index.html" class="header-logo">
-            <img src="{{ asset('back/img/brand-logos/desktop-logo.png') }}" alt="logo" class="mx-auto block dark:hidden">
-            <img src="{{ asset('back/brand-logos/desktop-dark.png') }}" alt="logo" class="mx-auto hidden dark:block">
+            <img src="{{ asset('front/images/jod.png') }}" alt="logo" class="mx-auto block dark:hidden">
+            <img src="{{ asset('front/images/jod_white.png') }}" alt="logo" class="mx-auto hidden dark:block">
         </a>
         <div class="mt-7 bg-white rounded-sm shadow-sm dark:bg-bgdark">
             <div class="p-4 sm:p-7">

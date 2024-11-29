@@ -12,7 +12,7 @@
     <meta name="keywords" content="#">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('back/img/brand-logos/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/images/jod_ico.png') }}">
 
     <!-- Main JS -->
     <script src="{{ asset('back/js/main.js') }}"></script>
@@ -48,14 +48,10 @@
             <!-- Start::main-sidebar-header -->
             <div class="main-sidebar-header">
                 <a href="{{ route('dashboard') }}" class="header-logo">
-                    <img src="{{ asset('back/img/brand-logos/desktop-logo.png') }}" alt="logo"
-                        class="main-logo desktop-logo">
-                    <img src="{{ asset('back/img/brand-logos/toggle-logo.png') }}" alt="logo"
-                        class="main-logo toggle-logo">
-                    <img src="{{ asset('back/img/brand-logos/desktop-dark.png') }}" alt="logo"
-                        class="main-logo desktop-dark">
-                    <img src="{{ asset('back/img/brand-logos/toggle-dark.png') }}" alt="logo"
-                        class="main-logo toggle-dark">
+                    <img src="{{ asset('front/images/jod.png') }}" alt="logo" class="main-logo desktop-logo">
+                    <img src="{{ asset('front/images/jod.png') }}" alt="logo" class="main-logo toggle-logo">
+                    <img src="{{ asset('front/images/jod_white.png') }}" alt="logo" class="main-logo desktop-dark">
+                    <img src="{{ asset('front/images/jod_white.png') }}" alt="logo" class="main-logo toggle-dark">
                 </a>
             </div>
             <!-- End::main-sidebar-header -->
