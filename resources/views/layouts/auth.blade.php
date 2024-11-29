@@ -20,6 +20,13 @@
     <!-- Color Picker Css -->
     <link rel="stylesheet" href="{{ asset('back/libs/@simonwep/pickr/themes/nano.min.css') }}">
 
+    <style>
+        img {
+            max-width: 50%;
+            height: auto;
+        }
+    </style>
+
     <!-- custom CSS -->
     @stack('styles')
 
