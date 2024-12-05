@@ -107,8 +107,8 @@
                         <div class="hero-content">
                             <div class="section-title">
                                 <h3 class="wow fadeInUp">Bienvenu chez JOD Trade & Co</h3>
-                                <h1 class="text-anime-style-3" data-cursor="-opaque">Vous souhaitez avec le meilleur en
-                                    location de véhicule ?</h1>
+                                <h1 class="text-anime-style-3" data-cursor="-opaque">Le meilleur en
+                                    location de véhicule pour vous !</h1>
                                 <p class="wow fadeInUp" data-wow-delay="0.25s">Une escapade en fin de
                                     semaine, un voyage d'affaires ou que vous ayez simplement besoin d'un véhicule
                                     fiable pour la journée, nous offrons une vaste gamme de véhicules pour répondre à
