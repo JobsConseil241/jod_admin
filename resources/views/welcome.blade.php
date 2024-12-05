@@ -106,17 +106,18 @@
                         <!-- Hero Content Start -->
                         <div class="hero-content">
                             <div class="section-title">
-                                <h3 class="wow fadeInUp">welcome to car rent</h3>
-                                <h1 class="text-anime-style-3" data-cursor="-opaque">Looking to save more on your
-                                    rental car?</h1>
-                                <p class="wow fadeInUp" data-wow-delay="0.25s">Whether you're planning a weekend
-                                    getaway, a business trip, or just need a reliable ride for the day, we offers a wide
-                                    range of vehicles to suit your needs.</p>
+                                <h3 class="wow fadeInUp">Bienvenu chez JOD Trade & Co</h3>
+                                <h1 class="text-anime-style-3" data-cursor="-opaque">Vous souhaitez avec le meilleur en
+                                    location de véhicule ?</h1>
+                                <p class="wow fadeInUp" data-wow-delay="0.25s">Une escapade en fin de
+                                    semaine, un voyage d'affaires ou que vous ayez simplement besoin d'un véhicule
+                                    fiable pour la journée, nous offrons une vaste gamme de véhicules pour répondre à
+                                    vos besoins.</p>
                             </div>
 
                             <div class="hero-content-body wow fadeInUp" data-wow-delay="0.5s">
-                                <a href="#" class="btn-default">book a rental</a>
-                                <a href="#" class="btn-default btn-highlighted">learn more</a>
+                                <a href="#" class="btn-default">Réserver</a>
+                                <a href="#" class="btn-default btn-highlighted">En savoir plus</a>
                             </div>
                         </div>
                         <!-- Hero Content End -->
@@ -140,7 +141,7 @@
                                             <img src="images/icon-rent-details-1.svg" alt="">
                                         </div>
                                         <div class="rent-details-content">
-                                            <h3>car type</h3>
+                                            <h3>Type de Véhicule</h3>
                                             <select class="rent-details-form form-select">
                                                 <option value="" disabled selected>Choose Car Type</option>
                                                 <option value="sport_car">sport car</option>
@@ -160,7 +161,7 @@
                                             <img src="images/icon-rent-details-2.svg" alt="">
                                         </div>
                                         <div class="rent-details-content">
-                                            <h3>pickup location</h3>
+                                            <h3>Lieu de récupération</h3>
                                             <select class="rent-details-form form-select">
                                                 <option value="" disabled selected>Pick Up Location</option>
                                                 <option value="abu_dhabi">abu dhabi</option>
@@ -178,7 +179,7 @@
                                             <img src="images/icon-rent-details-3.svg" alt="">
                                         </div>
                                         <div class="rent-details-content">
-                                            <h3>pickup date</h3>
+                                            <h3>Date de début</h3>
                                             <p><input type="text" name="date" placeholder="mm/dd/yyyy"
                                                     class="rent-details-form datepicker" required></p>
                                         </div>
@@ -191,7 +192,7 @@
                                             <img src="images/icon-rent-details-4.svg" alt="">
                                         </div>
                                         <div class="rent-details-content">
-                                            <h3>Dropoff location</h3>
+                                            <h3>Lieu de remise</h3>
                                             <select class="rent-details-form form-select">
                                                 <option value="" disabled selected>Drop Off Location</option>
                                                 <option value="abu_dhabi">abu dhabi</option>
@@ -208,7 +209,7 @@
                                             <img src="images/icon-rent-details-5.svg" alt="">
                                         </div>
                                         <div class="rent-details-content">
-                                            <h3>Return Date</h3>
+                                            <h3>Date de fin</h3>
                                             <p><input type="text" name="date" placeholder="mm/dd/yyyy"
                                                     class="rent-details-form datepicker" required></p>
                                         </div>
@@ -1115,44 +1116,6 @@
     </div>
     <!-- Our Testiminial End -->
 
-    <!-- CTA Box Section Start -->
-    <div class="cta-box bg-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-md-7">
-                    <!-- Cta Box Content Start -->
-                    <div class="cta-box-content">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Ready to hit the road? Book your car
-                                today !</h2>
-                            <p class="wow fadeInUp">Our friendly customer service team is here to help. Contact us
-                                anytime for support and inquiries.</p>
-                        </div>
-                        <!-- Section Title End -->
-
-                        <!-- Cta Box Btn Start -->
-                        <div class="cta-box-btn wow fadeInUp" data-wow-delay="0.5s">
-                            <a href="#" class="btn-default">contact us</a>
-                        </div>
-                        <!-- Cta Box Btn End -->
-                    </div>
-                    <!-- Cta Box Content End -->
-                </div>
-
-                <div class="col-lg-6 col-md-5">
-                    <!-- Cta Box Image Start -->
-                    <div class="cat-box-image">
-                        <figure>
-                            <img src="images/cta-car-img.png" alt="">
-                        </figure>
-                    </div>
-                    <!-- Cta Box Image End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- CTA Box Section End -->
 
     <!-- Footer Start -->
     <footer class="main-footer bg-section">
