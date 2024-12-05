@@ -127,42 +127,32 @@
                 <div class="col-lg-3 col-md-4">
                     <!-- Footer Quick Links Start -->
                     <div class="footer-links footer-quick-links">
-                        <h3>legal policy</h3>
+                        <h3>Politique</h3>
                         <ul>
-                            <li><a href="#">term & condition</a></li>
-                            <li><a href="#">privacy policy</a></li>
-                            <li><a href="#">legal notice</a></li>
-                            <li><a href="#">accessibility</a></li>
+                            <li><a href="#">Termes et Conditions d'utilisation</a></li>
+                            <li><a href="#">Politique de confidentialité</a></li>
+                            <li><a href="#">Contrat</a></li>
                         </ul>
                     </div>
                     <!-- Footer Quick Links End -->
                 </div>
 
                 <div class="col-lg-3 col-md-4">
-                    <!-- Footer Menu Start -->
-                    <div class="footer-links footer-menu">
-                        <h3>quick links</h3>
-                        <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">about us</a></li>
-                            <li><a href="#">cars</a></li>
-                            <li><a href="#">services</a></li>
-                        </ul>
-                    </div>
-                    <!-- Footer Menu End -->
+
                 </div>
 
                 <div class="col-lg-3 col-md-4">
                     <!-- Footer Newsletter Start -->
                     <div class="footer-newsletter">
-                        <h3>Subscribe to the Newsleeters</h3>
+                        <h3>S'enregistrer à la Newsletter</h3>
                         <!-- Footer Newsletter Form Start -->
                         <div class="footer-newsletter-form">
                             <form id="newslettersForm" action="#" method="POST">
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control" id="mail"
                                         placeholder="Email ..." required>
-                                    <button type="submit" class="section-icon-btn"><img src="images/arrow-white.svg"
+                                    <button type="submit" class="section-icon-btn"><img
+                                            src="{{ asset('front/images/arrow-white.svg') }}"
                                             alt=""></button>
                                 </div>
                             </form>
