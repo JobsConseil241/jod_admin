@@ -63,7 +63,7 @@
                 <div class="container">
                     <!-- Logo Start -->
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        <img src="{{ asset('front/images/jod.png') }}" alt="Logo">
+                        <img src="{{ asset('front/images/logo_two.png') }}" alt="Logo">
                     </a>
                     <!-- Logo End -->
 

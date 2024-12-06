@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id')->startingValue(1000001);
             $table->string('name', 70)->unique();
-            $table->string('description', 100)->nullable();
+            $table->text('description')->nullable();
             $table->boolean('active')->default(1);
             $table->boolean('deleted')->nullable();
             $table->dateTime('deleted_at')->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
         Schema::create('marques', function (Blueprint $table) {
             $table->bigIncrements('id')->startingValue(1000001);
             $table->string('name', 70)->unique();
-            $table->string('description', 100)->nullable();
+            $table->text('description')->nullable();
             $table->boolean('active')->default(1);
             $table->boolean('deleted')->nullable();
             $table->dateTime('deleted_at')->nullable();
@@ -49,9 +49,9 @@ return new class extends Migration
             $table->float('latitude')->nullable();
 
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('type_id');
+            $table->unsignedBigInteger('marque_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
+            $table->foreign('marque_id')->references('id')->on('marques')->onDelete('cascade');
 
             $table->timestamps();
         });

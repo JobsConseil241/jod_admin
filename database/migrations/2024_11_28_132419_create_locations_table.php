@@ -18,7 +18,7 @@ return new class extends Migration
             $table->tinyInteger('statut')->default(0); //0 : initié, 1: encours, 2:paiement 3: terminé
 
             $table->foreign('contrat_id')->references('id')->on('contrats')->onDelete('cascade');
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

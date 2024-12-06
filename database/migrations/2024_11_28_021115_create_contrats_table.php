@@ -25,8 +25,8 @@ return new class extends Migration
             $table->unsignedBigInteger('paiement_id')->nullable();
 
             $table->foreign('vehicule_id')->references('id')->on('vehicules')->onDelete('cascade');
-            $table->foreign('etat_livraison_id')->references('id')->on('etat_livraisons')->onDelete('cascade');
-            $table->foreign('etat_restitution_id')->references('id')->on('etat_livraisons')->onDelete('cascade');
+            $table->foreign('etat_livraison_id')->references('id')->on('etat_vehicules')->onDelete('cascade');
+            $table->foreign('etat_restitution_id')->references('id')->on('etat_vehicules')->onDelete('cascade');
             $table->foreign('paiement_id')->references('id')->on('paiements')->onDelete('cascade');
 
             $table->timestamps();
