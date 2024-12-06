@@ -10,7 +10,23 @@ class Vehicule extends Model
     use HasFactory;
 
     protected $fillable = [
-        ''
+        'name',
+        'modele',
+        'couleur',
+        'annee',
+        'immatriculation',
+        'type_carburant',
+        'prix_location',
+        'kilometrage',
+        'nombre_places',
+        'nombre_portes',
+        'transmission',
+        'assurance_nom',
+        'assurance_date_expi',
+        'longitude',
+        'latitude',
+        'category_id',
+        'marque_id'
     ];
 
     public function categorie()

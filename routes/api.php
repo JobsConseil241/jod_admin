@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\v1\CarController;
+use App\Http\Controllers\Api\V1\CategorieController;
 use App\Http\Controllers\API\V1\LanguageController;
+use App\Http\Controllers\Api\V1\MarqueController;
 use App\Http\Controllers\API\V1\PrivilegeController;
 use App\Http\Controllers\API\V1\RoleController;
 use App\Http\Controllers\API\V1\UserController;
@@ -58,9 +61,29 @@ Route::group([
     Route::post('/update_user', [UserController::class, 'update_user'])->name('API-UPDATE-USER');
     Route::post('/delete_user', [UserController::class, 'delete_user'])->name('API-DELETE-USER');
 
+    //categories vehicules
+
+    Route::get('/get_category_cars', [CategorieController::class, 'get_categories'])->name('API-GET-CATEGORIES-VEHICULES');
+    Route::post('/add_category_cars', [CategorieController::class, 'add_category'])->name('API-ADD-CATEGORIES-VEHICULES');
+    Route::patch('/update_category_cars', [CategorieController::class, 'edit_category'])->name('API-UPDATE-CATEGORIES-VEHICULES');
+    Route::delete('/delete_category_cars', [CategorieController::class, 'delete_category'])->name('API-DELETE-CATEGORIES-VEHICULES');
+
+    //marques vehicules
+    Route::get('/get_brand_cars', [MarqueController::class, 'get_brands'])->name('API-GET-BRANDS-VEHICULES');
+    Route::post('/add_brand_cars', [MarqueController::class, 'add_brand'])->name('API-ADD-BRANDS-VEHICULES');
+    Route::patch('/update_brand_cars', [MarqueController::class, 'edit_brand'])->name('API-UPDATE-BRANDS-VEHICULES');
+    Route::delete('/delete_brand_cars', [MarqueController::class, 'delete_brand'])->name('API-DELETE-BRANDS-VEHICULES');
+
+    //vehicules
 
     //language
     Route::post("/add_language", [LanguageController::class, "language_create"])->name('API-GET-LANGUAGE');
     Route::post("/update_language", [LanguageController::class, "update_language"])->name('API-UPDATE-LANGUAGE');
     Route::post("/delete_languages", [LanguageController::class, "delete_language"])->name('API-DELETE-LANGUAGE');
 });
+
+Route::get('/get_cars', [CarController::class, 'get_Vehicules'])->name('API-GET-VEHICULES');
+Route::post('/add_cars', [CarController::class, 'add_Vehicule'])->name('API-ADD-VEHICULES');
+Route::patch('/update_cars', [CarController::class, 'edit_Vehicule'])->name('API-UPDATE-VEHICULES');
+Route::delete('/delete_cars', [CarController::class, 'delete_Vehicule'])->name('API-DELETE-VEHICULES');
+

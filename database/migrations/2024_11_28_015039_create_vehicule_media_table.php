@@ -12,16 +12,6 @@ return new class extends Migration
     public function up(): void
     {
 
-        Schema::create('categories', function (Blueprint $table) {
-            $table->bigIncrements('id')->startingValue(1000001);
-            $table->string('name', 70)->unique();
-            $table->string('description', 100)->nullable();
-            $table->boolean('active')->default(1);
-            $table->boolean('deleted')->nullable();
-            $table->dateTime('deleted_at')->nullable();
-            $table->timestamps();
-        });
-
         Schema::create('vehicule_media', function (Blueprint $table) {
             $table->bigIncrements('id')->startingValue(1000001);
             $table->string('photo_avant')->nullable();

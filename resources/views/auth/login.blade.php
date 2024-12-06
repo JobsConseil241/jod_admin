@@ -6,7 +6,7 @@
 @section('content')
     <main id="content" class="w-full max-w-md mx-auto p-6">
         <a href="{{ route('home') }}" class="header-logo">
-            <img src="{{ asset('front/images/jod.png') }}" alt="logo" class="mx-auto block dark:hidden">
+            <img src="{{ asset('front/images/logo_two.png') }}" alt="logo" class="mx-auto block dark:hidden">
             <img src="{{ asset('front/images/jod_white.png') }}" alt="logo" class="mx-auto hidden dark:block">
         </a>
         <div class="mt-7 bg-white rounded-sm shadow-sm dark:bg-bgdark">
