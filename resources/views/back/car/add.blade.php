@@ -159,26 +159,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Published Date and Time</label>
-                                                    <input type="text" class="ti-form-input focus:z-10 flatpickr-input"
-                                                        id="product-datetime" placeholder="Choose date" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Product Size</label>
-                                                    <select class="ti-form-select product-search">
-                                                        <option value="Extra Small">Extra Small</option>
-                                                        <option value="Small">Small</option>
-                                                        <option value="Medium">Medium</option>
-                                                        <option value="Large">Large</option>
-                                                        <option value="XL">XL</option>
-                                                        <option value="xxl">xxl</option>
-                                                    </select>
-                                                </div>
-                                            </div>
                                             <div class="col-span-12 lg:col-span-4">
                                                 <div class="space-y-2">
                                                     <label class="ti-form-label mb-0">Kilométrage </label>
