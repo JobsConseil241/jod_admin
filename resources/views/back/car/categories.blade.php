@@ -66,7 +66,7 @@
                                 <tr>
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
-                                    <td>{{ $category->description }}</td>
+                                    <td>{{ Str::limit($category->description, 50, '...') }}</td>
                                     <td>
                                         <button type="button" class="ti-btn ti-btn-soft-primary"
                                             data-hs-overlay="#cardModalView{{ $category->id }}">
