@@ -2,12 +2,12 @@
 
 use App\Http\Controllers\Api\v1\CarController;
 use App\Http\Controllers\Api\V1\CategorieController;
-use App\Http\Controllers\API\V1\LanguageController;
+use App\Http\Controllers\Api\V1\LanguageController;
 use App\Http\Controllers\Api\V1\MarqueController;
-use App\Http\Controllers\API\V1\PrivilegeController;
-use App\Http\Controllers\API\V1\RoleController;
-use App\Http\Controllers\API\V1\UserController;
-use App\Http\Controllers\API\V1\UserTypeController;
+use App\Http\Controllers\Api\V1\PrivilegeController;
+use App\Http\Controllers\Api\V1\RoleController;
+use App\Http\Controllers\Api\V1\UserController;
+use App\Http\Controllers\Api\V1\UserTypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

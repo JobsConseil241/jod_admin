@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\API\V1\BaseController;
+use App\Http\Controllers\Api\V1\BaseController;
 use App\Models\Category;
 use App\Models\Role;
 use App\Models\User;
