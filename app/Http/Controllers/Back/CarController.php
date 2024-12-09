@@ -219,13 +219,13 @@ class CarController extends Controller
                 'name' => $request->name,
                 'description' => $request->description,
             ]);
-
+            dd($response);
+            die;
             $object = json_decode($response->body());
 
             if ($object && $object->success == true) {
                 return back()->with('success', "la catégorie a été mis à jour avec succès.");
             } else {
-
                 return back()->with('error', $object->message ??  'Une erreur s\'est produite.');
             }
         }
