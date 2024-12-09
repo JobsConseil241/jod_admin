@@ -283,7 +283,8 @@ class CarController extends Controller
             ]);
 
             $object = json_decode($response->body());
-
+            dd($response);
+            die;
             if ($object && $object->success == true) {
                 return back()->with('success', "la marque a été supprimé avec succès.");
             } else {
