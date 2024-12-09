@@ -17,7 +17,7 @@ class MarqueController extends BaseController
     {
 
         try {
-            Log::info('Get Marques vehicules member Endpoint Entered.');
+            Log::info('Get Marques vehicules  Endpoint Entered.');
 
             Log::debug('Get Marques Endpoint - All Params: ' . json_encode($request->all()));
 
@@ -38,10 +38,10 @@ class MarqueController extends BaseController
     {
 
         try {
-            Log::info('Add Marques vehicules member Endpoint Entered.');
+            Log::info('Add Marques vehicules  Endpoint Entered.');
 
             Log::debug('Add Marques Endpoint - All Params: ' . json_encode($request->all()));
-            $data = $request->all();
+            $datas = $request->all();
             $rules = [
                 'name' => ['required', 'string']
             ];
@@ -53,15 +53,17 @@ class MarqueController extends BaseController
                 return $this->sendError($errors->first(), $errors);
             }
 
-            $category = Marque::create([
-                'name' => $data['name'],
-                'description' => $data['description'] ?? NULL,
+            $brand = Marque::create([
+                'name' => $datas['name'],
+                'description' => $datas['description'] ?? NULL,
                 'active' => 1
             ]);
 
+            $data['brand'] = $brand;
+
             Log::debug('Add Marque Endpoint - Response: ' . json_encode($data));
 
-            return $this->sendResponse($category, "Add Marque successfully");
+            return $this->sendResponse($data, "Add Marque successfully");
         } catch (Exception $e) {
             Log::error('Add Marques Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");
@@ -73,10 +75,10 @@ class MarqueController extends BaseController
     public function edit_brand(Request $request)
     {
         try {
-            Log::info('Edit Marques vehicules member Endpoint Entered.');
+            Log::info('Edit Marques vehicules  Endpoint Entered.');
 
             Log::debug('Edit Marques Endpoint - All Params: ' . json_encode($request->all()));
-            $data = $request->all();
+            $datas = $request->all();
             $rules = [
                 'name' => ['sometimes', 'string'],
                 'description' => ['sometimes'],
@@ -91,16 +93,19 @@ class MarqueController extends BaseController
             }
 
 
-            $category = Marque::find($data['id']);
+            $brand = Marque::find($datas['id']);
 
-            if ($category == null) {
+            if ($brand == null) {
                 return $this->sendError("Category not found");
             }
 
-            $category->update($data);
+            $brand->update($datas);
+
+            $data['brand'] = $brand;
+
             Log::debug('Edit Categorie Endpoint - Response: ' . json_encode($data));
 
-            return $this->sendResponse($category, "Edit Categorie successfully");
+            return $this->sendResponse($data, "Edit Categorie successfully");
         } catch (Exception $e) {
             Log::error('Edit Marques Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");
@@ -112,10 +117,10 @@ class MarqueController extends BaseController
     public function delete_brand(Request $request)
     {
         try {
-            Log::info('Delete Marques vehicules member Endpoint Entered.');
+            Log::info('Delete Marques vehicules  Endpoint Entered.');
 
             Log::debug('Delete Marques Endpoint - All Params: ' . json_encode($request->all()));
-            $data = $request->all();
+            $datas = $request->all();
             $rules = [
                 'id' => ['required', 'integer']
             ];
@@ -127,17 +132,19 @@ class MarqueController extends BaseController
                 return $this->sendError($errors->first(), $errors);
             }
 
-            $category = Marque::find($data['id']);
+            $brand = Marque::find($datas['id']);
 
-            if ($category == null) {
+            if ($brand == null) {
                 return $this->sendError("Marque not found");
             }
 
-            $category->delete();
+            $brand->delete();
+
+            $data['brand'] = $brand;
 
             Log::debug('Delete Categorie Endpoint - Response: ' . json_encode($data));
 
-            return $this->sendResponse($category, "Delete Categorie successfully");
+            return $this->sendResponse($data, "Delete Categorie successfully");
         } catch (Exception $e) {
             Log::error('Delete Marques Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");

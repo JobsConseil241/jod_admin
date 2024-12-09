@@ -20,7 +20,7 @@ class CategorieController extends BaseController
     {
 
         try {
-            Log::info('Get Categories vehicules member Endpoint Entered.');
+            Log::info('Get Categories vehicules  Endpoint Entered.');
 
             Log::debug('Get Categories Endpoint - All Params: ' . json_encode($request->all()));
 
@@ -41,7 +41,7 @@ class CategorieController extends BaseController
     {
 
         try {
-            Log::info('Add Categories vehicules member Endpoint Entered.');
+            Log::info('Add Categories vehicules  Endpoint Entered.');
 
             Log::debug('Add Categories Endpoint - All Params: ' . json_encode($request->all()));
             $datas = $request->all();
@@ -78,7 +78,7 @@ class CategorieController extends BaseController
     public function edit_category(Request $request)
     {
         try {
-            Log::info('Edit Categories vehicules member Endpoint Entered.');
+            Log::info('Edit Categories vehicules  Endpoint Entered.');
 
             Log::debug('Edit Categories Endpoint - All Params: ' . json_encode($request->all()));
             $data = $request->all();
@@ -117,7 +117,7 @@ class CategorieController extends BaseController
     public function delete_category(Request $request)
     {
         try {
-            Log::info('Delete Categories vehicules member Endpoint Entered.');
+            Log::info('Delete Categories vehicules  Endpoint Entered.');
 
             Log::debug('Delete Categories Endpoint - All Params: ' . json_encode($request->all()));
             $data = $request->all();
