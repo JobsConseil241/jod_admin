@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Back\CarController as BackCarController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\LanguageController;
 use App\Http\Controllers\Back\RoleController;
@@ -66,6 +67,23 @@ Route::middleware(['auth'])->group(function () {
 
         //dashboard
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        //vehicules
+        Route::get('cars', [BackCarController::class, 'index'])->name('backend.list.cars');
+        Route::get('car/add', [BackCarController::class, 'add'])->name('backend.add.car');
+        Route::get('car/view/{car}', [BackCarController::class, 'view'])->name('backend.view.car');
+        Route::post('car/store', [BackCarController::class, 'store'])->name('backend.store.car');
+        Route::post('car/update/{car}', [BackCarController::class, 'update'])->name('backend.update.car');
+
+        //categories
+        Route::get('categories', [BackCarController::class, 'categories'])->name('backend.list.categories');
+        Route::post('category/store', [BackCarController::class, 'store_category'])->name('backend.store.category');
+        Route::post('category/update/{car}', [BackCarController::class, 'update_category'])->name('backend.update.category');
+
+        //marques
+        Route::get('marques', [BackCarController::class, 'marques'])->name('backend.list.marques');
+        Route::post('marque/store', [BackCarController::class, 'store_marque'])->name('backend.store.marque');
+        Route::post('marque/update/{car}', [BackCarController::class, 'update_marque'])->name('backend.update.marque');
 
         //user_type
         Route::get('user-types', [RoleController::class, 'userType'])->name('backend.list.user-type');

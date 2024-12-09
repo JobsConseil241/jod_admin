@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\UserRole;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -23,7 +24,7 @@ class CategorieController extends BaseController
 
             Log::debug('Get Categories Endpoint - All Params: ' . json_encode($request->all()));
 
-            $data = Category::all();
+            $data['categories'] = Category::all();
 
             Log::debug('Get Categories Endpoint - Response: ' . json_encode($data));
             return $this->sendResponse($data, "Categories vehicules retrieved successfully");
@@ -42,7 +43,7 @@ class CategorieController extends BaseController
             Log::info('Add Categories vehicules member Endpoint Entered.');
 
             Log::debug('Add Categories Endpoint - All Params: ' . json_encode($request->all()));
-            $data = $request->all();
+            $datas = $request->all();
             $rules = [
                 'name' => ['required', 'string']
             ];
@@ -55,10 +56,12 @@ class CategorieController extends BaseController
             }
 
             $category = Category::create([
-                'name' => $data['name'],
-                'description' => $data['description'] ?? NULL,
+                'name' => $datas['name'],
+                'description' => $datas['description'] ?? NULL,
                 'active' => 1
             ]);
+
+            $data['category'] = $category;
 
             Log::debug('Add Categorie Endpoint - Response: ' . json_encode($data));
 

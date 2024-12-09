@@ -29,6 +29,8 @@ header('Access-Control-Allow-Headers: X-Requested-With, Authorization, Content-T
 
 Route::get('/get_langs', [LanguageController::class, 'get_langs'])->name('API-GET-LANGS');
 
+Route::get('/get_cars', [CarController::class, 'get_Vehicules'])->name('API-GET-VEHICULES');
+
 Route::group([
     'middleware' => ['api', 'auth:sanctum'],
 ], function ($router) {
@@ -75,15 +77,12 @@ Route::group([
     Route::delete('/delete_brand_cars', [MarqueController::class, 'delete_brand'])->name('API-DELETE-BRANDS-VEHICULES');
 
     //vehicules
+    Route::post('/add_cars', [CarController::class, 'add_Vehicule'])->name('API-ADD-VEHICULES');
+    Route::patch('/update_cars', [CarController::class, 'edit_Vehicule'])->name('API-UPDATE-VEHICULES');
+    Route::delete('/delete_cars', [CarController::class, 'delete_Vehicule'])->name('API-DELETE-VEHICULES');
 
     //language
     Route::post("/add_language", [LanguageController::class, "language_create"])->name('API-GET-LANGUAGE');
     Route::post("/update_language", [LanguageController::class, "update_language"])->name('API-UPDATE-LANGUAGE');
     Route::post("/delete_languages", [LanguageController::class, "delete_language"])->name('API-DELETE-LANGUAGE');
 });
-
-Route::get('/get_cars', [CarController::class, 'get_Vehicules'])->name('API-GET-VEHICULES');
-Route::post('/add_cars', [CarController::class, 'add_Vehicule'])->name('API-ADD-VEHICULES');
-Route::patch('/update_cars', [CarController::class, 'edit_Vehicule'])->name('API-UPDATE-VEHICULES');
-Route::delete('/delete_cars', [CarController::class, 'delete_Vehicule'])->name('API-DELETE-VEHICULES');
-
