@@ -263,8 +263,6 @@ class CarController extends Controller
 
         $object = json_decode($response->body());
 
-        dd($response);
-
         if ($object && $object->success == true) {
             return back()->with('success', "la marque a été créé avec succès.");
         } else {
