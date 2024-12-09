@@ -25,7 +25,7 @@ class CarController extends Controller
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            $cars = $object->data->roles;
+            $cars = $object->data->cars;
         } else {
             $cars = [];
         }
@@ -37,46 +37,33 @@ class CarController extends Controller
     {
         $access_token = Session::get('personnalToken');
 
-        //roles
+        //categories
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_roles');
+        ])->get(env('SERVER_PC') . 'get_category_cars');
 
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            $roles = $object->data->roles;
+            $categories = $object->data->categories;
         } else {
-            $roles = [];
+            $categories = [];
         }
 
-        //privileges
+        //marques
         $response_pr = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_privilege');
+        ])->get(env('SERVER_PC') . 'get_brand_cars');
 
-        $object_pr = json_decode($response_pr->body());
+        $object_br = json_decode($response_pr->body());
 
-        if ($object_pr && $object_pr->success == true) {
-            $privileges = $object_pr->data->privileges;
+        if ($object_br && $object_br->success == true) {
+            $marques = $object_br->data->brands;
         } else {
-            $privileges = [];
+            $marques = [];
         }
 
-        //user_types
-        $response_ut = Http::withHeaders([
-            "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_user_type');
-
-        $object_ut = json_decode($response_ut->body());
-
-        if ($object_ut && $object_ut->success == true) {
-            $types = $object_ut->data->usertypes;
-        } else {
-            $types = [];
-        }
-
-        return view('back.user.role', compact('roles', 'privileges', 'types'));
+        return view('back.car.add', compact('categories', 'marques'));
     }
 
     public function store(Request $request)
@@ -104,7 +91,7 @@ class CarController extends Controller
         }
     }
 
-    public function view(Vehicule $car)
+    public function view($car)
     {
         $access_token = Session::get('personnalToken');
 
@@ -150,7 +137,7 @@ class CarController extends Controller
         return view('back.user.role', compact('roles', 'privileges', 'types'));
     }
 
-    public function update(Request $request, Vehicule $car) {}
+    public function update(Request $request, $car) {}
 
     public function categories()
     {

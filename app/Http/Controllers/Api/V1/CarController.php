@@ -15,13 +15,14 @@ class CarController extends BaseController
     {
 
         try {
-            Log::info('Get Vehicules vehicules member Endpoint Entered.');
+            Log::info('Get Vehicules vehicules  Endpoint Entered.');
 
             Log::debug('Get Vehicules Endpoint - All Params: ' . json_encode($request->all()));
 
-            $data = Vehicule::all();
+            $data['cars'] = Vehicule::all();
 
             Log::debug('Get Vehicules Endpoint - Response: ' . json_encode($data));
+
             return $this->sendResponse($data, "Vehicules vehicules retrieved successfully");
         } catch (Exception $e) {
             Log::error('Get Vehicules Endpoint - Exception: ' . $e);
@@ -35,7 +36,7 @@ class CarController extends BaseController
     {
 
         try {
-            Log::info('Add Vehicules vehicules member Endpoint Entered.');
+            Log::info('Add Vehicules vehicules  Endpoint Entered.');
 
             Log::debug('Add Vehicules Endpoint - All Params: ' . json_encode($request->all()));
             $data = $request->all();
@@ -96,7 +97,7 @@ class CarController extends BaseController
     public function edit_Vehicule(Request $request)
     {
         try {
-            Log::info('Edit Vehicules vehicules member Endpoint Entered.');
+            Log::info('Edit Vehicules vehicules  Endpoint Entered.');
 
             Log::debug('Edit Vehicules Endpoint - All Params: ' . json_encode($request->all()));
             $data = $request->all();
@@ -135,7 +136,7 @@ class CarController extends BaseController
     public function delete_Vehicule(Request $request)
     {
         try {
-            Log::info('Delete Vehicules vehicules member Endpoint Entered.');
+            Log::info('Delete Vehicules vehicules  Endpoint Entered.');
 
             Log::debug('Delete Vehicules Endpoint - All Params: ' . json_encode($request->all()));
             $data = $request->all();
