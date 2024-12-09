@@ -67,7 +67,7 @@ Route::group([
 
     Route::get('/get_category_cars', [CategorieController::class, 'get_categories'])->name('API-GET-CATEGORIES-VEHICULES');
     Route::post('/add_category_cars', [CategorieController::class, 'add_category'])->name('API-ADD-CATEGORIES-VEHICULES');
-    Route::patch('/update_category_cars', [CategorieController::class, 'edit_category'])->name('API-UPDATE-CATEGORIES-VEHICULES');
+    Route::post('/update_category_cars', [CategorieController::class, 'edit_category'])->name('API-UPDATE-CATEGORIES-VEHICULES');
     Route::delete('/delete_category_cars', [CategorieController::class, 'delete_category'])->name('API-DELETE-CATEGORIES-VEHICULES');
 
     //marques vehicules

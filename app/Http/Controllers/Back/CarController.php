@@ -200,7 +200,7 @@ class CarController extends Controller
         if ($request->has('delete')) {
             $response = Http::withHeaders([
                 "Authorization" => "Bearer " . $access_token
-            ])->post(env('SERVER_PC') . 'delete_category_cars', [
+            ])->delete(env('SERVER_PC') . 'delete_category_cars', [
                 'id' => $category,
             ]);
 
@@ -219,8 +219,7 @@ class CarController extends Controller
                 'name' => $request->name,
                 'description' => $request->description,
             ]);
-            dd($response);
-            die;
+
             $object = json_decode($response->body());
 
             if ($object && $object->success == true) {
