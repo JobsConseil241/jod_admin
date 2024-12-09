@@ -66,7 +66,7 @@
                                 <tr>
                                     <td>{{ $marque->id }}</td>
                                     <td>{{ $marque->name }}</td>
-                                    <td>{{ $marque->description }}</td>
+                                    <td>{{ Str::limit($marque->description, 100, '...') }}</td>
                                     <td>
                                         <button type="button" class="ti-btn ti-btn-soft-primary"
                                             data-hs-overlay="#cardModalView{{ $marque->id }}">
