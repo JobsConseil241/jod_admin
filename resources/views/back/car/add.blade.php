@@ -2,7 +2,20 @@
 
 @push('styles')
     <!--datatable css-->
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.tailwindcss.css" />
+    <!-- Quil Css -->
+    <link id="style" href="{{ asset('back/libs/quill/quill.snow.css') }}" rel="stylesheet">
+
+    <!-- Choices Css -->
+    <link rel="stylesheet" href="{{ asset('back/libs/choices.js/public/assets/styles/choices.min.css') }}">
+
+    <!-- Filepond CSS -->
+    <link rel="stylesheet" href="{{ asset('back/libs/filepond/filepond.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('back/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('back/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.css') }}">
+
+    <!-- Flatpickr Css -->
+    <link rel="stylesheet" href="{{ asset('back/libs/flatpickr/flatpickr.min.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
@@ -257,9 +270,35 @@
 @endsection
 
 @push('scripts')
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.tailwindcss.js"></script>
+    <!-- Quill Editor JS -->
+    <script src="{{ asset('back/libs/quill/quill.min.js') }}"></script>
+
+    <!-- Choices JS -->
+    <script src="{{ asset('back/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+
+    <!-- Filepond JS -->
+    <script src="{{ asset('back/libs/filepond/filepond.min.js') }}"></script>
+    <script src="{{ asset('back/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}"></script>
+    <script
+        src="{{ asset('back/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js') }}">
+    </script>
+    <script src="{{ asset('back/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js') }}">
+    </script>
+    <script src="{{ asset('back/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js') }}"></script>
+    <script src="{{ asset('back/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.js') }}"></script>
+    <script src="{{ asset('back/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js') }}">
+    </script>
+    <script src="{{ asset('back/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js') }}">
+    </script>
+    <script src="{{ asset('back/libs/filepond-plugin-image-crop/filepond-plugin-image-crop.min.js') }}"></script>
+    <script src="{{ asset('back/libs/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js') }}"></script>
+    <script src="{{ asset('back/libs/filepond-plugin-image-transform/filepond-plugin-image-transform.min.js') }}"></script>
+
+    <!-- Flatpickr JS -->
+    <script src="{{ asset('back/libs/flatpickr/flatpickr.min.js') }}"></script>
+
+    <!-- ADD Product JS -->
+    <script src="{{ asset('back/js/addproduct.js') }}"></script>
 
     <script>
         "use strict";
