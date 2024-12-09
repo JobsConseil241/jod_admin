@@ -27,6 +27,7 @@ class CategorieController extends BaseController
             $data['categories'] = Category::all();
 
             Log::debug('Get Categories Endpoint - Response: ' . json_encode($data));
+
             return $this->sendResponse($data, "Categories vehicules retrieved successfully");
         } catch (Exception $e) {
             Log::error('Get Categories Endpoint - Exception: ' . $e);
