@@ -21,7 +21,7 @@ class MarqueController extends BaseController
 
             Log::debug('Get Marques Endpoint - All Params: ' . json_encode($request->all()));
 
-            $data = Marque::all();
+            $data['brands'] = Marque::all();
 
             Log::debug('Get Marques Endpoint - Response: ' . json_encode($data));
             return $this->sendResponse($data, "Marques vehicules retrieved successfully");
