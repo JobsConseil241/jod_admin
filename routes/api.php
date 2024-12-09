@@ -73,7 +73,7 @@ Route::group([
     //marques vehicules
     Route::get('/get_brand_cars', [MarqueController::class, 'get_brands'])->name('API-GET-BRANDS-VEHICULES');
     Route::post('/add_brand_cars', [MarqueController::class, 'add_brand'])->name('API-ADD-BRANDS-VEHICULES');
-    Route::patch('/update_brand_cars', [MarqueController::class, 'edit_brand'])->name('API-UPDATE-BRANDS-VEHICULES');
+    Route::post('/update_brand_cars', [MarqueController::class, 'edit_brand'])->name('API-UPDATE-BRANDS-VEHICULES');
     Route::delete('/delete_brand_cars', [MarqueController::class, 'delete_brand'])->name('API-DELETE-BRANDS-VEHICULES');
 
     //vehicules
