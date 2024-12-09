@@ -278,7 +278,7 @@ class CarController extends Controller
         if ($request->has('delete')) {
             $response = Http::withHeaders([
                 "Authorization" => "Bearer " . $access_token
-            ])->post(env('SERVER_PC') . 'delete_brand_cars', [
+            ])->delete(env('SERVER_PC') . 'delete_brand_cars', [
                 'id' => $marque,
             ]);
 

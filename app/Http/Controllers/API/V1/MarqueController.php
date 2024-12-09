@@ -24,6 +24,7 @@ class MarqueController extends BaseController
             $data['brands'] = Marque::all();
 
             Log::debug('Get Marques Endpoint - Response: ' . json_encode($data));
+
             return $this->sendResponse($data, "Marques vehicules retrieved successfully");
         } catch (Exception $e) {
             Log::error('Get Marques Endpoint - Exception: ' . $e);
