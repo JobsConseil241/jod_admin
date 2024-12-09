@@ -209,22 +209,6 @@
                                                         placeholder="250grams">
                                                 </div>
                                             </div>
-
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Longitude</label>
-                                                    <input type="text" class="my-auto ti-form-input"
-                                                        placeholder="250grams">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Latitude</label>
-                                                    <input type="text" class="my-auto ti-form-input"
-                                                        placeholder="250grams">
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="space-y-2">
                                             <label class="flex justify-between ti-form-label">
