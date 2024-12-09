@@ -42,7 +42,7 @@ return new class extends Migration
             $table->integer('kilometrage');
             $table->integer('nombre_places');
             $table->integer('nombre_portes');
-            $table->enum('transmission', ['automatique', 'manuelle',]);
+            $table->enum('transmission', ['automatique', 'manuelle']);
             $table->string('assurance_nom');
             $table->string('assurance_date_expi');
             $table->float('longitude')->nullable();
