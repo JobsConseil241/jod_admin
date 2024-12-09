@@ -163,6 +163,8 @@ class CarController extends Controller
 
         $object = json_decode($response->body());
 
+        dd($response->body());
+
         if ($object && $object->success == true) {
             $categories = $object->data->categories;
         } else {
