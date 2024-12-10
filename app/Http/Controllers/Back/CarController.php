@@ -72,22 +72,32 @@ class CarController extends Controller
 
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
-        ])->post(env('SERVER_PC') . 'add_user', [
-            'last_name' => $request->last_name,
-            'first_name' => $request->first_name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'phone_code' => $request->phone_code,
-            'role_id' => $request->role_id,
+        ])->post(env('SERVER_PC') . 'add_cars', [
+            'name' => $request->name,
+            'modele' => $request->modele,
+            'couleur' => $request->couleur,
+            'annee' => $request->annee,
+            'immatriculation' => $request->immatriculation,
+            'type_carburant' => $request->type_carburant,
+            'prix_location' => $request->prix_location,
+            'kilometrage' => $request->kilometrage,
+            'nombre_places' => $request->nombre_places,
+            'nombre_portes' => $request->nombre_portes,
+            'transmission' => $request->transmission,
+            'assurance_nom' => $request->assurance_nom,
+            'assurance_date_expi' => $request->assurance_date_expi,
+            'category_id' => $request->category_id,
+            'marque_id' => $request->marque_id,
+            'note' => $request->note
         ]);
 
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            return back()->with('success', "l'utilisateur a été créé avec succès.");
+            return redirect('backend/cars')->with('success', "le véhicule a été créé avec succès.");
         } else {
 
-            return back()->with('error', $object->message ??  'Une erreur s\'est produite.');
+            return back()->with('error', $object->message ?? 'Une erreur s\'est produite.')->withInput();
         }
     }
 

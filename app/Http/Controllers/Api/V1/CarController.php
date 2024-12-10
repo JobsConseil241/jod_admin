@@ -39,7 +39,7 @@ class CarController extends BaseController
             Log::info('Add Vehicules vehicules  Endpoint Entered.');
 
             Log::debug('Add Vehicules Endpoint - All Params: ' . json_encode($request->all()));
-            $data = $request->all();
+            $datas = $request->all();
             $rules = [
                 'name' => 'required|string|max:255',
                 'modele' => 'required|string|max:255',
@@ -66,26 +66,29 @@ class CarController extends BaseController
             }
 
             $Vehicule = Vehicule::create([
-                'name' => $data['name'],
-                'modele' => $data['modele'],
-                'couleur' => $data['couleur'],
-                'annee' => $data['annee'],
-                'type_carburant' => $data['type_carburant'],
-                'immatriculation' => $data['immatriculation'],
-                'prix_location' => $data['prix_location'],
-                'kilometrage' => $data['kilometrage'],
-                'nombre_places' => $data['nombre_places'],
-                'nombre_portes' => $data['nombre_portes'],
-                'transmission' => $data['transmission'],
-                'assurance_nom' => $data['assurance_nom'],
-                'assurance_date_expi' => $data['assurance_date_expi'],
-                'category_id' => $data['category_id'],
-                'marque_id' => $data['marque_id']
+                'name' => $datas['name'],
+                'modele' => $datas['modele'],
+                'couleur' => $datas['couleur'],
+                'annee' => $datas['annee'],
+                'type_carburant' => $datas['type_carburant'],
+                'immatriculation' => $datas['immatriculation'],
+                'prix_location' => $datas['prix_location'],
+                'kilometrage' => $datas['kilometrage'],
+                'nombre_places' => $datas['nombre_places'],
+                'nombre_portes' => $datas['nombre_portes'],
+                'transmission' => $datas['transmission'],
+                'assurance_nom' => $datas['assurance_nom'],
+                'assurance_date_expi' => $datas['assurance_date_expi'],
+                'category_id' => $datas['category_id'],
+                'marque_id' => $datas['marque_id'],
+                'note' => $datas['note']
             ]);
+
+            $data['car'] = $Vehicule;
 
             Log::debug('Add Vehicule Endpoint - Response: ' . json_encode($data));
 
-            return $this->sendResponse($Vehicule, "Add Vehicule successfully");
+            return $this->sendResponse($data, "Add Vehicule successfully");
         } catch (Exception $e) {
             Log::error('Add Vehicules Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");
