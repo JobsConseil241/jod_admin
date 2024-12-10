@@ -32,17 +32,17 @@ class Vehicule extends Model
 
     public function categorie()
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo(Category::class);
     }
 
     public function marque()
     {
-        return $this->belongsTo('App\Models\Marque');
+        return $this->belongsTo(Marque::class);
     }
 
     public function vehiculeMedias()
     {
-        return $this->hasMany('App\Models\VehiculeMedia');
+        return $this->hasMany(VehiculeMedia::class);
     }
 
     public function pannes()

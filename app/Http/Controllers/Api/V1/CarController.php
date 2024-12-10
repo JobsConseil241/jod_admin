@@ -39,10 +39,7 @@ class CarController extends BaseController
             Log::info('Get vehicule datatable Endpoint Entered.');
 
             Log::debug('Get vehicule datatable Endpoint - All Params: ' . json_encode($request->all()));
-            $cars = Vehicule::select("vehicules.*")->with(
-                'categorie',
-                'marque',
-            );
+            $cars = Vehicule::select("vehicules.*")->with('categorie', 'marque');
 
             Log::debug('Get vehicule datatable Endpoint - Response: ' . json_encode($cars));
             return DataTables::of($cars)->make(true);
