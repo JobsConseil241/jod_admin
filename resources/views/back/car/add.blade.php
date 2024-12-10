@@ -72,19 +72,19 @@
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Nom</label>
                                                 <input type="text" name="name" class="my-auto ti-form-input"
-                                                    placeholder="Toyota">
+                                                    placeholder="Toyota" required>
                                             </div>
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Modèle</label>
                                                 <input type="text" name="modele" class="my-auto ti-form-input"
-                                                    placeholder="Yaris">
+                                                    placeholder="Yaris" required>
                                             </div>
 
                                             <div class="grid grid-cols-12 gap-4">
                                                 <div class="col-span-12 lg:col-span-6">
                                                     <div class="space-y-2 product-1">
                                                         <label class="ti-form-label mb-0">Catégorie</label>
-                                                        <select name="category_id" class="ti-form-select">
+                                                        <select name="category_id" class="ti-form-select" required>
                                                             <option>Choisissez</option>
                                                             @foreach ($categories as $item)
                                                                 <option value="{{ $item->id }}">{{ $item->name }}
@@ -96,7 +96,7 @@
                                                 <div class="col-span-12 lg:col-span-6">
                                                     <div class="space-y-2  product-1">
                                                         <label class="ti-form-label mb-0">Marque</label>
-                                                        <select name="marque_id" class="ti-form-select">
+                                                        <select name="marque_id" class="ti-form-select" required>
                                                             <option>Choisissez</option>
                                                             @foreach ($marques as $item)
                                                                 <option value="{{ $item->id }}">{{ $item->name }}
@@ -126,7 +126,7 @@
                                             <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Année</label>
-                                                    <select class="my-auto ti-form-select" name="annee">
+                                                    <select class="my-auto ti-form-select" name="annee" required>
                                                         <option value="" disabled selected>Choisissez une année
                                                         </option>
                                                         <!-- Ajoutez dynamiquement les années si besoin -->
@@ -145,14 +145,14 @@
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Immatriculation</label>
                                                     <input name="immatriculation" type="text"
-                                                        class="my-auto ti-form-input" placeholder="AA111BB">
+                                                        class="my-auto ti-form-input" placeholder="AA111BB" required>
                                                 </div>
                                             </div>
 
                                             <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Type de carburant</label>
-                                                    <select class="ti-form-select product-search">
+                                                    <select class="ti-form-select product-search" required>
                                                         <option value="Essence">Essence</option>
                                                         <option value="Diesel">Diesel</option>
 
@@ -163,7 +163,7 @@
                                             <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Transmission</label>
-                                                    <select class="ti-form-select product-search">
+                                                    <select class="ti-form-select product-search" required>
                                                         <option value="automatique">Automatique</option>
                                                         <option value="manuelle">Manuelle</option>
                                                     </select>
@@ -177,7 +177,7 @@
                                                         <input type="text" id="hs-input-with-leading-and-trailing-icon"
                                                             name="kilometrage"
                                                             class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
-                                                            placeholder="1000">
+                                                            placeholder="1000" required>
                                                         <div
                                                             class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center pointer-events-none z-20 ltr:pl-4 rtl:pr-4">
                                                             <span class="text-gray-500 dark:text-white/70"></span>
@@ -193,20 +193,20 @@
                                                 <div class="space-y-2">
                                                     <label class="ti-form-label mb-0">Nombre de place </label>
                                                     <input type="number" name="nombre_places"
-                                                        class="my-auto ti-form-input" placeholder="4">
+                                                        class="my-auto ti-form-input" placeholder="4" required>
                                                 </div>
                                             </div>
                                             <div class="col-span-12 lg:col-span-4">
                                                 <div class="space-y-2">
                                                     <label class="ti-form-label mb-0">Nombre de porte</label>
                                                     <input type="number" name="nombre_portes"
-                                                        class="my-auto ti-form-input" placeholder="4">
+                                                        class="my-auto ti-form-input" placeholder="4" required>
                                                 </div>
                                             </div>
                                             <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2">
                                                     <label class="ti-form-label">Couleur</label>
-                                                    <select name="couleur" class="ti-form-select product-search">
+                                                    <select name="couleur" class="ti-form-select product-search" required>
                                                         <option>Choisissez</option>
                                                         <option value="1">Bleu</option>
                                                         <option value="2">Noir</option>
@@ -220,7 +220,7 @@
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Nom de l'Assurance</label>
                                                     <input type="text" name="assurance_nom"
-                                                        class="my-auto ti-form-input" placeholder="SUNU">
+                                                        class="my-auto ti-form-input" placeholder="SUNU" required>
                                                 </div>
                                             </div>
                                             <div class="col-span-12 lg:col-span-6">
@@ -228,7 +228,7 @@
                                                     <label class="ti-form-label mb-0">date d'expiration de
                                                         l'assurance</label>
                                                     <input type="date" name="assurance_date_expi"
-                                                        class="my-auto ti-form-input" min="<?= date('Y-m-d') ?>">
+                                                        class="my-auto ti-form-input" min="<?= date('Y-m-d') ?>" required>
                                                 </div>
                                             </div>
                                         </div>
