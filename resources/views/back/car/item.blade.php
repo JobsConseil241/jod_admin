@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">
-                {{ $car }}
+                {{ $car->name }}
             </li>
         </ol>
     </div>
