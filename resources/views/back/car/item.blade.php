@@ -144,55 +144,48 @@
 
                             <div class="sm:flex sm:space-x-3 product-des">
                                 <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Catégorie :</h5>
-                                <select class="ti-form-select product-des-select" readonly>
-                                    <option selected>{{ $car->categorie->name ?? '' }}</option>
-                                </select>
+                                <p class="font-medium text-sm">{{ $car->categorie->name ?? '' }}</p>
+
                             </div>
 
                             <div class="sm:flex sm:space-x-3 product-des">
                                 <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Marque :</h5>
-                                <select class="ti-form-select product-des-select" readonly>
-                                    <option selected>{{ $car->marque->name }}</option>
-                                </select>
+                                <p class="font-medium text-sm">{{ $car->marque->name }}</p>
+
                             </div>
 
                             <div class="sm:flex sm:space-x-3 product-des">
                                 <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Modèle :</h5>
-                                <select class="ti-form-select product-des-select" readonly>
-                                    <option selected>{{ $car->modele }}</option>
-                                </select>
+                                <p class="font-medium text-sm">{{ $car->modele }}</p>
+
                             </div>
 
                             <div class="sm:flex sm:space-x-3 product-des">
                                 <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Couleur :</h5>
-                                <select class="ti-form-select product-des-select" readonly>
-                                    <option selected>{{ $car->couleur }}</option>
-                                </select>
+                                <p class="font-medium text-sm">{{ Str::upper($car->couleur) }}</p>
                             </div>
 
                             <div class="sm:flex sm:space-x-3 product-des">
-                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Immatriculation :
+                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Matricule :
                                 </h5>
-                                <select class="ti-form-select product-des-select" readonly>
-                                    <option selected>{{ $car->immatriculation }}</option>
-                                </select>
+                                <p class="font-medium text-sm">{{ $car->immatriculation }}</p>
                             </div>
 
                             <div class="sm:flex sm:space-x-3 product-des">
                                 <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Assurance :</h5>
-                                <h5 class="text-2xl font-semibold text-primary">{{ $car->assurance_nom }}</h5>
+                                <p class="font-medium text-sm">{{ $car->assurance_nom }}</h5>
                             </div>
 
                             <div class="sm:flex sm:space-x-3 product-des">
                                 <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Date d'expiration
                                     :
                                 </h5>
-                                <h5 class="text-2xl font-semibold text-primary">{{ $car->assurance_date_expi }} </h5>
+                                <p class="font-medium text-sm">{{ $car->assurance_date_expi }} </h5>
                             </div>
 
                             <div class="sm:flex sm:space-x-2">
                                 <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Tarif :</h5>
-                                <h5 class="text-2xl font-semibold text-primary">{{ $car->prix_location }} FCFA</h5>
+                                <h5 class="text-xl font-semibold text-primary">{{ $car->prix_location }} FCFA</h5>
                             </div>
 
                             <div class="space-y-4">
@@ -234,7 +227,7 @@
             <div class="col-span-12 xxl:col-span-3">
                 <div class="box shadow-none border-0 mb-0">
                     <div class="box-body">
-                        <div class="box !bg-success !border-success text-white">
+                        {{-- <div class="box !bg-success !border-success text-white">
                             <div class="box-body p-4">
                                 <div class="flex">
                                     <div class="space-y-2">
@@ -248,7 +241,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="box shadow-none">
                             <div class="box-header">
                                 <h5 class="box-title">Caractéristique</h5>
@@ -259,13 +252,13 @@
                                     <h5 class="font-normal text-gray-500 dark:text-white/70 text-sm my-auto w-28">
                                         Transmission :
                                     </h5>
-                                    <p class="font-medium text-sm">{{ $car->transmission }}</p>
+                                    <p class="font-medium text-sm">{{ Str::upper($car->transmission) }}</p>
                                 </div>
                                 <div class="flex space-x-3 rtl:space-x-reverse">
                                     <h5 class="font-normal text-gray-500 dark:text-white/70 text-sm my-auto w-28">Type de
                                         carburant
                                         :</h5>
-                                    <p class="font-medium text-sm">{{ $car->type_carburant }}</p>
+                                    <p class="font-medium text-sm">{{ Str::upper($car->type_carburant) }}</p>
                                 </div>
                                 <div class="sm:flex sm:space-x-3">
                                     <h5 class="font-normal text-gray-500 dark:text-white/70 text-sm my-auto w-28">
@@ -277,14 +270,14 @@
                                 <div class="sm:flex sm:space-x-3 product-des">
                                     <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Capacité :
                                     </h5>
-                                    <h5 class="text-2xl font-semibold text-primary">{{ $car->nombre_places }}</h5>
+                                    <p class="font-medium text-sm">{{ $car->nombre_places }}</p>
                                 </div>
 
                                 <div class="sm:flex sm:space-x-3 product-des">
                                     <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Nombre de
                                         Portes :
                                     </h5>
-                                    <h5 class="text-2xl font-semibold text-primary">{{ $car->nombre_portes }} </h5>
+                                    <p class="font-medium text-sm">{{ $car->nombre_portes }} </p>
                                 </div>
 
                                 <p class="font-medium text-sm">Ajouté le {{ $car->created_at }}</p>
