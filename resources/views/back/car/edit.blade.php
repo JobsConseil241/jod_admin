@@ -61,7 +61,7 @@
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
             <div class="box !bg-transparent border-0 shadow-none">
-                <form method="post" action="{{ route('backend.store.car') }}">
+                <form method="post" action="{{ url('backend/car/update/' . $car->id) }}">
                     @csrf
                     <div class="box-body p-0">
                         <div class="grid grid-cols-12 gap-x-6">
