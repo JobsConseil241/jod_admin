@@ -222,7 +222,7 @@
                                                 <div class="space-y-2">
                                                     <label class="ti-form-label mb-0">Nombre de porte</label>
                                                     <input type="number" name="nombre_portes"
-                                                        class="my-auto ti-form-input" value="{{ $car->nombre_porte }}"
+                                                        class="my-auto ti-form-input" value="{{ $car->nombre_portes }}"
                                                         placeholder="4" required>
                                                 </div>
                                             </div>
