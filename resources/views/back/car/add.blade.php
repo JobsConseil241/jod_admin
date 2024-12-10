@@ -84,7 +84,7 @@
                                                 <div class="col-span-12 lg:col-span-6">
                                                     <div class="space-y-2 product-1">
                                                         <label class="ti-form-label mb-0">Catégorie</label>
-                                                        <select name="category_id" class="ti-form-select product-search">
+                                                        <select name="category_id" class="ti-form-select">
                                                             <option>Choisissez</option>
                                                             @foreach ($categories as $item)
                                                                 <option value="{{ $item->id }}">{{ $item->name }}
@@ -96,7 +96,7 @@
                                                 <div class="col-span-12 lg:col-span-6">
                                                     <div class="space-y-2  product-1">
                                                         <label class="ti-form-label mb-0">Marque</label>
-                                                        <select name="marque_id" class="ti-form-select product-search">
+                                                        <select name="marque_id" class="ti-form-select">
                                                             <option>Choisissez</option>
                                                             @foreach ($marques as $item)
                                                                 <option value="{{ $item->id }}">{{ $item->name }}
@@ -132,7 +132,7 @@
                                                         <!-- Ajoutez dynamiquement les années si besoin -->
                                                         <script>
                                                             const currentYear = new Date().getFullYear();
-                                                            for (let year = currentYear; year >= 1900; year--) {
+                                                            for (let year = currentYear; year >= 1990; year--) {
                                                                 document.write(`<option value="${year}">${year}</option>`);
                                                             }
                                                         </script>
@@ -172,7 +172,7 @@
 
                                             <div class="col-span-12 lg:col-span-4">
                                                 <div class="space-y-2">
-                                                    <label class="ti-form-label mb-0">Kilométrage </label>d
+                                                    <label class="ti-form-label mb-0">Kilométrage </label>
                                                     <div class="relative">
                                                         <input type="text" id="hs-input-with-leading-and-trailing-icon"
                                                             name="kilometrage"
@@ -206,7 +206,7 @@
                                             <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2">
                                                     <label class="ti-form-label">Couleur</label>
-                                                    <select class="ti-form-select product-search">
+                                                    <select name="couleur" class="ti-form-select product-search">
                                                         <option>Choisissez</option>
                                                         <option value="1">Bleu</option>
                                                         <option value="2">Noir</option>
@@ -227,7 +227,8 @@
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">date d'expiration de
                                                         l'assurance</label>
-                                                    <input type="date" class="my-auto ti-form-input">
+                                                    <input type="date" name="assurance_date_expi"
+                                                        class="my-auto ti-form-input" min="<?= date('Y-m-d') ?>">
                                                 </div>
                                             </div>
                                         </div>
