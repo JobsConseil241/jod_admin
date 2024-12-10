@@ -30,6 +30,7 @@ header('Access-Control-Allow-Headers: X-Requested-With, Authorization, Content-T
 Route::get('/get_langs', [LanguageController::class, 'get_langs'])->name('API-GET-LANGS');
 
 Route::get('/get_cars', [CarController::class, 'get_Vehicules'])->name('API-GET-VEHICULES');
+Route::get('/get_cars_datatables', [CarController::class, 'get_cars_datatable'])->name('API-GET-DATATABLE-VEHICULES');
 
 Route::group([
     'middleware' => ['api', 'auth:sanctum'],

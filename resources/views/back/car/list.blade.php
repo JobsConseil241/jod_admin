@@ -73,9 +73,6 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-
-                        </tbody>
                     </table>
                 </div>
             </div>
@@ -91,15 +88,97 @@
     <script>
         "use strict";
 
+        function formatAmount(amount) {
+            return amount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        }
+
         $(document).ready(function() {
             $("#data").DataTable({
                 language: {
-                    url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/French.json"
+                    'url': "https://cdn.datatables.net/plug-ins/1.10.25/i18n/French.json"
                 },
+                processing: true,
                 order: [
                     [0, 'desc']
                 ],
-                searching: true
+                serverSide: true,
+                searching: true,
+                ajax: "{{ route('backend.ajax.cars') }}",
+                columns: [{
+                        data: 'id',
+                        name: 'id',
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: 'category_id',
+                        name: 'category_id',
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return row.categorie.name;
+                        },
+                    },
+                    {
+                        data: 'name',
+                        name: 'name',
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: 'marque_id',
+                        name: 'marque_id',
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return row.marque.name;
+                            return formatAmount(row.price_estimate_low) + ' FCFA';
+                        },
+                    },
+                    {
+                        data: 'modele',
+                        name: 'modele',
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: 'annee',
+                        name: 'annee',
+                        orderable: false,
+                        searchable: false,
+                    },
+                    {
+                        data: 'immatriculation',
+                        name: 'immatriculation',
+                        orderable: false,
+                        searchable: true,
+
+                    },
+                    {
+                        data: 'prix_location',
+                        name: 'prix_location',
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return formatAmount(row.prix_location) + ' FCFA';
+                        },
+                    },
+                    {
+                        targets: -1,
+                        data: 'null',
+                        name: 'customColumn',
+                        render: function(data, type, row) {
+
+                            return `<a href="{{ url('backend/car/view/') }}/` + row.id + `" >
+                                       <button type="button" class="ti-btn ti-btn-soft-primary"
+                                            data-id="{{ $user->id }}">
+                                            <i class="ri-eye align-bottom me-2"></i> Voir
+                                        </button>
+                                    </a>`;
+
+                        },
+                        orderable: false,
+                        searchable: false
+                    }
+
+                ]
             })
         });
 

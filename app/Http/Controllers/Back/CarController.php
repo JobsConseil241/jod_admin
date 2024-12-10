@@ -15,22 +15,24 @@ class CarController extends Controller
     //
     public function index()
     {
+        return view('back.car.list');
+    }
+
+    public function ajax_get_cars(Request $request)
+    {
         $access_token = Session::get('personnalToken');
 
-        //cars
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_cars');
+        ])->get(env('SERVER_PC') . 'get_cars_datatables', $request->all());
 
-        $object = json_decode($response->body());
+        $objet = json_decode($response->getBody());
 
-        if ($object && $object->success == true) {
-            $cars = $object->data->cars;
-        } else {
-            $cars = [];
+        if (!$objet) {
+            dd($response);
         }
 
-        return view('back.car.list', compact('cars'));
+        return response()->json($objet);
     }
 
     public function add()

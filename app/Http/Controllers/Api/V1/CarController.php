@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\Facades\DataTables;
 
 class CarController extends BaseController
 {
@@ -29,6 +30,28 @@ class CarController extends BaseController
             return $this->sendError("Unexpected error occurred, please try again later.");
         } finally {
             Log::info('Get Vehicules Endpoint Exited.');
+        }
+    }
+
+    public function get_cars_datatable(Request $request)
+    {
+        try {
+            Log::info('Get vehicule datatable Endpoint Entered.');
+
+            Log::debug('Get vehicule datatable Endpoint - All Params: ' . json_encode($request->all()));
+            $cars = Vehicule::select("vehicules.*")->with(
+                'categorie',
+                'marque',
+            )
+                ->where('deleted', NULL);
+
+            Log::debug('Get vehicule datatable Endpoint - Response: ' . json_encode($cars));
+            return DataTables::of($cars)->make(true);
+        } catch (Exception $e) {
+            Log::error('Get vehicule datatable Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Get vehicule Endpoint Exited.');
         }
     }
 

@@ -70,6 +70,7 @@ Route::middleware(['auth'])->group(function () {
 
         //vehicules
         Route::get('cars', [BackCarController::class, 'index'])->name('backend.list.cars');
+        Route::get('cars/ajax', [BackCarController::class, 'ajax_get_cars'])->name('backend.ajax.cars');
         Route::get('car/add', [BackCarController::class, 'add'])->name('backend.add.car');
         Route::get('car/view/{car}', [BackCarController::class, 'view'])->name('backend.view.car');
         Route::post('car/store', [BackCarController::class, 'store'])->name('backend.store.car');
