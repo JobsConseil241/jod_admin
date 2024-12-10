@@ -115,7 +115,7 @@
                         name: 'category_id',
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
-                            return row.categorie.name;
+                            return row.categorie ? row.categorie.name : '';
                         },
                     },
                     {
