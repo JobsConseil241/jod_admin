@@ -63,38 +63,18 @@
                         <thead>
                             <tr>
                                 <th data-ordering="false">ID</th>
-                                <th>Nom Complet</th>
-                                <th>Email</th>
-                                <th>Téléphone</th>
-                                <th>Rôle</th>
+                                <th>Catégorie</th>
+                                <th>Nom</th>
+                                <th>Marque</th>
+                                <th>Modèle</th>
+                                <th>Année</th>
+                                <th>Immatriculation</th>
+                                <th>Tarif</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cars as $car)
-                                <tr>
-                                    <td>{{ $car->id }}</td>
-                                    <td>
-                                        <img src="assets/images/users/avatar-1.jpg" alt=""
-                                            class="avatar-xs rounded-circle me-2">
-                                        {{ $car->first_name . ' ' . $car->last_name }}
-                                    </td>
-                                    <td>{{ $car->email }}</td>
-                                    <td>{{ $car->phone_code . ' ' . $car->phone }}</td>
-                                    <td>{{ $car->roles[0]->name ?? 'Aucun' }}</td>
-                                    <td>
-                                        <button type="button" class="ti-btn ti-btn-soft-primary edit_action"
-                                            data-id="{{ $car->id }}">
-                                            <i class="ri-pencil-fill align-bottom me-2"></i> Modifier
-                                        </button>
 
-                                        <button type="button" class="ti-btn ti-btn-soft-danger delete_action"
-                                            data-id="{{ $car->id }}">
-                                            <i class="ri-delete-bin-fill align-bottom me-2"></i> Supprimer
-                                        </button>
-                                    </td>
-                                </tr>
-                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -180,12 +160,6 @@
                     $('#cardModalView').removeClass('hidden').addClass('open');
                 }
             });
-        });
-
-
-        $(document).on("click", ".2fa_action", function() {
-            var id = $(this).data('id');
-            $('#input_reset_2fa_user_id').val(id);
         });
 
         $(document).on("click", ".delete_action", function() {
