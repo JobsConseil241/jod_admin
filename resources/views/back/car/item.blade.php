@@ -192,7 +192,7 @@
                                 <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Note Additionnelle
                                     :</h5>
                                 <p class="my-auto font-medium text-sm text-gray-500 dark:text-white/70">
-                                    {{ $car->note }}</p>
+                                    {{ $car->note ?? '-' }}</p>
                             </div>
 
                             <div class="sm:flex sm:space-x-3 product-des">
@@ -280,7 +280,7 @@
                                     <p class="font-medium text-sm">{{ $car->nombre_portes }} </p>
                                 </div>
 
-                                <p class="font-medium text-sm">Ajouté le {{ $car->created_at }}</p>
+                                <p class="font-medium text-sm">Ajouté le {{ $car->created_at->format('d F Y H:i') }}</p>
                                 <div>
                                     <a href="{{ url('/backend/car/edit/' . $car->id) }}"
                                         class="w-full ti-btn ti-btn-primary">Modifier</a>
