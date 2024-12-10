@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\v1\CarController;
+use App\Http\Controllers\Api\V1\CarController;
 use App\Http\Controllers\Api\V1\CategorieController;
 use App\Http\Controllers\Api\V1\LanguageController;
 use App\Http\Controllers\Api\V1\MarqueController;
