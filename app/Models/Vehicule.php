@@ -26,7 +26,8 @@ class Vehicule extends Model
         'longitude',
         'latitude',
         'category_id',
-        'marque_id'
+        'marque_id',
+        'note'
     ];
 
     public function categorie()
@@ -34,19 +35,23 @@ class Vehicule extends Model
         return $this->belongsTo('App\Models\Categorie');
     }
 
-    public function marque(){
+    public function marque()
+    {
         return $this->belongsTo('App\Models\Marque');
     }
 
-    public function vehiculeMedias(){
+    public function vehiculeMedias()
+    {
         return $this->hasMany('App\Models\VehiculeMedia');
     }
 
-    public function pannes(){
+    public function pannes()
+    {
         return $this->belongsToMany(Panne::class, 'vehicule_pannes', 'vehicule_id', 'panne_id');
     }
 
-    public function contrats() {
+    public function contrats()
+    {
         return $this->hasMany(Contrat::class);
     }
 }

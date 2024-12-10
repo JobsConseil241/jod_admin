@@ -45,7 +45,7 @@ class CarController extends BaseController
                 'modele' => 'required|string|max:255',
                 'couleur' => 'required|string|max:100',
                 'annee' => 'required|integer|min:1900|max:' . date('Y'),
-                'immatriculation' => 'required|string|unique:cars,immatriculation|max:20',
+                'immatriculation' => 'required|string|unique:vehicules,immatriculation|max:20',
                 'type_carburant' => 'required|string|in:essence,diesel,hybride,électrique', // Ajustez selon vos types
                 'prix_location' => 'required|numeric|min:0',
                 'kilometrage' => 'required|integer|min:0',
