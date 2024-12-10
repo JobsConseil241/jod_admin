@@ -305,7 +305,7 @@
             <div class="ti-modal-content">
                 <div class="ti-modal-header">
                     <h3 class="ti-modal-title">
-                        Supprimer une catégorie
+                        Supprimer un véhicule
                     </h3>
                     <button type="button" class="hs-dropdown-toggle ti-modal-clode-btn"
                         data-hs-overlay="#cardModalDelete">

@@ -37,7 +37,7 @@
     <div class="block justify-between page-header md:flex">
         <div>
             <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
-                Ajouter un véhicule</h3>
+                Modifier un véhicule</h3>
         </div>
         <ol class="flex items-center whitespace-nowrap min-w-0">
             <li class="text-sm">
@@ -49,7 +49,7 @@
                 </a>
             </li>
             <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">
-                Véhicules
+                {{ $car->name }}
             </li>
         </ol>
     </div>
@@ -72,12 +72,12 @@
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Nom</label>
                                                 <input type="text" name="name" class="my-auto ti-form-input"
-                                                    placeholder="Toyota" value="{{ old('name') }}" required>
+                                                    placeholder="Toyota" value="{{ $car->name }}" required>
                                             </div>
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Modèle</label>
                                                 <input type="text" name="modele" class="my-auto ti-form-input"
-                                                    placeholder="Yaris" value="{{ old('modele') }}" required>
+                                                    placeholder="Yaris" value="{{ $car->modele }}" required>
                                             </div>
 
                                             <div class="grid grid-cols-12 gap-4">
@@ -88,7 +88,7 @@
                                                             <option>Choisissez</option>
                                                             @foreach ($categories as $item)
                                                                 <option value="{{ $item->id }}"
-                                                                    {{ old('category_id') == $item->id ? 'selected' : '' }}>
+                                                                    {{ $car->category_id == $item->id ? 'selected' : '' }}>
                                                                     {{ $item->name }}
                                                                 </option>
                                                             @endforeach
@@ -102,7 +102,7 @@
                                                             <option>Choisissez</option>
                                                             @foreach ($marques as $item)
                                                                 <option value="{{ $item->id }}"
-                                                                    {{ old('marque_id') == $item->id ? 'selected' : '' }}>
+                                                                    {{ $car->marque_id == $item->id ? 'selected' : '' }}>
                                                                     {{ $item->name }}
                                                                 </option>
                                                             @endforeach
@@ -113,7 +113,7 @@
 
                                             <div class="space-y-2">
                                                 <label class="ti-form-label">Note Additionnelle</label>
-                                                <textarea name="note" class="ti-form-input" rows="2">{{ old('nom') }}</textarea>
+                                                <textarea name="note" class="ti-form-input" rows="2">{{ $car->note }}</textarea>
                                                 <label
                                                     class="ti-form-label mt-1 text-sm font-normal opacity-70 text-gray-500 dark:text-white/70 mb-0">*500
                                                     caractères maximum.</label>
@@ -136,7 +136,7 @@
                                                         <!-- Ajoutez dynamiquement les années si besoin -->
                                                         @for ($year = date('Y'); $year >= 1990; $year--)
                                                             <option value="{{ $year }}"
-                                                                {{ old('annee') == $year ? 'selected' : '' }}>
+                                                                {{ $car->annee == $year ? 'selected' : '' }}>
                                                                 {{ $year }}</option>
                                                         @endfor
                                                     </select>
@@ -149,7 +149,7 @@
                                                     <label class="ti-form-label mb-0">Immatriculation</label>
                                                     <input name="immatriculation" type="text"
                                                         class="my-auto ti-form-input" placeholder="AA111BB"
-                                                        value="{{ old('immatriculation') }}" required>
+                                                        value="{{ $car->immatriculation }}" required>
                                                 </div>
                                             </div>
 
@@ -159,17 +159,17 @@
                                                     <select name="type_carburant" class="ti-form-select product-search"
                                                         required>
                                                         <option value="essence"
-                                                            {{ old('type_carburant') == 'essence' ? 'selected' : '' }}>
+                                                            {{ $car->type_carburant == 'essence' ? 'selected' : '' }}>
                                                             Essence
                                                         </option>
                                                         <option value="diesel"
-                                                            {{ old('type_carburant') == 'diesel' ? 'selected' : '' }}>
+                                                            {{ $car->type_carburant == 'diesel' ? 'selected' : '' }}>
                                                             Diesel</option>
                                                         <option value="hybride"
-                                                            {{ old('type_carburant') == 'hybride' ? 'selected' : '' }}>
+                                                            {{ $car->type_carburant == 'hybride' ? 'selected' : '' }}>
                                                             Hybride</option>
                                                         <option value="électrique"
-                                                            {{ old('type_carburant') == 'électrique' ? 'selected' : '' }}>
+                                                            {{ $car->type_carburant == 'électrique' ? 'selected' : '' }}>
                                                             Électrique</option>
 
                                                     </select>
@@ -182,10 +182,10 @@
                                                     <select name="transmission" class="ti-form-select product-search"
                                                         required>
                                                         <option value="automatique"
-                                                            {{ old('transmission') == 'automatique' ? 'selected' : '' }}>
+                                                            {{ $car->transmission == 'automatique' ? 'selected' : '' }}>
                                                             Automatique</option>
                                                         <option value="manuelle"
-                                                            {{ old('transmission') == 'manuelle' ? 'selected' : '' }}>
+                                                            {{ $car->transmission == 'manuelle' ? 'selected' : '' }}>
                                                             Manuelle</option>
                                                     </select>
                                                 </div>
@@ -196,7 +196,7 @@
                                                     <label class="ti-form-label mb-0">Kilométrage </label>
                                                     <div class="relative">
                                                         <input type="text" id="hs-input-with-leading-and-trailing-icon"
-                                                            name="kilometrage" value="{{ old('kilometrage') }}"
+                                                            name="kilometrage" value="{{ $car->kilometrage }}"
                                                             class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
                                                             placeholder="1000" required>
                                                         <div
@@ -214,7 +214,7 @@
                                                 <div class="space-y-2">
                                                     <label class="ti-form-label mb-0">Nombre de place </label>
                                                     <input type="number" name="nombre_places"
-                                                        class="my-auto ti-form-input" value="{{ old('nombre_places') }}"
+                                                        class="my-auto ti-form-input" value="{{ $car->nombre_places }}"
                                                         placeholder="4" required>
                                                 </div>
                                             </div>
@@ -222,7 +222,7 @@
                                                 <div class="space-y-2">
                                                     <label class="ti-form-label mb-0">Nombre de porte</label>
                                                     <input type="number" name="nombre_portes"
-                                                        class="my-auto ti-form-input" value="{{ old('nombre_portes') }}"
+                                                        class="my-auto ti-form-input" value="{{ $car->nombre_porte }}"
                                                         placeholder="4" required>
                                                 </div>
                                             </div>
@@ -232,7 +232,7 @@
                                                     <label class="ti-form-label">Prix</label>
                                                     <div class="relative">
                                                         <input type="text" name="prix_location"
-                                                            value="{{ old('prix_location') }}"
+                                                            value="{{ $car->prix_location }}"
                                                             class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
                                                             placeholder="10000" required>
                                                         <div
@@ -253,16 +253,16 @@
                                                     <select name="couleur" class="ti-form-select product-search" required>
                                                         <option>Choisissez</option>
                                                         <option value="bleu"
-                                                            {{ old('couleur') == 'bleu' ? 'selected' : '' }}>Bleu</option>
+                                                            {{ $car->couleur == 'bleu' ? 'selected' : '' }}>Bleu</option>
                                                         <option value="noir"
-                                                            {{ old('couleur') == 'noir' ? 'selected' : '' }}>Noir</option>
+                                                            {{ $car->couleur == 'noir' ? 'selected' : '' }}>Noir</option>
                                                         <option value="rouge"
-                                                            {{ old('couleur') == 'rouge' ? 'selected' : '' }}>Rouge
+                                                            {{ $car->couleur == 'rouge' ? 'selected' : '' }}>Rouge
                                                         </option>
                                                         <option value="vert"
-                                                            {{ old('couleur') == 'vert' ? 'selected' : '' }}>Vert</option>
+                                                            {{ $car->couleur == 'vert' ? 'selected' : '' }}>Vert</option>
                                                         <option value="blanc"
-                                                            {{ old('couleur') == 'blanc' ? 'selected' : '' }}>Blanc
+                                                            {{ $car->couleur == 'blanc' ? 'selected' : '' }}>Blanc
                                                         </option>
                                                     </select>
                                                 </div>
@@ -272,7 +272,7 @@
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Nom de l'Assurance</label>
                                                     <input type="text" name="assurance_nom"
-                                                        class="my-auto ti-form-input" value="{{ old('assurance_nom') }}"
+                                                        class="my-auto ti-form-input" value="{{ $car->assurance_nom }}"
                                                         placeholder="SUNU" required>
                                                 </div>
                                             </div>
@@ -282,7 +282,7 @@
                                                         l'assurance</label>
                                                     <input type="date" name="assurance_date_expi"
                                                         class="my-auto ti-form-input" min="<?= date('Y-m-d') ?>"
-                                                        value="{{ old('assurance_date_expi') }}" required>
+                                                        value="{{ $car->assurance_date_expi }}" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -294,8 +294,7 @@
                     </div>
                     <div class="box-footer text-end border-t-0 px-0">
 
-                        <button type="submit" class="ti-btn ti-btn-primary"><i
-                                class="ri-add-line"></i>Enregistrer</button>
+                        <button type="submit" class="ti-btn ti-btn-primary"><i class="ri-edit-line"></i>Valider</button>
 
                         <button type="reset" class="ti-btn ti-btn-danger"><i
                                 class="ri-delete-bin-line"></i>Annuler</button>
