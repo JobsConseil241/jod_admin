@@ -20,7 +20,13 @@ class CarController extends BaseController
 
             Log::debug('Get Vehicules Endpoint - All Params: ' . json_encode($request->all()));
 
-            $data['cars'] = Vehicule::all();
+            $cars = Vehicule::with('categorie', 'marque')->select('vehicules.*');
+
+            if ($request->has('id') && $request->id != null) {
+                $cars->where('id', $request->id);
+            }
+
+            $data['cars'] = $cars->get();
 
             Log::debug('Get Vehicules Endpoint - Response: ' . json_encode($data));
 

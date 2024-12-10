@@ -110,43 +110,19 @@ class CarController extends Controller
         //roles
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_roles');
+        ])->get(env('SERVER_PC') . 'get_cars', [
+            'id' => $car,
+        ]);
 
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            $roles = $object->data->roles;
+            $car = $object->data->cars[0];
         } else {
-            $roles = [];
+            $car = [];
         }
 
-        //privileges
-        $response_pr = Http::withHeaders([
-            "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_privilege');
-
-        $object_pr = json_decode($response_pr->body());
-
-        if ($object_pr && $object_pr->success == true) {
-            $privileges = $object_pr->data->privileges;
-        } else {
-            $privileges = [];
-        }
-
-        //user_types
-        $response_ut = Http::withHeaders([
-            "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_user_type');
-
-        $object_ut = json_decode($response_ut->body());
-
-        if ($object_ut && $object_ut->success == true) {
-            $types = $object_ut->data->usertypes;
-        } else {
-            $types = [];
-        }
-
-        return view('back.user.role', compact('roles', 'privileges', 'types'));
+        return view('back.car.item', compact('car'));
     }
 
     public function update(Request $request, $car) {}
