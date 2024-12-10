@@ -4,6 +4,12 @@
     <!--datatable css-->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.tailwindcss.css" />
 
+    <!-- Swiper Css -->
+    <link rel="stylesheet" href="{{ asset('back/libs/swiper/swiper-bundle.min.css') }}">
+
+    <!-- Choices Css -->
+    <link rel="stylesheet" href="{{ asset('back/libs/choices.js/public/assets/styles/choices.min.css') }}">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <style>
@@ -924,6 +930,18 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.tailwindcss.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="{{ asset('back/libs/swiper/swiper-bundle.min.js') }}"></script>
+
+    <!-- Choices JS -->
+    <script src="{{ asset('back/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+
+    <!-- Rating JS -->
+    <script src="{{ asset('back/libs/rater-js/index.js') }}"></script>
+
+    <!-- Products JS -->
+    <script src="{{ asset('back/js/product.js') }}"></script>
 
     <script>
         "use strict";
