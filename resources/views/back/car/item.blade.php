@@ -280,7 +280,8 @@
                                     <p class="font-medium text-sm">{{ $car->nombre_portes }} </p>
                                 </div>
 
-                                <p class="font-medium text-sm">Ajouté le {{ $car->created_at->format('d F Y H:i') }}</p>
+                                <p class="font-medium text-sm">Ajouté le
+                                    {{ \Carbon\Carbon::parse($car->created_at)->format('d F Y H:i:s') }}</p>
                                 <div>
                                     <a href="{{ url('/backend/car/edit/' . $car->id) }}"
                                         class="w-full ti-btn ti-btn-primary">Modifier</a>
