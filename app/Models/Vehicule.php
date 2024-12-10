@@ -32,7 +32,7 @@ class Vehicule extends Model
 
     public function categorie()
     {
-        return $this->belongsTo('App\Models\Categorie');
+        return $this->belongsTo('App\Models\Category');
     }
 
     public function marque()
