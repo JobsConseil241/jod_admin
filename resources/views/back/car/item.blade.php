@@ -144,7 +144,7 @@
 
                             <div class="sm:flex sm:space-x-3 product-des">
                                 <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Catégorie :</h5>
-                                <p class="font-medium text-sm">{{ $car->categorie->name ?? '' }}</p>
+                                <p class="font-medium text-sm">{{ $car->categorie->name ?? '-' }}</p>
 
                             </div>
 
@@ -244,7 +244,7 @@
                         </div> --}}
                         <div class="box shadow-none">
                             <div class="box-header">
-                                <h5 class="box-title">Caractéristique</h5>
+                                <h5 class="box-title">Caractéristiques</h5>
                             </div>
                             <div class="box-body space-y-4">
 
@@ -270,7 +270,7 @@
                                 <div class="sm:flex sm:space-x-3 product-des">
                                     <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Capacité :
                                     </h5>
-                                    <p class="font-medium text-sm">{{ $car->nombre_places }}</p>
+                                    <p class="font-medium text-sm">{{ $car->nombre_places }} places</p>
                                 </div>
 
                                 <div class="sm:flex sm:space-x-3 product-des">
@@ -281,7 +281,8 @@
                                 </div>
 
                                 <p class="font-medium text-sm">Ajouté le
-                                    {{ \Carbon\Carbon::parse($car->created_at)->format('d F Y H:i:s') }}</p>
+                                    {{ \Carbon\Carbon::parse($car->created_at)->locale('fr')->translatedFormat('d F Y H:i:s') }}
+                                </p>
                                 <div>
                                     <a href="{{ url('/backend/car/edit/' . $car->id) }}"
                                         class="w-full ti-btn ti-btn-primary">Modifier</a>
