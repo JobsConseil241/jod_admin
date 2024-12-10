@@ -165,7 +165,6 @@
                         data: 'null',
                         name: 'customColumn',
                         render: function(data, type, row) {
-
                             return `<a href="{{ url('backend/car/view/') }}/` + row.id + `" >
                                        <button type="button" class="ti-btn ti-btn-soft-primary">
                                             <i class="ri-eye align-bottom me-2"></i> Voir

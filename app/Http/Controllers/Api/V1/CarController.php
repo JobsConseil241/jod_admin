@@ -42,8 +42,7 @@ class CarController extends BaseController
             $cars = Vehicule::select("vehicules.*")->with(
                 'categorie',
                 'marque',
-            )
-                ->where('deleted', NULL);
+            );
 
             Log::debug('Get vehicule datatable Endpoint - Response: ' . json_encode($cars));
             return DataTables::of($cars)->make(true);
