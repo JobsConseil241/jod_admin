@@ -9,6 +9,16 @@ class VehiculeMedia extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'vehicule_id',
+        'photo_avant',
+        'photo_arriere',
+        'photo_gauche',
+        'photo_droite',
+        'photo_dashboard',
+        'photo_interieur'
+    ];
+
     public function vehicule() {
         return $this->belongsTo(Vehicule::class, 'vehicule_id');
     }
