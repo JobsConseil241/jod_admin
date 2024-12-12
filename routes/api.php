@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\CarController;
+use App\Http\Controllers\Api\V1\CarPictureController;
 use App\Http\Controllers\Api\V1\CategorieController;
 use App\Http\Controllers\Api\V1\LanguageController;
 use App\Http\Controllers\Api\V1\MarqueController;
@@ -87,3 +88,7 @@ Route::group([
     Route::post("/update_language", [LanguageController::class, "update_language"])->name('API-UPDATE-LANGUAGE');
     Route::post("/delete_languages", [LanguageController::class, "delete_language"])->name('API-DELETE-LANGUAGE');
 });
+
+
+Route::post('/add_pictures_cars', [CarPictureController::class, 'add_Vehicule_Picture'])->name('API-ADD-PICTURES-VEHICULES');
+Route::delete('/delete_picture_cars', [CarPictureController::class, 'delete_single_Image'])->name('API-DELETE-PICTURES-VEHICULES');
