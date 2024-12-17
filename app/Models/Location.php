@@ -9,12 +9,16 @@ class Location extends Model
 {
     use HasFactory;
 
-    public function contrat() {
-        return $this->belongsTo(Contrat::class);
-    }
-
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function vehicule() {
+        return $this->belongsTo(Vehicule::class,);
+    }
+
+    public function etatAvantLocation() {
+        return $this->belongsTo(EtatVehicule::class, 'etat_vehicule_id');
     }
 
 }
