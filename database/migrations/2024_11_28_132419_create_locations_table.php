@@ -13,12 +13,27 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->bigIncrements('id')->startingValue(1000001);
-            $table->unsignedBigInteger('contrat_id');
+            $table->string('code_contrat');
+            $table->dateTime('date_heure_debut');
+            $table->dateTime('date_heure_fin')->nullable();
+            $table->unsignedBigInteger('vehicule_id');
+            $table->string('type_location');
+            $table->integer('jours');
+            $table->tinyInteger('statut')->default(1);
+            $table->boolean('comission')->default(0);
+            $table->unsignedBigInteger('etat_livraison_id');
+            $table->unsignedBigInteger('etat_restitution_id')->nullable();
+            $table->boolean('livraison')->default(0);
+            $table->unsignedBigInteger('paiement_id')->nullable();
             $table->unsignedBigInteger('client_id');
-            $table->tinyInteger('statut')->default(0); //0 : initié, 1: encours, 2:paiement 3: terminé
 
-            $table->foreign('contrat_id')->references('id')->on('contrats')->onDelete('cascade');
             $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->foreign('vehicule_id')->references('id')->on('vehicules')->onDelete('cascade');
+            $table->foreign('etat_livraison_id')->references('id')->on('etat_vehicules')->onDelete('cascade');
+            $table->foreign('etat_restitution_id')->references('id')->on('etat_vehicules')->onDelete('cascade');
+            $table->foreign('paiement_id')->references('id')->on('paiements')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

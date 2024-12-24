@@ -9,6 +9,8 @@ class CategoryPanne extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'description', 'active'];
+
     public function pannes(){
         return $this->hasMany(Panne::class);
     }

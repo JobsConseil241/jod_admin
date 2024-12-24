@@ -51,8 +51,16 @@ class Vehicule extends Model
         return $this->belongsToMany(Panne::class, 'vehicule_pannes', 'vehicule_id', 'panne_id');
     }
 
+    public function locations(){
+        return $this->HasMany(Location::class, 'vehicule_id', 'id');
+    }
+
     public function contrats()
     {
         return $this->hasMany(Contrat::class);
+    }
+
+    public function etats() {
+        return $this->hasMany(EtatVehicule::class);
     }
 }

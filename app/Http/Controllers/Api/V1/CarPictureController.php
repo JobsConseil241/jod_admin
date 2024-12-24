@@ -23,10 +23,10 @@ class CarPictureController extends BaseController
             $datas = $request->all();
             $rules = [
                 'vehicule_id' => 'required|exists:vehicules,id', // Assurez-vous que vehicule_id existe
-                'photo_avant' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
-                'photo_arriere' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
-                'photo_gauche' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
-                'photo_droite' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+                'photo_avant' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+                'photo_arriere' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+                'photo_gauche' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+                'photo_droite' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
                 'photo_dashboard' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
                 'photo_interieur' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
             ];

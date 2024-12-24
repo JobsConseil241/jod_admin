@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Api\V1\BookingController;
 use App\Http\Controllers\Api\V1\CarController;
 use App\Http\Controllers\Api\V1\CarPictureController;
 use App\Http\Controllers\Api\V1\CategorieController;
+use App\Http\Controllers\Api\v1\CategoriePanneController;
+use App\Http\Controllers\Api\V1\EtatVehiculeController;
 use App\Http\Controllers\Api\V1\LanguageController;
 use App\Http\Controllers\Api\V1\MarqueController;
 use App\Http\Controllers\Api\V1\PrivilegeController;
@@ -83,12 +86,32 @@ Route::group([
     Route::patch('/update_cars', [CarController::class, 'edit_Vehicule'])->name('API-UPDATE-VEHICULES');
     Route::delete('/delete_cars', [CarController::class, 'delete_Vehicule'])->name('API-DELETE-VEHICULES');
 
+    // Photos du vehicules
+    Route::post('/add_pictures_cars', [CarPictureController::class, 'add_Vehicule_Picture'])->name('API-ADD-PICTURES-VEHICULES');
+    Route::delete('/delete_picture_cars', [CarPictureController::class, 'delete_single_Image'])->name('API-DELETE-PICTURES-VEHICULES');
+
+    // Etat du vehicule
+    Route::post('/set_state_of_cars', [EtatVehiculeController::class, 'add_etat_vehicule'])->name('API-ADD-STATE-OF-VEHICULES');
+    Route::post('/update_state_of_cars', [EtatVehiculeController::class, 'edit_etat_vehicule'])->name('API-EDIT-STATE-OF-VEHICULES');
+    Route::post('/delete_state_of_cars', [EtatVehiculeController::class, 'delete_etat_vehicule'])->name('API-DELETE-STATE-OF-VEHICULES');
+
+    // Booking Process
+    Route::post('/set_reservation_cars', [BookingController::class, 'registerBooking'])->name('API-ADD-BOOKING-VEHICULES');
+    Route::post('/update_reservation_cars', [BookingController::class, 'updateBooking'])->name('API-UPDATE-BOOKING-VEHICULES');
+    Route::post('/validate_reservation_cars', [BookingController::class, 'validateBooking'])->name('API-VALIDATE-BOOKING-VEHICULES');
+    Route::post('/reject_reservation_cars', [BookingController::class, 'rejectBooking'])->name('API-REJECT-BOOKING-VEHICULES');
+    Route::post('/cancel_reservation_cars', [BookingController::class, 'cancelBooking'])->name('API-CANCEL-BOOKING-VEHICULES');
+
+    // categories pannes
+    Route::get('/get_category_pannes', [CategoriePanneController::class, 'get_categories_pannes'])->name('API-GET-CATEGORIES-PANNES');
+    Route::post('/add_category_pannes', [CategoriePanneController::class, 'add_category_pannes'])->name('API-ADD-CATEGORIES-PANNES');
+    Route::post('/update_category_pannes', [CategoriePanneController::class, 'edit_category_pannes'])->name('API-UPDATE-CATEGORIES-PANNES');
+    Route::delete('/delete_category_pannes', [CategoriePanneController::class, 'delete_category_pannes'])->name('API-DELETE-CATEGORIES-PANNES');
+
+
     //language
     Route::post("/add_language", [LanguageController::class, "language_create"])->name('API-GET-LANGUAGE');
     Route::post("/update_language", [LanguageController::class, "update_language"])->name('API-UPDATE-LANGUAGE');
     Route::post("/delete_languages", [LanguageController::class, "delete_language"])->name('API-DELETE-LANGUAGE');
 });
 
-
-Route::post('/add_pictures_cars', [CarPictureController::class, 'add_Vehicule_Picture'])->name('API-ADD-PICTURES-VEHICULES');
-Route::delete('/delete_picture_cars', [CarPictureController::class, 'delete_single_Image'])->name('API-DELETE-PICTURES-VEHICULES');

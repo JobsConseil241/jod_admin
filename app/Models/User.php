@@ -122,8 +122,8 @@ class User extends Authenticatable
     }
 
 
-    public function location(){
-        return $this->belongsToMany(Location::class, 'locations', 'contrat_id', 'client_id');
+    public function locations(){
+        return $this->HasMany(Location::class, 'client_id', 'id');
     }
 
     public function hasPrivilige($privilige)
