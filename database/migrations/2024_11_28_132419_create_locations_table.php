@@ -20,15 +20,13 @@ return new class extends Migration
             $table->string('type_location');
             $table->integer('jours');
             $table->tinyInteger('statut')->default(1);
-            $table->integer('comission')->default(1);
+            $table->boolean('comission')->default(0);
             $table->unsignedBigInteger('etat_livraison_id');
             $table->unsignedBigInteger('etat_restitution_id')->nullable();
             $table->boolean('livraison')->default(0);
             $table->unsignedBigInteger('paiement_id')->nullable();
-            $table->unsignedBigInteger('contrat_id');
             $table->unsignedBigInteger('client_id');
 
-            $table->foreign('contrat_id')->references('id')->on('contrats')->onDelete('cascade');
             $table->foreign('client_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->foreign('vehicule_id')->references('id')->on('vehicules')->onDelete('cascade');

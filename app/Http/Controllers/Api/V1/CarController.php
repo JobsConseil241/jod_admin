@@ -106,7 +106,7 @@ class CarController extends BaseController
                 'assurance_date_expi' => $datas['assurance_date_expi'],
                 'category_id' => $datas['category_id'],
                 'marque_id' => $datas['marque_id'],
-                'note' => $datas['note']
+                'note' => $datas['note'] ?? ''
             ]);
 
             $data['car'] = $Vehicule;

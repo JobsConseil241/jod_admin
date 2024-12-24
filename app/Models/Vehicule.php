@@ -59,4 +59,8 @@ class Vehicule extends Model
     {
         return $this->hasMany(Contrat::class);
     }
+
+    public function etats() {
+        return $this->hasMany(EtatVehicule::class);
+    }
 }
