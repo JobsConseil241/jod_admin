@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\v1\CategoriePanneController;
 use App\Http\Controllers\Api\V1\EtatVehiculeController;
 use App\Http\Controllers\Api\V1\LanguageController;
 use App\Http\Controllers\Api\V1\MarqueController;
+use App\Http\Controllers\Api\v1\PanneController;
 use App\Http\Controllers\Api\V1\PrivilegeController;
 use App\Http\Controllers\Api\V1\RoleController;
 use App\Http\Controllers\Api\V1\UserController;
@@ -109,9 +110,16 @@ Route::group([
     Route::delete('/delete_category_pannes', [CategoriePanneController::class, 'delete_category_pannes'])->name('API-DELETE-CATEGORIES-PANNES');
 
 
+    // Gestion des pannes
+    Route::get('/get_pannes', [PanneController::class, 'get_all_pannes'])->name('API-GET-PANNES');
+    Route::post('/add_pannes', [PanneController::class, 'add_pannes'])->name('API-ADD-PANNES');
+    Route::post('/update_pannes', [PanneController::class, 'edit_pannes'])->name('API-UPDATE-PANNES');
+    Route::delete('/delete_pannes', [PanneController::class, 'delete_pannes'])->name('API-DELETE-PANNES');
+    Route::post('/assign_pannes_vehicule', [PanneController::class, 'assign_pannes_vehicules'])->name('API-ASSIGN-PANNES-VEHICULES');
+
+
     //language
     Route::post("/add_language", [LanguageController::class, "language_create"])->name('API-GET-LANGUAGE');
     Route::post("/update_language", [LanguageController::class, "update_language"])->name('API-UPDATE-LANGUAGE');
     Route::post("/delete_languages", [LanguageController::class, "delete_language"])->name('API-DELETE-LANGUAGE');
 });
-
