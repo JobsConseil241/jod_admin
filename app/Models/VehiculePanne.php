@@ -4,10 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class VehiculePanne extends Model
 {
-    use HasFactory;
+    use HasFactory, softDeletes;
+
+    protected $table = 'vehicule_pannes';
+
+    protected $fillable = ['status', 'montant'];
 
     public function vehicule() {
         return $this->belongsTo(Vehicule::class);

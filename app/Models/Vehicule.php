@@ -48,7 +48,8 @@ class Vehicule extends Model
 
     public function pannes()
     {
-        return $this->belongsToMany(Panne::class, 'vehicule_pannes', 'vehicule_id', 'panne_id');
+        return $this->belongsToMany(Panne::class, 'vehicule_pannes', 'vehicule_id', 'panne_id')
+            ->withTimestamps()->withPivot('status', 'montant') ;
     }
 
     public function locations(){

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Vehicule;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -9,7 +11,10 @@ class WelcomeController extends Controller
     //
     public function index()
     {
-        return view('welcome');
+        $car_categories = Category::all();
+        $vehicules = Vehicule::all();
+
+        return view('welcome', compact('car_categories', 'vehicules'));
     }
 
     public function about()

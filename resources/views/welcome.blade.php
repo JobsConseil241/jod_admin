@@ -5,15 +5,16 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="Awaiken">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Location de voitures au Gabon : large gamme de véhicules à Libreville et dans tout le pays. Prix compétitifs, service professionnel 24/7. Réservez votre voiture en ligne." />
+    <meta name="keywords" content="location voiture Gabon, location auto Libreville, rent car Gabon, voiture à louer Gabon, location 4x4 Gabon, location véhicule Libreville, agence location voiture Gabon, location voiture pas cher Gabon, location voiture aéroport Libreville" />
+    <meta name="author" content="Nom de votre entreprise de location" />
     <!-- Page Title -->
     <title>JOD Trade & Co</title>
 
     <!-- Favicon Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/images/jod_ico.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/images/logo_two.png') }}">
     <!-- Google Fonts Css-->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -73,7 +74,7 @@
                             <ul class="navbar-nav mr-auto" id="menu">
                                 <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Accueil</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">A Propos</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('cars') }}">Véhicule</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('cars') }}">Véhicules</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
                             </ul>
                         </div>
@@ -242,7 +243,7 @@
                         <!-- About Image Start -->
                         <div class="about-img-1">
                             <figure class="reveal">
-                                <img src="images/about-img-1.jpg" alt="">
+                                <img src="{{ asset('front/images/about-img-1.jpg') }}" alt="">
                             </figure>
                         </div>
                         <!-- About Image End -->
@@ -250,7 +251,7 @@
                         <!-- About Image Start -->
                         <div class="about-img-2">
                             <figure class="reveal">
-                                <img src="images/about-img-2.jpg" alt="">
+                                <img src="{{ asset('front/images/about-img-2.jpg') }}" alt="">
                             </figure>
                         </div>
                         <!-- About Image End -->
@@ -263,11 +264,11 @@
                     <div class="about-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            <h3 class="wow fadeInUp">about us</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Your trusted partner in reliable car
-                                rental</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.25s">Aqestic Optio Amet A Ququam Saepe Aliquid
-                                Voluate Dicta Fuga Dolor Saerror Sed Earum A Magni Soluta Quam Minus Dolor Dolor</p>
+                            <h3 class="wow fadeInUp">A Propos de Nous</h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Votre partenaire de confiance en voiture fiable
+                                de location</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">Notre engagement est simple : vous offrir une expérience de location sans souci avec des véhicules fiables
+                                et un service client irréprochable</p>
                         </div>
                         <!-- Section Title End -->
 
@@ -276,12 +277,12 @@
                             <!-- About Trusted Booking Start -->
                             <div class="about-trusted-booking wow fadeInUp" data-wow-delay="0.5s">
                                 <div class="icon-box">
-                                    <img src="images/icon-about-trusted-1.svg" alt="">
+                                    <img src="{{asset('front/images/icon-about-trusted-1.svg')}}" alt="">
                                 </div>
                                 <div class="trusted-booking-content">
-                                    <h3>easy booking process</h3>
-                                    <p>We Have Optimized The Booking Process So That Our Clients Can Experience The
-                                        Easiest And The Safest Service</p>
+                                    <h3>processus de réservation facile</h3>
+                                    <p>Nous avons optimisé le processus de réservation afin que nos clients puissent profiter du
+                                        Le service le plus simple et le plus sûr</p>
                                 </div>
                             </div>
                             <!-- About Trusted Booking End -->
@@ -289,12 +290,12 @@
                             <!-- About Trusted Booking Start -->
                             <div class="about-trusted-booking wow fadeInUp" data-wow-delay="0.75s">
                                 <div class="icon-box">
-                                    <img src="images/icon-about-trusted-2.svg" alt="">
+                                    <img src="{{asset('front/images/icon-about-trusted-2.svg')}}" alt="">
                                 </div>
                                 <div class="trusted-booking-content">
-                                    <h3>convenient pick-up & return process</h3>
-                                    <p>We Have Optimized The Booking Process So That Our Clients Can Experience The
-                                        Easiest And The Safest Service</p>
+                                    <h3>processus de ramassage et de retour pratique</h3>
+                                    <p>Présents à Libreville et dans les principales villes du Gabon, nous accompagnons aussi bien les touristes que les professionnels dans leurs déplacements.
+                                        Notre équipe expérimentée assure un service personnalisé 24h/24 et 7j/7.</p>
                                 </div>
                             </div>
                             <!-- About Trusted Booking End -->
@@ -303,7 +304,7 @@
 
                         <!-- About Content Footer Start -->
                         <div class="about-content-footer wow fadeInUp" data-wow-delay="1s">
-                            <a href="#" class="btn-default">contact us</a>
+                            <a href="#" class="btn-default">Nous Contacter </a>
                         </div>
                         <!-- About Content Footer End -->
                     </div>
@@ -321,8 +322,8 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h3 class="wow fadeInUp">our services</h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">Explore our wide range of rental services
+                        <h3 class="wow fadeInUp">Nos Services</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Découvrez notre large gamme de services de location
                         </h2>
                     </div>
                     <!-- Section Title End -->
