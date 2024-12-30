@@ -279,7 +279,7 @@ class RoleController extends BaseController
             $update_data = $request->all();
             unset($update_data['id']);
             Role::find($request->id)->update($update_data);
-            $role = Role::with('user_type', 'privileges')->find($request->id);
+            $role = Role::with('userType', 'privileges')->find($request->id);
             $data['role'] = $role;
             Log::debug('Update roles Endpoint - Response: ' . json_encode($data));
             return $this->sendResponse($data, "Role updated Successfully");
@@ -438,7 +438,7 @@ class RoleController extends BaseController
                 return $this->sendError($errors->first(), $errors);
             }
             UserRole::create($request->all());
-            $data['user'] = User::with('user_type', 'roles', 'roles.privileges', 'provider', 'order_budget_treshold', 'offer_amount_treshold')->find($request->user_id);
+            $data['user'] = User::with('userType', 'roles', 'roles.privileges', 'provider', 'order_budget_treshold', 'offer_amount_treshold')->find($request->user_id);
 
             Log::debug('Assign role Endpoint - Response: ' . json_encode($data));
             return $this->sendResponse($data, "Role updated successfully");
@@ -519,7 +519,7 @@ class RoleController extends BaseController
                 return $this->sendError($errors->first(), $errors);
             }
             UserRole::where("user_id", $request->user_id)->where("role_id", $request->role_id)->delete();
-            $data['user'] = User::with('user_type', 'roles', 'roles.privileges', 'provider', 'order_budget_treshold', 'offer_amount_treshold')->find($request->user_id);
+            $data['user'] = User::with('userType', 'roles', 'roles.privileges', 'provider', 'order_budget_treshold', 'offer_amount_treshold')->find($request->user_id);
 
             Log::debug('Remove role Endpoint - Response: ' . json_encode($data));
             return $this->sendResponse($data, "Role updated successfully");
