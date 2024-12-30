@@ -59,175 +59,171 @@
                         <div class="swiper mySwiper2">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img alt="product-image-1" src="../assets/img/ecommerce/product-details/1.png">
+                                    <img alt="photo_avant" src="{{ asset('storage/' . $car->vehiculeMedias->photo_avant) }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="product-image-2" src="../assets/img/ecommerce/product-details/2.png">
+                                    <img alt="photo_arriere"
+                                        src="{{ asset('storage/' . $car->vehiculeMedias->photo_arriere) }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="product-image-3" src="../assets/img/ecommerce/product-details/3.png">
+                                    <img alt="photo_gauche"
+                                        src="{{ asset('storage/' . $car->vehiculeMedias->photo_gauche) }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="product-image-4" src="../assets/img/ecommerce/product-details/4.png">
+                                    <img alt="photo_droite"
+                                        src="{{ asset('storage/' . $car->vehiculeMedias->photo_droite) }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="product-image-5" src="../assets/img/ecommerce/product-details/5.png">
+                                    <img alt="photo_dashboard"
+                                        src="{{ asset('storage/' . $car->vehiculeMedias->photo_dashboard) }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="product-image-6" src="../assets/img/ecommerce/product-details/6.png">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img alt="product-image-7" src="../assets/img/ecommerce/product-details/7.png">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img alt="product-image-8" src="../assets/img/ecommerce/product-details/8.png">
+                                    <img alt="photo_interieur"
+                                        src="{{ asset('storage/' . $car->vehiculeMedias->photo_interieur) }}">
                                 </div>
                             </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
                         </div>
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img alt="product-image-1" src="../assets/img/ecommerce/product-details/1.png">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img alt="product-image-1" src="../assets/img/ecommerce/product-details/2.png">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img alt="product-image-1" src="../assets/img/ecommerce/product-details/3.png">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img alt="product-image-1" src="../assets/img/ecommerce/product-details/4.png">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img alt="product-image-1" src="../assets/img/ecommerce/product-details/5.png">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img alt="product-image-1" src="../assets/img/ecommerce/product-details/6.png">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img alt="product-image-1" src="../assets/img/ecommerce/product-details/7.png">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img alt="product-image-1" src="../assets/img/ecommerce/product-details/8.png">
-                                </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img alt="photo_avant" src="{{ asset('storage/' . $car->vehiculeMedias->photo_avant) }}">
+                            </div>
+                            <div class="swiper-slide">
+                                <img alt="photo_arriere" src="{{ asset('storage/' . $car->vehiculeMedias->photo_arriere) }}">
+                            </div>
+                            <div class="swiper-slide">
+                                <img alt="photo_gauche" src="{{ asset('storage/' . $car->vehiculeMedias->photo_gauche) }}">
+                            </div>
+                            <div class="swiper-slide">
+                                <img alt="photo_droite" src="{{ asset('storage/' . $car->vehiculeMedias->photo_droite) }}">
+                            </div>
+                            <div class="swiper-slide">
+                                <img alt="photo_dashboard"
+                                    src="{{ asset('storage/' . $car->vehiculeMedias->photo_dashboard) }}">
+                            </div>
+                            <div class="swiper-slide">
+                                <img alt="photo_interieur"
+                                    src="{{ asset('storage/' . $car->vehiculeMedias->photo_interieur) }}">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-span-12 xxl:col-span-4">
-                <div class="box mb-0 border-0 shadow-none bg-transparent">
-                    <div class="box-body xxl:px-0">
-                        <div class="space-y-5">
-                            <h5 class="font-bold text-xl text-gray-800 dark:text-white">
-                                {{ $car->name . ', ' . $car->marque->name . ' ' . $car->modele }}</h5>
-                            <div class="sm:flex sm:space-x-6 rtl:space-x-reverse sm:space-y-0 space-y-2">
-                                <div class="flex space-x-2 rtl:space-x-reverse">
-                                    <i class="ri ri-star-fill text-yellow-500 text-sm"></i>
-                                    <p class="text-gray-500 dark:text-white/70 text-sm space-x-2 rtl:space-x-reverse">4.2
-                                        Notes</p>
-                                </div>
-                                <div class="flex space-x-2 rtl:space-x-reverse">
-                                    <span class="my-auto w-1.5 h-1.5 inline-block bg-gray-400 rounded-full"></span>
-                                    <p class="text-gray-500 dark:text-white/70 text-sm space-x-2 rtl:space-x-reverse">
-                                        {{ $car->immatriculation }}
-                                    </p>
-                                </div>
+        </div>
+        <div class="col-span-12 xxl:col-span-4">
+            <div class="box mb-0 border-0 shadow-none bg-transparent">
+                <div class="box-body xxl:px-0">
+                    <div class="space-y-5">
+                        <h5 class="font-bold text-xl text-gray-800 dark:text-white">
+                            {{ $car->name . ', ' . $car->marque->name . ' ' . $car->modele }}</h5>
+                        <div class="sm:flex sm:space-x-6 rtl:space-x-reverse sm:space-y-0 space-y-2">
+                            <div class="flex space-x-2 rtl:space-x-reverse">
+                                <i class="ri ri-star-fill text-yellow-500 text-sm"></i>
+                                <p class="text-gray-500 dark:text-white/70 text-sm space-x-2 rtl:space-x-reverse">4.2
+                                    Notes</p>
                             </div>
-
-                            <div class="sm:flex sm:space-x-5">
-                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Status :</h5>
-                                <span class="my-auto font-medium text-sm text-success">Disponible</span>
+                            <div class="flex space-x-2 rtl:space-x-reverse">
+                                <span class="my-auto w-1.5 h-1.5 inline-block bg-gray-400 rounded-full"></span>
+                                <p class="text-gray-500 dark:text-white/70 text-sm space-x-2 rtl:space-x-reverse">
+                                    {{ $car->immatriculation }}
+                                </p>
                             </div>
+                        </div>
 
-                            <div class="sm:flex sm:space-x-3 product-des">
-                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Catégorie :</h5>
-                                <p class="font-medium text-sm">{{ $car->categorie->name ?? '-' }}</p>
+                        <div class="sm:flex sm:space-x-5">
+                            <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Status :</h5>
+                            <span class="my-auto font-medium text-sm text-success">Disponible</span>
+                        </div>
 
-                            </div>
+                        <div class="sm:flex sm:space-x-3 product-des">
+                            <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Catégorie :</h5>
+                            <p class="font-medium text-sm">{{ $car->categorie->name ?? '-' }}</p>
 
-                            <div class="sm:flex sm:space-x-3 product-des">
-                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Marque :</h5>
-                                <p class="font-medium text-sm">{{ $car->marque->name }}</p>
+                        </div>
 
-                            </div>
+                        <div class="sm:flex sm:space-x-3 product-des">
+                            <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Marque :</h5>
+                            <p class="font-medium text-sm">{{ $car->marque->name }}</p>
 
-                            <div class="sm:flex sm:space-x-3 product-des">
-                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Modèle :</h5>
-                                <p class="font-medium text-sm">{{ $car->modele }}</p>
+                        </div>
 
-                            </div>
+                        <div class="sm:flex sm:space-x-3 product-des">
+                            <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Modèle :</h5>
+                            <p class="font-medium text-sm">{{ $car->modele }}</p>
 
-                            <div class="sm:flex sm:space-x-3 product-des">
-                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Couleur :</h5>
-                                <p class="font-medium text-sm">{{ Str::upper($car->couleur) }}</p>
-                            </div>
+                        </div>
 
-                            <div class="sm:flex sm:space-x-3 product-des">
-                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Matricule :
-                                </h5>
-                                <p class="font-medium text-sm">{{ $car->immatriculation }}</p>
-                            </div>
+                        <div class="sm:flex sm:space-x-3 product-des">
+                            <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Couleur :</h5>
+                            <p class="font-medium text-sm">{{ Str::upper($car->couleur) }}</p>
+                        </div>
 
-                            <div class="sm:flex sm:space-x-3 product-des">
-                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Assurance :</h5>
-                                <p class="font-medium text-sm">{{ $car->assurance_nom }}</h5>
-                            </div>
+                        <div class="sm:flex sm:space-x-3 product-des">
+                            <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Matricule :
+                            </h5>
+                            <p class="font-medium text-sm">{{ $car->immatriculation }}</p>
+                        </div>
 
-                            <div class="sm:flex sm:space-x-3 product-des">
-                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Date d'expiration
-                                    :
-                                </h5>
-                                <p class="font-medium text-sm">{{ $car->assurance_date_expi }} </h5>
-                            </div>
+                        <div class="sm:flex sm:space-x-3 product-des">
+                            <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Assurance :</h5>
+                            <p class="font-medium text-sm">{{ $car->assurance_nom }}</h5>
+                        </div>
 
-                            <div class="sm:flex sm:space-x-2">
-                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Tarif :</h5>
-                                <h5 class="text-xl font-semibold text-primary">{{ $car->prix_location }} FCFA</h5>
-                            </div>
+                        <div class="sm:flex sm:space-x-3 product-des">
+                            <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Date d'expiration
+                                :
+                            </h5>
+                            <p class="font-medium text-sm">{{ $car->assurance_date_expi }} </h5>
+                        </div>
 
-                            <div class="space-y-4">
-                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Note Additionnelle
-                                    :</h5>
-                                <p class="my-auto font-medium text-sm text-gray-500 dark:text-white/70">
-                                    {{ $car->note ?? '-' }}</p>
-                            </div>
+                        <div class="sm:flex sm:space-x-2">
+                            <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Tarif :</h5>
+                            <h5 class="text-xl font-semibold text-primary">{{ $car->prix_location }} FCFA</h5>
+                        </div>
 
-                            <div class="sm:flex sm:space-x-3 product-des">
-                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Partager :</h5>
-                                <div class="flex space-x-1 rtl:space-x-reverse">
-                                    <button aria-label="button" type="button"
-                                        class="m-0 rounded-sm p-2 ti-btn ti-btn-outline ring-white/10 text-gray-500 dark:text-white/70 bg-white/10  border-gray-200 dark:border-white/10">
-                                        <i class="ri ri-github-line text-lg leading-none"></i>
-                                    </button>
-                                    <button aria-label="button" type="button"
-                                        class="m-0 rounded-sm p-2 ti-btn ti-btn-outline ring-white/10 text-gray-500 dark:text-white/70 bg-white/10  border-gray-200 dark:border-white/10">
-                                        <i class="ri ri-instagram-line text-lg leading-none"></i>
-                                    </button>
-                                    <button aria-label="button" type="button"
-                                        class="m-0 rounded-sm p-2 ti-btn ti-btn-outline ring-white/10 text-gray-500 dark:text-white/70 bg-white/10  border-gray-200 dark:border-white/10">
-                                        <i class="ri ri-twitter-line text-lg leading-none"></i>
-                                    </button>
-                                    <button aria-label="button" type="button"
-                                        class="m-0 rounded-sm p-2 ti-btn ti-btn-outline ring-white/10 text-gray-500 dark:text-white/70 bg-white/10  border-gray-200 dark:border-white/10">
-                                        <i class="ri ri-linkedin-line text-lg leading-none"></i>
-                                    </button>
-                                    <button aria-label="button" type="button"
-                                        class="m-0 rounded-sm p-2 ti-btn ti-btn-outline ring-white/10 text-gray-500 dark:text-white/70 bg-white/10  border-gray-200 dark:border-white/10">
-                                        <i class="ri ri-facebook-circle-line text-lg leading-none"></i>
-                                    </button>
-                                </div>
+                        <div class="space-y-4">
+                            <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Note Additionnelle
+                                :</h5>
+                            <p class="my-auto font-medium text-sm text-gray-500 dark:text-white/70">
+                                {{ $car->note ?? '-' }}</p>
+                        </div>
+
+                        <div class="sm:flex sm:space-x-3 product-des">
+                            <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Partager :</h5>
+                            <div class="flex space-x-1 rtl:space-x-reverse">
+                                <button aria-label="button" type="button"
+                                    class="m-0 rounded-sm p-2 ti-btn ti-btn-outline ring-white/10 text-gray-500 dark:text-white/70 bg-white/10  border-gray-200 dark:border-white/10">
+                                    <i class="ri ri-github-line text-lg leading-none"></i>
+                                </button>
+                                <button aria-label="button" type="button"
+                                    class="m-0 rounded-sm p-2 ti-btn ti-btn-outline ring-white/10 text-gray-500 dark:text-white/70 bg-white/10  border-gray-200 dark:border-white/10">
+                                    <i class="ri ri-instagram-line text-lg leading-none"></i>
+                                </button>
+                                <button aria-label="button" type="button"
+                                    class="m-0 rounded-sm p-2 ti-btn ti-btn-outline ring-white/10 text-gray-500 dark:text-white/70 bg-white/10  border-gray-200 dark:border-white/10">
+                                    <i class="ri ri-twitter-line text-lg leading-none"></i>
+                                </button>
+                                <button aria-label="button" type="button"
+                                    class="m-0 rounded-sm p-2 ti-btn ti-btn-outline ring-white/10 text-gray-500 dark:text-white/70 bg-white/10  border-gray-200 dark:border-white/10">
+                                    <i class="ri ri-linkedin-line text-lg leading-none"></i>
+                                </button>
+                                <button aria-label="button" type="button"
+                                    class="m-0 rounded-sm p-2 ti-btn ti-btn-outline ring-white/10 text-gray-500 dark:text-white/70 bg-white/10  border-gray-200 dark:border-white/10">
+                                    <i class="ri ri-facebook-circle-line text-lg leading-none"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-span-12 xxl:col-span-3">
-                <div class="box shadow-none border-0 mb-0">
-                    <div class="box-body">
-                        {{-- <div class="box !bg-success !border-success text-white">
+        </div>
+        <div class="col-span-12 xxl:col-span-3">
+            <div class="box shadow-none border-0 mb-0">
+                <div class="box-body">
+                    {{-- <div class="box !bg-success !border-success text-white">
                             <div class="box-body p-4">
                                 <div class="flex">
                                     <div class="space-y-2">
@@ -242,61 +238,61 @@
                                 </div>
                             </div>
                         </div> --}}
-                        <div class="box shadow-none">
-                            <div class="box-header">
-                                <h5 class="box-title">Caractéristiques</h5>
+                    <div class="box shadow-none">
+                        <div class="box-header">
+                            <h5 class="box-title">Caractéristiques</h5>
+                        </div>
+                        <div class="box-body space-y-4">
+
+                            <div class="flex space-x-3 rtl:space-x-reverse">
+                                <h5 class="font-normal text-gray-500 dark:text-white/70 text-sm my-auto w-28">
+                                    Transmission :
+                                </h5>
+                                <p class="font-medium text-sm">{{ Str::upper($car->transmission) }}</p>
                             </div>
-                            <div class="box-body space-y-4">
+                            <div class="flex space-x-3 rtl:space-x-reverse">
+                                <h5 class="font-normal text-gray-500 dark:text-white/70 text-sm my-auto w-28">Type de
+                                    carburant
+                                    :</h5>
+                                <p class="font-medium text-sm">{{ Str::upper($car->type_carburant) }}</p>
+                            </div>
+                            <div class="sm:flex sm:space-x-3">
+                                <h5 class="font-normal text-gray-500 dark:text-white/70 text-sm my-auto w-28">
+                                    Kilométrage
+                                    :</h5>
+                                <p class="font-medium text-sm">{{ $car->kilometrage }} KM</p>
+                            </div>
 
-                                <div class="flex space-x-3 rtl:space-x-reverse">
-                                    <h5 class="font-normal text-gray-500 dark:text-white/70 text-sm my-auto w-28">
-                                        Transmission :
-                                    </h5>
-                                    <p class="font-medium text-sm">{{ Str::upper($car->transmission) }}</p>
-                                </div>
-                                <div class="flex space-x-3 rtl:space-x-reverse">
-                                    <h5 class="font-normal text-gray-500 dark:text-white/70 text-sm my-auto w-28">Type de
-                                        carburant
-                                        :</h5>
-                                    <p class="font-medium text-sm">{{ Str::upper($car->type_carburant) }}</p>
-                                </div>
-                                <div class="sm:flex sm:space-x-3">
-                                    <h5 class="font-normal text-gray-500 dark:text-white/70 text-sm my-auto w-28">
-                                        Kilométrage
-                                        :</h5>
-                                    <p class="font-medium text-sm">{{ $car->kilometrage }} KM</p>
-                                </div>
+                            <div class="sm:flex sm:space-x-3 product-des">
+                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Capacité :
+                                </h5>
+                                <p class="font-medium text-sm">{{ $car->nombre_places }} places</p>
+                            </div>
 
-                                <div class="sm:flex sm:space-x-3 product-des">
-                                    <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Capacité :
-                                    </h5>
-                                    <p class="font-medium text-sm">{{ $car->nombre_places }} places</p>
-                                </div>
+                            <div class="sm:flex sm:space-x-3 product-des">
+                                <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Nombre de
+                                    Portes :
+                                </h5>
+                                <p class="font-medium text-sm">{{ $car->nombre_portes }} </p>
+                            </div>
 
-                                <div class="sm:flex sm:space-x-3 product-des">
-                                    <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Nombre de
-                                        Portes :
-                                    </h5>
-                                    <p class="font-medium text-sm">{{ $car->nombre_portes }} </p>
-                                </div>
-
-                                <p class="font-medium text-sm">Ajouté le
-                                    {{ \Carbon\Carbon::parse($car->created_at)->locale('fr')->translatedFormat('d F Y H:i:s') }}
-                                </p>
-                                <div>
-                                    <a href="{{ url('/backend/car/edit/' . $car->id) }}"
-                                        class="w-full ti-btn ti-btn-primary">Modifier</a>
-                                    <a href="{{ url('/backend/car/picture/' . $car->id) }}"
-                                        class="w-full ti-btn ti-btn-outline ti-btn-outline-primary">Images</a>
-                                    <button data-hs-overlay="#cardModalDelete"
-                                        class="w-full ti-btn ti-btn-outline ti-btn-outline-danger">Supprimer</button>
-                                </div>
+                            <p class="font-medium text-sm">Ajouté le
+                                {{ \Carbon\Carbon::parse($car->created_at)->locale('fr')->translatedFormat('d F Y H:i:s') }}
+                            </p>
+                            <div>
+                                <a href="{{ url('/backend/car/edit/' . $car->id) }}"
+                                    class="w-full ti-btn ti-btn-primary">Modifier</a>
+                                <a href="{{ url('/backend/car/picture/' . $car->id) }}"
+                                    class="w-full ti-btn ti-btn-outline ti-btn-outline-primary">Images</a>
+                                <button data-hs-overlay="#cardModalDelete"
+                                    class="w-full ti-btn ti-btn-outline ti-btn-outline-danger">Supprimer</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- End::row-1 -->
 
