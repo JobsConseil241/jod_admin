@@ -107,7 +107,7 @@ class CarController extends Controller
     {
         $access_token = Session::get('personnalToken');
 
-        //roles
+        //car
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
         ])->get(env('SERVER_PC') . 'get_cars', [
@@ -115,7 +115,7 @@ class CarController extends Controller
         ]);
 
         $object = json_decode($response->body());
-
+        dd($car);
         if ($object && $object->success == true) {
             $car = $object->data->cars[0];
         } else {

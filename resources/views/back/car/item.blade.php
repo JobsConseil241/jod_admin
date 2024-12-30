@@ -59,7 +59,8 @@
                         <div class="swiper mySwiper2">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img alt="photo_avant" src="{{ asset('storage/' . $car->vehiculeMedias->photo_avant) }}">
+                                    <img alt="photo_avant"
+                                        src="{{ asset('storage/' . $car->vehiculeMedias->photo_avant) }}">
                                 </div>
                                 <div class="swiper-slide">
                                     <img alt="photo_arriere"
@@ -92,7 +93,8 @@
                                 <img alt="photo_avant" src="{{ asset('storage/' . $car->vehiculeMedias->photo_avant) }}">
                             </div>
                             <div class="swiper-slide">
-                                <img alt="photo_arriere" src="{{ asset('storage/' . $car->vehiculeMedias->photo_arriere) }}">
+                                <img alt="photo_arriere"
+                                    src="{{ asset('storage/' . $car->vehiculeMedias->photo_arriere) }}">
                             </div>
                             <div class="swiper-slide">
                                 <img alt="photo_gauche" src="{{ asset('storage/' . $car->vehiculeMedias->photo_gauche) }}">
