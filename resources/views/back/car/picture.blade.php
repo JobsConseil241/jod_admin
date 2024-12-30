@@ -67,7 +67,7 @@
                                                     <!-- Conteneur de prévisualisation -->
                                                     <div id="preview-{{ $field }}" class="preview-container mt-3">
                                                         @if (!empty($car->vehicule_media[0]->{$field}))
-                                                            <img src="{{ asset('uploads/' . $car->vehicule_media[0]->{$field}) }}"
+                                                            <img src="{{ asset($car->vehicule_media[0]->{$field}) }}"
                                                                 alt="{{ $label }}" class="max-h-32 rounded shadow">
                                                         @endif
                                                     </div>
