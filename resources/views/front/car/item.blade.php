@@ -13,12 +13,12 @@
                 <div class="col-lg-12">
                     <!-- Page Header Box Start -->
                     <div class="page-header-box">
-                        <h1 class="text-anime-style-3" data-cursor="-opaque">BMW M2 Car 2017</h1>
+                        <h1 class="text-anime-style-3" data-cursor="-opaque">{{$car->name}}</h1>
                         <nav class="wow fadeInUp">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index-2.html">home</a></li>
-                                <li class="breadcrumb-item"><a href="index-2.html">car</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">luxury car</li>
+                                <li class="breadcrumb-item"><a href="{{ route('welcome') }}">home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('cars-list') }}">car</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ $car->name }}</li>
                             </ol>
                         </nav>
                     </div>
@@ -39,24 +39,24 @@
                         <div class="fleets-single-sidebar-box wow fadeInUp">
                             <!-- Feets Single Sidebar Pricing Start -->
                             <div class="fleets-single-sidebar-pricing">
-                                <h2>$280<span>/rent par day</span></h2>
+                                <h2><span>XAF</span> {{ $car->prix_location }}<span>/par jour</span></h2>
                             </div>
                             <!-- Feets Single Sidebar Pricing End -->
 
                             <!-- Feets Single Sidebar List Start -->
                             <div class="fleets-single-sidebar-list">
                                 <ul>
-                                    <li><img src="images/icon-fleets-single-sidebar-list-1.svg" alt="">Passengers
-                                        <span>4</span></li>
-                                    <li><img src="images/icon-fleets-single-sidebar-list-2.svg" alt="">Luggage
+                                    <li><img src="{{asset('front/images/icon-fleets-single-sidebar-list-1.svg')}}" alt="">Places
+                                        <span>{{$car->nombre_places}}</span></li>
+                                    <li><img src="{{asset('front/images/icon-fleets-single-sidebar-list-2.svg')}}" alt="">Luggage
                                         <span>5</span></li>
-                                    <li><img src="images/icon-fleets-single-sidebar-list-3.svg" alt="">Doors
+                                    <li><img src="{{asset('front/images/icon-fleets-single-sidebar-list-3.svg')}}" alt="">Doors
                                         <span>4</span></li>
-                                    <li><img src="images/icon-fleets-single-sidebar-list-4.svg" alt="">Transmission
+                                    <li><img src="{{asset('front/images/icon-fleets-single-sidebar-list-4.svg')}}" alt="">Transmission
                                         <span>auto</span></li>
-                                    <li><img src="images/icon-fleets-single-sidebar-list-5.svg" alt="">Air Condition
+                                    <li><img src="{{asset('front/images/icon-fleets-single-sidebar-list-5.svg')}}" alt="">Air Condition
                                         <span>yes</span></li>
-                                    <li><img src="images/icon-fleets-single-sidebar-list-6.svg" alt="">Age (years)
+                                    <li><img src="{{asset('front/images/icon-fleets-single-sidebar-list-6.svg')}}" alt="">Age (years)
                                         <span>5</span></li>
                                 </ul>
                             </div>

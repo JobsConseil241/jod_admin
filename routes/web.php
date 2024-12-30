@@ -7,7 +7,7 @@ use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\LanguageController;
 use App\Http\Controllers\Back\RoleController;
 use App\Http\Controllers\Back\UserController;
-use App\Http\Controllers\Front\CarController;
+use App\Http\Controllers\Front\CarsController;
 use App\Http\Controllers\Front\CustomerController;
 use App\Http\Controllers\WelcomeController;
 use App\Models\User;
@@ -17,15 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 set_time_limit(300);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/home', [WelcomeController::class, 'index'])->name('home');
 
 Route::get('/about', [WelcomeController::class, 'about'])->name('about');
-Route::get('/cars', [CarController::class, 'index'])->name('cars');
-Route::get('/car/{car}', [CarController::class, 'show'])->name('car');
+Route::get('/cars', [CarsController::class, 'index'])->name('cars-list');
+Route::get('/cars/{name}', [CarsController::class, 'show'])->name('car-details');
 Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
 
 Route::get('/complete-registration', [RegisterController::class, 'completeRegistration'])->name('complete.registration');
@@ -73,9 +71,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('cars/ajax', [BackCarController::class, 'ajax_get_cars'])->name('backend.ajax.cars');
         Route::get('car/add', [BackCarController::class, 'add'])->name('backend.add.car');
         Route::get('car/view/{car}', [BackCarController::class, 'view'])->name('backend.view.car');
-        Route::get('car/edit/{car}', [BackCarController::class, 'edit'])->name('backend.view.car');
-        Route::get('car/picture/{car}', [BackCarController::class, 'media'])->name('backend.view.car');
-        Route::post('car/picture/{car}', [BackCarController::class, 'update_media'])->name('backend.view.car');
+        Route::get('car/edit/{car}', [BackCarController::class, 'edit'])->name('backend.edit.car');
+        Route::get('car/picture/{car}', [BackCarController::class, 'media'])->name('backend.view.picture.car');
+        Route::post('car/picture/{car}', [BackCarController::class, 'update_media'])->name('backend.update.picture.car');
         Route::post('car/store', [BackCarController::class, 'store'])->name('backend.store.car');
         Route::post('car/update/{car}', [BackCarController::class, 'update'])->name('backend.update.car');
 
@@ -101,7 +99,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('role', [RoleController::class, 'save'])->name('backend.store.role');
         Route::post('role/edit/{_id}', [RoleController::class, 'update'])->name('backend.update.role');
         Route::post('edit-role', [RoleController::class, 'edit'])->name('backend.edit.role');
-        Route::get('delete-role/{role}', [RoleController::class, 'delete'])->name('backend.delete.role');
+        Route::get('delete-role/{role}', [RoleController::class, 'delete'])->name('backend.deletes.role');
         Route::post('role-user', [RoleController::class, 'roleUser'])->name('backend.assign.role');
         Route::post('role-privilege', [RoleController::class, 'rolePrivilege'])->name('backend.assign.privilige');
 
@@ -126,4 +124,65 @@ Route::middleware(['auth'])->group(function () {
         Route::post('language', [LanguageController::class, 'store'])->name('backend.store.language');
         Route::post('language/{langage}', [LanguageController::class, 'update'])->name('backend.update.language');
     });
+});
+
+
+//Clear Cache facade value:
+Route::get('/key', function () {
+    $exitCode = Artisan::call('key:generate');
+    return '<h1>Key generated with success !</h1>';
+});
+
+//Clear Cache facade value:
+Route::get('/clear-cache', function () {
+    $exitCode = Artisan::call('cache:clear');
+    return '<h1>Cache facade value cleared</h1>';
+});
+
+//Reoptimized class loader:
+Route::get('/optimize', function () {
+    $exitCode = Artisan::call('optimize');
+    return '<h1>Reoptimized class loader</h1>';
+});
+
+//Route cache:
+Route::get('/route-cache', function () {
+    $exitCode = Artisan::call('route:cache');
+    return '<h1>Routes cached</h1>';
+});
+
+//Clear Route cache:
+Route::get('/route-clear', function () {
+    $exitCode = Artisan::call('route:clear');
+    return '<h1>Route cache cleared</h1>';
+});
+
+//Clear View cache:
+Route::get('/view-clear', function () {
+    $exitCode = Artisan::call('view:clear');
+    return '<h1>View cache cleared</h1>';
+});
+
+//Clear Config cache:
+Route::get('/config-cache', function () {
+    $exitCode = Artisan::call('config:cache');
+    return '<h1>Clear Config cache cleared</h1>';
+});
+
+//Storage link:
+Route::get('/link-storage', function () {
+    $exitCode = Artisan::call('storage:link');
+    return '<h1>Clear Config cache cleared</h1>';
+});
+
+//Clear Config cache:
+Route::get('/proc-open-error', function () {
+    $exitCode = Artisan::call('vendor:publish', ['--tag' => 'flare-config']);
+    return '<h1>Proc open error resolved -> Think to change parameters in config/flare.php !!!</h1>';
+});
+
+//Storage route link
+Route::get('/any-route', function () {
+    $exitCode = Artisan::call('storage:link');
+    echo $exitCode; // 0 exit code for no errors.
 });

@@ -28,12 +28,13 @@ class Vehicule extends Model
         'latitude',
         'category_id',
         'marque_id',
-        'note'
+        'note',
+        'thumb_url'
     ];
 
     public function categorie()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function marque()

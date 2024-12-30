@@ -129,3 +129,11 @@ Route::group([
 });
 
 
+//vehicules
+Route::post('/add_cars', [CarController::class, 'add_Vehicule'])->name('API-ADD-VEHICULES');
+Route::patch('/update_cars', [CarController::class, 'edit_Vehicule'])->name('API-UPDATE-VEHICULES');
+Route::delete('/delete_cars', [CarController::class, 'delete_Vehicule'])->name('API-DELETE-VEHICULES');
+
+// Photos du vehicules
+Route::post('/add_pictures_cars', [CarPictureController::class, 'add_Vehicule_Picture'])->name('API-ADD-PICTURES-VEHICULES');
+Route::delete('/delete_picture_cars', [CarPictureController::class, 'delete_single_Image'])->name('API-DELETE-PICTURES-VEHICULES');
