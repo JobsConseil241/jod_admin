@@ -62,11 +62,11 @@
                               file:py-2 file:px-4
                               dark:file:bg-black/20 dark:file:text-white/70"
                                                         name="{{ $field }}" accept="image/*" data-max-file-size="2MB"
-                                                        data-current-url="{{ !empty($car->vehicule_media[0]->{$field}) ? asset('uploads/' . $car->vehicule_media[0]->{$field}) : '' }}">
+                                                        data-current-url="{{ $car->vehicule_media[0]->{$field} ? asset($car->vehicule_media[0]->{$field}) : '' }}">
 
                                                     <!-- Conteneur de prévisualisation -->
                                                     <div id="preview-{{ $field }}" class="preview-container mt-3">
-                                                        @if (!empty($car->vehicule_media[0]->{$field}))
+                                                        @if ($car->vehicule_media[0]->{$field})
                                                             <img src="{{ asset($car->vehicule_media[0]->{$field}) }}"
                                                                 alt="{{ $label }}" class="max-h-32 rounded shadow">
                                                         @endif
