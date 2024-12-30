@@ -230,47 +230,80 @@ class CarController extends Controller
         return view('back.car.picture', compact('car'));
     }
 
-    public function update_media(Request $request, $car)
+    public function update_media(Request $request, $carId)
     {
         $access_token = Session::get('personnalToken');
 
+        // Récupération des informations du véhicule
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
-        ])->attach(
-            'photo_avant',
-            fopen($request->file('photo_avant')->getRealPath(), 'r'),
-            $request->file('photo_avant')->getClientOriginalName()
-        )->attach(
-            'photo_arriere',
-            fopen($request->file('photo_arriere')->getRealPath(), 'r'),
-            $request->file('photo_arriere')->getClientOriginalName()
-        )->attach(
-            'photo_gauche',
-            fopen($request->file('photo_gauche')->getRealPath(), 'r'),
-            $request->file('photo_gauche')->getClientOriginalName()
-        )->attach(
-            'photo_droite',
-            fopen($request->file('photo_droite')->getRealPath(), 'r'),
-            $request->file('photo_droite')->getClientOriginalName()
-        )->attach(
-            'photo_dashboard',
-            fopen($request->file('photo_dashboard')->getRealPath(), 'r'),
-            $request->file('photo_dashboard')->getClientOriginalName()
-        )->attach(
-            'photo_interieur',
-            fopen($request->file('photo_interieur')->getRealPath(), 'r'),
-            $request->file('photo_interieur')->getClientOriginalName()
-        )->post(env('SERVER_PC') . 'add_pictures_cars', [
-            'vehicule_id' => $car
+        ])->get(env('SERVER_PC') . 'get_cars', [
+            'id' => $carId,
         ]);
-
 
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            return redirect('backend/car/view/' . $car)->with('success', "les images du véhicule a été mis à jour avec succès.");
+            $car = $object->data->cars[0];
         } else {
+            return back()->with('error', $object->message ?? 'Le véhicule n\'existe pas.')->withInput();
+        }
 
+        // Champs d'images à traiter
+        $imageFields = [
+            'photo_avant',
+            'photo_arriere',
+            'photo_gauche',
+            'photo_droite',
+            'photo_dashboard',
+            'photo_interieur'
+        ];
+
+        $attachments = [];
+
+        foreach ($imageFields as $field) {
+            if ($request->hasFile($field)) {
+                // Supprimer l'image existante si nécessaire
+                if (!empty($car->{$field})) {
+                    $deleteResponse = Http::withHeaders([
+                        "Authorization" => "Bearer " . $access_token
+                    ])->delete(env('SERVER_PC') . 'delete_picture_cars', [
+                        'vehicule_id' => $car->id,
+                        'image_field' => $field
+                    ]);
+
+                    $deleteObject = json_decode($deleteResponse->body());
+                    if (!$deleteObject || !$deleteObject->success) {
+                        return back()->with('error', "Impossible de supprimer l'ancienne image pour $field.")->withInput();
+                    }
+                }
+
+                // Préparer la nouvelle image
+                $attachments[] = [
+                    'name' => $field,
+                    'contents' => fopen($request->file($field)->getRealPath(), 'r'),
+                    'filename' => $request->file($field)->getClientOriginalName()
+                ];
+            }
+        }
+
+        // Ajouter les nouvelles images
+        $multipartData = array_merge($attachments, [
+            [
+                'name' => 'vehicule_id',
+                'contents' => $car->id
+            ]
+        ]);
+
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->attachMultipart($multipartData)->post(env('SERVER_PC') . 'add_pictures_cars');
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            return redirect('backend/car/view/' . $car->id)->with('success', "Les images du véhicule ont été mises à jour avec succès.");
+        } else {
             return back()->with('error', $object->message ?? 'Une erreur s\'est produite.')->withInput();
         }
     }

@@ -109,11 +109,10 @@ class CarPictureController extends BaseController
         $vehiculeMedia->$imageField = null;
         $vehiculeMedia->save();
 
+        $data['carMedia'] = $vehiculeMedia;
 
+        Log::debug('Delete Vehicule Picture Endpoint - Response: ' . json_encode($data));
 
-        //
-        //        Log::debug('Delete Vehicule Picture Endpoint - Response: ' . json_encode($data));
-        //
         return $this->sendResponse($ptpt, "Delete Vehicule Picture successfully");
     }
 

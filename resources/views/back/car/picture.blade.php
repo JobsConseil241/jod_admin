@@ -39,154 +39,48 @@
                     @csrf
                     <div class="box-body p-0">
                         <div class="grid grid-cols-12 gap-x-6">
-                            <!-- Photo Avant -->
-                            <div class="col-span-6 xl:col-span-3">
-                                <div class="box ">
-                                    <div class="box-body">
-                                        <div class="space-y-3">
-                                            <div class="space-y-2">
-                                                <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Photo Avant</span>
-                                                </label>
-                                                <input type="file"
-                                                    class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
-                                      file:bg-transparent file:border-0
-                                      file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
-                                      file:py-2 file:px-4
-                                      dark:file:bg-black/20 dark:file:text-white/70"
-                                                    name="photo_avant" accept="image/*" data-max-file-size="2MB" required>
-                                                <!-- Conteneur de prévisualisation -->
-                                                <div id="preview-photo_avant" class="preview-container mt-3"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @foreach ([
+            'photo_avant' => 'Photo Avant',
+            'photo_arriere' => 'Photo Arrière',
+            'photo_gauche' => 'Photo Gauche',
+            'photo_droite' => 'Photo Droite',
+            'photo_dashboard' => 'Photo Tableau de Bord',
+            'photo_interieur' => 'Photo Intérieur',
+        ] as $field => $label)
+                                <div class="col-span-6 xl:col-span-3">
+                                    <div class="box ">
+                                        <div class="box-body">
+                                            <div class="space-y-3">
+                                                <div class="space-y-2">
+                                                    <label class="flex justify-between ti-form-label">
+                                                        <span class="my-auto">{{ $label }}</span>
+                                                    </label>
+                                                    <input type="file"
+                                                        class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
+                              file:bg-transparent file:border-0
+                              file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
+                              file:py-2 file:px-4
+                              dark:file:bg-black/20 dark:file:text-white/70"
+                                                        name="{{ $field }}" accept="image/*" data-max-file-size="2MB"
+                                                        data-current-url="{{ !empty($car->vehicule_media[0]->{$field}) ? asset('uploads/' . $car->vehicule_media[0]->{$field}) : '' }}">
 
-                            <!-- Photo Arrière -->
-                            <div class="col-span-6 xl:col-span-3">
-                                <div class="box ">
-                                    <div class="box-body">
-                                        <div class="space-y-3">
-                                            <div class="space-y-2">
-                                                <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Photo Arrière</span>
-                                                </label>
-                                                <input type="file"
-                                                    class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
-                                      file:bg-transparent file:border-0
-                                      file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
-                                      file:py-2 file:px-4
-                                      dark:file:bg-black/20 dark:file:text-white/70"
-                                                    name="photo_arriere" accept="image/*" data-max-file-size="2MB" required>
-                                                <!-- Conteneur de prévisualisation -->
-                                                <div id="preview-photo_arriere" class="preview-container mt-3"></div>
+                                                    <!-- Conteneur de prévisualisation -->
+                                                    <div id="preview-{{ $field }}" class="preview-container mt-3">
+                                                        @if (!empty($car->vehicule_media[0]->{$field}))
+                                                            <img src="{{ asset('uploads/' . $car->vehicule_media[0]->{$field}) }}"
+                                                                alt="{{ $label }}" class="max-h-32 rounded shadow">
+                                                        @endif
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- Photo Gauche -->
-                            <div class="col-span-6 xl:col-span-3">
-                                <div class="box ">
-                                    <div class="box-body">
-                                        <div class="space-y-3">
-                                            <div class="space-y-2">
-                                                <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Photo Gauche</span>
-                                                </label>
-                                                <input type="file"
-                                                    class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
-                                      file:bg-transparent file:border-0
-                                      file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
-                                      file:py-2 file:px-4
-                                      dark:file:bg-black/20 dark:file:text-white/70"
-                                                    name="photo_gauche" accept="image/*" data-max-file-size="2MB" required>
-                                                <!-- Conteneur de prévisualisation -->
-                                                <div id="preview-photo_gauche" class="preview-container mt-3"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Photo Droite -->
-                            <div class="col-span-6 xl:col-span-3">
-                                <div class="box ">
-                                    <div class="box-body">
-                                        <div class="space-y-3">
-                                            <div class="space-y-2">
-                                                <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Photo Droite</span>
-                                                </label>
-                                                <input type="file"
-                                                    class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
-                                      file:bg-transparent file:border-0
-                                      file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
-                                      file:py-2 file:px-4
-                                      dark:file:bg-black/20 dark:file:text-white/70"
-                                                    name="photo_droite" accept="image/*" data-max-file-size="2MB" required>
-                                                <!-- Conteneur de prévisualisation -->
-                                                <div id="preview-photo_droite" class="preview-container mt-3"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Photo Tableau de Bord -->
-                            <div class="col-span-6 xl:col-span-3">
-                                <div class="box ">
-                                    <div class="box-body">
-                                        <div class="space-y-3">
-                                            <div class="space-y-2">
-                                                <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Photo Tableau de Bord</span>
-                                                </label>
-                                                <input type="file"
-                                                    class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
-                                      file:bg-transparent file:border-0
-                                      file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
-                                      file:py-2 file:px-4
-                                      dark:file:bg-black/20 dark:file:text-white/70"
-                                                    name="photo_dashboard" accept="image/*" data-max-file-size="2MB">
-                                                <!-- Conteneur de prévisualisation -->
-                                                <div id="preview-photo_dashboard" class="preview-container mt-3"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Photo Intérieur -->
-                            <div class="col-span-6 xl:col-span-3">
-                                <div class="box ">
-                                    <div class="box-body">
-                                        <div class="space-y-3">
-                                            <div class="space-y-2">
-                                                <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Photo Intérieur</span>
-                                                </label>
-                                                <input type="file"
-                                                    class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
-                                      file:bg-transparent file:border-0
-                                      file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
-                                      file:py-2 file:px-4
-                                      dark:file:bg-black/20 dark:file:text-white/70"
-                                                    name="photo_interieur" accept="image/*" data-max-file-size="2MB">
-                                                <!-- Conteneur de prévisualisation -->
-                                                <div id="preview-photo_interieur" class="preview-container mt-3"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="box-footer text-end border-t-0 px-0">
-                        <button type="submit" class="ti-btn ti-btn-primary"><i
-                                class="ri-add-line"></i>Enregistrer</button>
+                        <button type="submit" class="ti-btn ti-btn-primary"><i class="ri-add-line"></i>Enregistrer</button>
                         <button type="reset" class="ti-btn ti-btn-danger"><i
                                 class="ri-delete-bin-line"></i>Annuler</button>
                     </div>
