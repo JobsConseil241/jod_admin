@@ -200,10 +200,11 @@ class CarController extends Controller
 
         $object = json_decode($response->body());
 
+        dd($object);
+
         if ($object && $object->success == true) {
             return redirect('backend/car/view/' . $car)->with('success', "le véhicule a été mis à jour avec succès.");
         } else {
-
             return back()->with('error', $object->message ?? 'Une erreur s\'est produite.')->withInput();
         }
     }
