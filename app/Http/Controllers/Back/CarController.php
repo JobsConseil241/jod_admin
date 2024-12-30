@@ -259,11 +259,14 @@ class CarController extends Controller
             'photo_interieur'
         ];
 
-        $attachments = [];
+        // Supprimer les anciennes images et attacher les nouvelles
+        $requestWithAttachments = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ]);
 
         foreach ($imageFields as $field) {
             if ($request->hasFile($field)) {
-                // Supprimer l'image existante si nécessaire
+                // Supprimer l'ancienne image si elle existe
                 if (!empty($car->{$field})) {
                     $deleteResponse = Http::withHeaders([
                         "Authorization" => "Bearer " . $access_token
@@ -278,26 +281,23 @@ class CarController extends Controller
                     }
                 }
 
-                // Préparer la nouvelle image
-                $attachments[] = [
-                    'name' => $field,
-                    'contents' => fopen($request->file($field)->getRealPath(), 'r'),
-                    'filename' => $request->file($field)->getClientOriginalName()
-                ];
+                // Attacher la nouvelle image
+                $requestWithAttachments->attach(
+                    $field,
+                    fopen($request->file($field)->getRealPath(), 'r'),
+                    $request->file($field)->getClientOriginalName()
+                );
             }
         }
 
-        // Ajouter les nouvelles images
-        $multipartData = array_merge($attachments, [
-            [
-                'name' => 'vehicule_id',
-                'contents' => $car->id
-            ]
-        ]);
+        // Ajouter l'identifiant du véhicule
+        $requestWithAttachments->attach(
+            'vehicule_id',
+            $car->id
+        );
 
-        $response = Http::withHeaders([
-            "Authorization" => "Bearer " . $access_token
-        ])->attachMultipart($multipartData)->post(env('SERVER_PC') . 'add_pictures_cars');
+        // Envoyer la requête
+        $response = $requestWithAttachments->post(env('SERVER_PC') . 'add_pictures_cars');
 
         $object = json_decode($response->body());
 
