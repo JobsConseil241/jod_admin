@@ -41,12 +41,12 @@ class CarPictureController extends BaseController
 
             // Préparer les données à insérer ou mettre à jour
             $data = [
-                'photo_avant' => $request->file('photo_avant') ? $request->file('photo_avant')->store('photos/vehicules', 'public') : null,
-                'photo_arriere' => $request->file('photo_arriere') ? $request->file('photo_arriere')->store('photos/vehicules', 'public') : null,
-                'photo_gauche' => $request->file('photo_gauche') ? $request->file('photo_gauche')->store('photos/vehicules', 'public') : null,
-                'photo_droite' => $request->file('photo_droite') ? $request->file('photo_droite')->store('photos/vehicules', 'public') : null,
-                'photo_dashboard' => $request->file('photo_dashboard') ? $request->file('photo_dashboard')->store('photos/vehicules', 'public') : null,
-                'photo_interieur' => $request->file('photo_interieur') ? $request->file('photo_interieur')->store('photos/vehicules', 'public') : null,
+                'photo_avant' => $request->file('photo_avant') ? $this->uploadFile($request->file('photo_avant'), 'uploads/photos/vehicules') : null,
+                'photo_arriere' => $request->file('photo_arriere') ? $this->uploadFile($request->file('photo_arriere'), 'uploads/photos/vehicules') : null,
+                'photo_gauche' => $request->file('photo_gauche') ? $this->uploadFile($request->file('photo_gauche'), 'uploads/photos/vehicules') : null,
+                'photo_droite' => $request->file('photo_droite') ? $this->uploadFile($request->file('photo_droite'), 'uploads/photos/vehicules') : null,
+                'photo_dashboard' => $request->file('photo_dashboard') ? $this->uploadFile($request->file('photo_dashboard'), 'uploads/photos/vehicules') : null,
+                'photo_interieur' => $request->file('photo_interieur') ? $this->uploadFile($request->file('photo_interieur'), 'uploads/photos/vehicules') : null,
             ];
 
             // Filtrer pour ne pas écraser les champs existants si les fichiers ne sont pas fournis
@@ -115,5 +115,25 @@ class CarPictureController extends BaseController
         //        Log::debug('Delete Vehicule Picture Endpoint - Response: ' . json_encode($data));
         //
         return $this->sendResponse($ptpt, "Delete Vehicule Picture successfully");
+    }
+
+    private function uploadFile($file, $destination)
+    {
+        // Chemin complet du répertoire
+        $destinationPath = public_path($destination);
+
+        // S'assurer que le répertoire existe
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 0755, true); // Crée le répertoire s'il n'existe pas
+        }
+
+        // Générer un nom unique pour le fichier
+        $filename = uniqid() . '_' . $file->getClientOriginalName();
+
+        // Déplacer le fichier vers le dossier public
+        $file->move($destinationPath, $filename);
+
+        // Retourner le chemin relatif
+        return $destination . '/' . $filename;
     }
 }
