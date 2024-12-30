@@ -54,7 +54,7 @@
                                       file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
                                       file:py-2 file:px-4
                                       dark:file:bg-black/20 dark:file:text-white/70"
-                                                    name="photo_avant" accept="image/*" data-max-file-size="2MB">
+                                                    name="photo_avant" accept="image/*" data-max-file-size="2MB" required>
                                                 <!-- Conteneur de prévisualisation -->
                                                 <div id="preview-photo_avant" class="preview-container mt-3"></div>
                                             </div>
@@ -78,7 +78,7 @@
                                       file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
                                       file:py-2 file:px-4
                                       dark:file:bg-black/20 dark:file:text-white/70"
-                                                    name="photo_arriere" accept="image/*" data-max-file-size="2MB">
+                                                    name="photo_arriere" accept="image/*" data-max-file-size="2MB" required>
                                                 <!-- Conteneur de prévisualisation -->
                                                 <div id="preview-photo_arriere" class="preview-container mt-3"></div>
                                             </div>
@@ -102,7 +102,7 @@
                                       file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
                                       file:py-2 file:px-4
                                       dark:file:bg-black/20 dark:file:text-white/70"
-                                                    name="photo_gauche" accept="image/*" data-max-file-size="2MB">
+                                                    name="photo_gauche" accept="image/*" data-max-file-size="2MB" required>
                                                 <!-- Conteneur de prévisualisation -->
                                                 <div id="preview-photo_gauche" class="preview-container mt-3"></div>
                                             </div>
@@ -126,7 +126,7 @@
                                       file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
                                       file:py-2 file:px-4
                                       dark:file:bg-black/20 dark:file:text-white/70"
-                                                    name="photo_droite" accept="image/*" data-max-file-size="2MB">
+                                                    name="photo_droite" accept="image/*" data-max-file-size="2MB" required>
                                                 <!-- Conteneur de prévisualisation -->
                                                 <div id="preview-photo_droite" class="preview-container mt-3"></div>
                                             </div>

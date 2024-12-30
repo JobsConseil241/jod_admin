@@ -59,7 +59,7 @@ class CarPictureController extends BaseController
             );
 
 
-            $data['car'] = $vehiculeMedia;
+            $data['carMedia'] = $vehiculeMedia;
 
             Log::debug('Add Vehicule Endpoint - Response: ' . json_encode($data));
 

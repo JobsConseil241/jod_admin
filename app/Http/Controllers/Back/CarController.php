@@ -236,30 +236,39 @@ class CarController extends Controller
 
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
-        ])->post(env('SERVER_PC') . 'add_cars', [
-            'name' => $request->name,
-            'modele' => $request->modele,
-            'couleur' => $request->couleur,
-            'annee' => $request->annee,
-            'immatriculation' => $request->immatriculation,
-            'type_carburant' => $request->type_carburant,
-            'prix_location' => $request->prix_location,
-            'kilometrage' => $request->kilometrage,
-            'nombre_places' => $request->nombre_places,
-            'nombre_portes' => $request->nombre_portes,
-            'transmission' => $request->transmission,
-            'assurance_nom' => $request->assurance_nom,
-            'assurance_date_expi' => $request->assurance_date_expi,
-            'category_id' => $request->category_id,
-            'marque_id' => $request->marque_id,
-            'note' => $request->note,
-            'id' => $car
+        ])->attach(
+            'photo_avant',
+            fopen($request->file('photo_avant')->getRealPath(), 'r'),
+            $request->file('photo_avant')->getClientOriginalName()
+        )->attach(
+            'photo_arriere',
+            fopen($request->file('photo_arriere')->getRealPath(), 'r'),
+            $request->file('photo_arriere')->getClientOriginalName()
+        )->attach(
+            'photo_gauche',
+            fopen($request->file('photo_gauche')->getRealPath(), 'r'),
+            $request->file('photo_gauche')->getClientOriginalName()
+        )->attach(
+            'photo_droite',
+            fopen($request->file('photo_droite')->getRealPath(), 'r'),
+            $request->file('photo_droite')->getClientOriginalName()
+        )->attach(
+            'photo_dashboard',
+            fopen($request->file('photo_dashboard')->getRealPath(), 'r'),
+            $request->file('photo_dashboard')->getClientOriginalName()
+        )->attach(
+            'photo_interieur',
+            fopen($request->file('photo_interieur')->getRealPath(), 'r'),
+            $request->file('photo_interieur')->getClientOriginalName()
+        )->post(env('SERVER_PC') . 'add_pictures_cars', [
+            'vehicule_id' => $car
         ]);
+
 
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            return redirect('backend/car/view/' . $car)->with('success', "le véhicule a été mis à jour avec succès.");
+            return redirect('backend/car/view/' . $car)->with('success', "les images du véhicule a été mis à jour avec succès.");
         } else {
 
             return back()->with('error', $object->message ?? 'Une erreur s\'est produite.')->withInput();
