@@ -6,13 +6,16 @@ use App\Http\Controllers\Api\V1\BaseController;
 use App\Models\Location;
 use App\Models\LocationPanne;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
-class BookingController extends BaseController {
+class BookingController extends BaseController
+{
 
-    public function registerBooking(Request $request) {
+    public function registerBooking(Request $request)
+    {
         try {
             Log::info('Add the reservation of a vehicule  Endpoint Entered.');
 
@@ -70,7 +73,8 @@ class BookingController extends BaseController {
         }
     }
 
-    public function updateBooking(Request $request) {
+    public function updateBooking(Request $request)
+    {
         try {
             Log::info('Edit Booking vehicules  Endpoint Entered.');
 
@@ -114,7 +118,8 @@ class BookingController extends BaseController {
         }
     }
 
-    public function cancelBooking(Request $request) {
+    public function cancelBooking(Request $request)
+    {
         try {
             Log::info('Cancel Booking vehicules  Endpoint Entered.');
 
@@ -151,7 +156,8 @@ class BookingController extends BaseController {
         }
     }
 
-    public function validateBooking(Request $request) {
+    public function validateBooking(Request $request)
+    {
         try {
             Log::info('Validate Booking vehicules  Endpoint Entered.');
 
@@ -187,7 +193,8 @@ class BookingController extends BaseController {
             Log::info('Validate Booking Endpoint Exited.');
         }
     }
-    public function rejectBooking(Request $request) {
+    public function rejectBooking(Request $request)
+    {
         try {
             Log::info('Reject Booking vehicules  Endpoint Entered.');
 
@@ -225,7 +232,8 @@ class BookingController extends BaseController {
     }
 
 
-    public function assign_pannes_locations(Request $request) {
+    public function assign_pannes_locations(Request $request)
+    {
         try {
             Log::info('Assign Pannes to Locations Endpoint Entered.');
 
@@ -263,7 +271,8 @@ class BookingController extends BaseController {
         }
     }
 
-    public function update_pannes_locations(Request $request) {
+    public function update_pannes_locations(Request $request)
+    {
         try {
             Log::info('Update Pannes to Locations Endpoint Entered.');
 
@@ -305,7 +314,8 @@ class BookingController extends BaseController {
         }
     }
 
-    public function delete_pannes_locations(Request $request) {
+    public function delete_pannes_locations(Request $request)
+    {
         try {
             Log::info('Delete Pannes to Locations Endpoint Entered.');
 
@@ -341,5 +351,4 @@ class BookingController extends BaseController {
             Log::info('Delete Panne to Location Endpoint Exited.');
         }
     }
-
 }

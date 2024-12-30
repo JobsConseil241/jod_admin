@@ -8,4 +8,9 @@ use Illuminate\Http\Request;
 class BookingController extends Controller
 {
     //
+    public function index() {}
+
+    public function view($booking) {}
+
+    public function validate($booking) {}
 }

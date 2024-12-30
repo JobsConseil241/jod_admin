@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\EtatVehicule;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -11,7 +12,8 @@ use Illuminate\Support\Facades\Validator;
 class EtatVehiculeController extends BaseController
 {
 
-    public function add_etat_vehicule(Request $request) {
+    public function add_etat_vehicule(Request $request)
+    {
         try {
             Log::info('Add Etat vehicules  Endpoint Entered.');
 
@@ -92,7 +94,8 @@ class EtatVehiculeController extends BaseController
     }
 
 
-    public function edit_etat_vehicule(Request $request){
+    public function edit_etat_vehicule(Request $request)
+    {
         try {
             Log::info('Edit Etat vehicules  Endpoint Entered.');
 

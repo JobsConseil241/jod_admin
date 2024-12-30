@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Back\CarController as BackCarController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\LanguageController;
+use App\Http\Controllers\Back\PanneController;
 use App\Http\Controllers\Back\RoleController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\CarController;
@@ -76,8 +77,21 @@ Route::middleware(['auth'])->group(function () {
         Route::get('car/edit/{car}', [BackCarController::class, 'edit'])->name('backend.edit.car');
         Route::post('car/store', [BackCarController::class, 'store'])->name('backend.store.car');
         Route::post('car/update/{car}', [BackCarController::class, 'update'])->name('backend.update.car');
+
         Route::get('car/picture/{car}', [BackCarController::class, 'media'])->name('backend.picture.car');
         Route::post('car/picture/{car}', [BackCarController::class, 'update_media'])->name('backend.picture.update.car');
+
+        Route::get('car/etat/{car}', [BackCarController::class, 'etat'])->name('backend.etat.car');
+        Route::post('car/etat/{car}', [BackCarController::class, 'update_etat'])->name('backend.etat.update.car');
+
+        //Panne
+        Route::get('pannes', [PanneController::class, 'index'])->name('backend.list.pannes');
+        Route::get('pannes/ajax', [PanneController::class, 'ajax_get_pannes'])->name('backend.ajax.pannes');
+        Route::get('panne/add', [PanneController::class, 'add'])->name('backend.add.panne');
+        Route::get('panne/view/{car}', [PanneController::class, 'view'])->name('backend.view.panne');
+        Route::get('panne/edit/{car}', [PanneController::class, 'edit'])->name('backend.edit.panne');
+        Route::post('panne/store', [PanneController::class, 'store'])->name('backend.store.panne');
+        Route::post('panne/update/{car}', [PanneController::class, 'update'])->name('backend.update.panne');
 
         //categories
         Route::get('categories', [BackCarController::class, 'categories'])->name('backend.list.categories');

@@ -275,6 +275,74 @@ class CarController extends Controller
         }
     }
 
+
+    public function etat($car)
+    {
+        $access_token = Session::get('personnalToken');
+
+        //vehicule
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_cars', [
+            'id' => $car,
+        ]);
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            $car = $object->data->cars[0];
+        } else {
+            $car = [];
+        }
+
+        return view('back.car.picture', compact('car'));
+    }
+
+    public function update_etat(Request $request, $car)
+    {
+        $access_token = Session::get('personnalToken');
+
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->attach(
+            'photo_avant',
+            fopen($request->file('photo_avant')->getRealPath(), 'r'),
+            $request->file('photo_avant')->getClientOriginalName()
+        )->attach(
+            'photo_arriere',
+            fopen($request->file('photo_arriere')->getRealPath(), 'r'),
+            $request->file('photo_arriere')->getClientOriginalName()
+        )->attach(
+            'photo_gauche',
+            fopen($request->file('photo_gauche')->getRealPath(), 'r'),
+            $request->file('photo_gauche')->getClientOriginalName()
+        )->attach(
+            'photo_droite',
+            fopen($request->file('photo_droite')->getRealPath(), 'r'),
+            $request->file('photo_droite')->getClientOriginalName()
+        )->attach(
+            'photo_dashboard',
+            fopen($request->file('photo_dashboard')->getRealPath(), 'r'),
+            $request->file('photo_dashboard')->getClientOriginalName()
+        )->attach(
+            'photo_interieur',
+            fopen($request->file('photo_interieur')->getRealPath(), 'r'),
+            $request->file('photo_interieur')->getClientOriginalName()
+        )->post(env('SERVER_PC') . 'add_pictures_cars', [
+            'vehicule_id' => $car
+        ]);
+
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            return redirect('backend/car/view/' . $car)->with('success', "les images du véhicule a été mis à jour avec succès.");
+        } else {
+
+            return back()->with('error', $object->message ?? 'Une erreur s\'est produite.')->withInput();
+        }
+    }
+
     public function categories()
     {
         $access_token = Session::get('personnalToken');

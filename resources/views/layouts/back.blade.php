@@ -160,6 +160,15 @@
                         </li>
                         <!-- End::slide -->
 
+                        <!-- Start::slide -->
+                        <li class="slide">
+                            <a href="{{ route('backend.list.pannes') }}" class="side-menu__item">
+                                <i class="ti ti-alert-triangle side-menu__icon"></i>
+                                <span class="side-menu__label">Pannes</span>
+                            </a>
+                        </li>
+                        <!-- End::slide -->
+
 
                         <!-- Start::slide__category -->
                         <li class="slide__category"><span class="category-name">Gestion des Utilisateurs</span></li>
