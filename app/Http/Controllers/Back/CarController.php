@@ -230,7 +230,7 @@ class CarController extends Controller
         return view('back.car.picture', compact('car'));
     }
 
-    public function update_picutre(Request $request, $car)
+    public function update_media(Request $request, $car)
     {
         $access_token = Session::get('personnalToken');
 
