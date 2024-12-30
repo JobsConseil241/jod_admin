@@ -74,10 +74,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('car/add', [BackCarController::class, 'add'])->name('backend.add.car');
         Route::get('car/view/{car}', [BackCarController::class, 'view'])->name('backend.view.car');
         Route::get('car/edit/{car}', [BackCarController::class, 'edit'])->name('backend.view.car');
-        Route::get('car/picture/{car}', [BackCarController::class, 'media'])->name('backend.view.car');
-        Route::post('car/picture/{car}', [BackCarController::class, 'update_media'])->name('backend.view.car');
         Route::post('car/store', [BackCarController::class, 'store'])->name('backend.store.car');
         Route::post('car/update/{car}', [BackCarController::class, 'update'])->name('backend.update.car');
+        Route::get('car/picture/{car}', [BackCarController::class, 'media'])->name('backend.view.car');
+        Route::post('car/picture/{car}', [BackCarController::class, 'update_media'])->name('backend.view.car');
 
         //categories
         Route::get('categories', [BackCarController::class, 'categories'])->name('backend.list.categories');

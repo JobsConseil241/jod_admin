@@ -2,32 +2,6 @@
 
 @push('styles')
     <!--datatable css-->
-    <!-- Quil Css -->
-    <link id="style" href="{{ asset('back/libs/quill/quill.snow.css') }}" rel="stylesheet">
-
-    <!-- Choices Css -->
-    <link rel="stylesheet" href="{{ asset('back/libs/choices.js/public/assets/styles/choices.min.css') }}">
-
-    <!-- Filepond CSS -->
-    <link rel="stylesheet" href="{{ asset('back/libs/filepond/filepond.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('back/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('back/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.css') }}">
-
-    <!-- Flatpickr Css -->
-    <link rel="stylesheet" href="{{ asset('back/libs/flatpickr/flatpickr.min.css') }}">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-    <style>
-        .iti {
-            width: 100%;
-        }
-
-        .col-start-2 {
-            grid-column-start: 3 !important;
-        }
-    </style>
 @endpush
 
 @inject('Lang', 'App\Services\LanguageService')
@@ -61,89 +35,148 @@
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
             <div class="box !bg-transparent border-0 shadow-none">
-                <form method="post" action="{{ route('backend.store.car') }}">
+                <form method="post" action="{{ url('car/picture/' . $car) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="box-body p-0">
                         <div class="grid grid-cols-12 gap-x-6">
+                            <!-- Photo Avant -->
                             <div class="col-span-6 xl:col-span-3">
                                 <div class="box ">
                                     <div class="box-body">
                                         <div class="space-y-3">
                                             <div class="space-y-2">
                                                 <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Photo Avant</span></label>
-                                                <input type="file" class="filepond" name="photo_avant"
-                                                    data-max-file-size="2MB">
+                                                    <span class="my-auto">Photo Avant</span>
+                                                </label>
+                                                <input type="file"
+                                                    class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
+                                      file:bg-transparent file:border-0
+                                      file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
+                                      file:py-2 file:px-4
+                                      dark:file:bg-black/20 dark:file:text-white/70"
+                                                    name="photo_avant" accept="image/*" data-max-file-size="2MB">
+                                                <!-- Conteneur de prévisualisation -->
+                                                <div id="preview-photo_avant" class="preview-container mt-3"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Photo Arrière -->
                             <div class="col-span-6 xl:col-span-3">
                                 <div class="box ">
                                     <div class="box-body">
                                         <div class="space-y-3">
                                             <div class="space-y-2">
                                                 <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Photo Arrière</span></label>
-                                                <input type="file" class="filepond" name="photo_arriere"
-                                                    data-max-file-size="2MB">
+                                                    <span class="my-auto">Photo Arrière</span>
+                                                </label>
+                                                <input type="file"
+                                                    class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
+                                      file:bg-transparent file:border-0
+                                      file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
+                                      file:py-2 file:px-4
+                                      dark:file:bg-black/20 dark:file:text-white/70"
+                                                    name="photo_arriere" accept="image/*" data-max-file-size="2MB">
+                                                <!-- Conteneur de prévisualisation -->
+                                                <div id="preview-photo_arriere" class="preview-container mt-3"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Photo Gauche -->
                             <div class="col-span-6 xl:col-span-3">
                                 <div class="box ">
                                     <div class="box-body">
                                         <div class="space-y-3">
                                             <div class="space-y-2">
                                                 <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Photo Gauche</span></label>
-                                                <input type="file" class="filepond" name="photo_gauche"
-                                                    data-max-file-size="2MB">
+                                                    <span class="my-auto">Photo Gauche</span>
+                                                </label>
+                                                <input type="file"
+                                                    class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
+                                      file:bg-transparent file:border-0
+                                      file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
+                                      file:py-2 file:px-4
+                                      dark:file:bg-black/20 dark:file:text-white/70"
+                                                    name="photo_gauche" accept="image/*" data-max-file-size="2MB">
+                                                <!-- Conteneur de prévisualisation -->
+                                                <div id="preview-photo_gauche" class="preview-container mt-3"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Photo Droite -->
                             <div class="col-span-6 xl:col-span-3">
                                 <div class="box ">
                                     <div class="box-body">
                                         <div class="space-y-3">
                                             <div class="space-y-2">
                                                 <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Photo Droite</span></label>
-                                                <input type="file" class="filepond" name="photo_droite"
-                                                    data-max-file-size="2MB">
+                                                    <span class="my-auto">Photo Droite</span>
+                                                </label>
+                                                <input type="file"
+                                                    class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
+                                      file:bg-transparent file:border-0
+                                      file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
+                                      file:py-2 file:px-4
+                                      dark:file:bg-black/20 dark:file:text-white/70"
+                                                    name="photo_droite" accept="image/*" data-max-file-size="2MB">
+                                                <!-- Conteneur de prévisualisation -->
+                                                <div id="preview-photo_droite" class="preview-container mt-3"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Photo Tableau de Bord -->
                             <div class="col-span-6 xl:col-span-3">
                                 <div class="box ">
                                     <div class="box-body">
                                         <div class="space-y-3">
                                             <div class="space-y-2">
                                                 <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Photo Tableau de bord</span></label>
-                                                <input type="file" class="filepond" name="photo_dashboard"
-                                                    data-max-file-size="2MB">
+                                                    <span class="my-auto">Photo Tableau de Bord</span>
+                                                </label>
+                                                <input type="file"
+                                                    class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
+                                      file:bg-transparent file:border-0
+                                      file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
+                                      file:py-2 file:px-4
+                                      dark:file:bg-black/20 dark:file:text-white/70"
+                                                    name="photo_dashboard" accept="image/*" data-max-file-size="2MB">
+                                                <!-- Conteneur de prévisualisation -->
+                                                <div id="preview-photo_dashboard" class="preview-container mt-3"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Photo Intérieur -->
                             <div class="col-span-6 xl:col-span-3">
                                 <div class="box ">
                                     <div class="box-body">
                                         <div class="space-y-3">
                                             <div class="space-y-2">
                                                 <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Photo Intérieur</span></label>
-                                                <input type="file" class="filepond" name="photo_interieur"
-                                                    data-max-file-size="2MB">
+                                                    <span class="my-auto">Photo Intérieur</span>
+                                                </label>
+                                                <input type="file"
+                                                    class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
+                                      file:bg-transparent file:border-0
+                                      file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
+                                      file:py-2 file:px-4
+                                      dark:file:bg-black/20 dark:file:text-white/70"
+                                                    name="photo_interieur" accept="image/*" data-max-file-size="2MB">
+                                                <!-- Conteneur de prévisualisation -->
+                                                <div id="preview-photo_interieur" class="preview-container mt-3"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -165,136 +198,51 @@
 @endsection
 
 @push('scripts')
-    <!-- Quill Editor JS -->
-    <script src="{{ asset('back/libs/quill/quill.min.js') }}"></script>
-
     <!-- Choices JS -->
     <script src="{{ asset('back/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
-
-    <!-- Filepond JS -->
-    <script src="{{ asset('back/libs/filepond/filepond.min.js') }}"></script>
-    <script src="{{ asset('back/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}"></script>
-    <script
-        src="{{ asset('back/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js') }}">
-    </script>
-    <script src="{{ asset('back/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js') }}">
-    </script>
-    <script src="{{ asset('back/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js') }}"></script>
-    <script src="{{ asset('back/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.js') }}"></script>
-    <script src="{{ asset('back/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js') }}">
-    </script>
-    <script src="{{ asset('back/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js') }}">
-    </script>
-    <script src="{{ asset('back/libs/filepond-plugin-image-crop/filepond-plugin-image-crop.min.js') }}"></script>
-    <script src="{{ asset('back/libs/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js') }}"></script>
-    <script src="{{ asset('back/libs/filepond-plugin-image-transform/filepond-plugin-image-transform.min.js') }}"></script>
-
-    <!-- Flatpickr JS -->
-    <script src="{{ asset('back/libs/flatpickr/flatpickr.min.js') }}"></script>
-
-    <!-- ADD Product JS -->
-    <script src="{{ asset('back/js/addproduct.js') }}"></script>
 
     <script>
         "use strict";
 
-        $(document).ready(function() {
-            $("#data").DataTable({
-                language: {
-                    url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/French.json"
-                },
-                order: [
-                    [0, 'desc']
-                ],
-                searching: true
-            })
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion des prévisualisations
+            document.querySelectorAll('input[type="file"]').forEach(function(input) {
+                input.addEventListener('change', function(event) {
+                    const file = event.target.files[0]; // Récupérer le fichier sélectionné
+                    const previewContainer = document.querySelector(
+                        `#preview-${event.target.name}`); // Conteneur de prévisualisation
 
-        const phoneInputField = document.querySelector("#phone");
-        const phonecodeInputField = document.querySelector("#phone_code");
+                    // Réinitialiser le conteneur
+                    previewContainer.innerHTML = '';
 
-        function getIp(callback) {
-            fetch('https://ipinfo.io/json?token=4ccc52719ff8dc', {
-                    headers: {
-                        'Accept': 'application/json'
+                    // Validation de la taille du fichier
+                    if (file && file.size > 2 * 1024 * 1024) {
+                        alert('Le fichier ne doit pas dépasser 2 Mo.');
+                        input.value = ''; // Réinitialiser le champ fichier
+                        return;
                     }
-                })
-                .then((resp) => resp.json())
-                .catch(() => {
-                    return {
-                        country: 'ga',
-                    };
-                })
-                .then((resp) => callback(resp.country));
-        }
-        const phoneInput = window.intlTelInput(phoneInputField, {
-            preferredCountries: ["ga", "cm", "ci", "fr"],
-            initialCountry: "auto",
-            geoIpLookup: getIp,
-            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-        });
 
-        phoneInputField.addEventListener("input", function() {
-            var numeroTelephone = phoneInput.getNumber();
-            var nationalNumber = intlTelInputUtils.formatNumber(numeroTelephone, phoneInput.getSelectedCountryData()
-                .dialCode, intlTelInputUtils.numberFormat.NATIONAL);
-            nationalNumber = nationalNumber.replace(/\s/g, '');
-            var codePays = phoneInput.getSelectedCountryData().dialCode;
-            var numeroComplet = codePays + "-" + nationalNumber;
-            console.log("Numéro de téléphone complet : " + numeroComplet);
-            phoneInputField.value = nationalNumber;
-            phonecodeInputField.value = codePays;
-        });
+                    // Validation du type de fichier
+                    if (file && !file.type.startsWith('image/')) {
+                        alert('Veuillez sélectionner un fichier image.');
+                        input.value = ''; // Réinitialiser le champ fichier
+                        return;
+                    }
 
-        $(document).on("click", ".edit_action", function() {
-            var id = $(this).data('id');
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                },
-                type: "POST",
-                url: "{{ route('backend.user.edit') }}",
-                dataType: 'json',
-                data: {
-                    "id": id,
-                    "action": "edit",
-                },
-                success: function(data) {
-                    //get data value params
-                    var body = data.body;
-                    //dynamic title
-                    $('#cardModalView .ti-modal-content').html(body); //url to delete item
-                    $('#cardModalView').removeClass('hidden').addClass('open');
-                }
-            });
-        });
-
-
-        $(document).on("click", ".2fa_action", function() {
-            var id = $(this).data('id');
-            $('#input_reset_2fa_user_id').val(id);
-        });
-
-        $(document).on("click", ".delete_action", function() {
-            var id = $(this).data('id');
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                },
-                type: "POST",
-                url: "{{ route('backend.user.edit') }}",
-                dataType: 'json',
-                data: {
-                    "id": id,
-                    "action": "delete",
-                },
-                success: function(data) {
-                    //get data value params
-                    var body = data.body;
-                    //dynamic title
-                    $('#cardModalView .ti-modal-content').html(body); //url to delete item
-                    $('#cardModalView').removeClass('hidden').addClass('open');
-                }
+                    // Prévisualisation de l'image
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const img = document.createElement('img');
+                            img.src = e.target.result;
+                            img.alt = 'Prévisualisation';
+                            img.style.maxWidth = '100%';
+                            img.style.maxHeight = '150px';
+                            previewContainer.appendChild(img);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
             });
         });
     </script>
