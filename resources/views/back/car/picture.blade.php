@@ -65,31 +65,85 @@
                     @csrf
                     <div class="box-body p-0">
                         <div class="grid grid-cols-12 gap-x-6">
-                            <div class="col-span-12 xl:col-span-6">
+                            <div class="col-span-6 xl:col-span-3">
                                 <div class="box ">
                                     <div class="box-body">
                                         <div class="space-y-3">
                                             <div class="space-y-2">
                                                 <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Product Images</span></label>
-                                                <input type="file" class="filepond multiple-filepond" name="filepond"
-                                                    multiple data-allow-reorder="true" data-max-file-size="3MB"
-                                                    data-max-files="5">
+                                                    <span class="my-auto">Photo Avant</span></label>
+                                                <input type="file" class="filepond" name="photo_avant"
+                                                    data-max-file-size="2MB">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-span-12 xl:col-span-6">
-                                <div class="box">
-                                    <div class="box-body space-y-3">
-                                        <div class="grid grid-cols-12 gap-4">
+                            <div class="col-span-6 xl:col-span-3">
+                                <div class="box ">
+                                    <div class="box-body">
+                                        <div class="space-y-3">
                                             <div class="space-y-2">
                                                 <label class="flex justify-between ti-form-label">
-                                                    <span class="my-auto">Product Images</span></label>
-                                                <input type="file" class="filepond multiple-filepond" name="filepond"
-                                                    multiple data-allow-reorder="true" data-max-file-size="3MB"
-                                                    data-max-files="5">
+                                                    <span class="my-auto">Photo Arrière</span></label>
+                                                <input type="file" class="filepond" name="photo_arriere"
+                                                    data-max-file-size="2MB">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-6 xl:col-span-3">
+                                <div class="box ">
+                                    <div class="box-body">
+                                        <div class="space-y-3">
+                                            <div class="space-y-2">
+                                                <label class="flex justify-between ti-form-label">
+                                                    <span class="my-auto">Photo Gauche</span></label>
+                                                <input type="file" class="filepond" name="photo_gauche"
+                                                    data-max-file-size="2MB">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-6 xl:col-span-3">
+                                <div class="box ">
+                                    <div class="box-body">
+                                        <div class="space-y-3">
+                                            <div class="space-y-2">
+                                                <label class="flex justify-between ti-form-label">
+                                                    <span class="my-auto">Photo Droite</span></label>
+                                                <input type="file" class="filepond" name="photo_droite"
+                                                    data-max-file-size="2MB">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-6 xl:col-span-3">
+                                <div class="box ">
+                                    <div class="box-body">
+                                        <div class="space-y-3">
+                                            <div class="space-y-2">
+                                                <label class="flex justify-between ti-form-label">
+                                                    <span class="my-auto">Photo Tableau de bord</span></label>
+                                                <input type="file" class="filepond" name="photo_dashboard"
+                                                    data-max-file-size="2MB">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-6 xl:col-span-3">
+                                <div class="box ">
+                                    <div class="box-body">
+                                        <div class="space-y-3">
+                                            <div class="space-y-2">
+                                                <label class="flex justify-between ti-form-label">
+                                                    <span class="my-auto">Photo Intérieur</span></label>
+                                                <input type="file" class="filepond" name="photo_interieur"
+                                                    data-max-file-size="2MB">
                                             </div>
                                         </div>
                                     </div>
@@ -98,7 +152,8 @@
                         </div>
                     </div>
                     <div class="box-footer text-end border-t-0 px-0">
-                        <button type="submit" class="ti-btn ti-btn-primary"><i class="ri-add-line"></i>Enregistrer</button>
+                        <button type="submit" class="ti-btn ti-btn-primary"><i
+                                class="ri-add-line"></i>Enregistrer</button>
                         <button type="reset" class="ti-btn ti-btn-danger"><i
                                 class="ri-delete-bin-line"></i>Annuler</button>
                     </div>

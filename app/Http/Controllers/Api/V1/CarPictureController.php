@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\BaseController;
 use App\Http\Controllers\Controller;
 use App\Models\Vehicule;
 use App\Models\VehiculeMedia;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -110,9 +111,9 @@ class CarPictureController extends BaseController
 
 
 
-//
-//        Log::debug('Delete Vehicule Picture Endpoint - Response: ' . json_encode($data));
-//
+        //
+        //        Log::debug('Delete Vehicule Picture Endpoint - Response: ' . json_encode($data));
+        //
         return $this->sendResponse($ptpt, "Delete Vehicule Picture successfully");
     }
 }
