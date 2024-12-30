@@ -60,27 +60,27 @@
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <img alt="photo_avant"
-                                        src="{{ asset('storage/' . $car->vehicule_medias->photo_avant) }}">
+                                        src="{{ asset('storage/' . $car->vehicule_medias[0]->photo_avant) }}">
                                 </div>
                                 <div class="swiper-slide">
                                     <img alt="photo_arriere"
-                                        src="{{ asset('storage/' . $car->vehicule_medias->photo_arriere) }}">
+                                        src="{{ asset('storage/' . $car->vehicule_medias[0]->photo_arriere) }}">
                                 </div>
                                 <div class="swiper-slide">
                                     <img alt="photo_gauche"
-                                        src="{{ asset('storage/' . $car->vehicule_medias->photo_gauche) }}">
+                                        src="{{ asset('storage/' . $car->vehicule_medias[0]->photo_gauche) }}">
                                 </div>
                                 <div class="swiper-slide">
                                     <img alt="photo_droite"
-                                        src="{{ asset('storage/' . $car->vehicule_medias->photo_droite) }}">
+                                        src="{{ asset('storage/' . $car->vehicule_medias[0]->photo_droite) }}">
                                 </div>
                                 <div class="swiper-slide">
                                     <img alt="photo_dashboard"
-                                        src="{{ asset('storage/' . $car->vehicule_medias->photo_dashboard) }}">
+                                        src="{{ asset('storage/' . $car->vehicule_medias[0]->photo_dashboard) }}">
                                 </div>
                                 <div class="swiper-slide">
                                     <img alt="photo_interieur"
-                                        src="{{ asset('storage/' . $car->vehicule_medias->photo_interieur) }}">
+                                        src="{{ asset('storage/' . $car->vehicule_medias[0]->photo_interieur) }}">
                                 </div>
                             </div>
                         </div>
@@ -90,25 +90,28 @@
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img alt="photo_avant" src="{{ asset('storage/' . $car->vehiculeMedias->photo_avant) }}">
+                                <img alt="photo_avant"
+                                    src="{{ asset('storage/' . $car->vehicule_medias[0]->photo_avant) }}">
                             </div>
                             <div class="swiper-slide">
                                 <img alt="photo_arriere"
-                                    src="{{ asset('storage/' . $car->vehiculeMedias->photo_arriere) }}">
+                                    src="{{ asset('storage/' . $car->vehicule_medias[0]->photo_arriere) }}">
                             </div>
                             <div class="swiper-slide">
-                                <img alt="photo_gauche" src="{{ asset('storage/' . $car->vehiculeMedias->photo_gauche) }}">
+                                <img alt="photo_gauche"
+                                    src="{{ asset('storage/' . $car->vehicule_medias[0]->photo_gauche) }}">
                             </div>
                             <div class="swiper-slide">
-                                <img alt="photo_droite" src="{{ asset('storage/' . $car->vehiculeMedias->photo_droite) }}">
+                                <img alt="photo_droite"
+                                    src="{{ asset('storage/' . $car->vehicule_medias[0]->photo_droite) }}">
                             </div>
                             <div class="swiper-slide">
                                 <img alt="photo_dashboard"
-                                    src="{{ asset('storage/' . $car->vehiculeMedias->photo_dashboard) }}">
+                                    src="{{ asset('storage/' . $car->vehicule_medias[0]->photo_dashboard) }}">
                             </div>
                             <div class="swiper-slide">
                                 <img alt="photo_interieur"
-                                    src="{{ asset('storage/' . $car->vehiculeMedias->photo_interieur) }}">
+                                    src="{{ asset('storage/' . $car->vehicule_medias[0]->photo_interieur) }}">
                             </div>
                         </div>
                     </div>
