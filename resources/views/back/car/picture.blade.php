@@ -35,7 +35,7 @@
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
             <div class="box !bg-transparent border-0 shadow-none">
-                <form method="post" action="{{ url('car/picture/' . $car->id) }}" enctype="multipart/form-data">
+                <form method="post" action="{{ url('backend/car/picture/' . $car->id) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="box-body p-0">
                         <div class="grid grid-cols-12 gap-x-6">
