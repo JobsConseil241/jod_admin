@@ -197,7 +197,7 @@ class CarController extends Controller
             'note' => $request->note,
             'id' => $car
         ]);
-        dd($response);
+
         $object = json_decode($response->body());
 
 

@@ -83,7 +83,7 @@ Route::group([
 
     //vehicules
     Route::post('/add_cars', [CarController::class, 'add_Vehicule'])->name('API-ADD-VEHICULES');
-    Route::patch('/update_cars', [CarController::class, 'edit_Vehicule'])->name('API-UPDATE-VEHICULES');
+    Route::post('/update_cars', [CarController::class, 'edit_Vehicule'])->name('API-UPDATE-VEHICULES');
     Route::delete('/delete_cars', [CarController::class, 'delete_Vehicule'])->name('API-DELETE-VEHICULES');
 
     // Photos du vehicules
