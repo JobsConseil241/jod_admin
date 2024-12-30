@@ -14,7 +14,7 @@
     <title>JOD Trade & Co</title>
 
     <!-- Favicon Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/images/jod_ico.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('front/images/logo_two.png') }}">
     <!-- Google Fonts Css-->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -23,7 +23,8 @@
         rel="stylesheet">
 
     <!-- Bootstrap Css -->
-    <link href="{{ asset('front/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+{{--    <link href="{{ asset('front/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">--}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- SlickNav Css -->
     <link href="{{ asset('front/css/slicknav.min.css') }}" rel="stylesheet">
     <!-- Swiper Css -->

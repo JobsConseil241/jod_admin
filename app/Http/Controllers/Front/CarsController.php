@@ -17,7 +17,7 @@ class CarsController extends Controller
 
     public function show($name)
     {
-        $car = Vehicule::with(['categorie', 'marque', 'vehiculeMedias'])->where('name', $name)->first();
+        $car = Vehicule::with(['categorie', 'marque', 'vehiculeMedias', 'latestEtat'])->where('name', $name)->first();
         return view('front.car.item', compact('car'));
     }
 }
