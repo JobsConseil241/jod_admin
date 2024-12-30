@@ -178,7 +178,7 @@ class CarController extends Controller
 
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
-        ])->post(env('SERVER_PC') . 'add_cars', [
+        ])->post(env('SERVER_PC') . 'update_cars', [
             'name' => $request->name,
             'modele' => $request->modele,
             'couleur' => $request->couleur,

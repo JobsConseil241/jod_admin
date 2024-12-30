@@ -130,8 +130,6 @@ class CarController extends BaseController
             Log::debug('Edit Vehicules Endpoint - All Params: ' . json_encode($request->all()));
             $data = $request->all();
             $rules = [
-                'name' => ['sometimes', 'string'],
-                'description' => ['sometimes'],
                 'id' => ['required', 'integer']
             ];
 
