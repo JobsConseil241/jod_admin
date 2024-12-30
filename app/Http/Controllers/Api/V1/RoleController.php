@@ -359,7 +359,7 @@ class RoleController extends BaseController
                 'deleted' => 1,
                 'deleted_at' => now()
             ]);
-            $role =  Role::with('user_type', 'privileges')->find($request->role_id);
+            $role =  Role::with('userType', 'privileges')->find($request->role_id);
             $data['role'] = $role;
             Log::debug('Delete roles Endpoint - Response: ' . json_encode($data));
             return $this->sendResponse($data, "Role deleted successfully");

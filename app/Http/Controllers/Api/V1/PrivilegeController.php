@@ -263,7 +263,7 @@ class PrivilegeController extends BaseController
                 return $this->sendError($errors->first(), $errors);
             }
             RolePrivilege::where('role_id', $request->role_id)->where('privilege_id', $request->privilege_id)->delete();
-            $role =  Role::with('user_type', 'privileges')->find($request->role_id);
+            $role =  Role::with('userType', 'privileges')->find($request->role_id);
             $data['role'] = $role;
             Log::debug('Remove roles Endpoint - Response: ' . json_encode($data));
             return $this->sendResponse($data, "Role updated successfully");
