@@ -20,10 +20,17 @@ class Panne extends Model
 
     public function vehicules(){
         return $this->belongsToMany(Vehicule::class, 'vehicule_pannes', 'vehicule_id', 'panne_id')
-            ->withTimestamps()->withPivot('status', 'montant');
+            ->withTimestamps()->withPivot('status', 'montant')
+            ->withTrashed();
+    }
+
+    public function locations(){
+        return $this->belongsToMany(Location::class, 'location_pannes', 'location_id', 'panne_id')
+            ->withTimestamps()->withPivot('status', 'montant')
+            ->withTrashed();
     }
 
     public function categorie_pannes(){
-        return $this->belongsTo(CategoryPanne::class);
+        return $this->belongsTo(CategoryPanne::class, 'category_panne_id', 'id');
     }
 }

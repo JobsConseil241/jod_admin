@@ -43,6 +43,12 @@ class Location extends Model
         return $this->belongsTo(Vehicule::class,);
     }
 
+    public function pannes()
+    {
+        return $this->belongsToMany(Panne::class, 'location_pannes', 'location_id', 'panne_id')
+            ->withTimestamps()->withPivot('status', 'montant') ;
+    }
+
     public function etatAvantLocation() {
         return $this->belongsTo(EtatVehicule::class, 'etat_livraison_id');
     }

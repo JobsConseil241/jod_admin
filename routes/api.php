@@ -70,7 +70,6 @@ Route::group([
     Route::post('/delete_user', [UserController::class, 'delete_user'])->name('API-DELETE-USER');
 
     //categories vehicules
-
     Route::get('/get_category_cars', [CategorieController::class, 'get_categories'])->name('API-GET-CATEGORIES-VEHICULES');
     Route::post('/add_category_cars', [CategorieController::class, 'add_category'])->name('API-ADD-CATEGORIES-VEHICULES');
     Route::post('/update_category_cars', [CategorieController::class, 'edit_category'])->name('API-UPDATE-CATEGORIES-VEHICULES');
@@ -102,6 +101,9 @@ Route::group([
     Route::post('/validate_reservation_cars', [BookingController::class, 'validateBooking'])->name('API-VALIDATE-BOOKING-VEHICULES');
     Route::post('/reject_reservation_cars', [BookingController::class, 'rejectBooking'])->name('API-REJECT-BOOKING-VEHICULES');
     Route::post('/cancel_reservation_cars', [BookingController::class, 'cancelBooking'])->name('API-CANCEL-BOOKING-VEHICULES');
+    Route::post('/assign_pannes_location', [BookingController::class, 'assign_pannes_locations'])->name('API-ASSIGN-PANNES-LOCATIONS');
+    Route::post('/update_pannes_location', [BookingController::class, 'update_pannes_locations'])->name('API-UPDATE-PANNES-LOCATIONS');
+    Route::delete('/delete_pannes_location', [BookingController::class, 'delete_pannes_locations'])->name('API-DELETE-PANNES-LOCATIONS');
 
     // categories pannes
     Route::get('/get_category_pannes', [CategoriePanneController::class, 'get_categories_pannes'])->name('API-GET-CATEGORIES-PANNES');
@@ -115,11 +117,15 @@ Route::group([
     Route::post('/add_pannes', [PanneController::class, 'add_pannes'])->name('API-ADD-PANNES');
     Route::post('/update_pannes', [PanneController::class, 'edit_pannes'])->name('API-UPDATE-PANNES');
     Route::delete('/delete_pannes', [PanneController::class, 'delete_pannes'])->name('API-DELETE-PANNES');
+    Route::get('/get_all_vehicules_pannes', [PanneController::class, 'get_all_vehicules_pannes'])->name('API-GET-ALL-VEHICULES-PANNES');
     Route::post('/assign_pannes_vehicule', [PanneController::class, 'assign_pannes_vehicules'])->name('API-ASSIGN-PANNES-VEHICULES');
-
+    Route::post('/update_pannes_vehicule', [PanneController::class, 'update_pannes_vehicules'])->name('API-UPDATE-PANNES-VEHICULES');
+    Route::delete('/delete_pannes_vehicule', [PanneController::class, 'delete_pannes_vehicules'])->name('API-DELETE-PANNES-VEHICULES');
 
     //language
     Route::post("/add_language", [LanguageController::class, "language_create"])->name('API-GET-LANGUAGE');
     Route::post("/update_language", [LanguageController::class, "update_language"])->name('API-UPDATE-LANGUAGE');
     Route::post("/delete_languages", [LanguageController::class, "delete_language"])->name('API-DELETE-LANGUAGE');
 });
+
+

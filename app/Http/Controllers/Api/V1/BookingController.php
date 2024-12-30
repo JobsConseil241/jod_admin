@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Api\V1\BaseController;
 use App\Models\Location;
+use App\Models\LocationPanne;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -223,5 +224,122 @@ class BookingController extends BaseController {
         }
     }
 
+
+    public function assign_pannes_locations(Request $request) {
+        try {
+            Log::info('Assign Pannes to Locations Endpoint Entered.');
+
+            Log::debug('Assign Pannes to Locations Endpoint - All Params: ' . json_encode($request->all()));
+            $data = $request->all();
+            $rules = [
+                'id_location' => ['required', 'integer'],
+                'ids_pannes' => ['required', 'array'],
+                'ids_pannes.*' => ['integer', 'exists:pannes,id'],
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+
+
+            $category = Location::find($data['id_location']);
+
+            if ($category == null) {
+                return $this->sendError("Contrat not found");
+            }
+
+            $category->pannes()->attach($data['ids_pannes']);
+            Log::debug('Add pannes to Location Endpoint - Response: ' . json_encode($data));
+
+            return $this->sendResponse($category, "Add Panne successfully");
+        } catch (Exception $e) {
+            Log::error('Assign Pannes to Vehicules Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Assign Pannes to Locations Endpoint Exited.');
+        }
+    }
+
+    public function update_pannes_locations(Request $request) {
+        try {
+            Log::info('Update Pannes to Locations Endpoint Entered.');
+
+            Log::debug('Assign Pannes to Locations Endpoint - All Params: ' . json_encode($request->all()));
+            $data = $request->all();
+            $rules = [
+                'id_panne' => ['required', 'integer'],
+                'status' => ['sometimes', 'string'],
+                'montant' => ['sometimes', 'integer']
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+
+
+            $category = LocationPanne::find($data['id_panne']);
+
+            if ($category == null) {
+                return $this->sendError("panne associate to location not found");
+            }
+
+            $vehiculePanne = LocationPanne::find($data['id_panne']);
+            $vehiculePanne->status = $data['status'] ?? '';
+            $vehiculePanne->montant = $data['montant'] ?? '';
+            $vehiculePanne->save();
+
+            Log::debug('update state pannes aasociate to locations Endpoint - Response: ' . json_encode($data));
+
+            return $this->sendResponse($category, "Update successfully");
+        } catch (Exception $e) {
+            Log::error('Update Pannes to Locations Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Update Pannes to Locations Endpoint Exited.');
+        }
+    }
+
+    public function delete_pannes_locations(Request $request) {
+        try {
+            Log::info('Delete Pannes to Locations Endpoint Entered.');
+
+            Log::debug('Delete Pannes to Locations Endpoint - All Params: ' . json_encode($request->all()));
+            $data = $request->all();
+            $rules = [
+                'id_panne' => ['required', 'integer']
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+
+
+            $category = LocationPanne::find($data['id_panne']);
+
+            if ($category == null) {
+                return $this->sendError("panne associate to location not found");
+            }
+
+            LocationPanne::find($data['id_panne'])->delete();
+
+            Log::debug('delete pannes associate to Location Endpoint - Response: ' . json_encode($data));
+
+            return $this->sendResponse($category, "Delete successfully");
+        } catch (Exception $e) {
+            Log::error('Delete Panne to Location Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Delete Panne to Location Endpoint Exited.');
+        }
+    }
 
 }

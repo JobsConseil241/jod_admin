@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Panne;
 use App\Models\Vehicule;
+use App\Models\VehiculePanne;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -30,6 +31,29 @@ class PanneController extends BaseController
             return $this->sendError("Unexpected error occurred, please try again later.");
         } finally {
             Log::info('Get Pannes Endpoint Exited.');
+        }
+    }
+
+    public function get_all_vehicules_pannes(Request $request)
+    {
+
+        try {
+            Log::info('Get Vehicules Pannes  Endpoint Entered.');
+
+            Log::debug('Get Vehicules Pannes Endpoint - All Params: ' . json_encode($request->all()));
+
+            $data['vehicules'] = Vehicule::has('pannes')->with(['pannes' => function($query) {
+                $query->with('categorie_pannes');
+            }])->get();
+
+            Log::debug('Get Vehicules Pannes Endpoint - Response: ' . json_encode($data));
+
+            return $this->sendResponse($data, "Vehicules Pannes retrieved successfully");
+        } catch (Exception $e) {
+            Log::error('Get Vehicules Pannes Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Get Vehicules Pannes Endpoint Exited.');
         }
     }
 
@@ -184,6 +208,85 @@ class PanneController extends BaseController
             return $this->sendError("Unexpected error occurred, please try again later.");
         } finally {
             Log::info('Assign Pannes to Vehicules Endpoint Exited.');
+        }
+    }
+
+    public function update_pannes_vehicules(Request $request) {
+        try {
+            Log::info('Update Pannes to Vehicules Endpoint Entered.');
+
+            Log::debug('Assign Pannes to Vehicules Endpoint - All Params: ' . json_encode($request->all()));
+            $data = $request->all();
+            $rules = [
+                'id_panne' => ['required', 'integer'],
+                'status' => ['sometimes', 'string'],
+                'montant' => ['sometimes', 'integer']
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+
+
+            $category = VehiculePanne::find($data['id_panne']);
+
+            if ($category == null) {
+                return $this->sendError("panne associate to vehicule not found");
+            }
+
+            $vehiculePanne = VehiculePanne::find($data['id_panne']);
+            $vehiculePanne->status = $data['status'] ?? '';
+            $vehiculePanne->montant = $data['montant'] ?? '';
+            $vehiculePanne->save();
+
+            Log::debug('update state pannes aasociate to vehicules Endpoint - Response: ' . json_encode($data));
+
+            return $this->sendResponse($category, "Update successfully");
+        } catch (Exception $e) {
+            Log::error('Update Pannes to Vehicules Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Update Pannes to Vehicules Endpoint Exited.');
+        }
+    }
+
+    public function delete_pannes_vehicules(Request $request) {
+        try {
+            Log::info('Delete Pannes to Vehicules Endpoint Entered.');
+
+            Log::debug('Delete Pannes to Vehicules Endpoint - All Params: ' . json_encode($request->all()));
+            $data = $request->all();
+            $rules = [
+                'id_panne' => ['required', 'integer']
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+
+
+            $category = VehiculePanne::find($data['id_panne']);
+
+            if ($category == null) {
+                return $this->sendError("panne associate to vehicule not found");
+            }
+
+            VehiculePanne::find($data['id_panne'])->delete();
+
+            Log::debug('delete pannes aasociate to vehicules Endpoint - Response: ' . json_encode($data));
+
+            return $this->sendResponse($category, "Delete successfully");
+        } catch (Exception $e) {
+            Log::error('Delete Panne to Vehicules Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Delete Panne to Vehicule Endpoint Exited.');
         }
     }
 }
