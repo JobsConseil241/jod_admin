@@ -4,7 +4,7 @@ use App\Http\Controllers\Api\V1\BookingController;
 use App\Http\Controllers\Api\V1\CarController;
 use App\Http\Controllers\Api\V1\CarPictureController;
 use App\Http\Controllers\Api\V1\CategorieController;
-use App\Http\Controllers\Api\v1\CategoriePanneController;
+use App\Http\Controllers\Api\V1\CategoriePanneController;
 use App\Http\Controllers\Api\V1\EtatVehiculeController;
 use App\Http\Controllers\Api\V1\LanguageController;
 use App\Http\Controllers\Api\V1\MarqueController;
