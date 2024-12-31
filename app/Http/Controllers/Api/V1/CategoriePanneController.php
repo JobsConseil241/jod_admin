@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\CategoryPanne;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -61,7 +62,7 @@ class CategoriePanneController extends BaseController
 
             Log::debug('Add Categorie Endpoint - Response: ' . json_encode($data));
 
-            return $this->sendResponse($category, "Add Categorie Panne successfully");
+            return $this->sendResponse($data, "Add Categorie Panne successfully");
         } catch (Exception $e) {
             Log::error('Add Categories Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");
@@ -76,7 +77,7 @@ class CategoriePanneController extends BaseController
             Log::info('Edit Categories pannes  Endpoint Entered.');
 
             Log::debug('Edit Categories Panne Endpoint - All Params: ' . json_encode($request->all()));
-            $data = $request->all();
+            $datas = $request->all();
             $rules = [
                 'name' => ['sometimes', 'string'],
                 'description' => ['sometimes'],
@@ -91,16 +92,16 @@ class CategoriePanneController extends BaseController
             }
 
 
-            $category = CategoryPanne::find($data['id']);
+            $category = CategoryPanne::find($datas['id']);
 
             if ($category == null) {
                 return $this->sendError("Category Panne not found");
             }
 
-            $category->update($data);
+            $data = $category->update($datas);
             Log::debug('Edit Categorie Panne Endpoint - Response: ' . json_encode($data));
 
-            return $this->sendResponse($category, "Edit Categorie successfully");
+            return $this->sendResponse($data, "Edit Categorie successfully");
         } catch (Exception $e) {
             Log::error('Edit Categories Panne Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");
@@ -115,7 +116,7 @@ class CategoriePanneController extends BaseController
             Log::info('Delete Categories pannes  Endpoint Entered.');
 
             Log::debug('Delete Categories Endpoint - All Params: ' . json_encode($request->all()));
-            $data = $request->all();
+            $datas = $request->all();
             $rules = [
                 'id' => ['required', 'integer']
             ];
@@ -127,16 +128,16 @@ class CategoriePanneController extends BaseController
                 return $this->sendError($errors->first(), $errors);
             }
 
-            $category = CategoryPanne::find($data['id']);
+            $category = CategoryPanne::find($datas['id']);
 
             if ($category == null) {
                 return $this->sendError("Category not found");
             }
 
-            $category->delete();
+            $data = $category->delete();
             Log::debug('Delete Categorie Panne Endpoint - Response: ' . json_encode($data));
 
-            return $this->sendResponse($category, "Delete Categorie Panne successfully");
+            return $this->sendResponse($data, "Delete Categorie Panne successfully");
         } catch (Exception $e) {
             Log::error('Delete Categories Panne Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");

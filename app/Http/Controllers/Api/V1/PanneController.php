@@ -15,13 +15,18 @@ class PanneController extends BaseController
 {
     public function get_all_pannes(Request $request)
     {
-
         try {
             Log::info('Get Pannes  Endpoint Entered.');
 
             Log::debug('Get Pannes Endpoint - All Params: ' . json_encode($request->all()));
 
-            $data['pannes'] = Panne::all();
+            $pannes = Panne::with('categorie')->select('pannes.*');
+
+            if ($request->has('id') && $request->id != null) {
+                $pannes->where('id', $request->id);
+            }
+
+            $data['pannes'] = $pannes->get();
 
             Log::debug('Get Pannes Endpoint - Response: ' . json_encode($data));
 
@@ -42,7 +47,7 @@ class PanneController extends BaseController
 
             Log::debug('Get Vehicules Pannes Endpoint - All Params: ' . json_encode($request->all()));
 
-            $data['vehicules'] = Vehicule::has('pannes')->with(['pannes' => function($query) {
+            $data['vehicules'] = Vehicule::has('pannes')->with(['pannes' => function ($query) {
                 $query->with('categorie_pannes');
             }])->get();
 
@@ -77,17 +82,17 @@ class PanneController extends BaseController
                 return $this->sendError($errors->first(), $errors);
             }
 
-            $category = Panne::create([
+            $panne = Panne::create([
                 'name' => $datas['name'],
                 'description' => $datas['description'] ?? NULL,
                 'category_panne_id' => $datas['category_panne_id'],
             ]);
 
-            $data['panne'] = $category;
+            $data['panne'] = $panne;
 
             Log::debug('Add Panne Endpoint - Response: ' . json_encode($data));
 
-            return $this->sendResponse($category, "Add Panne successfully");
+            return $this->sendResponse($data, "Add Panne successfully");
         } catch (Exception $e) {
             Log::error('Add Panne Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");
@@ -102,7 +107,7 @@ class PanneController extends BaseController
             Log::info('Edit Pannes  Endpoint Entered.');
 
             Log::debug('Edit Panne Endpoint - All Params: ' . json_encode($request->all()));
-            $data = $request->all();
+            $datas = $request->all();
             $rules = [
                 'name' => ['sometimes', 'string'],
                 'description' => ['sometimes'],
@@ -118,16 +123,16 @@ class PanneController extends BaseController
             }
 
 
-            $category = Panne::find($data['id']);
+            $panne = Panne::find($datas['id']);
 
-            if ($category == null) {
+            if ($panne == null) {
                 return $this->sendError("Panne not found");
             }
 
-            $category->update($data);
+            $data = $panne->update($datas);
             Log::debug('Edit Panne Endpoint - Response: ' . json_encode($data));
 
-            return $this->sendResponse($category, "Edit Panne successfully");
+            return $this->sendResponse($data, "Edit Panne successfully");
         } catch (Exception $e) {
             Log::error('Edit Panne Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");
@@ -142,7 +147,7 @@ class PanneController extends BaseController
             Log::info('Delete Pannes  Endpoint Entered.');
 
             Log::debug('Delete Pannes Endpoint - All Params: ' . json_encode($request->all()));
-            $data = $request->all();
+            $datas = $request->all();
             $rules = [
                 'id_panne' => ['required', 'integer']
             ];
@@ -155,16 +160,17 @@ class PanneController extends BaseController
                 return $this->sendError($errors->first(), $errors);
             }
 
-            $category = Panne::find($data['id_panne']);
+            $panne = Panne::find($datas['id_panne']);
 
-            if ($category == null) {
+            if ($panne == null) {
                 return $this->sendError("Panne not found");
             }
 
-            $category->delete();
+            $data = $panne->delete();
+
             Log::debug('Delete Panne Endpoint - Response: ' . json_encode($data));
 
-            return $this->sendResponse($category, "Delete Panne successfully");
+            return $this->sendResponse($data, "Delete Panne successfully");
         } catch (Exception $e) {
             Log::error('Delete Panne Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");
@@ -173,7 +179,8 @@ class PanneController extends BaseController
         }
     }
 
-    public function assign_pannes_vehicules(Request $request) {
+    public function assign_pannes_vehicules(Request $request)
+    {
         try {
             Log::info('Assign Pannes to Vehicules Endpoint Entered.');
 
@@ -211,7 +218,8 @@ class PanneController extends BaseController
         }
     }
 
-    public function update_pannes_vehicules(Request $request) {
+    public function update_pannes_vehicules(Request $request)
+    {
         try {
             Log::info('Update Pannes to Vehicules Endpoint Entered.');
 
@@ -253,7 +261,8 @@ class PanneController extends BaseController
         }
     }
 
-    public function delete_pannes_vehicules(Request $request) {
+    public function delete_pannes_vehicules(Request $request)
+    {
         try {
             Log::info('Delete Pannes to Vehicules Endpoint Entered.');
 

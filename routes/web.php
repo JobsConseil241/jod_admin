@@ -86,12 +86,13 @@ Route::middleware(['auth'])->group(function () {
 
         //Panne
         Route::get('pannes', [PanneController::class, 'index'])->name('backend.list.pannes');
-        Route::get('pannes/ajax', [PanneController::class, 'ajax_get_pannes'])->name('backend.ajax.pannes');
-        Route::get('panne/add', [PanneController::class, 'add'])->name('backend.add.panne');
-        Route::get('panne/view/{car}', [PanneController::class, 'view'])->name('backend.view.panne');
-        Route::get('panne/edit/{car}', [PanneController::class, 'edit'])->name('backend.edit.panne');
         Route::post('panne/store', [PanneController::class, 'store'])->name('backend.store.panne');
         Route::post('panne/update/{car}', [PanneController::class, 'update'])->name('backend.update.panne');
+
+        //categories
+        Route::get('panne/categories', [PanneController::class, 'categories'])->name('backend.list.panne.categories');
+        Route::post('panne/category/store', [PanneController::class, 'store_category'])->name('backend.store.panne.category');
+        Route::post('panne/category/update/{car}', [PanneController::class, 'update_category'])->name('backend.update.panne.category');
 
         //categories
         Route::get('categories', [BackCarController::class, 'categories'])->name('backend.list.categories');
