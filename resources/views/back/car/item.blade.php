@@ -389,6 +389,31 @@
                             </div>
                         @endforeach
 
+                        <div class="mb-3">
+                            <div class="col-xl-3">
+                                <label for="hs-select-label" class="ti-form-select-label">Pannes</label>
+                                <select class="ti-form-select !p-0" id="select-state" name="pannes[]" multiple
+                                    autocomplete="off">
+                                    @foreach ($pannes as $panne)
+                                        <option value="{{ $panne->id }}">{{ $panne->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-xl-3">
+                                <label for="input-label" class="ti-form-label">Statut</label>
+                                <input type="text" name="status" id="input-label" class="ti-form-input">
+                            </div>
+                            <div class="col-xl-3">
+                                <label for="input-label" class="ti-form-label">Montant</label>
+                                <input type="number" name="montant" id="input-label" class="ti-form-input">
+                            </div>
+                            <div class="col-xl-3">
+                                <button type="button"
+                                    class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10">
+                                    <i class="ri-delete-bin-line"></i>
+                                </button>
+                            </div>
+                        </div>
 
                         <div class="mb-3 justify-end">
                             <button class="ti-btn ti-btn-success" type="button">
