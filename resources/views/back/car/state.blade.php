@@ -105,8 +105,7 @@
                     </div>
                     <div class="box-footer text-end border-t-0 px-0">
                         <button type="submit" class="ti-btn ti-btn-primary"><i class="ri-add-line"></i>Enregistrer</button>
-                        <button type="reset" class="ti-btn ti-btn-danger"><i
-                                class="ri-delete-bin-line"></i>Annuler</button>
+
                         <button data-hs-overlay="#cardModalDelete" class="ti-btn ti-btn-danger"><i
                                 class="ri-delete-bin-line"></i>Supprimer</button>
                     </div>
