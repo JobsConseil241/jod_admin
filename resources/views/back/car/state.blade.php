@@ -78,19 +78,13 @@
                                                             class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70">
                                                     @elseif ($meta['type'] === 'boolean')
                                                         <!-- Switch -->
-                                                        <div class="hs-tooltip flex items-center show">
-                                                            <input type="checkbox" id="switch-{{ $field }}"
-                                                                name="{{ $field }}" value="1"
-                                                                class="hs-tooltip-toggle ti-switch shrink-0"
-                                                                {{ old($field, $car->etats[0]->{$field} ?? false) ? 'checked' : '' }}>
-                                                            <label for="switch-{{ $field }}"
-                                                                class="text-sm text-gray-500 ltr:ml-3 rtl:mr-3 dark:text-white/70">
-                                                                {{ $meta['label'] }}
-                                                            </label>
-                                                            <div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-sm shadow-sm dark:bg-slate-700"
-                                                                role="tooltip" data-popper-placement="top">
-                                                                {{ __('Activer ou Désactiver ' . strtolower($meta['label'])) }}
-                                                            </div>
+                                                        <div class="flex items-center">
+                                                            <input type="checkbox" id="hs-medium-switch"
+                                                                name="{{ $field }}"
+                                                                value="{{ old($field, $car->etats[0]->{$field} ?? '') }}"
+                                                                class="ti-switch shrink-0">
+                                                            <label for="hs-medium-switch"
+                                                                class="text-sm text-gray-500 ltr:ml-3 rtl:mr-3 dark:text-white/70">{{ $meta['label'] }}</label>
                                                         </div>
                                                     @elseif ($meta['type'] === 'date')
                                                         <!-- Input date -->
@@ -113,7 +107,8 @@
                         <button type="submit" class="ti-btn ti-btn-primary"><i class="ri-add-line"></i>Enregistrer</button>
                         <button type="reset" class="ti-btn ti-btn-danger"><i
                                 class="ri-delete-bin-line"></i>Annuler</button>
-                        <button data-hs-overlay="#cardModalDelete" class="ri-delete-bin-line">Supprimer</button>
+                        <button data-hs-overlay="#cardModalDelete" class="ti-btn ti-btn-danger"><i
+                                class="ri-delete-bin-line"></i>Supprimer</button>
                     </div>
                 </form>
             </div>
