@@ -60,8 +60,8 @@
             'tournevis' => ['label' => 'Tournevis', 'type' => 'boolean'],
             'compresseur' => ['label' => 'Compresseur', 'type' => 'boolean'],
             'roue_secours' => ['label' => 'Roue de secours', 'type' => 'boolean'],
-            'date' => ['label' => 'Date', 'type' => 'date'],
             'etat_general' => ['label' => 'État général', 'type' => 'boolean'],
+            'date' => ['label' => 'Date', 'type' => 'date'],
         ] as $field => $meta)
                                 <div class="col-span-6 xl:col-span-3">
                                     <div class="box">
