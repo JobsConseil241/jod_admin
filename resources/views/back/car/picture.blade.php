@@ -11,7 +11,7 @@
     <div class="block justify-between page-header md:flex">
         <div>
             <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
-                Images de {{ $car->name }}</h3>
+                Images de <a href="{{ url('backend/car/view/' . $car->id) }}">{{ $car->name }}</a></h3>
         </div>
         <ol class="flex items-center whitespace-nowrap min-w-0">
             <li class="text-sm">
@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">
-                {{ $car->name }}
+                <a href="{{ url('backend/car/view/' . $car->id) }}">{{ $car->name }}</a>
             </li>
         </ol>
     </div>
