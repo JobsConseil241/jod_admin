@@ -178,7 +178,7 @@
                                     <option>Choisissez</option>
                                     @foreach ($categories as $item)
                                         <option value="{{ $item->id }}"
-                                            {{ $car->category_id == $item->id ? 'selected' : '' }}>
+                                            {{ $panne->category_panne_id == $item->id ? 'selected' : '' }}>
                                             {{ $item->name }}
                                         </option>
                                     @endforeach
