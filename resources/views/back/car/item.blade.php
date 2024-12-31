@@ -379,6 +379,7 @@
                                             class="ti-form-input">
                                     </div>
                                     <div class="flex-shrink-0">
+                                        <br><br>
                                         <button type="button" class="ti-btn ti-btn-outline ti-btn-danger delete-row"
                                             data-id="{{ $pn->id }}">
                                             <i class="ri-delete-bin-line"></i>
@@ -404,6 +405,7 @@
                                     <input type="number" name="montant[]" class="ti-form-input">
                                 </div>
                                 <div class="flex-shrink-0">
+                                    <br><br>
                                     <button type="button" class="ti-btn ti-btn-outline ti-btn-danger delete-row">
                                         <i class="ri-delete-bin-line"></i>
                                     </button>
@@ -627,12 +629,11 @@
             });
         });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const panneContainer = document.getElementById('panne-container');
+        const panneContainer = document.getElementById('panne-container');
 
-            // Ajouter une nouvelle ligne
-            document.getElementById('add-row').addEventListener('click', () => {
-                const row = `
+        // Ajouter une nouvelle ligne
+        document.getElementById('add-row').addEventListener('click', () => {
+            const row = `
             <div class="flex items-center space-x-4 mb-3 panne-row">
                 <div class="flex-1">
                     <label class="ti-form-select-label">Pannes</label>
@@ -657,36 +658,35 @@
                 </div>
             </div>
         `;
-                panneContainer.insertAdjacentHTML('beforeend', row);
-            });
+            panneContainer.insertAdjacentHTML('beforeend', row);
+        });
 
-            // Supprimer une ligne
-            panneContainer.addEventListener('click', (e) => {
-                if (e.target.closest('.delete-row')) {
-                    const row = e.target.closest('.panne-row');
-                    const panneId = row.dataset.id;
+        // Supprimer une ligne
+        panneContainer.addEventListener('click', (e) => {
+            if (e.target.closest('.delete-row')) {
+                const row = e.target.closest('.panne-row');
+                const panneId = row.dataset.id;
 
-                    if (panneId) {
-                        // Requête Ajax pour supprimer
-                        fetch(`{{ url('backend/panne/delete') }}/${panneId}`, {
-                                method: 'DELETE',
-                                headers: {
-                                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                                },
-                            })
-                            .then((response) => response.json())
-                            .then((data) => {
-                                if (data.success) {
-                                    row.remove();
-                                } else {
-                                    alert('Erreur lors de la suppression');
-                                }
-                            });
-                    } else {
-                        row.remove();
-                    }
+                if (panneId) {
+                    // Requête Ajax pour supprimer
+                    fetch(`{{ url('backend/panne/delete') }}/${panneId}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            },
+                        })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if (data.success) {
+                                row.remove();
+                            } else {
+                                alert('Erreur lors de la suppression');
+                            }
+                        });
+                } else {
+                    row.remove();
                 }
-            });
+            }
         });
     </script>
 @endpush
