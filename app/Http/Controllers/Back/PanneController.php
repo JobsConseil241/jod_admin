@@ -89,7 +89,7 @@ class PanneController extends Controller
                 'id' => $panne,
                 'name' => $request->name,
                 'description' => $request->description,
-                'category_id' => $request->category_id,
+                'category_panne_id' => $request->category_id,
             ]);
 
             $object = json_decode($response->body());
