@@ -8,7 +8,7 @@ use App\Http\Controllers\Api\V1\CategoriePanneController;
 use App\Http\Controllers\Api\V1\EtatVehiculeController;
 use App\Http\Controllers\Api\V1\LanguageController;
 use App\Http\Controllers\Api\V1\MarqueController;
-use App\Http\Controllers\Api\v1\PanneController;
+use App\Http\Controllers\Api\V1\PanneController;
 use App\Http\Controllers\Api\V1\PrivilegeController;
 use App\Http\Controllers\Api\V1\RoleController;
 use App\Http\Controllers\Api\V1\UserController;
