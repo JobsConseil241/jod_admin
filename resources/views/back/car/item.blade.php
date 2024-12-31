@@ -277,6 +277,8 @@
                                 <div>
                                     <a href="{{ url('/backend/car/edit/' . $car->id) }}"
                                         class="w-full ti-btn ti-btn-primary">Modifier</a>
+                                    <a href="{{ url('/backend/car/etat/' . $car->id) }}"
+                                        class="w-full ti-btn ti-btn-outline ti-btn-outline-primary">Etat</a>
                                     <a href="{{ url('/backend/car/picture/' . $car->id) }}"
                                         class="w-full ti-btn ti-btn-outline ti-btn-outline-primary">Images</a>
                                     <button data-hs-overlay="#cardModalDelete"
