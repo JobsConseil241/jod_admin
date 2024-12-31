@@ -341,90 +341,61 @@
     <div id="hs-basic-modal" class="hs-overlay ti-modal hidden">
         <div class="ti-modal-box">
             <div class="ti-modal-content">
-                <form action="{{ url('backend/panne/assign/' . $car->id) }}" method="POST">
+                <form id="panne-form" action="{{ url('backend/panne/assign/' . $car->id) }}" method="POST">
                     @csrf
                     <div class="ti-modal-header">
                         <h3 class="ti-modal-title">
                             Ajouter une panne
                         </h3>
-                        <button type="button" class="hs-dropdown-toggle ti-modal-clode-btn"
+                        <button type="button" class="hs-dropdown-toggle ti-modal-close-btn"
                             data-hs-overlay="#hs-basic-modal">
                             <span class="sr-only">Fermer</span>
-                            <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M0.258206 1.00652C0.351976 0.912791 0.479126 0.860131 0.611706 0.860131C0.744296 0.860131 0.871447 0.912791 0.965207 1.00652L3.61171 3.65302L6.25822 1.00652C6.30432 0.958771 6.35952 0.920671 6.42052 0.894471C6.48152 0.868271 6.54712 0.854471 6.61352 0.853901C6.67992 0.853321 6.74572 0.865971 6.80722 0.891111C6.86862 0.916251 6.92442 0.953381 6.97142 1.00032C7.01832 1.04727 7.05552 1.1031 7.08062 1.16454C7.10572 1.22599 7.11842 1.29183 7.11782 1.35822C7.11722 1.42461 7.10342 1.49022 7.07722 1.55122C7.05102 1.61222 7.01292 1.6674 6.96522 1.71352L4.31871 4.36002L6.96522 7.00648C7.05632 7.10078 7.10672 7.22708 7.10552 7.35818C7.10442 7.48928 7.05182 7.61468 6.95912 7.70738C6.86642 7.80018 6.74102 7.85268 6.60992 7.85388C6.47882 7.85498 6.35252 7.80458 6.25822 7.71348L3.61171 5.06702L0.965207 7.71348C0.870907 7.80458 0.744606 7.85498 0.613506 7.85388C0.482406 7.85268 0.357007 7.80018 0.264297 7.70738C0.171597 7.61468 0.119017 7.48928 0.117877 7.35818C0.116737 7.22708 0.167126 7.10078 0.258206 7.00648L2.90471 4.36002L0.258206 1.71352C0.164476 1.61976 0.111816 1.4926 0.111816 1.36002C0.111816 1.22744 0.164476 1.10028 0.258206 1.00652Z"
-                                    fill="currentColor"></path>
-                            </svg>
+                            <i class="ri-close-line"></i>
                         </button>
                     </div>
                     <div class="ti-modal-body">
-                        @foreach ($car->pannes as $pn)
-                            <div class="flex items-center space-x-4 mb-3">
-                                <div class="flex-1">
-                                    <label for="hs-select-label" class="ti-form-select-label">Pannes</label>
-                                    <select class="ti-form-select !p-0" id="select-state" name="pannes[]" multiple
-                                        autocomplete="off">
-                                        @foreach ($pannes as $panne)
-                                            <option value="{{ $panne->id }}"
-                                                {{ in_array($panne->id, $pn->panne_ids ?? []) ? 'selected' : '' }}>
-                                                {{ $panne->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                        <div id="panne-container">
+                            @foreach ($car->pannes as $pn)
+                                <div class="flex items-center space-x-4 mb-3 panne-row" data-id="{{ $pn->id }}">
+                                    <div class="flex-1">
+                                        <label class="ti-form-select-label">Pannes</label>
+                                        <select class="ti-form-select" name="pannes[]" autocomplete="off">
+                                            @foreach ($pannes as $panne)
+                                                <option value="{{ $panne->id }}"
+                                                    {{ $pn->panne_id == $panne->id ? 'selected' : '' }}>
+                                                    {{ $panne->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="flex-1">
+                                        <label class="ti-form-label">Statut</label>
+                                        <input type="text" name="status[]" value="{{ $pn->status }}"
+                                            class="ti-form-input">
+                                    </div>
+                                    <div class="flex-1">
+                                        <label class="ti-form-label">Montant</label>
+                                        <input type="number" name="montant[]" value="{{ $pn->montant }}"
+                                            class="ti-form-input">
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <button type="button" class="ti-btn ti-btn-outline ti-btn-danger delete-row"
+                                            data-id="{{ $pn->id }}">
+                                            <i class="ri-delete-bin-line"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="flex-1">
-                                    <label for="status-{{ $loop->index }}" class="ti-form-label">Statut</label>
-                                    <input type="text" name="status[]" value="{{ $pn->status }}"
-                                        id="status-{{ $loop->index }}" class="ti-form-input">
-                                </div>
-                                <div class="flex-1">
-                                    <label for="montant-{{ $loop->index }}" class="ti-form-label">Montant</label>
-                                    <input type="number" name="montant[]" value="{{ $pn->montant }}"
-                                        id="montant-{{ $loop->index }}" class="ti-form-input">
-                                </div>
-                                <div class="flex-shrink-0">
-                                    <button type="button" class="ti-btn ti-btn-outline ti-btn-danger">
-                                        <i class="ri-delete-bin-line"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        @endforeach
-
-                        <div class="flex items-center space-x-4 mb-3">
-                            <div class="flex-1">
-                                <label for="hs-select-label-new" class="ti-form-select-label">Pannes</label>
-                                <select class="ti-form-select !p-0" id="select-state-new" name="pannes[]" multiple
-                                    autocomplete="off">
-                                    @foreach ($pannes as $panne)
-                                        <option value="{{ $panne->id }}">{{ $panne->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="flex-1">
-                                <label for="status-new" class="ti-form-label">Statut</label>
-                                <input type="text" name="status[]" id="status-new" class="ti-form-input">
-                            </div>
-                            <div class="flex-1">
-                                <label for="montant-new" class="ti-form-label">Montant</label>
-                                <input type="number" name="montant[]" id="montant-new" class="ti-form-input">
-                            </div>
-                            <div class="flex-shrink-0">
-                                <button type="button" class="ti-btn ti-btn-outline ti-btn-danger">
-                                    <i class="ri-delete-bin-line"></i>
-                                </button>
-                            </div>
+                            @endforeach
                         </div>
-
                         <div class="flex justify-end mt-3">
-                            <button class="ti-btn ti-btn-success" type="button">
+                            <button type="button" id="add-row" class="ti-btn ti-btn-success">
                                 +
                             </button>
                         </div>
                     </div>
                     <div class="ti-modal-footer">
                         <button type="button"
-                            class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
+                            class="ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary"
                             data-hs-overlay="#hs-basic-modal">
                             Annuler
                         </button>
@@ -628,6 +599,68 @@
                     //dynamic title
                     $('#cardModalView .ti-modal-content').html(body); //url to delete item
                     $('#cardModalView').removeClass('hidden').addClass('open');
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const panneContainer = document.getElementById('panne-container');
+
+            // Ajouter une nouvelle ligne
+            document.getElementById('add-row').addEventListener('click', () => {
+                const row = `
+            <div class="flex items-center space-x-4 mb-3 panne-row">
+                <div class="flex-1">
+                    <label class="ti-form-select-label">Pannes</label>
+                    <select class="ti-form-select" name="pannes[]" autocomplete="off">
+                        @foreach ($pannes as $panne)
+                            <option value="{{ $panne->id }}">{{ $panne->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="flex-1">
+                    <label class="ti-form-label">Statut</label>
+                    <input type="text" name="status[]" class="ti-form-input">
+                </div>
+                <div class="flex-1">
+                    <label class="ti-form-label">Montant</label>
+                    <input type="number" name="montant[]" class="ti-form-input">
+                </div>
+                <div class="flex-shrink-0">
+                    <button type="button" class="ti-btn ti-btn-outline ti-btn-danger delete-row">
+                        <i class="ri-delete-bin-line"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+                panneContainer.insertAdjacentHTML('beforeend', row);
+            });
+
+            // Supprimer une ligne
+            panneContainer.addEventListener('click', (e) => {
+                if (e.target.closest('.delete-row')) {
+                    const row = e.target.closest('.panne-row');
+                    const panneId = row.dataset.id;
+
+                    if (panneId) {
+                        // Requête Ajax pour supprimer
+                        fetch(`{{ url('backend/panne/delete') }}/${panneId}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                },
+                            })
+                            .then((response) => response.json())
+                            .then((data) => {
+                                if (data.success) {
+                                    row.remove();
+                                } else {
+                                    alert('Erreur lors de la suppression');
+                                }
+                            });
+                    } else {
+                        row.remove();
+                    }
                 }
             });
         });
