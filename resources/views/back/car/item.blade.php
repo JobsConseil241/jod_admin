@@ -360,62 +360,63 @@
                     </div>
                     <div class="ti-modal-body">
                         @foreach ($car->pannes as $pn)
-                            <div class="mb-3">
-                                <div class="col-xl-3">
+                            <div class="flex items-center space-x-4 mb-3">
+                                <div class="flex-1">
                                     <label for="hs-select-label" class="ti-form-select-label">Pannes</label>
                                     <select class="ti-form-select !p-0" id="select-state" name="pannes[]" multiple
                                         autocomplete="off">
                                         @foreach ($pannes as $panne)
-                                            <option value="{{ $panne->id }}">{{ $panne->name }}</option>
+                                            <option value="{{ $panne->id }}"
+                                                {{ in_array($panne->id, $pn->panne_ids ?? []) ? 'selected' : '' }}>
+                                                {{ $panne->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-xl-3">
-                                    <label for="input-label" class="ti-form-label">Statut</label>
-                                    <input type="text" name="status" value="{{ $pn->status }}" id="input-label"
-                                        class="ti-form-input">
+                                <div class="flex-1">
+                                    <label for="status-{{ $loop->index }}" class="ti-form-label">Statut</label>
+                                    <input type="text" name="status[]" value="{{ $pn->status }}"
+                                        id="status-{{ $loop->index }}" class="ti-form-input">
                                 </div>
-                                <div class="col-xl-3">
-                                    <label for="input-label" class="ti-form-label">Montant</label>
-                                    <input type="number" name="montant" value="{{ $pn->montant }}" id="input-label"
-                                        class="ti-form-input">
+                                <div class="flex-1">
+                                    <label for="montant-{{ $loop->index }}" class="ti-form-label">Montant</label>
+                                    <input type="number" name="montant[]" value="{{ $pn->montant }}"
+                                        id="montant-{{ $loop->index }}" class="ti-form-input">
                                 </div>
-                                <div class="col-xl-3">
-                                    <button type="button"
-                                        class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10">
+                                <div class="flex-shrink-0">
+                                    <button type="button" class="ti-btn ti-btn-outline ti-btn-danger">
                                         <i class="ri-delete-bin-line"></i>
                                     </button>
                                 </div>
                             </div>
                         @endforeach
 
-                        <div class="mb-3">
-                            <div class="col-xl-3">
-                                <label for="hs-select-label" class="ti-form-select-label">Pannes</label>
-                                <select class="ti-form-select !p-0" id="select-state" name="pannes[]" multiple
+                        <div class="flex items-center space-x-4 mb-3">
+                            <div class="flex-1">
+                                <label for="hs-select-label-new" class="ti-form-select-label">Pannes</label>
+                                <select class="ti-form-select !p-0" id="select-state-new" name="pannes[]" multiple
                                     autocomplete="off">
                                     @foreach ($pannes as $panne)
                                         <option value="{{ $panne->id }}">{{ $panne->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-xl-3">
-                                <label for="input-label" class="ti-form-label">Statut</label>
-                                <input type="text" name="status" id="input-label" class="ti-form-input">
+                            <div class="flex-1">
+                                <label for="status-new" class="ti-form-label">Statut</label>
+                                <input type="text" name="status[]" id="status-new" class="ti-form-input">
                             </div>
-                            <div class="col-xl-3">
-                                <label for="input-label" class="ti-form-label">Montant</label>
-                                <input type="number" name="montant" id="input-label" class="ti-form-input">
+                            <div class="flex-1">
+                                <label for="montant-new" class="ti-form-label">Montant</label>
+                                <input type="number" name="montant[]" id="montant-new" class="ti-form-input">
                             </div>
-                            <div class="col-xl-3">
-                                <button type="button"
-                                    class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10">
+                            <div class="flex-shrink-0">
+                                <button type="button" class="ti-btn ti-btn-outline ti-btn-danger">
                                     <i class="ri-delete-bin-line"></i>
                                 </button>
                             </div>
                         </div>
 
-                        <div class="mb-3 justify-end">
+                        <div class="flex justify-end mt-3">
                             <button class="ti-btn ti-btn-success" type="button">
                                 +
                             </button>
