@@ -90,7 +90,7 @@
                                                             </label>
                                                             <div class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-sm shadow-sm dark:bg-slate-700"
                                                                 role="tooltip" data-popper-placement="top">
-                                                                {{ __('Enable or disable ' . strtolower($meta['label'])) }}
+                                                                {{ __('Activer ou Désactiver ' . strtolower($meta['label'])) }}
                                                             </div>
                                                         </div>
                                                     @elseif ($meta['type'] === 'date')
@@ -114,8 +114,7 @@
                         <button type="submit" class="ti-btn ti-btn-primary"><i class="ri-add-line"></i>Enregistrer</button>
                         <button type="reset" class="ti-btn ti-btn-danger"><i
                                 class="ri-delete-bin-line"></i>Annuler</button>
-                        <button data-hs-overlay="#cardModalDelete"
-                            class="w-full ti-btn ti-btn-outline ti-btn-outline-danger">Supprimer</button>
+                        <button data-hs-overlay="#cardModalDelete" class="ri-delete-bin-line">Supprimer</button>
                     </div>
                 </form>
             </div>
@@ -167,6 +166,7 @@
 @push('scripts')
     <!-- Choices JS -->
     <script src="{{ asset('back/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+    <script src="{{ asset('back/js/custom-switcher.js') }}"></script>
 
     <script>
         "use strict";
