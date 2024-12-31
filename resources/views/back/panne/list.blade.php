@@ -150,7 +150,7 @@
     </div>
 
     @foreach ($pannes as $panne)
-        <div id="cardModalView{{ $category->id }}" class="hs-overlay ti-modal hidden">
+        <div id="cardModalView{{ $panne->id }}" class="hs-overlay ti-modal hidden">
             <div class="ti-modal-box">
                 <div class="ti-modal-content">
                     <form action="{{ url('backend/panne/update/' . $panne->id) }}" method="POST">
