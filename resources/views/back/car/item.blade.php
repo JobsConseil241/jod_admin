@@ -390,7 +390,7 @@
                         @endforeach
 
 
-                        <div class="mb-3">
+                        <div class="mb-3 justify-end">
                             <button class="ti-btn ti-btn-success" type="button">
                                 +
                             </button>
