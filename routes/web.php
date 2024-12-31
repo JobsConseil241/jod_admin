@@ -88,8 +88,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('pannes', [PanneController::class, 'index'])->name('backend.list.pannes');
         Route::post('panne/store', [PanneController::class, 'store'])->name('backend.store.panne');
         Route::post('panne/update/{car}', [PanneController::class, 'update'])->name('backend.update.panne');
+        Route::post('panne/assign/{car}', [BackCarController::class, 'assign_panne'])->name('backend.assign.panne');
 
-        //categories
+        //categories panne
         Route::get('panne/categories', [PanneController::class, 'categories'])->name('backend.list.panne.categories');
         Route::post('panne/category/store', [PanneController::class, 'store_category'])->name('backend.store.panne.category');
         Route::post('panne/category/update/{car}', [PanneController::class, 'update_category'])->name('backend.update.panne.category');

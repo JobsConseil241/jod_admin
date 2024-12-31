@@ -14,7 +14,7 @@ class PanneController extends Controller
     {
         $access_token = Session::get('personnalToken');
 
-        //categories
+        //pannes
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
         ])->get(env('SERVER_PC') . 'get_pannes');

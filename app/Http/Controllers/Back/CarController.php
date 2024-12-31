@@ -122,7 +122,20 @@ class CarController extends Controller
             $car = [];
         }
 
-        return view('back.car.item', compact('car'));
+        //pannes
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_pannes');
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            $pannes = $object->data->pannes;
+        } else {
+            $pannes = [];
+        }
+
+        return view('back.car.item', compact('car', 'pannes'));
     }
 
     public function edit($car)
@@ -577,6 +590,27 @@ class CarController extends Controller
 
                 return back()->with('error', $object->message ??  'Une erreur s\'est produite.');
             }
+        }
+    }
+
+    public function assign_panne(Request $request, $carId)
+    {
+
+        $access_token = Session::get('personnalToken');
+
+        //car
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_cars', [
+            'id' => $carId,
+        ]);
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            $car = $object->data->cars[0];
+        } else {
+            $car = [];
         }
     }
 }
