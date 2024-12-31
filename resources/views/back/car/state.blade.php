@@ -1,7 +1,6 @@
 @extends('layouts.back')
 
 @push('styles')
-    <!--datatable css-->
 @endpush
 
 @inject('Lang', 'App\Services\LanguageService')
@@ -164,53 +163,5 @@
 @endsection
 
 @push('scripts')
-    <!-- Choices JS -->
-    <script src="{{ asset('back/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
-    <script src="{{ asset('back/js/custom-switcher.js') }}"></script>
-
-    <script>
-        "use strict";
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Gestion des prévisualisations
-            document.querySelectorAll('input[type="file"]').forEach(function(input) {
-                input.addEventListener('change', function(event) {
-                    const file = event.target.files[0]; // Récupérer le fichier sélectionné
-                    const previewContainer = document.querySelector(
-                        `#preview-${event.target.name}`); // Conteneur de prévisualisation
-
-                    // Réinitialiser le conteneur
-                    previewContainer.innerHTML = '';
-
-                    // Validation de la taille du fichier
-                    if (file && file.size > 2 * 1024 * 1024) {
-                        alert('Le fichier ne doit pas dépasser 2 Mo.');
-                        input.value = ''; // Réinitialiser le champ fichier
-                        return;
-                    }
-
-                    // Validation du type de fichier
-                    if (file && !file.type.startsWith('image/')) {
-                        alert('Veuillez sélectionner un fichier image.');
-                        input.value = ''; // Réinitialiser le champ fichier
-                        return;
-                    }
-
-                    // Prévisualisation de l'image
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            const img = document.createElement('img');
-                            img.src = e.target.result;
-                            img.alt = 'Prévisualisation';
-                            img.style.maxWidth = '100%';
-                            img.style.maxHeight = '150px';
-                            previewContainer.appendChild(img);
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="{{ asset('back/js/custom.js') }}"></script>
 @endpush
