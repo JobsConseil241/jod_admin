@@ -92,7 +92,7 @@
     <div id="hs-basic-modal" class="hs-overlay ti-modal hidden">
         <div class="ti-modal-box">
             <div class="ti-modal-content">
-                <form action="{{ url('backend/category/store') }}" method="POST">
+                <form action="{{ url('backend/panne/store') }}" method="POST">
                     @csrf
                     <div class="ti-modal-header">
                         <h3 class="ti-modal-title">
@@ -153,7 +153,7 @@
         <div id="cardModalView{{ $category->id }}" class="hs-overlay ti-modal hidden">
             <div class="ti-modal-box">
                 <div class="ti-modal-content">
-                    <form action="{{ url('backend/category/update/' . $panne->id) }}" method="POST">
+                    <form action="{{ url('backend/panne/update/' . $panne->id) }}" method="POST">
                         @csrf
                         <div class="ti-modal-header">
                             <h3 class="ti-modal-title">
@@ -235,7 +235,7 @@
                         </p>
                     </div>
                     <div class="ti-modal-footer">
-                        <form action="{{ url('backend/category/update/' . $panne->id) }}" method="POST">
+                        <form action="{{ url('backend/panne/update/' . $panne->id) }}" method="POST">
                             @csrf
                             <input type="hidden" name="delete" value="true" />
                             <button type="button"
