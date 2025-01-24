@@ -630,10 +630,10 @@
 
 
     <!-- Apex Charts JS -->
-    <script src="{{ asset('back/libs/apexcharts/apexcharts.min.js') }}"></script>
+{{--    <script src="{{ asset('back/libs/apexcharts/apexcharts.min.js') }}"></script>--}}
 
     <!-- Chartjs Chart JS -->
-    <script src="{{ asset('back/libs/chart.js/chart.min.js') }}"></script>
+{{--    <script src="{{ asset('back/libs/chart.js/chart.min.js') }}"></script>--}}
 
     <!-- Index JS -->
     <script src="{{ asset('back/js/index.js') }}"></script>
