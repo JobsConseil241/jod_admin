@@ -483,7 +483,7 @@
     <script src="{{ asset('back/libs/rater-js/index.js') }}"></script>
 
     <!-- Products JS -->
-{{--    <script src="{{ asset('back/js/product.js') }}"></script>--}}
+    <script src="{{ asset('back/js/product.js') }}"></script>
 
     <script>
         "use strict";
