@@ -60,7 +60,7 @@ class CarController extends Controller
         $object_br = json_decode($response_pr->body());
 
         if ($object_br && $object_br->success == true) {
-            $marques = $object_br->data->brands;    n
+            $marques = $object_br->data->brands;
         } else {
             $marques = [];
         }
