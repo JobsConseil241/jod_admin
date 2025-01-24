@@ -29,6 +29,11 @@
     <!-- Vector Map Css-->
     <link rel="stylesheet" href="{{ asset('back/libs/jsvectormap/css/jsvectormap.min.css') }}">
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/4.3.0/apexcharts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/4.3.0/apexcharts.min.css"/>
+
     <style>
         .desktop-logo,
         .desktop-dark {

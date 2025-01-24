@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('back/libs/choices.js/public/assets/styles/choices.min.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js" async></script>
     <style>
         .iti {
             width: 100%;
@@ -340,7 +340,7 @@
 
     <div id="hs-basic-modal" class="hs-overlay ti-modal hidden">
         <div class="hs-overlay-open:mt-7 ti-modal-box mt-0 ease-out lg:!max-w-4xl lg:w-full m-3 lg:!mx-auto">
-            <div class="ti-modal-content">
+                    <div class="ti-modal-content">
                 <form id="panne-form" action="{{ url('backend/panne/assign/' . $car->id) }}" method="POST">
                     @csrf
                     <div class="ti-modal-header">
@@ -637,30 +637,30 @@
             // Ajouter une nouvelle ligne dynamiquement
             document.getElementById('add-row').addEventListener('click', () => {
                 const row = `
-            <div class="flex items-center space-x-4 mb-3 panne-row">
-                <div class="flex-1">
-                    <label class="ti-form-select-label">Pannes</label>
-                    <select class="ti-form-select" name="pannes[]" autocomplete="off">
-                        @foreach ($pannes as $panne)
-                            <option value="{{ $panne->id }}">{{ $panne->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="flex-1">
-                    <label class="ti-form-label">Statut</label>
-                    <input type="text" name="status[]" class="ti-form-input">
-                </div>
-                <div class="flex-1">
-                    <label class="ti-form-label">Montant</label>
-                    <input type="number" name="montant[]" class="ti-form-input">
-                </div>
-                <div class="flex-shrink-0">
-                    <button type="button" class="ti-btn ti-btn-outline ti-btn-danger delete-row">
-                        <i class="ri-delete-bin-line"></i>
-                    </button>
-                </div>
-            </div>
-        `;
+                                <div class="flex items-center space-x-4 mb-3 panne-row">
+                                    <div class="flex-1">
+                                        <label class="ti-form-select-label">Pannes</label>
+                                        <select class="ti-form-select" name="pannes[]" autocomplete="off">
+                                            @foreach ($pannes as $panne)
+                                                <option value="{{ $panne->id }}">{{ $panne->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="flex-1">
+                                        <label class="ti-form-label">Statut</label>
+                                        <input type="text" name="status[]" class="ti-form-input">
+                                    </div>
+                                    <div class="flex-1">
+                                        <label class="ti-form-label">Montant</label>
+                                        <input type="number" name="montant[]" class="ti-form-input">
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <button type="button" class="ti-btn ti-btn-outline ti-btn-danger delete-row">
+                                            <i class="ri-delete-bin-line"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
                 panneContainer.insertAdjacentHTML('beforeend', row);
             });
 
