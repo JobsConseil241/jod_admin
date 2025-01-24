@@ -372,6 +372,24 @@
                                         <label class="ti-form-label">Statut</label>
                                         <input type="text" name="status[]" value="{{ $pn->status }}"
                                             class="ti-form-input">
+                                        <select class="ti-form-select" name="pannes[]" autocomplete="off">
+                                                <option value="initie"
+                                                    {{ $pn->status = 'initie' ? 'selected' : '' }}>
+                                                    Initie
+                                                </option>
+                                                <option value="initie"
+                                                    {{ $pn->status = 'en cours' ? 'selected' : '' }}>
+                                                    En cours
+                                                </option>
+                                                <option value="initie"
+                                                    {{ $pn->status = 'traite' ? 'selected' : '' }}>
+                                                    Traité
+                                                </option>
+                                                <option value="initie"
+                                                    {{ $pn->status = 'abandonne' ? 'selected' : '' }}>
+                                                    Abandonnée
+                                                </option>
+                                        </select>
                                     </div>
                                     <div class="flex-1">
                                         <label class="ti-form-label">Montant</label>
@@ -401,7 +419,24 @@
                             </div>
                             <div class="flex-1">
                                 <label class="ti-form-label">Statut</label>
-                                <input type="text" name="status[]" class="ti-form-input">
+                                <select class="ti-form-select" name="pannes[]" autocomplete="off">
+                                    <option value="initie"
+                                        {{ $pn->status = 'initie' ? 'selected' : '' }}>
+                                        Initie
+                                    </option>
+                                    <option value="initie"
+                                        {{ $pn->status = 'en cours' ? 'selected' : '' }}>
+                                        En cours
+                                    </option>
+                                    <option value="initie"
+                                        {{ $pn->status = 'traite' ? 'selected' : '' }}>
+                                        Traité
+                                    </option>
+                                    <option value="initie"
+                                        {{ $pn->status = 'abandonne' ? 'selected' : '' }}>
+                                        Abandonnée
+                                    </option>
+                                </select>
                             </div>
                             <div class="flex-1">
                                 <label class="ti-form-label">Montant</label>
@@ -452,7 +487,7 @@
     <script src="{{ asset('back/libs/rater-js/index.js') }}"></script>
 
     <!-- Products JS -->
-    <script src="{{ asset('back/js/product.js') }}"></script>
+{{--    <script src="{{ asset('back/js/product.js') }}"></script>--}}
 
     <script>
         "use strict";
@@ -547,38 +582,6 @@
 
                 ]
             })
-
-            const panneContainer = document.getElementById('panne-container');
-
-            // Ajouter une nouvelle ligne dynamiquement
-            document.getElementById('add-row').addEventListener('click', () => {
-                const row = `
-                                <div class="flex items-center space-x-4 mb-3 panne-row">
-                                    <div class="flex-1">
-                                        <label class="ti-form-select-label">Pannes</label>
-                                        <select class="ti-form-select" name="pannes[]" autocomplete="off">
-                                            @foreach ($pannes as $panne)
-                                            <option value="{{ $panne->id }}">{{ $panne->name }}</option>
-                                                                        @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="flex-1">
-                                            <label class="ti-form-label">Statut</label>
-                                            <input type="text" name="status[]" class="ti-form-input">
-                                        </div>
-                                        <div class="flex-1">
-                                            <label class="ti-form-label">Montant</label>
-                                            <input type="number" name="montant[]" class="ti-form-input">
-                                        </div>
-                                        <div class="flex-shrink-0">
-                                            <button type="button" class="ti-btn ti-btn-outline ti-btn-danger delete-row">
-                                                <i class="ri-delete-bin-line"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                            `;
-                panneContainer.insertAdjacentHTML('beforeend', row);
-            });
         });
 
         const phoneInputField = document.querySelector("#phone");
