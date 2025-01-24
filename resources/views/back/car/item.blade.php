@@ -377,15 +377,15 @@
                                                     {{ $pn->status = 'initie' ? 'selected' : '' }}>
                                                     Initie
                                                 </option>
-                                                <option value="initie"
+                                                <option value="en cours"
                                                     {{ $pn->status = 'en cours' ? 'selected' : '' }}>
                                                     En cours
                                                 </option>
-                                                <option value="initie"
+                                                <option value="traite"
                                                     {{ $pn->status = 'traite' ? 'selected' : '' }}>
                                                     Traité
                                                 </option>
-                                                <option value="initie"
+                                                <option value="abandonne"
                                                     {{ $pn->status = 'abandonne' ? 'selected' : '' }}>
                                                     Abandonnée
                                                 </option>
@@ -420,20 +420,16 @@
                             <div class="flex-1">
                                 <label class="ti-form-label">Statut</label>
                                 <select class="ti-form-select" name="pannes[]" autocomplete="off">
-                                    <option value="initie"
-                                        {{ $pn->status = 'initie' ? 'selected' : '' }}>
+                                    <option value="initie">
                                         Initie
                                     </option>
-                                    <option value="initie"
-                                        {{ $pn->status = 'en cours' ? 'selected' : '' }}>
+                                    <option value="en cours">
                                         En cours
                                     </option>
-                                    <option value="initie"
-                                        {{ $pn->status = 'traite' ? 'selected' : '' }}>
+                                    <option value="traite">
                                         Traité
                                     </option>
-                                    <option value="initie"
-                                        {{ $pn->status = 'abandonne' ? 'selected' : '' }}>
+                                    <option value="abandonnee">
                                         Abandonnée
                                     </option>
                                 </select>
