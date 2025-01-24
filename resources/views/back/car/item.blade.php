@@ -578,6 +578,7 @@
                                     </div>
                             `;
                 panneContainer.insertAdjacentHTML('beforeend', row);
+            });
         });
 
         const phoneInputField = document.querySelector("#phone");
