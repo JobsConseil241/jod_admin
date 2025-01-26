@@ -33,8 +33,9 @@ class Vehicule extends Model
 
     public function categorie()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
+
 
     public function marque()
     {
@@ -63,5 +64,10 @@ class Vehicule extends Model
 
     public function etats() {
         return $this->hasMany(EtatVehicule::class);
+    }
+
+    public function latestEtat()
+    {
+        return $this->hasOne(EtatVehicule::class)->latest();
     }
 }

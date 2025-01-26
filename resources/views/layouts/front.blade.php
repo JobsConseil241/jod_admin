@@ -67,7 +67,7 @@
                 <div class="container">
                     <!-- Logo Start -->
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        <img src="{{ asset('front/images/jod.png') }}" alt="Logo">
+                        <img src="{{ asset('front/images/logo_two.png') }}" alt="Logo">
                     </a>
                     <!-- Logo End -->
 
@@ -77,7 +77,7 @@
                             <ul class="navbar-nav mr-auto" id="menu">
                                 <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Accueil</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">A Propos</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('cars') }}">Véhicule</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('cars-list') }}">Véhicule</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
                             </ul>
                         </div>
@@ -117,7 +117,7 @@
 
                         <!-- About Footer Content Start -->
                         <div class="about-footer-content">
-                            <p>Experience the ease and convenience of renting a car with Novaride. </p>
+                            <p>Vous Servir, Notre Preoccupation. </p>
                         </div>
                         <!-- About Footer Content End -->
                     </div>
