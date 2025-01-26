@@ -692,7 +692,7 @@ header.main-header .header-sticky.active{
 
 .hero-section.bg-section{
 	position: relative;
-	background: url("/front/images/7I2A0359.jpg") no-repeat;
+	background: url("/public/front/images/7I2A0359.jpg") no-repeat;
 	background-position: center center;
 	background-size: cover;
 	overflow: hidden;
