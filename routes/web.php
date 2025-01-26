@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 set_time_limit(300);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 Route::get('/home', [WelcomeController::class, 'index'])->name('home');
 
