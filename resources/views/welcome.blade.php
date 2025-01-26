@@ -438,6 +438,8 @@
 
             <div class="row">
                 <div class="col-lg-12">
+                    {{ dd($vehicules) }}
+
                     @foreach($vehicules as $car)
                         <!-- Testimonial Slider Start -->
                         <div class="car-details-slider">
