@@ -74,7 +74,7 @@
                             <ul class="navbar-nav mr-auto" id="menu">
                                 <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Accueil</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">A Propos</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('cars') }}">Véhicules</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('cars-list') }}">Véhicules</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
                             </ul>
                         </div>
@@ -335,14 +335,14 @@
                     <!-- Service Item Start -->
                     <div class="service-item wow fadeInUp">
                         <div class="icon-box">
-                            <img src="images/icon-service-1.svg" alt="">
+                            <img src="{{asset('front/images/icon-service-1.svg')}}" alt="">
                         </div>
                         <div class="service-content">
-                            <h3>car rental with driver</h3>
-                            <p>Enhance your rental experience with additional options.</p>
+                            <h3>location de voiture avec chauffeur</h3>
+                            <p>Conducteurs professionnels connaissant parfaitement le Gabon. Service ponctuel ou régulier, adapté à vos horaires.</p>
                         </div>
                         <div class="service-footer">
-                            <a href="#" class="section-icon-btn"><img src="images/arrow-white.svg"
+                            <a href="#" class="section-icon-btn"><img src="{{asset('front/images/arrow-white.svg')}}"
                                     alt=""></a>
                         </div>
                     </div>
@@ -353,32 +353,34 @@
                     <!-- Service Item Start -->
                     <div class="service-item wow fadeInUp" data-wow-delay="0.25s">
                         <div class="icon-box">
-                            <img src="images/icon-service-2.svg" alt="">
+                            <img src="{{asset('front/images/icon-service-2.svg')}}" alt="">
                         </div>
                         <div class="service-content">
-                            <h3>business car rental</h3>
-                            <p>Enhance your rental experience with additional options.</p>
+                            <h3>Location courte durée</h3>
+                            <p>Idéal pour vos séjours touristiques ou déplacements professionnels. Durée flexible de 1 à 30 jours</p>
                         </div>
                         <div class="service-footer">
-                            <a href="#" class="section-icon-btn"><img src="images/arrow-white.svg"
+                            <a href="#" class="section-icon-btn"><img src="{{asset('front/images/arrow-white.svg')}}"
                                     alt=""></a>
                         </div>
                     </div>
                     <!-- Service Item End -->
                 </div>
 
+
+
                 <div class="col-lg-3 col-md-6">
                     <!-- Service Item Start -->
                     <div class="service-item wow fadeInUp" data-wow-delay="0.5s">
                         <div class="icon-box">
-                            <img src="images/icon-service-3.svg" alt="">
+                            <img src="{{asset('front/images/icon-service-2.svg')}}" alt="">
                         </div>
                         <div class="service-content">
-                            <h3>airport transfer</h3>
-                            <p>Enhance your rental experience with additional options.</p>
+                            <h3>Location longue durée</h3>
+                            <p>Solution économique pour les entreprises et expatriés. Profitez de tarifs préférentiels et d'un service d'entretien régulier.</p>
                         </div>
                         <div class="service-footer">
-                            <a href="#" class="section-icon-btn"><img src="images/arrow-white.svg"
+                            <a href="#" class="section-icon-btn"><img src="{{asset('front/images/arrow-white.svg')}}"
                                     alt=""></a>
                         </div>
                     </div>
@@ -389,14 +391,14 @@
                     <!-- Service Item Start -->
                     <div class="service-item wow fadeInUp" data-wow-delay="0.75s">
                         <div class="icon-box">
-                            <img src="images/icon-service-4.svg" alt="">
+                            <img src="{{asset('front/images/icon-service-4.svg')}}" alt="">
                         </div>
                         <div class="service-content">
-                            <h3>chauffeur services</h3>
-                            <p>Enhance your rental experience with additional options.</p>
+                            <h3>Transport aéroport</h3>
+                            <p>Prise en charge à l'aéroport international de Libreville. Notre équipe vous attend à votre arrivée pour une transition sans stress."</p>
                         </div>
                         <div class="service-footer">
-                            <a href="#" class="section-icon-btn"><img src="images/arrow-white.svg"
+                            <a href="#" class="section-icon-btn"><img src="{{asset('front/images/arrow-white.svg')}}"
                                     alt=""></a>
                         </div>
                     </div>
@@ -406,9 +408,11 @@
                 <div class="col-lg-12">
                     <!-- Service Box Footer Start -->
                     <div class="services-box-footer wow fadeInUp" data-wow-delay="1s">
-                        <p>Discover our range of car rental services designed to meet all your travel needs. From a
-                            diverse fleet of vehicles to flexible rental plans.</p>
-                        <a href="#" class="btn-default">view all service</a>
+                        <p>Service client 24/7 : Une équipe disponible à tout moment pour répondre à vos besoins,
+                            Flotte récente : Véhicules de moins de 3 ans, entretenus régulièrement,
+                            Tarifs transparents : Pas de frais cachés, tout est inclus dans nos prix, Livraison possible : Service de livraison et récupération sur demande.
+                        </p>
+{{--                        <a href="#" class="btn-default">view all service</a>--}}
                     </div>
                     <!-- Service Box Footer End -->
                 </div>
@@ -424,8 +428,8 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h3 class="wow fadeInUp">our fleets</h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">Explore our perfect and extensive fleet
+                        <h3 class="wow fadeInUp">Nos flottes</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Explorez notre flotte parfaite et étendue
                         </h2>
                     </div>
                     <!-- Section Title End -->
@@ -434,416 +438,79 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- Testimonial Slider Start -->
-                    <div class="car-details-slider">
-                        <div class="swiper">
-                            <div class="swiper-wrapper" data-cursor-text="Drag">
-                                <!-- Testimonial Slide Start -->
-                                <div class="swiper-slide">
-                                    <!-- Perfect Fleets Item Start -->
-                                    <div class="perfect-fleet-item">
-                                        <!-- Image Box Start -->
-                                        <div class="image-box">
-                                            <img src="images/perfect-fleet-img-1.png" alt="">
-                                        </div>
-                                        <!-- Image Box End -->
+                    @foreach($vehicules as $car)
+                        <!-- Testimonial Slider Start -->
+                        <div class="car-details-slider">
+                            <div class="swiper">
+                                <div class="swiper-wrapper" data-cursor-text="Drag">
+                                    <!-- Testimonial Slide Start -->
+                                    <div class="swiper-slide">
+                                        <!-- Perfect Fleets Item Start -->
+                                        <div class="perfect-fleet-item">
+                                            <!-- Image Box Start -->
+                                            <div class="image-box">
+                                                <img src="{{asset('front/images/perfect-fleet-img-1.png')}}" alt="">
+                                            </div>
+                                            <!-- Image Box End -->
 
-                                        <!-- Perfect Fleets Content Start -->
-                                        <div class="perfect-fleet-content">
-                                            <!-- Perfect Fleets Title Start -->
-                                            <div class="perfect-fleet-title">
-                                                <h3>luxury car</h3>
-                                                <h2>BMW M2 Car 2017</h2>
+                                            <!-- Perfect Fleets Content Start -->
+                                            <div class="perfect-fleet-content">
+                                                <!-- Perfect Fleets Title Start -->
+                                                <div class="perfect-fleet-title">
+                                                    <h3>{{ $car->categorie->name }}</h3>
+                                                    <h3>{{ $car->marque->name }}</h3>
+                                                    <h2>{{ $car->name }} </h2>
+                                                </div>
+                                                <!-- Perfect Fleets Content End -->
+
+                                                <!-- Perfect Fleets Body Start -->
+                                                <div class="perfect-fleet-body">
+                                                    <ul>
+                                                        <li><img src="{{asset('front/images/icon-fleet-list-1.svg')}}" alt="">
+                                                            {{ $car->nombre_places }} Places</li>
+                                                        <li><img src="{{asset('front/images/icon-fleet-list-2.svg')}}" alt="">
+                                                            {{ $car->nombre_portes }} Portes</li>
+                                                        </li>
+                                                        <li><img src="{{asset('front/images/icon-fleet-list-3.svg')}}" alt="">Baggage
+                                                        </li>
+                                                        <li><img src="{{asset('front/images/icon-fleet-list-4.svg')}}" alt="">
+                                                            {{ $car->transmission }}
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!-- Perfect Fleets Body End -->
+
+                                                <!-- Perfect Fleets Footer Start -->
+                                                <div class="perfect-fleet-footer">
+                                                    <!-- Perfect Fleets Pricing Start -->
+                                                    <div class="perfect-fleet-pricing">
+                                                        <h2>XAF {{ $car->prix_location }}<span>/jour</span></h2>
+                                                    </div>
+                                                    <!-- Perfect Fleets Pricing End -->
+
+                                                    <!-- Perfect Fleets Btn Start -->
+                                                    <div class="perfect-fleet-btn">
+                                                        <a href="{{ route('car-details', ['name' => strtolower($car->name)]) }}" class="section-icon-btn"><img
+                                                                src="{{asset('front/images/arrow-white.svg')}}" alt=""></a>
+                                                    </div>
+                                                    <!-- Perfect Fleets Btn End -->
+                                                </div>
+                                                <!-- Perfect Fleets Footer End -->
                                             </div>
                                             <!-- Perfect Fleets Content End -->
-
-                                            <!-- Perfect Fleets Body Start -->
-                                            <div class="perfect-fleet-body">
-                                                <ul>
-                                                    <li><img src="images/icon-fleet-list-1.svg" alt="">4
-                                                        passenger</li>
-                                                    <li><img src="images/icon-fleet-list-2.svg" alt="">4 door
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-3.svg" alt="">bags
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-4.svg" alt="">auto
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!-- Perfect Fleets Body End -->
-
-                                            <!-- Perfect Fleets Footer Start -->
-                                            <div class="perfect-fleet-footer">
-                                                <!-- Perfect Fleets Pricing Start -->
-                                                <div class="perfect-fleet-pricing">
-                                                    <h2>$280<span>/day</span></h2>
-                                                </div>
-                                                <!-- Perfect Fleets Pricing End -->
-
-                                                <!-- Perfect Fleets Btn Start -->
-                                                <div class="perfect-fleet-btn">
-                                                    <a href="#" class="section-icon-btn"><img
-                                                            src="images/arrow-white.svg" alt=""></a>
-                                                </div>
-                                                <!-- Perfect Fleets Btn End -->
-                                            </div>
-                                            <!-- Perfect Fleets Footer End -->
                                         </div>
-                                        <!-- Perfect Fleets Content End -->
+                                        <!-- Perfect Fleets Item End -->
                                     </div>
-                                    <!-- Perfect Fleets Item End -->
+                                    <!-- Testimonial Slide End -->
                                 </div>
-                                <!-- Testimonial Slide End -->
-
-                                <!-- Testimonial Slide Start -->
-                                <div class="swiper-slide">
-                                    <!-- Perfect Fleets Item Start -->
-                                    <div class="perfect-fleet-item">
-                                        <!-- Image Box Start -->
-                                        <div class="image-box">
-                                            <img src="images/perfect-fleet-img-2.png" alt="">
-                                        </div>
-                                        <!-- Image Box End -->
-
-                                        <!-- Perfect Fleets Content Start -->
-                                        <div class="perfect-fleet-content">
-                                            <!-- Perfect Fleets Title Start -->
-                                            <div class="perfect-fleet-title">
-                                                <h3>luxury car</h3>
-                                                <h2>Audi RS7 Car 2016</h2>
-                                            </div>
-                                            <!-- Perfect Fleets Content End -->
-
-                                            <!-- Perfect Fleets Body Start -->
-                                            <div class="perfect-fleet-body">
-                                                <ul>
-                                                    <li><img src="images/icon-fleet-list-1.svg" alt="">4
-                                                        passenger</li>
-                                                    <li><img src="images/icon-fleet-list-2.svg" alt="">4 door
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-3.svg" alt="">bags
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-4.svg" alt="">auto
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!-- Perfect Fleets Body End -->
-
-                                            <!-- Perfect Fleets Footer Start -->
-                                            <div class="perfect-fleet-footer">
-                                                <!-- Perfect Fleets Pricing Start -->
-                                                <div class="perfect-fleet-pricing">
-                                                    <h2>$320<span>/day</span></h2>
-                                                </div>
-                                                <!-- Perfect Fleets Pricing End -->
-
-                                                <!-- Perfect Fleets Btn Start -->
-                                                <div class="perfect-fleet-btn">
-                                                    <a href="#" class="section-icon-btn"><img
-                                                            src="images/arrow-white.svg" alt=""></a>
-                                                </div>
-                                                <!-- Perfect Fleets Btn End -->
-                                            </div>
-                                            <!-- Perfect Fleets Footer End -->
-                                        </div>
-                                        <!-- Perfect Fleets Content End -->
-                                    </div>
-                                    <!-- Perfect Fleets Item End -->
+                                <div class="car-details-btn">
+                                    <div class="car-button-prev"></div>
+                                    <div class="car-button-next"></div>
                                 </div>
-                                <!-- Testimonial Slide End -->
-
-                                <!-- Testimonial Slide Start -->
-                                <div class="swiper-slide">
-                                    <!-- Perfect Fleets Item Start -->
-                                    <div class="perfect-fleet-item">
-                                        <!-- Image Box Start -->
-                                        <div class="image-box">
-                                            <img src="images/perfect-fleet-img-3.png" alt="">
-                                        </div>
-                                        <!-- Image Box End -->
-
-                                        <!-- Perfect Fleets Content Start -->
-                                        <div class="perfect-fleet-content">
-                                            <!-- Perfect Fleets Title Start -->
-                                            <div class="perfect-fleet-title">
-                                                <h3>luxury car</h3>
-                                                <h2>Ferrari F12 Car 2022</h2>
-                                            </div>
-                                            <!-- Perfect Fleets Content End -->
-
-                                            <!-- Perfect Fleets Body Start -->
-                                            <div class="perfect-fleet-body">
-                                                <ul>
-                                                    <li><img src="images/icon-fleet-list-1.svg" alt="">4
-                                                        passenger</li>
-                                                    <li><img src="images/icon-fleet-list-2.svg" alt="">4 door
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-3.svg" alt="">bags
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-4.svg" alt="">auto
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!-- Perfect Fleets Body End -->
-
-                                            <!-- Perfect Fleets Footer Start -->
-                                            <div class="perfect-fleet-footer">
-                                                <!-- Perfect Fleets Pricing Start -->
-                                                <div class="perfect-fleet-pricing">
-                                                    <h2>$450<span>/day</span></h2>
-                                                </div>
-                                                <!-- Perfect Fleets Pricing End -->
-
-                                                <!-- Perfect Fleets Btn Start -->
-                                                <div class="perfect-fleet-btn">
-                                                    <a href="#" class="section-icon-btn"><img
-                                                            src="images/arrow-white.svg" alt=""></a>
-                                                </div>
-                                                <!-- Perfect Fleets Btn End -->
-                                            </div>
-                                            <!-- Perfect Fleets Footer End -->
-                                        </div>
-                                        <!-- Perfect Fleets Content End -->
-                                    </div>
-                                    <!-- Perfect Fleets Item End -->
-                                </div>
-                                <!-- Testimonial Slide End -->
-
-                                <!-- Testimonial Slide Start -->
-                                <div class="swiper-slide">
-                                    <!-- Perfect Fleets Item Start -->
-                                    <div class="perfect-fleet-item">
-                                        <!-- Image Box Start -->
-                                        <div class="image-box">
-                                            <img src="images/perfect-fleet-img-4.png" alt="">
-                                        </div>
-                                        <!-- Image Box End -->
-
-                                        <!-- Perfect Fleets Content Start -->
-                                        <div class="perfect-fleet-content">
-                                            <!-- Perfect Fleets Title Start -->
-                                            <div class="perfect-fleet-title">
-                                                <h3>luxury car</h3>
-                                                <h2>Toyota Yaris 2017</h2>
-                                            </div>
-                                            <!-- Perfect Fleets Content End -->
-
-                                            <!-- Perfect Fleets Body Start -->
-                                            <div class="perfect-fleet-body">
-                                                <ul>
-                                                    <li><img src="images/icon-fleet-list-1.svg" alt="">4
-                                                        passenger</li>
-                                                    <li><img src="images/icon-fleet-list-2.svg" alt="">4 door
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-3.svg" alt="">bags
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-4.svg" alt="">auto
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!-- Perfect Fleets Body End -->
-
-                                            <!-- Perfect Fleets Footer Start -->
-                                            <div class="perfect-fleet-footer">
-                                                <!-- Perfect Fleets Pricing Start -->
-                                                <div class="perfect-fleet-pricing">
-                                                    <h2>$220<span>/day</span></h2>
-                                                </div>
-                                                <!-- Perfect Fleets Pricing End -->
-
-                                                <!-- Perfect Fleets Btn Start -->
-                                                <div class="perfect-fleet-btn">
-                                                    <a href="#" class="section-icon-btn"><img
-                                                            src="images/arrow-white.svg" alt=""></a>
-                                                </div>
-                                                <!-- Perfect Fleets Btn End -->
-                                            </div>
-                                            <!-- Perfect Fleets Footer End -->
-                                        </div>
-                                        <!-- Perfect Fleets Content End -->
-                                    </div>
-                                    <!-- Perfect Fleets Item End -->
-                                </div>
-                                <!-- Testimonial Slide End -->
-
-                                <!-- Testimonial Slide Start -->
-                                <div class="swiper-slide">
-                                    <!-- Perfect Fleets Item Start -->
-                                    <div class="perfect-fleet-item">
-                                        <!-- Image Box Start -->
-                                        <div class="image-box">
-                                            <img src="images/perfect-fleet-img-2.png" alt="">
-                                        </div>
-                                        <!-- Image Box End -->
-
-                                        <!-- Perfect Fleets Content Start -->
-                                        <div class="perfect-fleet-content">
-                                            <!-- Perfect Fleets Title Start -->
-                                            <div class="perfect-fleet-title">
-                                                <h3>luxury car</h3>
-                                                <h2>Audi RS7 Car 2016</h2>
-                                            </div>
-                                            <!-- Perfect Fleets Content End -->
-
-                                            <!-- Perfect Fleets Body Start -->
-                                            <div class="perfect-fleet-body">
-                                                <ul>
-                                                    <li><img src="images/icon-fleet-list-1.svg" alt="">4
-                                                        passenger</li>
-                                                    <li><img src="images/icon-fleet-list-2.svg" alt="">4 door
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-3.svg" alt="">bags
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-4.svg" alt="">auto
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!-- Perfect Fleets Body End -->
-
-                                            <!-- Perfect Fleets Footer Start -->
-                                            <div class="perfect-fleet-footer">
-                                                <!-- Perfect Fleets Pricing Start -->
-                                                <div class="perfect-fleet-pricing">
-                                                    <h2>$320<span>/day</span></h2>
-                                                </div>
-                                                <!-- Perfect Fleets Pricing End -->
-
-                                                <!-- Perfect Fleets Btn Start -->
-                                                <div class="perfect-fleet-btn">
-                                                    <a href="#" class="section-icon-btn"><img
-                                                            src="images/arrow-white.svg" alt=""></a>
-                                                </div>
-                                                <!-- Perfect Fleets Btn End -->
-                                            </div>
-                                            <!-- Perfect Fleets Footer End -->
-                                        </div>
-                                        <!-- Perfect Fleets Content End -->
-                                    </div>
-                                    <!-- Perfect Fleets Item End -->
-                                </div>
-                                <!-- Testimonial Slide End -->
-
-                                <!-- Testimonial Slide Start -->
-                                <div class="swiper-slide">
-                                    <!-- Perfect Fleets Item Start -->
-                                    <div class="perfect-fleet-item">
-                                        <!-- Image Box Start -->
-                                        <div class="image-box">
-                                            <img src="images/perfect-fleet-img-3.png" alt="">
-                                        </div>
-                                        <!-- Image Box End -->
-
-                                        <!-- Perfect Fleets Content Start -->
-                                        <div class="perfect-fleet-content">
-                                            <!-- Perfect Fleets Title Start -->
-                                            <div class="perfect-fleet-title">
-                                                <h3>luxury car</h3>
-                                                <h2>Ferrari F12 Car 2022</h2>
-                                            </div>
-                                            <!-- Perfect Fleets Content End -->
-
-                                            <!-- Perfect Fleets Body Start -->
-                                            <div class="perfect-fleet-body">
-                                                <ul>
-                                                    <li><img src="images/icon-fleet-list-1.svg" alt="">4
-                                                        passenger</li>
-                                                    <li><img src="images/icon-fleet-list-2.svg" alt="">4 door
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-3.svg" alt="">bags
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-4.svg" alt="">auto
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!-- Perfect Fleets Body End -->
-
-                                            <!-- Perfect Fleets Footer Start -->
-                                            <div class="perfect-fleet-footer">
-                                                <!-- Perfect Fleets Pricing Start -->
-                                                <div class="perfect-fleet-pricing">
-                                                    <h2>$450<span>/day</span></h2>
-                                                </div>
-                                                <!-- Perfect Fleets Pricing End -->
-
-                                                <!-- Perfect Fleets Btn Start -->
-                                                <div class="perfect-fleet-btn">
-                                                    <a href="#" class="section-icon-btn"><img
-                                                            src="images/arrow-white.svg" alt=""></a>
-                                                </div>
-                                                <!-- Perfect Fleets Btn End -->
-                                            </div>
-                                            <!-- Perfect Fleets Footer End -->
-                                        </div>
-                                        <!-- Perfect Fleets Content End -->
-                                    </div>
-                                    <!-- Perfect Fleets Item End -->
-                                </div>
-                                <!-- Testimonial Slide End -->
-
-                                <!-- Testimonial Slide Start -->
-                                <div class="swiper-slide">
-                                    <!-- Perfect Fleets Item Start -->
-                                    <div class="perfect-fleet-item">
-                                        <!-- Image Box Start -->
-                                        <div class="image-box">
-                                            <img src="images/perfect-fleet-img-4.png" alt="">
-                                        </div>
-                                        <!-- Image Box End -->
-
-                                        <!-- Perfect Fleets Content Start -->
-                                        <div class="perfect-fleet-content">
-                                            <!-- Perfect Fleets Title Start -->
-                                            <div class="perfect-fleet-title">
-                                                <h3>luxury car</h3>
-                                                <h2>Toyota Yaris 2017</h2>
-                                            </div>
-                                            <!-- Perfect Fleets Content End -->
-
-                                            <!-- Perfect Fleets Body Start -->
-                                            <div class="perfect-fleet-body">
-                                                <ul>
-                                                    <li><img src="images/icon-fleet-list-1.svg" alt="">4
-                                                        passenger</li>
-                                                    <li><img src="images/icon-fleet-list-2.svg" alt="">4 door
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-3.svg" alt="">bags
-                                                    </li>
-                                                    <li><img src="images/icon-fleet-list-4.svg" alt="">auto
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!-- Perfect Fleets Body End -->
-
-                                            <!-- Perfect Fleets Footer Start -->
-                                            <div class="perfect-fleet-footer">
-                                                <!-- Perfect Fleets Pricing Start -->
-                                                <div class="perfect-fleet-pricing">
-                                                    <h2>$220<span>/day</span></h2>
-                                                </div>
-                                                <!-- Perfect Fleets Pricing End -->
-
-                                                <!-- Perfect Fleets Btn Start -->
-                                                <div class="perfect-fleet-btn">
-                                                    <a href="#" class="section-icon-btn"><img
-                                                            src="images/arrow-white.svg" alt=""></a>
-                                                </div>
-                                                <!-- Perfect Fleets Btn End -->
-                                            </div>
-                                            <!-- Perfect Fleets Footer End -->
-                                        </div>
-                                        <!-- Perfect Fleets Content End -->
-                                    </div>
-                                    <!-- Perfect Fleets Item End -->
-                                </div>
-                                <!-- Testimonial Slide End -->
-                            </div>
-                            <div class="car-details-btn">
-                                <div class="car-button-prev"></div>
-                                <div class="car-button-next"></div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Testimonial Slider End -->
+                        <!-- Testimonial Slider End -->
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -860,13 +527,13 @@
                     <div class="our-faqs-image">
                         <div class="faqs-img-1">
                             <figure class="image-anime">
-                                <img src="images/our-faqs-img-1.jpg" alt="">
+                                <img src="{{asset('front/images/our-faqs-img-1.jpg')}}" alt="">
                             </figure>
                         </div>
 
                         <div class="faqs-img-2">
                             <figure class="image-anime">
-                                <img src="images/our-faqs-img-2.jpg" alt="">
+                                <img src="{{asset('front/images/our-faqs-img-2.jpg')}}" alt="">
                             </figure>
                         </div>
                     </div>
@@ -878,9 +545,9 @@
                     <div class="our-faqs-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            <h3 class="wow fadeInUp">frequently asked questions</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Everything you need to know about our
-                                services</h2>
+                            <h3 class="wow fadeInUp">questions fréquemment posées</h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Tout ce que vous devez savoir sur notre
+                                service</h2>
                         </div>
                         <!-- Section Title End -->
 
@@ -892,14 +559,14 @@
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faqcollapse1" aria-expanded="true"
                                         aria-controls="faqcollapse1">
-                                        What do I need to rent a car?
+                                        De quoi ai-je besoin pour louer une voiture ?
                                     </button>
                                 </h2>
                                 <div id="faqcollapse1" class="accordion-collapse collapse show"
                                     aria-labelledby="faqheading1" data-bs-parent="#faqsaccordion">
                                     <div class="accordion-body">
-                                        <p>Explore our diverse selection of high-end vehicles, choose your preferred
-                                            pickup and return dates, and select a location that best fits your needs.
+                                        <p>Explorez notre sélection diversifiée de véhicules haut de gamme, choisissez votre préféré
+                                            dates de prise en charge et de retour, et sélectionnez l'emplacement qui correspond le mieux à vos besoins.
                                         </p>
                                     </div>
                                 </div>
@@ -912,14 +579,14 @@
                                     <button class="accordion-button collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#faqcollapse2"
                                         aria-expanded="false" aria-controls="faqcollapse2">
-                                        How old do I need to be to rent a car?
+                                        Quel âge dois-je avoir pour louer une voiture ?
                                     </button>
                                 </h2>
                                 <div id="faqcollapse2" class="accordion-collapse collapse"
                                     aria-labelledby="faqheading2" data-bs-parent="#faqsaccordion">
                                     <div class="accordion-body">
-                                        <p>Explore our diverse selection of high-end vehicles, choose your preferred
-                                            pickup and return dates, and select a location that best fits your needs.
+                                        <p>Explorez notre sélection diversifiée de véhicules haut de gamme, choisissez votre préféré
+                                            dates de prise en charge et de retour, et sélectionnez l'emplacement qui correspond le mieux à vos besoins.
                                         </p>
                                     </div>
                                 </div>
@@ -932,14 +599,14 @@
                                     <button class="accordion-button collapsed" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#faqcollapse3"
                                         aria-expanded="false" aria-controls="faqcollapse3">
-                                        Can I rent a car with a debit card?
+                                        Comment se passe le carburant ?
                                     </button>
                                 </h2>
                                 <div id="faqcollapse3" class="accordion-collapse collapse"
                                     aria-labelledby="faqheading3" data-bs-parent="#faqsaccordion">
                                     <div class="accordion-body">
-                                        <p>Explore our diverse selection of high-end vehicles, choose your preferred
-                                            pickup and return dates, and select a location that best fits your needs.
+                                        <p>Les véhicules sont fournis avec le plein et doivent être rendus avec le plein.
+                                            Une station-service se trouve à proximité de notre agence.
                                         </p>
                                     </div>
                                 </div>
@@ -962,8 +629,8 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h3 class="wow fadeInUp">testimonials</h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">What our customers are saying about us
+                        <h3 class="wow fadeInUp">Temoignages</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Ce que nos clients disent de nous
                         </h2>
                     </div>
                     <!-- Section Title End -->
@@ -988,15 +655,15 @@
                                                 <i class="fa-solid fa-star"></i>
                                             </div>
                                             <div class="testimonial-content">
-                                                <p>Renting a car from nova ride was a great decision. Not only did I get
-                                                    a reliable and comfortable vehicle, but the prices were also very
-                                                    competitive.</p>
+                                                <p>Louer une voiture chez JOD Trade&Co était une excellente décision. Non seulement j'ai eu
+                                                    un véhicule fiable et confortable, mais les prix étaient également très
+                                                    compétitif.</p>
                                             </div>
                                         </div>
                                         <div class="testimonial-body">
                                             <div class="author-image">
                                                 <figure class="image-anime">
-                                                    <img src="images/author-1.jpg" alt="">
+                                                    <img src="{{asset('front/images/author-1.jpg')}}" alt="">
                                                 </figure>
                                             </div>
                                             <div class="author-content">
@@ -1020,15 +687,15 @@
                                                 <i class="fa-regular fa-star"></i>
                                             </div>
                                             <div class="testimonial-content">
-                                                <p>Renting a car from nova ride was a great decision. Not only did I get
-                                                    a reliable and comfortable vehicle, but the prices were also very
-                                                    competitive.</p>
+                                                <p>Louer une voiture chez JOD Trade&Co était une excellente décision. Non seulement j'ai eu
+                                                    un véhicule fiable et confortable, mais les prix étaient également très
+                                                    compétitif.</p>
                                             </div>
                                         </div>
                                         <div class="testimonial-body">
                                             <div class="author-image">
                                                 <figure class="image-anime">
-                                                    <img src="images/author-2.jpg" alt="">
+                                                    <img src="{{asset('front/images/author-2.jpg')}}" alt="">
                                                 </figure>
                                             </div>
                                             <div class="author-content">
@@ -1052,15 +719,15 @@
                                                 <i class="fa-regular fa-star"></i>
                                             </div>
                                             <div class="testimonial-content">
-                                                <p>Renting a car from nova ride was a great decision. Not only did I get
-                                                    a reliable and comfortable vehicle, but the prices were also very
-                                                    competitive.</p>
+                                                <p>Louer une voiture chez JOD Trade&Co était une excellente décision. Non seulement j'ai eu
+                                                    un véhicule fiable et confortable, mais les prix étaient également très
+                                                    compétitif.</p>
                                             </div>
                                         </div>
                                         <div class="testimonial-body">
                                             <div class="author-image">
                                                 <figure class="image-anime">
-                                                    <img src="images/author-3.jpg" alt="">
+                                                    <img src="{{asset('front/images/author-3.jpg')}}" alt="">
                                                 </figure>
                                             </div>
                                             <div class="author-content">
@@ -1084,15 +751,15 @@
                                                 <i class="fa-solid fa-star"></i>
                                             </div>
                                             <div class="testimonial-content">
-                                                <p>Renting a car from nova ride was a great decision. Not only did I get
-                                                    a reliable and comfortable vehicle, but the prices were also very
-                                                    competitive.</p>
+                                                <p>Louer une voiture chez JOD Trade&Co était une excellente décision. Non seulement j'ai eu
+                                                    un véhicule fiable et confortable, mais les prix étaient également très
+                                                    compétitif.</p>
                                             </div>
                                         </div>
                                         <div class="testimonial-body">
                                             <div class="author-image">
                                                 <figure class="image-anime">
-                                                    <img src="images/author-4.jpg" alt="">
+                                                    <img src="{{asset('front/images/author-4.jpg')}}" alt="">
                                                 </figure>
                                             </div>
                                             <div class="author-content">
