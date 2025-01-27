@@ -408,7 +408,7 @@
 
                         </div>
 
-                        <div class="flex items-center space-x-4 mb-3 panne-row">
+                        <div class="flex items-end space-x-4 mb-3 panne-row">
                             <div class="flex-1">
                                 <label class="ti-form-select-label">Pannes</label>
                                 <select class="ti-form-select" name="pannes[]" autocomplete="off">
@@ -659,6 +659,11 @@
                     $('#cardModalView').removeClass('hidden').addClass('open');
                 }
             });
+        });
+
+        $(document).on('click', '#add-row', function() {
+            console.log('Button clicked');
+            // Votre code ici
         });
 
         $(document).ready(function() {
