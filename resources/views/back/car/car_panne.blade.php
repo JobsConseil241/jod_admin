@@ -69,9 +69,9 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        {{ dd($pannes) }}
+                        {{ dd($car) }}
                         <tbody>
-                            @foreach ($pannes as $panne)
+                            @foreach ($car as $panne)
                                 <tr>
                                     <td>{{ $panne->id }}</td>
                                     <td>{{ $panne->categorie->name }}</td>
