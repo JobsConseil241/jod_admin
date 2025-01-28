@@ -578,7 +578,7 @@
                 ]
             })
 
-            $('#hs-basic-modal').click( function(e) {
+            $('#hs-basic-modal #add-row').click( function(e) {
                 console.log('Button clicked', e);
                 // Votre code ici
             })
