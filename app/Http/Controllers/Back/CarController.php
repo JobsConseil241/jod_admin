@@ -149,15 +149,23 @@ class CarController extends Controller
             'id_vehicule' => $car,
         ]);
 
-        $object = json_decode($response->body());
+//        $object = json_decode($response->body());
+//
+//        if ($object && $object->success == true) {
+//            $car = $object->data;
+//        } else {
+//            $car = [];
+//        }
 
-        if ($object && $object->success == true) {
-            $car = $object->data;
+        $data = $response->json();
+
+        if ($response->successful() && isset($data['success']) && $data['success'] === true) {
+            $car = $data['data'] ?? [];
         } else {
             $car = [];
         }
+
         dd($car);
-//        dd($object->data->vehicule);
 
         return view('back.car.car_panne', compact('car'));
     }
