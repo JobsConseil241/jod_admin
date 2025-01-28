@@ -160,12 +160,12 @@ class CarController extends Controller
         $data = $response->json();
 
         if ($response->successful() && isset($data['success']) && $data['success'] === true) {
-            $car = $data['data'] ?? [];
+            $car = $data['data']['vehicule'] ?? [];
         } else {
             $car = [];
         }
 
-        dd($car['vehicule']);
+        dd($car['name']);
 
         return view('back.car.car_panne', compact('car'));
     }
