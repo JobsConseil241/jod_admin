@@ -69,30 +69,30 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        {{ var_dump($car['id']) }}
-{{--                        <tbody>--}}
-{{--                            @foreach ($car as $panne)--}}
-{{--                                <tr>--}}
-{{--                                    <td>{{ $panne->id }}</td>--}}
-{{--                                    <td>{{ $panne->categorie->name }}</td>--}}
-{{--                                    <td>{{ $panne->name }}</td>--}}
-{{--                                    <td>{{ Str::limit($panne->description, 100, '...') }}</td>--}}
-{{--                                    <td>{{ $panne->montant }}</td>--}}
-{{--                                    <td>{{ $panne->status }}</td>--}}
-{{--                                    <td>--}}
-{{--                                        <button type="button" class="ti-btn ti-btn-soft-primary"--}}
-{{--                                            data-hs-overlay="#cardModalView{{ $panne->id }}">--}}
-{{--                                            <i class="ri-pencil-fill align-bottom me-2"></i> Modifier--}}
-{{--                                        </button>--}}
+{{--                        {{ var_dump($car['id']) }}--}}
+                        <tbody>
+                            @foreach ($car as $panne)
+                                <tr>
+                                    <td>{{ $panne->id }}</td>
+                                    <td>{{ $panne->categorie->name }}</td>
+                                    <td>{{ $panne->name }}</td>
+                                    <td>{{ Str::limit($panne->description, 100, '...') }}</td>
+                                    <td>{{ $panne->montant }}</td>
+                                    <td>{{ $panne->status }}</td>
+                                    <td>
+                                        <button type="button" class="ti-btn ti-btn-soft-primary"
+                                            data-hs-overlay="#cardModalView{{ $panne->id }}">
+                                            <i class="ri-pencil-fill align-bottom me-2"></i> Modifier
+                                        </button>
 
-{{--                                        <button type="button" class="ti-btn ti-btn-soft-danger"--}}
-{{--                                            data-hs-overlay="#cardModalDelete{{ $panne->id }}">--}}
-{{--                                            <i class="ri-delete-bin-fill align-bottom me-2"></i> Supprimer--}}
-{{--                                        </button>--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                            @endforeach--}}
-{{--                        </tbody>--}}
+                                        <button type="button" class="ti-btn ti-btn-soft-danger"
+                                            data-hs-overlay="#cardModalDelete{{ $panne->id }}">
+                                            <i class="ri-delete-bin-fill align-bottom me-2"></i> Supprimer
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
