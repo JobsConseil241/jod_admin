@@ -149,15 +149,13 @@ class CarController extends Controller
             'id_vehicule' => $car,
         ]);
 
-//        $object = json_decode($response->body());
-//
-//        if ($object && $object->success == true) {
-//            $car = $object->data;
-//        } else {
-//            $car = [];
-//        }
+        $responses = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_category_pannes');
 
         $data = $response->json();
+
+        $categorie = $response->json();
 
         if ($response->successful() && isset($data['success']) && $data['success'] === true) {
             $car = $data['data']['vehicule'] ?? [];
@@ -165,7 +163,13 @@ class CarController extends Controller
             $car = [];
         }
 
-        return view('back.car.car_panne', compact('car'));
+        if ($responses->successful() && isset($categorie['success']) && $categorie['success'] === true) {
+            $categories = $data['data']['categories'] ?? [];
+        } else {
+            $categories = [];
+        }
+
+        return view('back.car.car_panne', compact('car', 'categories'));
     }
 
     public function edit($car)
