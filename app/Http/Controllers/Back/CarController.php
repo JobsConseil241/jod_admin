@@ -165,7 +165,7 @@ class CarController extends Controller
             $car = [];
         }
 
-        dd($car['name']);
+        dd($car['vehicule']);
 
         return view('back.car.car_panne', compact('car'));
     }
