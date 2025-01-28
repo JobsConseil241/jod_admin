@@ -577,6 +577,12 @@
 
                 ]
             })
+
+            $('#hs-basic-modal').click( function() {
+                console.log('Button clicked');
+                // Votre code ici
+            })
+
         });
 
         const phoneInputField = document.querySelector("#phone");
