@@ -72,6 +72,7 @@
 {{--                        {{ var_dump($car['id']) }}--}}
                         <tbody>
                             @foreach ($car as $panne)
+                                {{ dd($panne) }}
                                 <tr>
                                     <td>{{ $panne->id }}</td>
                                     <td>{{ $panne->categorie->name }}</td>
