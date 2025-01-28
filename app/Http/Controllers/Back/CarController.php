@@ -169,7 +169,7 @@ class CarController extends Controller
             $categories = [];
         }
 
-        dd($categorie);
+        dd($categorie['data']['categories'][0]);
 
         return view('back.car.car_panne', compact('car', 'categories'));
     }
