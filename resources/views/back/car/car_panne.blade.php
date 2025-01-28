@@ -32,7 +32,7 @@
             <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">
                 <a class="flex items-center font-semibold text-primary hover:text-primary dark:text-primary truncate"
                    href="{{ route('dashboard') }}">
-                    {{ $car->name }}
+{{--                    {{ $car->name }}--}}toto
                 </a>
             </li>
             <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">
