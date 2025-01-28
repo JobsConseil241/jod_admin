@@ -59,14 +59,14 @@ class PanneController extends BaseController
             }
 
             // Retrieve the single vehicle with its pannes
-            $vehicule = Vehicule::with(['pannes' => function ($query) {
-                $query->with('categorie_pannes'); // Include related categorie_pannes
+            $vehicule = Vehicule::with(['categorie', 'marque', 'pannes' => function ($query) {
+                $query->with('categorie_pannes');
             }])->find($datas['id_vehicule']);
 
             // Check if the vehicle exists
             if (!$vehicule) {
-                Log::warning('Get Single Vehicule Pannes Endpoint - Vehicle not found: ' . $id);
-                return $this->sendError("Vehicle not found with ID: $id", 404);
+                Log::warning('Get Single Vehicule Pannes Endpoint - Vehicle not found: ' . $datas['id_vehicule']);
+                return $this->sendError("Vehicle not found with ID: ".$datas['id_vehicule'], 404);
             }
 
             $data['vehicule'] = $vehicule;
