@@ -76,6 +76,7 @@
                                     <td>{{ $panne->categorie->name }}</td>
                                     <td>{{ $panne->name }}</td>
                                     <td>{{ Str::limit($panne->description, 100, '...') }}</td>
+                                    <td>{{ $panne->montant }}</td>
                                     <td>{{ $panne->status }}</td>
                                     <td>
                                         <button type="button" class="ti-btn ti-btn-soft-primary"
