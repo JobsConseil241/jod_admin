@@ -578,8 +578,8 @@
                 ]
             })
 
-            $('#hs-basic-modal').click( function() {
-                console.log('Button clicked');
+            $('#hs-basic-modal').click( function(e) {
+                console.log('Button clicked', e);
                 // Votre code ici
             })
 
