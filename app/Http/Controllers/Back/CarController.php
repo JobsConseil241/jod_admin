@@ -164,7 +164,7 @@ class CarController extends Controller
         }
 
         if ($responses->successful() && isset($categorie['success']) && $categorie['success'] === true) {
-            $categories = $categorie['data']['categories'][0] ?? [];
+            $categories = $categorie['data']['categories'] ?? [];
         } else {
             $categories = [];
         }
