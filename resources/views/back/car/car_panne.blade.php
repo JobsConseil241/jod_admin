@@ -69,6 +69,7 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
+                        {{ dd($pannes) }}
                         <tbody>
                             @foreach ($pannes as $panne)
                                 <tr>
