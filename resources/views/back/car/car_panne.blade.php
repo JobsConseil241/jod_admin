@@ -97,7 +97,6 @@
                         </tbody>
                     </table>
                 </div>
-                {{ dd($categories) }}
 
             </div>
         </div>
@@ -130,22 +129,35 @@
                             <select name="category_id" class="ti-form-select" required>
                                 <option>Choisissez</option>
                                 @foreach ($categories as $item)
-                                    <option value="{{ $item->id }}"
-                                        {{ old('category_id') == $item->id ? 'selected' : '' }}>
-                                        {{ $item->name }}
+                                    <option value="{{ $item['id'] }}"
+                                        {{ old('category_id') == $item['id'] ? 'selected' : '' }}>
+                                        {{ $item['name'] }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="mb-3">
-                            <label for="input-label" class="ti-form-label">Nom</label>
-                            <input type="text" name="name" id="input-label" class="ti-form-input">
+                            <label class="ti-form-label">Statut</label>
+                            <select class="ti-form-select" name="pannes[]" autocomplete="off">
+                                <option value="initie">
+                                    Initie
+                                </option>
+                                <option value="en cours">
+                                    En cours
+                                </option>
+                                <option value="traite">
+                                    Traité
+                                </option>
+                                <option value="abandonnee">
+                                    Abandonnée
+                                </option>
+                            </select>
                         </div>
 
                         <div class="mb-3">
-                            <label for="input-description" class="ti-form-label">Description</label>
-                            <textarea class="ti-form-input" rows="3" name="description"></textarea>
+                            <label class="ti-form-label">Montant</label>
+                            <input type="number" name="montant[]" class="ti-form-input">
                         </div>
                     </div>
                     <div class="ti-modal-footer">
