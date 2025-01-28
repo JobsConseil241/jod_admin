@@ -620,10 +620,8 @@
                 `;
                 panneContainer.insertAdjacentHTML('beforeend', row);
 
-                //supprimes la ligne
-                panneContainer.addEventListener('click', (e) => {
-                    console.log(e)
-                    console.log(e.target.closest('.delete-row'))
+                // Gestion de la suppression des lignes
+                document.getElementById('panne-container').addEventListener('click', function (e) {
                     if (e.target.closest('.delete-row')) {
                         const row = e.target.closest('.panne-row');
                         const panneId = row.dataset.id;
