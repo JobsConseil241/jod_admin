@@ -69,7 +69,7 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        {{ var_dump($car) }}
+                        {{ var_dump($car['id']) }}
 {{--                        <tbody>--}}
 {{--                            @foreach ($car as $panne)--}}
 {{--                                <tr>--}}
