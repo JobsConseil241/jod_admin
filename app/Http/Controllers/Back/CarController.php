@@ -152,11 +152,11 @@ class CarController extends Controller
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            $car = $object->data[0];
+            $car = $object->data;
         } else {
             $car = [];
         }
-//        dd($car->name);
+        dd($car->name);
 //        dd($object->data->vehicule);
 
         return view('back.car.car_panne', compact('car'));
