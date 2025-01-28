@@ -579,8 +579,37 @@
             })
 
             $('#hs-basic-modal #add-row').click( function(e) {
-                console.log('Button clicked', e);
-                // Votre code ici
+                const panneContainer = document.getElementById('panne-container');
+
+                $('#add-row').click(() => {
+                    console.log('dedans')
+                    const row = `
+                                <div class="flex items-center space-x-4 mb-3 panne-row">
+                                    <div class="flex-1">
+                                        <label class="ti-form-select-label">Pannes</label>
+                                        <select class="ti-form-select" name="pannes[]" autocomplete="off">
+                                            @foreach ($pannes as $panne)
+                                        <option value="{{ $panne->id }}">{{ $panne->name }}</option>
+                                                                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="flex-1">
+                                        <label class="ti-form-label">Statut</label>
+                                        <input type="text" name="status[]" class="ti-form-input">
+                                    </div>
+                                    <div class="flex-1">
+                                        <label class="ti-form-label">Montant</label>
+                                        <input type="number" name="montant[]" class="ti-form-input">
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <button type="button" class="ti-btn ti-btn-outline ti-btn-danger delete-row">
+                                            <i class="ri-delete-bin-line"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                    `;
+                    panneContainer.insertAdjacentHTML('beforeend', row);
+                });
             })
 
         });
@@ -672,45 +701,6 @@
             // Votre code ici
         });
 
-        $('#hs-basic-modal').click( function() {
-            console.log('Button clicked');
-            // Votre code ici
-        });
-
-        {{--$(document).ready(function() {--}}
-        {{--    const panneContainer = document.getElementById('panne-container');--}}
-
-        {{--    $('#add-row').click(() => {--}}
-        {{--        console.log('dedans')--}}
-        {{--        const row = `--}}
-        {{--                        <div class="flex items-center space-x-4 mb-3 panne-row">--}}
-        {{--                            <div class="flex-1">--}}
-        {{--                                <label class="ti-form-select-label">Pannes</label>--}}
-        {{--                                <select class="ti-form-select" name="pannes[]" autocomplete="off">--}}
-        {{--                                    @foreach ($pannes as $panne)--}}
-        {{--                                    <option value="{{ $panne->id }}">{{ $panne->name }}</option>--}}
-        {{--                                                                @endforeach--}}
-        {{--                                    </select>--}}
-        {{--                                </div>--}}
-        {{--                                <div class="flex-1">--}}
-        {{--                                    <label class="ti-form-label">Statut</label>--}}
-        {{--                                    <input type="text" name="status[]" class="ti-form-input">--}}
-        {{--                                </div>--}}
-        {{--                                <div class="flex-1">--}}
-        {{--                                    <label class="ti-form-label">Montant</label>--}}
-        {{--                                    <input type="number" name="montant[]" class="ti-form-input">--}}
-        {{--                                </div>--}}
-        {{--                                <div class="flex-shrink-0">--}}
-        {{--                                    <button type="button" class="ti-btn ti-btn-outline ti-btn-danger delete-row">--}}
-        {{--                                        <i class="ri-delete-bin-line"></i>--}}
-        {{--                                    </button>--}}
-        {{--                                </div>--}}
-        {{--                            </div>--}}
-        {{--                    `;--}}
-        {{--        panneContainer.insertAdjacentHTML('beforeend', row);--}}
-        {{--    });--}}
-
-        {{--});--}}
         document.addEventListener('DOMContentLoaded', () => {
             {{--const panneContainer = document.getElementById('panne-container');--}}
 
