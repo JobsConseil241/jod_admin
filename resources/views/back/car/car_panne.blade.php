@@ -69,7 +69,7 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        {{ dd($car) }}
+                        {{ dd($car['name']) }}
                         <tbody>
                             @foreach ($car as $panne)
                                 <tr>
