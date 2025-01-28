@@ -661,7 +661,7 @@
             });
         });
 
-        $(document).on('click', '#add-row', function() {
+        $(document).on('click', '#hs-basic-modal #add-row', function() {
             console.log('Button clicked');
             // Votre code ici
         });
