@@ -580,7 +580,6 @@
 
             $('#hs-basic-modal #add-row').click( function(e) {
                 const panneContainer = document.getElementById('panne-container');
-                console.log('dedans')
                 const row = `
                             <div class="flex items-center space-x-4 mb-3 panne-row">
                                 <div class="flex-1">
@@ -593,7 +592,20 @@
                                 </div>
                                 <div class="flex-1">
                                     <label class="ti-form-label">Statut</label>
-                                    <input type="text" name="status[]" class="ti-form-input">
+                                    <select class="ti-form-select" name="pannes[]" autocomplete="off">
+                                        <option value="initie">
+                                            Initie
+                                        </option>
+                                        <option value="en cours">
+                                            En cours
+                                        </option>
+                                        <option value="traite">
+                                            Traité
+                                        </option>
+                                        <option value="abandonnee">
+                                            Abandonnée
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="flex-1">
                                     <label class="ti-form-label">Montant</label>
@@ -607,7 +619,37 @@
                             </div>
                 `;
                 panneContainer.insertAdjacentHTML('beforeend', row);
+
+                //supprimes la ligne
+                panneContainer.addEventListener('click', (e) => {
+                    if (e.target.closest('.delete-row')) {
+                        const row = e.target.closest('.panne-row');
+                        const panneId = row.dataset.id;
+
+                        if (panneId) {
+                            // Requête Ajax pour supprimer
+                            fetch(`{{ url('backend/panne/delete') }}/${panneId}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                },
+                            })
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    if (data.success) {
+                                        row.remove();
+                                    } else {
+                                        alert('Erreur lors de la suppression');
+                                    }
+                                });
+                        } else {
+                            row.remove();
+                        }
+                    }
+                });
             })
+
+
 
         });
 
@@ -691,11 +733,6 @@
                     $('#cardModalView').removeClass('hidden').addClass('open');
                 }
             });
-        });
-
-        $(document).on('click', '#hs-basic-modal #add-row', function() {
-            console.log('Button clicked');
-            // Votre code ici
         });
 
         document.addEventListener('DOMContentLoaded', () => {
