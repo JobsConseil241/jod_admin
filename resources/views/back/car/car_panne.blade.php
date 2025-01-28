@@ -18,7 +18,7 @@
     <div class="block justify-between page-header md:flex">
         <div>
             <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
-                Pannes</h3>
+                Pannes ({{ $car['name'] }})</h3>
         </div>
         <ol class="flex items-center whitespace-nowrap min-w-0">
             <li class="text-sm">
@@ -32,7 +32,8 @@
             <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">
                 <a class="flex items-center font-semibold text-primary hover:text-primary dark:text-primary truncate"
                    href="{{ route('backend.view.car', $car['id']) }}">
-                    {{ $car['name'] }}
+                    {{ $car['name'] }}<i
+                        class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i>
                 </a>
             </li>
             <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">
@@ -70,29 +71,29 @@
                             </tr>
                         </thead>
 {{--                        {{ var_dump($car['id']) }}--}}
-{{--                        <tbody>--}}
-{{--                            @foreach ($car as $panne)--}}
-{{--                                <tr>--}}
-{{--                                    <td>{{ $panne->id }}</td>--}}
-{{--                                    <td>{{ $panne->categorie->name }}</td>--}}
-{{--                                    <td>{{ $panne->name }}</td>--}}
-{{--                                    <td>{{ Str::limit($panne->description, 100, '...') }}</td>--}}
-{{--                                    <td>{{ $panne->montant }}</td>--}}
-{{--                                    <td>{{ $panne->status }}</td>--}}
-{{--                                    <td>--}}
-{{--                                        <button type="button" class="ti-btn ti-btn-soft-primary"--}}
-{{--                                            data-hs-overlay="#cardModalView{{ $panne->id }}">--}}
-{{--                                            <i class="ri-pencil-fill align-bottom me-2"></i> Modifier--}}
-{{--                                        </button>--}}
+                        <tbody>
+                            @foreach ($car['pannes'] as $panne)
+                                <tr>
+                                    <td>{{ $panne->id }}</td>
+                                    <td>{{ $panne->categorie->name }}</td>
+                                    <td>{{ $panne->name }}</td>
+                                    <td>{{ Str::limit($panne->description, 100, '...') }}</td>
+                                    <td>{{ $panne->montant }}</td>
+                                    <td>{{ $panne->status }}</td>
+                                    <td>
+                                        <button type="button" class="ti-btn ti-btn-soft-primary"
+                                            data-hs-overlay="#cardModalView{{ $panne->id }}">
+                                            <i class="ri-pencil-fill align-bottom me-2"></i> Modifier
+                                        </button>
 
-{{--                                        <button type="button" class="ti-btn ti-btn-soft-danger"--}}
-{{--                                            data-hs-overlay="#cardModalDelete{{ $panne->id }}">--}}
-{{--                                            <i class="ri-delete-bin-fill align-bottom me-2"></i> Supprimer--}}
-{{--                                        </button>--}}
-{{--                                    </td>--}}
-{{--                                </tr>--}}
-{{--                            @endforeach--}}
-{{--                        </tbody>--}}
+                                        <button type="button" class="ti-btn ti-btn-soft-danger"
+                                            data-hs-overlay="#cardModalDelete{{ $panne->id }}">
+                                            <i class="ri-delete-bin-fill align-bottom me-2"></i> Supprimer
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
