@@ -93,9 +93,12 @@
                                     </td>
                                 </tr>
                             @endforeach
+
                         </tbody>
                     </table>
                 </div>
+                {{ dd($categories) }}
+
             </div>
         </div>
     </div>
@@ -127,7 +130,6 @@
                             <select name="category_id" class="ti-form-select" required>
                                 <option>Choisissez</option>
                                 @foreach ($categories as $item)
-                                    {{ dd($item) }}
                                     <option value="{{ $item->id }}"
                                         {{ old('category_id') == $item->id ? 'selected' : '' }}>
                                         {{ $item->name }}
