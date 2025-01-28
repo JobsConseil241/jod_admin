@@ -666,6 +666,11 @@
             // Votre code ici
         });
 
+        $('#hs-basic-modal #add-row').click( function() {
+            console.log('Button clicked');
+            // Votre code ici
+        });
+
         {{--$(document).ready(function() {--}}
         {{--    const panneContainer = document.getElementById('panne-container');--}}
 
