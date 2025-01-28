@@ -118,6 +118,7 @@ Route::group([
     Route::post('/update_pannes', [PanneController::class, 'edit_pannes'])->name('API-UPDATE-PANNES');
     Route::delete('/delete_pannes', [PanneController::class, 'delete_pannes'])->name('API-DELETE-PANNES');
     Route::get('/get_all_vehicules_pannes', [PanneController::class, 'get_all_vehicules_pannes'])->name('API-GET-ALL-VEHICULES-PANNES');
+    Route::get('/get_vehicule_pannes', [PanneController::class, 'get_vehicule_pannes'])->name('API-GET-ALL-PANNES-VEHICULE');
     Route::post('/assign_pannes_vehicule', [PanneController::class, 'assign_pannes_vehicules'])->name('API-ASSIGN-PANNES-VEHICULES');
     Route::post('/update_pannes_vehicule', [PanneController::class, 'update_pannes_vehicules'])->name('API-UPDATE-PANNES-VEHICULES');
     Route::delete('/delete_pannes_vehicule', [PanneController::class, 'delete_pannes_vehicules'])->name('API-DELETE-PANNES-VEHICULES');

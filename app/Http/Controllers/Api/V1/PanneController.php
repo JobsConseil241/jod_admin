@@ -39,6 +39,49 @@ class PanneController extends BaseController
         }
     }
 
+    public function get_vehicule_pannes(Request $request) {
+        try {
+            Log::info('Get Vehicule Pannes  Endpoint Entered.');
+
+            Log::debug('Get Vehicule Pannes Endpoint - All Params: ' . json_encode($request->all()));
+
+            $datas = $request->all();
+            $rules = [
+                'id_vehicule' => ['required', 'integer']
+            ];
+
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+
+            // Retrieve the single vehicle with its pannes
+            $vehicule = Vehicule::with(['pannes' => function ($query) {
+                $query->with('categorie_pannes'); // Include related categorie_pannes
+            }])->find($datas['id_vehicule']);
+
+            // Check if the vehicle exists
+            if (!$vehicule) {
+                Log::warning('Get Single Vehicule Pannes Endpoint - Vehicle not found: ' . $id);
+                return $this->sendError("Vehicle not found with ID: $id", 404);
+            }
+
+            $data['vehicule'] = $vehicule;
+
+            Log::debug('Get Single Vehicule Pannes Endpoint - Response: ' . json_encode($data));
+
+            return $this->sendResponse($data, "Vehicule Pannes retrieved successfully");
+        } catch (Exception $e) {
+            Log::error('Get Vehicule Pannes Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Get Vehicule Pannes Endpoint Exited.');
+        }
+    }
+
     public function get_all_vehicules_pannes(Request $request)
     {
 

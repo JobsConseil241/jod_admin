@@ -282,8 +282,8 @@
                                     <a href="{{ url('/backend/car/picture/' . $car->id) }}"
                                         class="w-full ti-btn ti-btn-outline ti-btn-outline-primary">Images</a>
 
-                                    <button data-hs-overlay="#hs-basic-modal"
-                                        class="w-full ti-btn ti-btn-outline ti-btn-outline-danger">Panne</button>
+                                    <a href="{{ url('/backend/car/pannes/' . $car->id) }}"
+                                        class="w-full ti-btn ti-btn-outline ti-btn-outline-danger">Panne</a>
 
                                     <button data-hs-overlay="#cardModalDelete"
                                         class="w-full ti-btn ti-btn-outline ti-btn-danger">Supprimer</button>

@@ -138,6 +138,28 @@ class CarController extends Controller
         return view('back.car.item', compact('car', 'pannes'));
     }
 
+    public function list_panne($car)
+    {
+        $access_token = Session::get('personnalToken');
+
+        //car pannes
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_vehicule_pannes', [
+            'id_vehicule' => $car,
+        ]);
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            $car = $object->data->cars[0];
+        } else {
+            $car = [];
+        }
+
+        return view('back.car.car_panne', compact('car'));
+    }
+
     public function edit($car)
     {
         $access_token = Session::get('personnalToken');
