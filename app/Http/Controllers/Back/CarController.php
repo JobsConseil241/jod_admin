@@ -152,8 +152,7 @@ class CarController extends Controller
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            $car = $object->data;
-            dd($car->vehicule);
+            $car = $object->data->vehicule;
         } else {
             $car = [];
         }
