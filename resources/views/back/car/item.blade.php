@@ -581,7 +581,7 @@
             $('#hs-basic-modal #add-row').click( function(e) {
                 const panneContainer = document.getElementById('panne-container');
                 const row = `
-                            <div class="flex items-center space-x-4 mb-3 panne-row">
+                            <div class="flex items-end space-x-4 mb-3 panne-row">
                                 <div class="flex-1">
                                     <label class="ti-form-select-label">Pannes</label>
                                     <select class="ti-form-select" name="pannes[]" autocomplete="off">
@@ -623,6 +623,7 @@
                 //supprimes la ligne
                 panneContainer.addEventListener('click', (e) => {
                     console.log(e)
+                    console.log(e.target.closest('.delete-row'))
                     if (e.target.closest('.delete-row')) {
                         const row = e.target.closest('.panne-row');
                         const panneId = row.dataset.id;
