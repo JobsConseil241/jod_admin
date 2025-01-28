@@ -666,7 +666,7 @@
             // Votre code ici
         });
 
-        $('#hs-basic-modal #add-row').click( function() {
+        $('#hs-basic-modal').click( function() {
             console.log('Button clicked');
             // Votre code ici
         });
