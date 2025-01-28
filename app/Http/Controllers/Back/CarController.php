@@ -153,10 +153,10 @@ class CarController extends Controller
 
         if ($object && $object->success == true) {
             $car = $object->data->vehicule;
-            dd($car);
         } else {
             $car = [];
         }
+        dd($car->name);
 
         return view('back.car.car_panne', compact('car'));
     }
