@@ -69,7 +69,7 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        {{ $car->pannes }}
+                        {{ $car }}
 {{--                        <tbody>--}}
 {{--                            @foreach ($car as $panne)--}}
 {{--                                <tr>--}}
