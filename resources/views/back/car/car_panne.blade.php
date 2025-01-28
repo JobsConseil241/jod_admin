@@ -69,7 +69,7 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        {{ var_dump($car) }}
+                        {{ $car->pannes }}
 {{--                        <tbody>--}}
 {{--                            @foreach ($car as $panne)--}}
 {{--                                <tr>--}}
