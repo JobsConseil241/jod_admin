@@ -153,7 +153,7 @@ class CarController extends Controller
 
         if ($object && $object->success == true) {
             $car = $object->data->vehicule;
-            dd($car->vehicule);
+            dd($car);
         } else {
             $car = [];
         }
