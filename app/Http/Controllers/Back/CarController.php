@@ -155,7 +155,7 @@ class CarController extends Controller
 
         $data = $response->json();
 
-        $categorie = $response->json();
+        $categorie = $responses->json();
 
         if ($response->successful() && isset($data['success']) && $data['success'] === true) {
             $car = $data['data']['vehicule'] ?? [];
