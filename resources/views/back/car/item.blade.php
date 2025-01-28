@@ -622,6 +622,7 @@
 
                 //supprimes la ligne
                 panneContainer.addEventListener('click', (e) => {
+                    console.log(e)
                     if (e.target.closest('.delete-row')) {
                         const row = e.target.closest('.panne-row');
                         const panneId = row.dataset.id;
