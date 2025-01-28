@@ -97,9 +97,6 @@
                         </tbody>
                     </table>
                 </div>
-                @foreach ($categories as $item)
-                    {{ dd($item['id']) }}
-                @endforeach
             </div>
         </div>
     </div>
