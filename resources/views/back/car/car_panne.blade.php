@@ -98,7 +98,7 @@
                     </table>
                 </div>
                 @foreach ($categories as $item)
-                    {{ dd($item) }}
+                    {{ dd($item['id']) }}
                 @endforeach
             </div>
         </div>
