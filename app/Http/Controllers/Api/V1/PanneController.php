@@ -249,7 +249,10 @@ class PanneController extends BaseController
                 return $this->sendError("Vehicule not found");
             }
 
-            $data = $car->pannes()->attach($data['ids_pannes']);
+            $data = $car->pannes()->attach($data['ids_pannes'], [
+                'status' => 'initie',
+                'montant' => 300,
+            ]);
 
             Log::debug('Add pannes to vehicules Endpoint - Response: ' . json_encode($data));
 

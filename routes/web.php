@@ -78,6 +78,7 @@ Route::middleware(['auth'])->group(function () {
 
         //Pannes
         Route::get('car/pannes/{car}', [BackCarController::class, 'list_panne'])->name('backend.car.pannes.list');
+        Route::post('car/pannes/{car}/assign', [BackCarController::class, 'assign_pannes'])->name('backend.assign.panne');
 
         Route::get('car/picture/{car}', [BackCarController::class, 'media'])->name('backend.picture.car');
         Route::post('car/picture/{car}', [BackCarController::class, 'update_media'])->name('backend.picture.update.car');
@@ -89,7 +90,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('pannes', [PanneController::class, 'index'])->name('backend.list.pannes');
         Route::post('panne/store', [PanneController::class, 'store'])->name('backend.store.panne');
         Route::post('panne/update/{car}', [PanneController::class, 'update'])->name('backend.update.panne');
-        Route::post('panne/assign/{car}', [BackCarController::class, 'assign_panne'])->name('backend.assign.panne');
+//        Route::post('panne/assign/{car}', [BackCarController::class, 'assign_panne'])->name('backend.assign.panne');
 
         //categories panne
         Route::get('panne/categories', [PanneController::class, 'categories'])->name('backend.list.panne.categories');

@@ -648,4 +648,25 @@ class CarController extends Controller
             $car = [];
         }
     }
+
+    public function assign_pannes(Request $request, $carId)
+    {
+
+        $access_token = Session::get('personnalToken');
+
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->post(env('SERVER_PC') . '', $data);
+
+        $object = json_decode($response->body());
+
+        dd($object);
+
+        if ($object && $object->success == true) {
+            return redirect('backend/car/view/' . $car->id)->with('success', "L'état du véhicule a été mis à jour avec succès.");
+        } else {
+            return back()->with('error', $object->message ?? 'Une erreur s\'est produite.')->withInput();
+        }
+
+    }
 }

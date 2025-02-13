@@ -104,7 +104,7 @@
     <div id="hs-basic-modal" class="hs-overlay ti-modal hidden">
         <div class="ti-modal-box">
             <div class="ti-modal-content">
-                <form action="{{ url('backend/panne/store') }}" method="POST">
+                <form action="{{ url('backend/car/pannes/'.$car['id'].'/assign') }}" method="POST">
                     @csrf
                     <div class="ti-modal-header">
                         <h3 class="ti-modal-title">
@@ -139,16 +139,16 @@
                         <div class="mb-3">
                             <label class="ti-form-label">Statut</label>
                             <select class="ti-form-select" name="pannes[]" autocomplete="off">
-                                <option value="initie">
-                                    Initie
-                                </option>
-                                <option value="en cours">
+{{--                                <option value="initie">--}}
+{{--                                    Initie--}}
+{{--                                </option>--}}
+                                <option value="EN COURS">
                                     En cours
                                 </option>
-                                <option value="traite">
+                                <option value="TERMINE">
                                     Traité
                                 </option>
-                                <option value="abandonnee">
+                                <option value="ABANDONNE">
                                     Abandonnée
                                 </option>
                             </select>
@@ -156,7 +156,7 @@
 
                         <div class="mb-3">
                             <label class="ti-form-label">Montant</label>
-                            <input type="number" name="montant[]" class="ti-form-input">
+                            <input type="number" name="montant[]" class="ti-form-input" min="0">
                         </div>
                     </div>
                     <div class="ti-modal-footer">
