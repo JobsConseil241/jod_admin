@@ -660,8 +660,6 @@ class CarController extends Controller
 
         $object = json_decode($response->body());
 
-        dd($object);
-
         if ($object && $object->success == true) {
             return redirect('backend/car/view/' . $car->id)->with('success', "L'état du véhicule a été mis à jour avec succès.");
         } else {
