@@ -34,11 +34,11 @@ header('Access-Control-Allow-Headers: X-Requested-With, Authorization, Content-T
 
 Route::get('/get_langs', [LanguageController::class, 'get_langs'])->name('API-GET-LANGS');
 
-Route::get('/get_cars', [CarController::class, 'get_Vehicules'])->name('API-GET-VEHICULES');
+Route::get('/get_car', [CarController::class, 'get_Vehicules'])->name('API-GET-VEHICULES');
 Route::get('/get_cars_datatables', [CarController::class, 'get_cars_datatable'])->name('API-GET-DATATABLE-VEHICULES');
 
 Route::group([
-    'middleware' => ['api', 'auth:sanctum'],
+    'middleware' => ['ap', 'auth:sanctum'],
 ], function ($router) {
 
     //auth
@@ -90,12 +90,12 @@ Route::group([
     Route::post('/add_pictures_cars', [CarPictureController::class, 'add_Vehicule_Picture'])->name('API-ADD-PICTURES-VEHICULES');
     Route::delete('/delete_picture_cars', [CarPictureController::class, 'delete_single_Image'])->name('API-DELETE-PICTURES-VEHICULES');
 
-    // Etat du vehicule
+    // Etat du vehiculedwddw
     Route::post('/set_state_of_cars', [EtatVehiculeController::class, 'add_etat_vehicule'])->name('API-ADD-STATE-OF-VEHICULES');
     Route::post('/update_state_of_cars', [EtatVehiculeController::class, 'edit_etat_vehicule'])->name('API-EDIT-STATE-OF-VEHICULES');
     Route::post('/delete_state_of_cars', [EtatVehiculeController::class, 'delete_etat_vehicule'])->name('API-DELETE-STATE-OF-VEHICULES');
 
-    // Booking Process
+    // Booking Processdwdwdwd
     Route::post('/set_reservation_cars', [BookingController::class, 'registerBooking'])->name('API-ADD-BOOKING-VEHICULES');
     Route::post('/update_reservation_cars', [BookingController::class, 'updateBooking'])->name('API-UPDATE-BOOKING-VEHICULES');
     Route::post('/validate_reservation_cars', [BookingController::class, 'validateBooking'])->name('API-VALIDATE-BOOKING-VEHICULES');

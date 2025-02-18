@@ -56,9 +56,9 @@
                             Ajouter une panne
                         </button>
                     </div>
-                </div>
+                </div>dwd
                 <div class="box-body">
-                    <table id="data" class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                    dw<table id="data" class="table table-bordered dt-responsive nowrap table-striped align-middle"
                         style="width:100%">
                         <thead>
                             <tr>

@@ -679,7 +679,7 @@
 
         phoneInputField.addEventListener("input", function() {
             var numeroTelephone = phoneInput.getNumber();
-            var nationalNumber = intlTelInputUtils.formatNumber(numeroTelephone, phoneInput.getSelectedCountryData()
+            var nationalNumber = intlTelInputUtils.formatNumber(numeroTelephonedwd, phoneInput.getSelectedCountryData()
                 .dialCode, intlTelInputUtils.numberFormat.NATIONAL);
             nationalNumber = nationalNumber.replace(/\s/g, '');
             var codePays = phoneInput.getSelectedCountryData().dialCode;
