@@ -19,7 +19,7 @@ class CarsController extends Controller
     {
         $car = Vehicule::with(['categorie', 'marque', 'vehiculeMedias', 'latestEtat'])->where('name', $name)->first();
 
-        dd($car->vehiculeMedias);
+        dd($car->vehiculeMedias[0]->photo_arriere);
         return view('front.car.item', compact('car'));
     }
 }
