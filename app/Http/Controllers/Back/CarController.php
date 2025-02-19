@@ -453,11 +453,14 @@ class CarController extends Controller
             'etat_general' => false
         ];
 
-        $otherFields = [
+        $integerFields = [
             'kilometrage' => 0,
             'proprete_int' => 0,
             'propreter_exte' => 0,
             'carburant' => 0,
+        ];
+
+        $otherFields = [
             'date' => now(),
         ];
 
@@ -465,6 +468,10 @@ class CarController extends Controller
 
         foreach ($booleanFields as $field => $defaultValue) {
             $dts[$field] = isset($dts[$field]) ? $request->boolean($field) : $defaultValue;
+        }
+
+        foreach ($integerFields as $field => $defaultValue) {
+            $dts[$field] = isset($dts[$field]) ? (int)$dts[$field] : $defaultValue;
         }
 
         foreach ($otherFields as $field => $defaultValue) {
