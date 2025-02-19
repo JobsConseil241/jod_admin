@@ -71,7 +71,7 @@
                                                     @if ($meta['type'] === 'integer')
                                                         <!-- Input number -->
                                                         <label class="ti-form-label"
-                                                            for="input-{{ $field }}">{{ $meta['label'] }} <span class="text-sm text-danger">@if(isset($meta['text'])) max="{{$meta['text']}}" @endif</span></label>
+                                                            for="input-{{ $field }}">{{ $meta['label'] }} <span class="text-xs text-danger">@if(isset($meta['text'])) ({{$meta['text']}}) @endif</span></label>
                                                         <input type="number" id="input-{{ $field }}"
                                                             name="{{ $field }}"
                                                             value="{{ old($field, $car->etats[0]->{$field} ?? '') }}" min="0" @if(isset($meta['max'])) max="{{$meta['max']}}" @endif
