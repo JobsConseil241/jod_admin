@@ -458,7 +458,7 @@ class CarController extends Controller
             'etat_general'
         ];
 
-        $requestData = collect($request->only($fields))->map(function ($value) {
+        $requestData = collect($request->all())->map(function ($value) {
             return $value ?: 0;
         })->toArray();
 
