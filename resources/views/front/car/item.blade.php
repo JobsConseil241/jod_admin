@@ -179,7 +179,7 @@
                                         <div class="swiper-slide">
                                             <div class="fleets-slider-image">
                                                 <figure class="image-anime">
-                                                    <img src="{{asset($car->vehiculeMedias()->photo_avant)}}" alt="">
+                                                    <img src="{{asset($car->vehiculeMedias[0]->photo_avant)}}" alt="">
                                                 </figure>
                                             </div>
                                         </div>
