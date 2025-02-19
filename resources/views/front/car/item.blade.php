@@ -184,47 +184,55 @@
                                             </div>
                                         </div>
                                         <!-- Fleets Image Slide End -->
+
+
+                                        <!-- Fleets Image Slide Start -->
+                                        <div class="swiper-slide">
+                                            <div class="fleets-slider-image">
+                                                <figure class="image-anime">
+                                                    <img src="{{asset($car->vehiculeMedias[0]->photo_arriere)}}" alt="">
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <!-- Fleets Image Slide End -->
+                                        <!-- Fleets Image Slide Start -->
+                                        <div class="swiper-slide">
+                                            <div class="fleets-slider-image">
+                                                <figure class="image-anime">
+                                                    <img src="{{asset($car->vehiculeMedias[0]->photo_gauche)}}" alt="">
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <!-- Fleets Image Slide End -->
+                                        <!-- Fleets Image Slide Start -->
+                                        <div class="swiper-slide">
+                                            <div class="fleets-slider-image">
+                                                <figure class="image-anime">
+                                                    <img src="{{asset($car->vehiculeMedias[0]->photo_droite)}}" alt="">
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <!-- Fleets Image Slide End -->
+                                        <!-- Fleets Image Slide Start -->
+                                        <div class="swiper-slide">
+                                            <div class="fleets-slider-image">
+                                                <figure class="image-anime">
+                                                    <img src="{{asset($car->vehiculeMedias[0]->photo_dashboard)}}" alt="">
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <!-- Fleets Image Slide End -->
+                                        <!-- Fleets Image Slide Start -->
+                                        <div class="swiper-slide">
+                                            <div class="fleets-slider-image">
+                                                <figure class="image-anime">
+                                                    <img src="{{asset($car->vehiculeMedias[0]->photo_interieur)}}" alt="">
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <!-- Fleets Image Slide End -->
                                     @endif
 
-                                    <!-- Fleets Image Slide Start -->
-                                    <div class="swiper-slide">
-                                        <div class="fleets-slider-image">
-                                            <figure class="image-anime">
-                                                <img src="{{asset('front/images/fleets-slider-img-1.jpg')}}" alt="">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <!-- Fleets Image Slide End -->
-
-                                    <!-- Fleets Image Slide Start -->
-                                    <div class="swiper-slide">
-                                        <div class="fleets-slider-image">
-                                            <figure class="image-anime">
-                                                <img src="{{asset('front/images/fleets-slider-img-1.jpg')}}" alt="">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <!-- Fleets Image Slide End -->
-
-                                    <!-- Fleets Image Slide Start -->
-                                    <div class="swiper-slide">
-                                        <div class="fleets-slider-image">
-                                            <figure class="image-anime">
-                                                <img src="{{asset('front/images/fleets-slider-img-1.jpg')}}" alt="">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <!-- Fleets Image Slide End -->
-
-                                    <!-- Fleets Image Slide Start -->
-                                    <div class="swiper-slide">
-                                        <div class="fleets-slider-image">
-                                            <figure class="image-anime">
-                                                <img src="{{asset('front/images/fleets-slider-img-1.jpg')}}" alt="">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                    <!-- Fleets Image Slide End -->
                                 </div>
                                 <div class="swiper-pagination"></div>
                             </div>
