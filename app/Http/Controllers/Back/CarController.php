@@ -477,8 +477,6 @@ class CarController extends Controller
 //            return $value === 'on' ? true : ($value === 'off' ? false : $value);
 //        }, $data);
 
-        dd($request->all());
-
         // Envoyer la requête HTTP
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token

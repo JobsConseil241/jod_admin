@@ -53,6 +53,8 @@ class EtatVehiculeController extends BaseController
                 return $this->sendError($errors->first(), $errors);
             }
 
+            dd($request->all());
+
             $etatVehicule = EtatVehicule::create([
                 'kilometrage' => $datas['kilometrage'],
                 'proprete_int' => $datas['proprete_int'],
