@@ -79,11 +79,12 @@
                                                     @elseif ($meta['type'] === 'boolean')
                                                         <!-- Switch -->
                                                         <div class="flex items-center">
-                                                            <input type="checkbox" id="input-{{ $field }}"
+                                                            <input type="checkbox" id="{{ $field }}"
                                                                 name="{{ $field }}"
-                                                                value="{{ old($field, $car->etats[0]->{$field} ?? '') }}"
+{{--                                                                value="{{ old($field, $car->etats[0]->{$field} ?? '') }}"--}}
+                                                                   {{ old($field, $car->etats[0]->{$field} ? 'checked' : '' }}
                                                                 class="ti-switch shrink-0">
-                                                            <label for="input-{{ $field }}"
+                                                            <label for="{{ $field }}"
                                                                 class="text-sm text-gray-500 ltr:ml-3 rtl:mr-3 dark:text-white/70">{{ $meta['label'] }}</label>
                                                         </div>
                                                     @elseif ($meta['type'] === 'date')
