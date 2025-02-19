@@ -458,17 +458,23 @@ class CarController extends Controller
             'etat_general'
         ];
 
+        $datas = $request->all();
+
+        foreach ($fields as $field) {
+            $datas[$field] = $request->has($field); // retourne true si présent, false si absent
+        }
+
         $requestData = collect($request->all())->map(function ($value) {
             return $value ?: 0;
         })->toArray();
 
-        $data = array_merge($data, $requestData);
+        $data = array_merge($datas, $requestData);
 
         $data = array_map(function($value) {
             return $value === 'on' ? true : ($value === 'off' ? false : $value);
         }, $data);
 
-        dd($request->all());
+        dd($datas);
 
         // Envoyer la requête HTTP
         $response = Http::withHeaders([
