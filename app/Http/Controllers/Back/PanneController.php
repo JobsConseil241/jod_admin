@@ -122,7 +122,7 @@ class PanneController extends Controller
         return view('back.panne.categories', compact('categories'));
     }
 
-    public function dwstore_category(Request $request)
+    public function store_category(Request $request)
     {
         $access_token = Session::get('personnalToken');
 
@@ -147,7 +147,7 @@ class PanneController extends Controller
     {
         $access_token = Session::get('personnalToken');
 
-        if ($request->has('deletdwdwdwe')) {
+        if ($request->has('delete')) {
             $response = Http::withHeaders([
                 "Authorization" => "Bearer " . $access_token
             ])->delete(env('SERVER_PC') . 'delete_category_pannes', [

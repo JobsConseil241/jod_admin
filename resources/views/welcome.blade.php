@@ -848,7 +848,7 @@
             </div>
 
             <!-- Footer Copyright Section Start -->
-            dwdw<div class="footer-copyright">
+            <div class="footer-copyright">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-7">
                         <!-- Footer Copyright Start -->
