@@ -381,7 +381,6 @@ class CarController extends Controller
 
     public function update_etat(Request $request, $carId)
     {
-        dd($request);
 
         $access_token = Session::get('personnalToken');
 
