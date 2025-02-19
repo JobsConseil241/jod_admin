@@ -458,6 +458,10 @@ class CarController extends Controller
             'etat_general'
         ]));
 
+        $data = array_map(function($value) {
+            return $value === 'on' ? true : ($value === 'off' ? false : $value);
+        }, $data);
+
         // Envoyer la requête HTTP
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
