@@ -432,7 +432,7 @@ class CarController extends Controller
         }
 
         // Ajouter les données du formulaire
-        $data = array_merge($data, $request->only([
+        $fields = [
             'kilometrage',
             'proprete_int',
             'propreter_exte',
@@ -456,7 +456,13 @@ class CarController extends Controller
             'roue_secours',
             'date',
             'etat_general'
-        ]));
+        ];
+
+        $requestData = collect($request->only($fields))->map(function ($value) {
+            return $value ?: 0;
+        })->toArray();
+
+        $data = array_merge($data, $requestData);
 
         $data = array_map(function($value) {
             return $value === 'on' ? true : ($value === 'off' ? false : $value);
