@@ -82,7 +82,7 @@
                                                             <input type="checkbox" id="{{ $field }}"
                                                                 name="{{ $field }}"
 {{--                                                                value="{{ old($field, $car->etats[0]->{$field} ?? '') }}"--}}
-                                                                   {{ old($field, $car->etats[0]->{$field} ? 'checked' : '') }}
+                                                                   {{ old($field, $car->etats[0]?->{$field} ? 'checked' : '') }}
                                                                 class="ti-switch shrink-0">
                                                             <label for="{{ $field }}"
                                                                 class="text-sm text-gray-500 ltr:ml-3 rtl:mr-3 dark:text-white/70">{{ $meta['label'] }}</label>
