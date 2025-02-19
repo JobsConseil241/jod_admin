@@ -450,6 +450,7 @@ class CarController extends Controller
             'tournevis' => false,
             'compresseur' => false,
             'roue_secours' => false,
+            'etat_general' => false
         ];
 
         $otherFields = [
@@ -458,7 +459,6 @@ class CarController extends Controller
             'propreter_exte' => 0,
             'carburant' => 0,
             'date' => now(),
-            'etat_general' => 0
         ];
 
         $dts = $request->all();
@@ -476,8 +476,6 @@ class CarController extends Controller
 //        $datas = array_map(function($value) {
 //            return $value === 'on' ? true : ($value === 'off' ? false : $value);
 //        }, $data);
-
-        dd($datas);
 
         // Envoyer la requête HTTP
         $response = Http::withHeaders([
