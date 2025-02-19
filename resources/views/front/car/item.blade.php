@@ -284,13 +284,15 @@
 
                             <!-- Feets Amenities List Start -->
                             <div class="fleets-amenities-list wow fadeInUp" data-wow-delay="0.25s">
-                                <ul>
-                                    @foreach ($car->latestEtat->toArray() as $key => $value)
-                                        @if ($value === 1)
+                                @if($car->latestEtat)
+                                    <ul>
+                                        @foreach ($car->latestEtat->toArray() as $key => $value)
+                                            @if ($value === 1)
                                                 <li>{{ str_replace('_', ' ', $key) }}</li>
-                                        @endif
-                                    @endforeach
-                                </ul>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                @endif
                             </div>
                             <!-- Feets Amenities List End -->
                         </div>
