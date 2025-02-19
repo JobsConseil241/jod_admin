@@ -432,47 +432,50 @@ class CarController extends Controller
         }
 
         // Ajouter les données du formulaire
-        $fields = [
-            'kilometrage',
-            'proprete_int',
-            'propreter_exte',
-            'carburant',
-            'cle_vehicule',
-            'carte_grise',
-            'carte_assurance',
-            'carte_viste_technique',
-            'carte_extincteur',
-            'triangle_signalisation',
-            'extincteur',
-            'trousse_secours',
-            'gilet',
-            'cric_manivelle',
-            'cle_a_roue',
-            'cales_metalliques',
-            'cle_plate',
-            'anneau_remorquage',
-            'tournevis',
-            'compresseur',
-            'roue_secours',
-            'date',
-            'etat_general'
+        $booleanFields = [
+            'cle_vehicule' => false,
+            'carte_grise' => false,
+            'carte_assurance' => false,
+            'carte_viste_technique' => false,
+            'carte_extincteur' => false,
+            'triangle_signalisation' => false,
+            'extincteur' => false,
+            'trousse_secours' => false,
+            'gilet' => false,
+            'cric_manivelle' => false,
+            'cle_a_roue' => false,
+            'cales_metalliques' => false,
+            'cle_plate' => false,
+            'anneau_remorquage' => false,
+            'tournevis' => false,
+            'compresseur' => false,
+            'roue_secours' => false,
         ];
 
-        $datas = $request->all();
+        $otherFields = [
+            'kilometrage' => 0,
+            'proprete_int' => 0,
+            'propreter_exte' => 0,
+            'carburant' => 0,
+            'date' => now(),
+            'etat_general' => 0
+        ];
 
-        foreach ($fields as $field) {
-            $datas[$field] = $request->has($field); // retourne true si présent, false si absent
+        $dts = $request->all();
+
+        foreach ($booleanFields as $field => $defaultValue) {
+            $dts[$field] = isset($dts[$field]) ? $request->boolean($field) : $defaultValue;
         }
 
-        $requestData = collect($request->all())->map(function ($value) {
-            return $value ?: 0;
-        })->toArray();
+        foreach ($otherFields as $field => $defaultValue) {
+            $dts[$field] = $dts[$field] ?? $defaultValue;
+        }
 
-        $data = array_merge($datas, $requestData);
+        $datas = array_merge($data, $dts);
 
-        $data = array_map(function($value) {
-            return $value === 'on' ? true : ($value === 'off' ? false : $value);
-        }, $data);
+//        $datas = array_map(function($value) {
+//            return $value === 'on' ? true : ($value === 'off' ? false : $value);
+//        }, $data);
 
         dd($datas);
 
