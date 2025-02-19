@@ -79,13 +79,15 @@
                                                     @elseif ($meta['type'] === 'boolean')
                                                         <!-- Switch -->
                                                         <div class="flex items-center">
-                                                            <input type="checkbox" id="{{ $field }}"
-                                                                name="{{ $field }}"
-{{--                                                                value="{{ old($field, $car->etats[0]->{$field} ?? '') }}"--}}
-                                                                   {{ old($field, isset($car->etats[0]) ? ($car->etats[0]?->{$field} ? 'checked' : '') : null) }}
-                                                                class="ti-switch shrink-0">
+                                                            <input type="checkbox"
+                                                                   id="{{ $field }}"
+                                                                   name="{{ $field }}"
+                                                                   class="ti-switch shrink-0"
+                                                                {{ old($field, data_get($car, "etats.0.{$field}", false)) ? 'checked' : '' }}>
                                                             <label for="{{ $field }}"
-                                                                class="text-sm text-gray-500 ltr:ml-3 rtl:mr-3 dark:text-white/70">{{ $meta['label'] }}</label>
+                                                                   class="text-sm text-gray-500 ltr:ml-3 rtl:mr-3 dark:text-white/70">
+                                                                {{ $meta['label'] }}
+                                                            </label>
                                                         </div>
                                                     @elseif ($meta['type'] === 'date')
                                                         <!-- Input date -->
