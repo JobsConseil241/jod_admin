@@ -138,6 +138,7 @@ class EtatVehiculeController extends BaseController
                 return $this->sendError($errors->first(), $errors);
             }
 
+            dd($request->all());
 
             $category = EtatVehicule::find($data['id']);
 
