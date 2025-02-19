@@ -71,10 +71,10 @@
                                                     @if ($meta['type'] === 'integer')
                                                         <!-- Input number -->
                                                         <label class="ti-form-label"
-                                                            for="input-{{ $field }}">{{ $meta['label'] }} <span class="text-sm text-danger">@if($meta['text']) max="{{$meta['text']}}" @endif</span></label>
+                                                            for="input-{{ $field }}">{{ $meta['label'] }} <span class="text-sm text-danger">@if(isset($meta['text'])) max="{{$meta['text']}}" @endif</span></label>
                                                         <input type="number" id="input-{{ $field }}"
                                                             name="{{ $field }}"
-                                                            value="{{ old($field, $car->etats[0]->{$field} ?? '') }}" min="0" @if($meta['max']) max="{{$meta['max']}}" @endif
+                                                            value="{{ old($field, $car->etats[0]->{$field} ?? '') }}" min="0" @if(isset($meta['max'])) max="{{$meta['max']}}" @endif
                                                             class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70">
                                                     @elseif ($meta['type'] === 'boolean')
                                                         <!-- Switch -->
