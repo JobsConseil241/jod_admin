@@ -19,7 +19,6 @@ class CarsController extends Controller
     {
         $car = Vehicule::with(['categorie', 'marque', 'vehiculeMedias', 'latestEtat'])->where('name', $name)->first();
 
-        dd($car);
         return view('front.car.item', compact('car'));
     }
 }

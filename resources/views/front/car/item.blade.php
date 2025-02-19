@@ -174,6 +174,18 @@
                         <div class="fleets-single-slider">
                             <div class="swiper">
                                 <div class="swiper-wrapper">
+                                    @if($car->vehiculeMedias)
+                                        <!-- Fleets Image Slide Start -->
+                                        <div class="swiper-slide">
+                                            <div class="fleets-slider-image">
+                                                <figure class="image-anime">
+                                                    <img src="{{asset($car->vehiculeMedias()->photo_avant)}}" alt="">
+                                                </figure>
+                                            </div>
+                                        </div>
+                                        <!-- Fleets Image Slide End -->
+                                    @endif
+
                                     <!-- Fleets Image Slide Start -->
                                     <div class="swiper-slide">
                                         <div class="fleets-slider-image">
