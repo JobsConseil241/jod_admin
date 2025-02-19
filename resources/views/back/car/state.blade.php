@@ -40,8 +40,8 @@
                         <div class="grid grid-cols-12 gap-x-6">
                             @foreach ([
             'kilometrage' => ['label' => 'Kilométrage', 'type' => 'integer'],
-            'proprete_int' => ['label' => 'Propreté intérieure', 'type' => 'integer'],
-            'propreter_exte' => ['label' => 'Propreté extérieure', 'type' => 'integer'],
+            'proprete_int' => ['label' => 'Propreté intérieure', 'type' => 'integer', 'max' => 10, 'text'=> 'Valeur Entre (0 - 10)'],
+            'propreter_exte' => ['label' => 'Propreté extérieure', 'type' => 'integer', 'max' => 10, 'text'=> 'Valeur Entre (0 - 10)'],
             'carburant' => ['label' => 'Carburant', 'type' => 'integer'],
             'cle_vehicule' => ['label' => 'Clé du véhicule', 'type' => 'boolean'],
             'carte_grise' => ['label' => 'Carte grise', 'type' => 'boolean'],
@@ -71,19 +71,19 @@
                                                     @if ($meta['type'] === 'integer')
                                                         <!-- Input number -->
                                                         <label class="ti-form-label"
-                                                            for="input-{{ $field }}">{{ $meta['label'] }}</label>
+                                                            for="input-{{ $field }}">{{ $meta['label'] }} <span class="text-sm text-danger">@if($meta['text']) max="{{$meta['text']}}" @endif</span></label>
                                                         <input type="number" id="input-{{ $field }}"
                                                             name="{{ $field }}"
-                                                            value="{{ old($field, $car->etats[0]->{$field} ?? '') }}"
+                                                            value="{{ old($field, $car->etats[0]->{$field} ?? '') }}" min="0" @if($meta['max']) max="{{$meta['max']}}" @endif
                                                             class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70">
                                                     @elseif ($meta['type'] === 'boolean')
                                                         <!-- Switch -->
                                                         <div class="flex items-center">
-                                                            <input type="checkbox" id="hs-medium-switch"
+                                                            <input type="checkbox" id="input-{{ $field }}"
                                                                 name="{{ $field }}"
                                                                 value="{{ old($field, $car->etats[0]->{$field} ?? '') }}"
                                                                 class="ti-switch shrink-0">
-                                                            <label for="hs-medium-switch"
+                                                            <label for="input-{{ $field }}"
                                                                 class="text-sm text-gray-500 ltr:ml-3 rtl:mr-3 dark:text-white/70">{{ $meta['label'] }}</label>
                                                         </div>
                                                     @elseif ($meta['type'] === 'date')
@@ -92,7 +92,8 @@
                                                             for="input-{{ $field }}">{{ $meta['label'] }}</label>
                                                         <input type="date" id="input-{{ $field }}"
                                                             name="{{ $field }}"
-                                                            value="{{ old($field, $car->etats[0]->{$field} ?? '') }}"
+                                                            oninput="this.value = this.value || new Date().toISOString().split('T')[0]"
+                                                            value="{{ old($field, $car->etats[0]->{$field} ?? '2024-02-19') }}"
                                                             class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70">
                                                     @endif
                                                 </div>

@@ -2557,6 +2557,7 @@ header.main-header .header-sticky.active{
 
 .page-header-box ol .breadcrumb-item+.breadcrumb-item::before{
     color: var(--white-color);
+    content: "/";
 }
 
 .about-us.page-about-us{
