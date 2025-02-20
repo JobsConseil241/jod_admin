@@ -379,6 +379,28 @@ class CarController extends Controller
         return view('back.car.state', compact('car'));
     }
 
+    public function etats_list($carId)
+    {
+        $access_token = Session::get('personnalToken');
+
+        //vehicule
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_state_of_car', [
+            'id_vehicule' => $carId,
+        ]);
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            $car = $object->data;
+        } else {
+            $car = [];
+        }
+
+        return view('back.car.list_etats', compact('car'));
+    }
+
     public function update_etat(Request $request, $carId)
     {
 

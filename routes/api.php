@@ -91,6 +91,7 @@ Route::group([
     Route::delete('/delete_picture_cars', [CarPictureController::class, 'delete_single_Image'])->name('API-DELETE-PICTURES-VEHICULES');
 
     // Etat du vehicule
+    Route::post('/get_state_of_car', [EtatVehiculeController::class, 'get_vehicule_etats'])->name('API-GET-STATE-OF-VEHICULE');
     Route::post('/set_state_of_cars', [EtatVehiculeController::class, 'add_etat_vehicule'])->name('API-ADD-STATE-OF-VEHICULES');
     Route::post('/update_state_of_cars', [EtatVehiculeController::class, 'edit_etat_vehicule'])->name('API-EDIT-STATE-OF-VEHICULES');
     Route::post('/delete_state_of_cars', [EtatVehiculeController::class, 'delete_etat_vehicule'])->name('API-DELETE-STATE-OF-VEHICULES');

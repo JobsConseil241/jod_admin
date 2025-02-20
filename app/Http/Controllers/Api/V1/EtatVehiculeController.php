@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\EtatVehicule;
+use App\Models\Vehicule;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -11,6 +12,47 @@ use Illuminate\Support\Facades\Validator;
 
 class EtatVehiculeController extends BaseController
 {
+
+    public function get_vehicule_etats(Request $request) {
+        try {
+            Log::info('Get Vehicule Etats  Endpoint Entered.');
+
+            Log::debug('Get Vehicule Etats Endpoint - All Params: ' . json_encode($request->all()));
+
+            $datas = $request->all();
+            $rules = [
+                'id_vehicule' => ['required', 'integer']
+            ];
+
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+
+            // Retrieve the single vehicle with its pannes
+            $vehicule = Vehicule::with(['categorie', 'marque', 'etats'])->find($datas['id_vehicule']);
+
+            // Check if the vehicle exists
+            if (!$vehicule) {
+                Log::warning('Get Single Vehicule Etat Endpoint - Vehicle not found: ' . $datas['id_vehicule']);
+                return $this->sendError("Vehicle not found with ID: ".$datas['id_vehicule'], 404);
+            }
+
+            $data['vehicule'] = $vehicule;
+
+            Log::debug('Get Single Vehicule Etats Endpoint - Response: ' . json_encode($data));
+
+            return $this->sendResponse($data, "Vehicule Etats retrieved successfully");
+        } catch (Exception $e) {
+            Log::error('Get Vehicule Etats Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Get Vehicule Etats Endpoint Exited.');
+        }
+    }
 
     public function add_etat_vehicule(Request $request)
     {

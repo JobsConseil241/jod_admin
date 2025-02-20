@@ -83,6 +83,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('car/picture/{car}', [BackCarController::class, 'media'])->name('backend.picture.car');
         Route::post('car/picture/{car}', [BackCarController::class, 'update_media'])->name('backend.picture.update.car');
 
+        Route::get('car/etats/{car}', [BackCarController::class, 'etats_list'])->name('backend.etats_list.car');
         Route::get('car/etat/{car}', [BackCarController::class, 'etat'])->name('backend.etat.car');
         Route::post('car/etat/{car}', [BackCarController::class, 'update_etat'])->name('backend.etat.update.car');
 
