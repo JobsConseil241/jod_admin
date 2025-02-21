@@ -45,12 +45,12 @@ class EtatVehiculeController extends BaseController
 
             Log::debug('Get Single Vehicule Etats Endpoint - Response: ' . json_encode($data));
 
-            return $this->sendResponse($data, "Vehicule Etats retrieved successfully");
+            return $this->sendResponse($data, "Single Vehicule Etats retrieved successfully");
         } catch (Exception $e) {
-            Log::error('Get Vehicule Etats Endpoint - Exception: ' . $e);
+            Log::error('Get Single Vehicule Etats Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");
         } finally {
-            Log::info('Get Vehicule Etats Endpoint Exited.');
+            Log::info('Get Single Vehicule Etats Endpoint Exited.');
         }
     }
 

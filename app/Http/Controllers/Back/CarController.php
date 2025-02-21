@@ -398,8 +398,6 @@ class CarController extends Controller
             $car = [];
         }
 
-        dd(env('SERVER_PC') . 'get_state_of_car', $object);
-
         return view('back.car.list_etats', compact('car'));
     }
 
