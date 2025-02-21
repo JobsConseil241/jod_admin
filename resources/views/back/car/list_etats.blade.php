@@ -64,10 +64,7 @@
                         <thead>
                         <tr>
                             <th data-ordering="false">ID</th>
-                            <th>Catégorie</th>
-                            <th>Nom</th>
-                            <th>Description</th>
-                            <th>Statut</th>
+                            <th>Libelle</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -76,7 +73,7 @@
                         @foreach ($car->etats as $etat)
                             <tr>
                                 <td>{{ $etat->id }}</td>
-                                <td>Etat du {{ $etat->date }}</td>
+                                <td class="font-bold">Etat du vehicule le {{ $etat->date }}</td>
                                 <td>
                                     <button type="button" class="ti-btn ti-btn-soft-primary"
                                             data-hs-overlay="#cardModalView{{ $etat->id }}">
