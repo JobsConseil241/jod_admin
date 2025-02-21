@@ -393,10 +393,12 @@ class CarController extends Controller
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            $car = $object->data->cars[0];
+            $car = $object->data;
         } else {
             $car = [];
         }
+
+        dd($car);
 
         return view('back.car.list_etats', compact('car'));
     }
