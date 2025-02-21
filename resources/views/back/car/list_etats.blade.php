@@ -16,8 +16,6 @@
 @section('content')
     <!-- Page Header -->
 
-    {{ dd($car) }}
-
     <div class="block justify-between page-header md:flex">
         <div>
             <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
@@ -60,6 +58,7 @@
                         </button>
                     </div>
                 </div>
+                {{ dd($car['etats']) }}
                 <div class="box-body">
                     <table id="data" class="table table-bordered dt-responsive nowrap table-striped align-middle"
                            style="width:100%">
