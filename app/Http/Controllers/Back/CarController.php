@@ -398,8 +398,6 @@ class CarController extends Controller
             $car = [];
         }
 
-        dd($car);
-
         return view('back.car.list_etats', compact('car'));
     }
 

@@ -58,7 +58,7 @@
                         </button>
                     </div>
                 </div>
-                {{ dd($car['etats']) }}
+                {{ dd($car->etats) }}
                 <div class="box-body">
                     <table id="data" class="table table-bordered dt-responsive nowrap table-striped align-middle"
                            style="width:100%">
