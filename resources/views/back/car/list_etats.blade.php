@@ -73,7 +73,7 @@
                         @foreach ($car->etats as $etat)
                             <tr>
                                 <td>{{ $etat->id }}</td>
-                                <td class="font-bold">Etat du vehicule le {{ $etat->date }}</td>
+                                <td class="font-bold">Etat du vehicule le {{ Carbon\Carbon::parse($etat->date)->format('d/m/Y') }}</td>
                                 <td>
                                     <button type="button" class="ti-btn ti-btn-soft-primary"
                                             data-hs-overlay="#cardModalView{{ $etat->id }}">
