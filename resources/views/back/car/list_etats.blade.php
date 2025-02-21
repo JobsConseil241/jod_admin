@@ -75,10 +75,9 @@
                                 <td>{{ $etat->id }}</td>
                                 <td class="font-bold">Etat du vehicule le {{ Carbon\Carbon::parse($etat->date)->format('d/m/Y') }}</td>
                                 <td>
-                                    <button type="button" class="ti-btn ti-btn-soft-primary"
-                                            data-hs-overlay="#cardModalView{{ $etat->id }}">
+                                    <a href="{{ url('/backend/car/etat/' . $etat->id) }}" class="w-full ti-btn ti-btn-soft-primary">
                                         <i class="ri-eye-2-fill align-bottom me-2"></i> Details
-                                    </button>
+                                    </a>
 
                                     <button type="button" class="ti-btn ti-btn-soft-danger"
                                             data-hs-overlay="#cardModalDelete{{ $etat->id }}">
