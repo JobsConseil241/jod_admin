@@ -16,11 +16,10 @@
 @section('content')
     <!-- Page Header -->
 
-    {{ dd($car->etats) }}
     <div class="block justify-between page-header md:flex">
         <div>
             <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
-                Etat du Vehicule ({{ $car['name'] }})</h3>
+                Etat du Vehicule ({{ $car->name] }})</h3>
         </div>
         <ol class="flex items-center whitespace-nowrap min-w-0">
             <li class="text-sm">
@@ -33,8 +32,8 @@
             </li>
             <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">
                 <a class="flex items-center font-semibold text-primary hover:text-primary dark:text-primary truncate"
-                   href="{{ route('backend.view.car', $car['id']) }}">
-                    {{ $car['name'] }}<i
+                   href="{{ route('backend.view.car', $car->id]) }}">
+                    {{ $car->name] }}<i
                         class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i>
                 </a>
             </li>
@@ -74,18 +73,14 @@
                         </thead>
                         {{--                        {{ var_dump($car['id']) }}--}}
                         <tbody>
-                        @foreach ($car['pannes'] as $panne)
+                        @foreach ($car->etats as $etat)
                             <tr>
-                                <td>{{ $panne->id }}</td>
-                                <td>{{ $panne->categorie->name }}</td>
-                                <td>{{ $panne->name }}</td>
-                                <td>{{ Str::limit($panne->description, 100, '...') }}</td>
-                                <td>{{ $panne->montant }}</td>
-                                <td>{{ $panne->status }}</td>
+                                <td>{{ $etat->id }}</td>
+                                <td>Etat du {{ $etat->date }}</td>
                                 <td>
                                     <button type="button" class="ti-btn ti-btn-soft-primary"
                                             data-hs-overlay="#cardModalView{{ $panne->id }}">
-                                        <i class="ri-pencil-fill align-bottom me-2"></i> Modifier
+                                        <i class="ri-eye-2-fill align-bottom me-2"></i> Details
                                     </button>
 
                                     <button type="button" class="ti-btn ti-btn-soft-danger"
