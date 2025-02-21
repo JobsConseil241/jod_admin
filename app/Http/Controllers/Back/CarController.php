@@ -390,10 +390,10 @@ class CarController extends Controller
             'id_vehicule' => $carId,
         ]);
 
-        $object = json_decode($response->body(), true);
+        $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            $car = $object->data->vehicule[0];
+            $car = $object->data;
         } else {
             $car = [];
         }
