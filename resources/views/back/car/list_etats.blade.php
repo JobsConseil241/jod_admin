@@ -79,12 +79,12 @@
                                 <td>Etat du {{ $etat->date }}</td>
                                 <td>
                                     <button type="button" class="ti-btn ti-btn-soft-primary"
-                                            data-hs-overlay="#cardModalView{{ $panne->id }}">
+                                            data-hs-overlay="#cardModalView{{ $etat->id }}">
                                         <i class="ri-eye-2-fill align-bottom me-2"></i> Details
                                     </button>
 
                                     <button type="button" class="ti-btn ti-btn-soft-danger"
-                                            data-hs-overlay="#cardModalDelete{{ $panne->id }}">
+                                            data-hs-overlay="#cardModalDelete{{ $etat->id }}">
                                         <i class="ri-delete-bin-fill align-bottom me-2"></i> Supprimer
                                     </button>
                                 </td>
@@ -101,7 +101,7 @@
     <div id="hs-basic-modal" class="hs-overlay ti-modal hidden">
         <div class="ti-modal-box">
             <div class="ti-modal-content">
-                <form action="{{ url('backend/car/pannes/'.$car['id'].'/assign') }}" method="POST">
+                <form action="{{ url('backend/car/pannes/'.$car->id.'/assign') }}" method="POST">
                     @csrf
                     <div class="ti-modal-header">
                         <h3 class="ti-modal-title">
