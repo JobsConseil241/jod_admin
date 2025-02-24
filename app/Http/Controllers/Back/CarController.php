@@ -472,6 +472,7 @@ class CarController extends Controller
             }
         }
 
+        dd(count($car->etats), $car->etats);
 
         // Déterminer si c'est un ajout ou une mise à jour
         if (empty($car->etats) || count($car->etats) > 1) {
