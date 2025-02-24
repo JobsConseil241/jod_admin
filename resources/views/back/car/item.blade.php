@@ -355,7 +355,7 @@
                     </div>
                     <div class="ti-modal-body">
                         <div id="panne-container">
-                            {{ dd($car->pannes) }}
+                            {{ dd($car->pannes, $pannes) }}
                             @foreach ($car->pannes as $pn)
                                 <div class="flex items-center space-x-4 mb-3 panne-row" data-id="{{ $pn->id }}">
                                     <div class="flex-1">
@@ -363,7 +363,7 @@
                                         <select class="ti-form-select" name="pannes[]" autocomplete="off">
                                             @foreach ($pannes as $panne)
                                                 <option value="{{ $panne->id }}"
-                                                    {{ $panne->panne_id == $panne->id ? 'selected' : '' }}>
+                                                    {{ $pn->id == $panne->id ? 'selected' : '' }}>
                                                     {{ $panne->name }}
                                                 </option>
                                             @endforeach
