@@ -74,7 +74,7 @@
                                 <td>{{ $etat->id }}</td>
                                 <td class="font-bold">Etat du vehicule le {{ Carbon\Carbon::parse($etat->date)->format('d/m/Y') }}</td>
                                 <td>
-                                    <a href="{{ url('/backend/car/etat/' . $etat->id.'/'.$etat->date) }}" class="ti-btn ti-btn-soft-primary">
+                                    <a href="{{ url('/backend/car/etat/' . $car->id.'/'.$etat->date) }}" class="ti-btn ti-btn-soft-primary">
                                         <i class="ri-eye-2-fill align-bottom me-2"></i> Details
                                     </a>
 
