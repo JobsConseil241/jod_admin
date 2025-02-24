@@ -234,7 +234,7 @@ class PanneController extends BaseController
                 'ids_pannes' => ['required', 'array'],
                 'ids_pannes.*' => ['integer', 'exists:pannes,id'],
                 'status' => ['required', 'string'],
-                'montant' => ['sometimes', 'integer', 'min:1'],
+                'montant' => ['sometimes', 'integer', 'min:0'],
             ];
 
             $validator = Validator::make($request->all(), $rules);
