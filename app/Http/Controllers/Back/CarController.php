@@ -163,13 +163,13 @@ class CarController extends Controller
             $car = [];
         }
 
-        if ($categorie && $categorie->success == true) {
-            $pannes = $categorie->data->pannes;
+        if ($responses->successful() && isset($categorie['success']) && $categorie['success'] === true) {
+            $pannes = $categorie['data']['pannes'] ?? [];
         } else {
             $pannes = [];
         }
 
-        dd($pannes,$data);
+        dd($pannes, $data);
 
         return view('back.car.car_panne', compact('car', 'pannes'));
     }
