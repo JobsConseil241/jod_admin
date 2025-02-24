@@ -96,11 +96,11 @@
                                 <div id="cardModalView{{ $panne['id'] }}" class="hs-overlay ti-modal hidden">
                                     <div class="ti-modal-box">
                                         <div class="ti-modal-content">
-                                            <form action="{{ url('backend/panne/update/' . $panne->id) }}" method="POST">
+                                            <form action="{{ url('backend/car/pannes/' . $car['id'].'/assign_update') }}" method="POST">
                                                 @csrf
                                                 <div class="ti-modal-header">
                                                     <h3 class="ti-modal-title">
-                                                        Modifier une panne : {{ $panne->name }}
+                                                        Modifier Le statut de la panne : {{ $panne->name }}
                                                     </h3>
                                                     <button type="button" class="hs-dropdown-toggle ti-modal-clode-btn"
                                                             data-hs-overlay="#cardModalView{{ $panne->id }}">
