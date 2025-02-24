@@ -156,7 +156,7 @@
 
                         <div class="mb-3">
                             <label class="ti-form-label">Montant</label>
-                            <input type="number" name="montant" class="ti-form-input" min="0">
+                            <input type="number" name="montant" class="ti-form-input" min="0" value="0">
                         </div>
                     </div>
                     <div class="ti-modal-footer">
