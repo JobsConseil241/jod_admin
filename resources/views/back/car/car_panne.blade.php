@@ -73,7 +73,6 @@
                         </thead>
                         <tbody>
                             @foreach ($car['pannes'] as $panne)
-                                {{ dd($panne['categorie']['name']) }}
                                 <tr>
                                     <td>{{ $panne['id'] }}</td>
                                     <td>{{ $panne['categorie']['name'] }}</td>
@@ -83,12 +82,12 @@
                                     <td>{{ $panne['pivot']['status'] }}</td>
                                     <td>
                                         <button type="button" class="ti-btn ti-btn-soft-primary"
-                                            data-hs-overlay="#cardModalView{{ $panne->id }}">
+                                            data-hs-overlay="#cardModalView{{ $panne['id'] }}">
                                             <i class="ri-pencil-fill align-bottom me-2"></i> Modifier
                                         </button>
 
                                         <button type="button" class="ti-btn ti-btn-soft-danger"
-                                            data-hs-overlay="#cardModalDelete{{ $panne->id }}">
+                                            data-hs-overlay="#cardModalDelete{{ $panne['id'] }}">
                                             <i class="ri-delete-bin-fill align-bottom me-2"></i> Supprimer
                                         </button>
                                     </td>
