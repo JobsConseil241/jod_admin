@@ -90,7 +90,7 @@
                                                                    id="{{ $field }}"
                                                                    name="{{ $field }}"
                                                                    class="ti-switch shrink-0"
-                                                                {{ old($fieldz) ? 'checked' : '' }}>
+                                                                {{ old($field) ? 'checked' : '' }}>
                                                             <label for="{{ $field }}"
                                                                    class="text-sm text-gray-500 ltr:ml-3 rtl:mr-3 dark:text-white/70">
                                                                 {{ $meta['label'] }}
