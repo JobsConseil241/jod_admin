@@ -75,7 +75,6 @@
                             @foreach ($car['pannes'] as $panne)
                                 <tr>
                                     <td>{{ $panne->id }}</td>
-                                    <td>{{ $panne->categorie->name }}</td>
                                     <td>{{ $panne->name }}</td>
                                     <td>{{ Str::limit($panne->description, 100, '...') }}</td>
                                     <td>{{ $panne->montant }}</td>
