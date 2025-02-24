@@ -361,24 +361,46 @@ class CarController extends Controller
     {
         $access_token = Session::get('personnalToken');
 
-        //vehicule
-        $response = Http::withHeaders([
-            "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_cars', [
-            'id' => $carId,
-            'date_etat' => $date
-        ]);
+        if ($date) {
+            //vehicule
+            $response = Http::withHeaders([
+                "Authorization" => "Bearer " . $access_token
+            ])->get(env('SERVER_PC') . 'get_cars', [
+                'id' => $carId,
+                'date_etat' => $date
+            ]);
 
-        $object = json_decode($response->body());
+            $object = json_decode($response->body());
 
-        if ($object && $object->success == true) {
-            $car = $object->data->cars[0];
+            if ($object && $object->success == true) {
+                $car = $object->data->cars[0];
+            } else {
+                $car = [];
+            }
+
+
+            return view('back.car.state_detail', compact('car'));
         } else {
-            $car = [];
+
+            //vehicule
+            $response = Http::withHeaders([
+                "Authorization" => "Bearer " . $access_token
+            ])->get(env('SERVER_PC') . 'get_cars', [
+                'id' => $carId
+            ]);
+
+            $object = json_decode($response->body());
+
+            if ($object && $object->success == true) {
+                $car = $object->data->cars[0];
+            } else {
+                $car = [];
+            }
+
+
+            return view('back.car.add_state', compact('car'));
         }
 
-        dd($car);
-        return view('back.car.state', compact('car'));
     }
 
     public function etats_list($carId)
