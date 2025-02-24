@@ -151,7 +151,7 @@ class CarController extends Controller
 
         $responses = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_all_pannes');
+        ])->get(env('SERVER_PC') . 'get_pannes');
 
         $data = $response->json();
 
@@ -163,13 +163,13 @@ class CarController extends Controller
             $car = [];
         }
 
-        if ($responses->successful() && isset($categorie['success']) && $categorie['success'] === true) {
-            $pannes = $categorie['data']['pannes'] ?? [];
+        if ($categorie && $categorie->success == true) {
+            $pannes = $categorie->data->pannes;
         } else {
             $pannes = [];
         }
 
-        dd($categorie);
+        dd($pannes,$data);
 
         return view('back.car.car_panne', compact('car', 'pannes'));
     }
