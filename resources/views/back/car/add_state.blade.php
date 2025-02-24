@@ -102,7 +102,7 @@
                                                             for="input-{{ $field }}">{{ $meta['label'] }}</label>
                                                         <input type="date" id="input-{{ $field }}"
                                                             name="{{ $field }}"
-                                                            oninput="new Date().toISOString().split('T')[0]"
+                                                            onload="new Date().toISOString().split('T')[0]"
                                                             class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70">
                                                     @endif
                                                 </div>
