@@ -133,6 +133,7 @@
                                     </option>
                                 @endforeach
                             </select>
+                            <input type="hidden" name="id_vehicule" value="{{$car['id']}}">
                         </div>
 
                         <div class="mb-3">
