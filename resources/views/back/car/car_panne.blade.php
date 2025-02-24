@@ -14,6 +14,7 @@
 @inject('Lang', 'App\Services\LanguageService')
 
 @section('content')
+    {{ dd($car) }}
     <!-- Page Header -->
     <div class="block justify-between page-header md:flex">
         <div>
