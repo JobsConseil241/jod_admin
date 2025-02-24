@@ -170,8 +170,7 @@ class CarController extends Controller
         }
 
 
-        dd(compact('car', 'pannes'));
-        return view('back.car.car_panne', compact('car', 'categories'));
+        return view('back.car.car_panne', compact('car', 'pannes'));
     }
 
     public function edit($car)
