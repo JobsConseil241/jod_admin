@@ -79,6 +79,7 @@ Route::middleware(['auth'])->group(function () {
         //Pannes
         Route::get('car/pannes/{car}', [BackCarController::class, 'list_panne'])->name('backend.car.pannes.list');
         Route::post('car/pannes/{car}/assign', [BackCarController::class, 'assign_pannes'])->name('backend.assign.panne');
+        Route::post('car/pannes/{car}/assign_update', [BackCarController::class, 'update_assign_pannes'])->name('backend.assign_update.panne');
 
         Route::get('car/picture/{car}', [BackCarController::class, 'media'])->name('backend.picture.car');
         Route::post('car/picture/{car}', [BackCarController::class, 'update_media'])->name('backend.picture.update.car');

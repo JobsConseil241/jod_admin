@@ -295,8 +295,8 @@ class PanneController extends BaseController
             }
 
             $vehiculePanne = VehiculePanne::find($data['id_panne']);
-            $vehiculePanne->status = $data['status'] ?? '';
-            $vehiculePanne->montant = $data['montant'] ?? '';
+            $vehiculePanne->status = $data['status'] ?? 'EN COURS';
+            $vehiculePanne->montant = $data['montant'] ?? 0;
             $data = $vehiculePanne->save();
 
             Log::debug('update state pannes aasociate to vehicules Endpoint - Response: ' . json_encode($data));
