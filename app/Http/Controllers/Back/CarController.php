@@ -169,7 +169,6 @@ class CarController extends Controller
             $pannes = [];
         }
 
-
         return view('back.car.car_panne', compact('car', 'pannes'));
     }
 
