@@ -189,7 +189,7 @@
                                             </div>
                                             <div class="ti-modal-body">
                                                 <p class="mt-1 text-gray-800 dark:text-white/70">
-                                                    Êtes-vous sûr de vouloir supprimer cette panne : {{ $panne['nname'] }} ?
+                                                    Êtes-vous sûr de vouloir supprimer cette panne : {{ $panne['name'] }} ?
                                                 </p>
                                             </div>
                                             <div class="ti-modal-footer">
