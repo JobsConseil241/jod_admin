@@ -283,7 +283,7 @@
                                         class="w-full ti-btn ti-btn-outline ti-btn-outline-primary">Images</a>
 
                                     <a href="{{ url('/backend/car/pannes/' . $car->id) }}"
-                                        class="w-full ti-btn ti-btn-outline ti-btn-outline-danger">Panne</a>
+                                        class="w-full ti-btn ti-btn-outline ti-btn-outline-danger">Pannes</a>
 
                                     <button data-hs-overlay="#cardModalDelete"
                                         class="w-full ti-btn ti-btn-outline ti-btn-danger">Supprimer</button>
@@ -362,7 +362,7 @@
                                         <select class="ti-form-select" name="pannes[]" autocomplete="off">
                                             @foreach ($pannes as $panne)
                                                 <option value="{{ $panne->id }}"
-                                                    {{ $pn->panne_id == $panne->id ? 'selected' : '' }}>
+                                                    {{ $panne->panne_id == $panne->id ? 'selected' : '' }}>
                                                     {{ $panne->name }}
                                                 </option>
                                             @endforeach
