@@ -233,6 +233,8 @@ class PanneController extends BaseController
                 'id_vehicule' => ['required', 'integer'],
                 'ids_pannes' => ['required', 'array'],
                 'ids_pannes.*' => ['integer', 'exists:pannes,id'],
+                'status' => ['required', 'string'],
+                'montant' => ['sometimes', 'integer', 'min:1'],
             ];
 
             $validator = Validator::make($request->all(), $rules);
@@ -250,8 +252,8 @@ class PanneController extends BaseController
             }
 
             $data = $car->pannes()->attach($data['ids_pannes'], [
-                'status' => 'initie',
-                'montant' => 300,
+                'status' => $data['status'] ?? 'EN COURS',
+                'montant' => $data['montant'] ?? 0,
             ]);
 
             Log::debug('Add pannes to vehicules Endpoint - Response: ' . json_encode($data));

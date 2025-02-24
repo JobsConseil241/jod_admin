@@ -124,11 +124,11 @@
 
                         <div class="mb-3">
                             <label class="ti-form-label mb-0">Catégorie</label>
-                            <select name="category_id" class="ti-form-select" required>
-                                <option>Choisissez</option>
-                                @foreach ($categories as $item)
+                            <select name="ids_pannes[]" class="ti-form-select" required>
+                                <option>--- Choisissez la panne ---</option>
+                                @foreach ($panne as $item)
                                     <option value="{{ $item['id'] }}"
-                                        {{ old('category_id') == $item['id'] ? 'selected' : '' }}>
+                                        {{ old('panne_id') == $item['id'] ? 'selected' : '' }}>
                                         {{ $item['name'] }}
                                     </option>
                                 @endforeach
@@ -137,7 +137,7 @@
 
                         <div class="mb-3">
                             <label class="ti-form-label">Statut</label>
-                            <select class="ti-form-select" name="pannes[]" autocomplete="off">
+                            <select class="ti-form-select" name="status" autocomplete="off">
 {{--                                <option value="initie">--}}
 {{--                                    Initie--}}
 {{--                                </option>--}}
@@ -155,7 +155,7 @@
 
                         <div class="mb-3">
                             <label class="ti-form-label">Montant</label>
-                            <input type="number" name="montant[]" class="ti-form-input" min="0">
+                            <input type="number" name="montant" class="ti-form-input" min="0">
                         </div>
                     </div>
                     <div class="ti-modal-footer">

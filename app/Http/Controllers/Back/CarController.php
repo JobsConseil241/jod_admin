@@ -169,8 +169,6 @@ class CarController extends Controller
             $pannes = [];
         }
 
-        dd($pannes, $data);
-
         return view('back.car.car_panne', compact('car', 'pannes'));
     }
 
@@ -737,15 +735,16 @@ class CarController extends Controller
     {
 
         $access_token = Session::get('personnalToken');
+        $data = $request->all();
 
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
-        ])->post(env('SERVER_PC') . '', $data);
+        ])->post(env('SERVER_PC') . 'assign_pannes_vehicule', $data);
 
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            return redirect('backend/car/view/' . $car->id)->with('success', "L'état du véhicule a été mis à jour avec succès.");
+            return redirect('backend/car/view/' . $carId)->with('success', "L'état du véhicule a été mis à jour avec succès.");
         } else {
             return back()->with('error', $object->message ?? 'Une erreur s\'est produite.')->withInput();
         }
