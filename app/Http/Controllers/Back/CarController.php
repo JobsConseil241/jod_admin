@@ -473,8 +473,6 @@ class CarController extends Controller
             }
         }
 
-        dd(count($car->etats), $car->etats, $request);
-
         // Déterminer si c'est un ajout ou une mise à jour
         if (empty($car->etats)) {
             $url = 'set_state_of_cars';
