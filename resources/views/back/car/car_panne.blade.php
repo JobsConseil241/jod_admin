@@ -14,7 +14,6 @@
 @inject('Lang', 'App\Services\LanguageService')
 
 @section('content')
-    {{ dd($car) }}
     <!-- Page Header -->
     <div class="block justify-between page-header md:flex">
         <div>
@@ -67,6 +66,7 @@
                                 <th>Catégorie</th>
                                 <th>Nom</th>
                                 <th>Description</th>
+                                <th>Montant</th>
                                 <th>Statut</th>
                                 <th>Actions</th>
                             </tr>
@@ -76,10 +76,11 @@
                             @foreach ($car['pannes'] as $panne)
                                 <tr>
                                     <td>{{ $panne->id }}</td>
-                                    <td>{{ $panne->name }}</td>
+                                    <td>{{ $panne->categorie->name }}</td>
+                                    <td class="font-bold">{{ $panne->name }}</td>
                                     <td>{{ Str::limit($panne->description, 100, '...') }}</td>
-                                    <td>{{ $panne->montant }}</td>
-                                    <td>{{ $panne->status }}</td>
+                                    <td>{{ $panne->pivot->montant }}</td>
+                                    <td>{{ $panne->pivot->status }}</td>
                                     <td>
                                         <button type="button" class="ti-btn ti-btn-soft-primary"
                                             data-hs-overlay="#cardModalView{{ $panne->id }}">
