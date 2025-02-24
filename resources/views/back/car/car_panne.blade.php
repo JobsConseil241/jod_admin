@@ -126,7 +126,7 @@
                             <label class="ti-form-label mb-0">Catégorie</label>
                             <select name="ids_pannes[]" class="ti-form-select" required>
                                 <option>--- Choisissez la panne ---</option>
-                                @foreach ($panne as $item)
+                                @foreach ($pannes as $item)
                                     <option value="{{ $item['id'] }}"
                                         {{ old('panne_id') == $item['id'] ? 'selected' : '' }}>
                                         {{ $item['name'] }}
