@@ -76,11 +76,11 @@
                                 {{ dd($panne['categorie']['name']) }}
                                 <tr>
                                     <td>{{ $panne['id'] }}</td>
-                                    <td>{{ $panne->categorie->name }}</td>
-                                    <td class="font-bold">{{ $panne->name }}</td>
-                                    <td>{{ Str::limit($panne->description, 100, '...') }}</td>
-                                    <td>{{ $panne->pivot->montant }}</td>
-                                    <td>{{ $panne->pivot->status }}</td>
+                                    <td>{{ $panne['categorie']['name'] }}</td>
+                                    <td class="font-bold">{{ $panne['name'] }}</td>
+                                    <td>{{ Str::limit($panne['description'], 100, '...') }}</td>
+                                    <td>{{ $panne['pivot']['montant'] }}</td>
+                                    <td>{{ $panne['pivot']['status'] }}</td>
                                     <td>
                                         <button type="button" class="ti-btn ti-btn-soft-primary"
                                             data-hs-overlay="#cardModalView{{ $panne->id }}">
