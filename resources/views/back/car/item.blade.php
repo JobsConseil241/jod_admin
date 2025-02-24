@@ -371,30 +371,30 @@
                                     </div>
                                     <div class="flex-1">
                                         <label class="ti-form-label">Statut</label>
-                                        <input type="text" name="status[]" value="{{ $pn->status }}"
+                                        <input type="text" name="status[]" value="{{ $pn->pivot->status }}"
                                             class="ti-form-input">
                                         <select class="ti-form-select" name="pannes[]" autocomplete="off">
                                                 <option value="initie"
-                                                    {{ $pn->status = 'initie' ? 'selected' : '' }}>
+                                                    {{ $pn->pivot->status = 'initie' ? 'selected' : '' }}>
                                                     Initie
                                                 </option>
                                                 <option value="en cours"
-                                                    {{ $pn->status = 'en cours' ? 'selected' : '' }}>
+                                                    {{ $pn->pivot->status = 'en cours' ? 'selected' : '' }}>
                                                     En cours
                                                 </option>
                                                 <option value="traite"
-                                                    {{ $pn->status = 'traite' ? 'selected' : '' }}>
+                                                    {{ $pn->pivot->status = 'traite' ? 'selected' : '' }}>
                                                     Traité
                                                 </option>
                                                 <option value="abandonne"
-                                                    {{ $pn->status = 'abandonne' ? 'selected' : '' }}>
+                                                    {{ $pn->pivot->status = 'abandonne' ? 'selected' : '' }}>
                                                     Abandonnée
                                                 </option>
                                         </select>
                                     </div>
                                     <div class="flex-1">
                                         <label class="ti-form-label">Montant</label>
-                                        <input type="number" name="montant[]" value="{{ $pn->montant }}"
+                                        <input type="number" name="montant[]" value="{{ $pn->pivot->montant }}"
                                             class="ti-form-input">
                                     </div>
                                     <div class="flex-shrink-0">
