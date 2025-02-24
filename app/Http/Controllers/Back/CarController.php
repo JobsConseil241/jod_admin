@@ -425,17 +425,27 @@ class CarController extends Controller
         return view('back.car.list_etats', compact('car'));
     }
 
-    public function update_etat(Request $request, $carId)
+    public function update_etat(Request $request, $carId, $date = null)
     {
 
         $access_token = Session::get('personnalToken');
 
         // Récupération des informations du véhicule
-        $response = Http::withHeaders([
-            "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_cars', [
-            'id' => $carId,
-        ]);
+        if ($date) {
+            $response = Http::withHeaders([
+                "Authorization" => "Bearer " . $access_token
+            ])->get(env('SERVER_PC') . 'get_cars', [
+                'id' => $carId,
+                'date_etat' => $date
+            ]);
+        } else {
+            $response = Http::withHeaders([
+                "Authorization" => "Bearer " . $access_token
+            ])->get(env('SERVER_PC') . 'get_cars', [
+                'id' => $carId,
+            ]);
+        }
+
 
         $object = json_decode($response->body());
 
@@ -464,7 +474,7 @@ class CarController extends Controller
 
 
         // Déterminer si c'est un ajout ou une mise à jour
-        if (empty($car->etats)) {
+        if (empty($car->etats) || count($car->etats) > 1) {
             $url = 'set_state_of_cars';
             $data = [
                 'vehicule_id' => $car->id

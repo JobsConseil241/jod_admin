@@ -81,7 +81,7 @@
                                                             for="input-{{ $field }}">{{ $meta['label'] }} <span class="text-xs text-danger">@if(isset($meta['text'])) ({{$meta['text']}}) @endif</span></label>
                                                         <input type="number" id="input-{{ $field }}"
                                                             name="{{ $field }}"
-                                                            value="{{ old($field, $car->etats[0]->{$field} ?? '') }}" min="0" @if(isset($meta['max'])) max="{{$meta['max']}}" @endif
+                                                            value="{{ old($field) }}" min="0" @if(isset($meta['max'])) max="{{$meta['max']}}" @endif
                                                             class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70">
                                                     @elseif ($meta['type'] === 'boolean')
                                                         <!-- Switch -->
@@ -90,7 +90,7 @@
                                                                    id="{{ $field }}"
                                                                    name="{{ $field }}"
                                                                    class="ti-switch shrink-0"
-                                                                {{ old($field, data_get($car, "etats.0.{$field}", false)) ? 'checked' : '' }}>
+                                                                {{ old($fieldz) ? 'checked' : '' }}>
                                                             <label for="{{ $field }}"
                                                                    class="text-sm text-gray-500 ltr:ml-3 rtl:mr-3 dark:text-white/70">
                                                                 {{ $meta['label'] }}
@@ -103,7 +103,7 @@
                                                         <input type="date" id="input-{{ $field }}"
                                                             name="{{ $field }}"
                                                             oninput="this.value = this.value || new Date().toISOString().split('T')[0]"
-                                                            value="{{ old($field, $car->etats[0]->{$field} ?? '2024-02-19') }}"
+                                                            value="{{ old($field) }}"
                                                             class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70">
                                                     @endif
                                                 </div>
