@@ -52,10 +52,9 @@
                 <div class="box-header">
                     <h5 class="box-title">Liste des Etats</h5>
                     <div class="flex justify-end">
-                        <button type="button" class="hs-dropdown-toggle ti-btn ti-btn-primary"
-                                data-hs-overlay="#hs-basic-modal">
+                        <a href="{{ url('/backend/car/etat/' . $etat->id) }}" class="ti-btn ti-btn-soft-primary">
                             Ajouter un Etat
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="box-body">
@@ -75,7 +74,7 @@
                                 <td>{{ $etat->id }}</td>
                                 <td class="font-bold">Etat du vehicule le {{ Carbon\Carbon::parse($etat->date)->format('d/m/Y') }}</td>
                                 <td>
-                                    <a href="{{ url('/backend/car/etat/' . $etat->id) }}" class="ti-btn ti-btn-soft-primary">
+                                    <a href="{{ url('/backend/car/etat/' . $etat->id.'/'.$etat->date) }}" class="ti-btn ti-btn-soft-primary">
                                         <i class="ri-eye-2-fill align-bottom me-2"></i> Details
                                     </a>
 

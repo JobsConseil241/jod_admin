@@ -84,7 +84,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('car/picture/{car}', [BackCarController::class, 'update_media'])->name('backend.picture.update.car');
 
         Route::get('car/etats/{car}', [BackCarController::class, 'etats_list'])->name('backend.etats_list.car');
-        Route::get('car/etat/{car}', [BackCarController::class, 'etat'])->name('backend.etat.car');
+        Route::get('car/etat/{car}/{date}', [BackCarController::class, 'etat'])->name('backend.etat.car');
         Route::post('car/etat/{car}', [BackCarController::class, 'update_etat'])->name('backend.etat.update.car');
 
         //Panne

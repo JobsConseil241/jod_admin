@@ -22,6 +22,15 @@ class CarController extends BaseController
 
             $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes')->select('vehicules.*');
 
+            if ($request->has('date_etat') && $request->date_etat != null) {
+                $cars = Vehicule::with(['categorie', 'marque', 'vehiculeMedias',
+                    'etats' => function($query) use ($request) {
+                        $query->whereDate('date', $request->date_etat);
+                    },
+                    'pannes'
+                ])->select('vehicules.*');
+            }
+
             if ($request->has('id') && $request->id != null) {
                 $cars->where('id', $request->id);
             }

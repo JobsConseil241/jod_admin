@@ -357,7 +357,7 @@ class CarController extends Controller
     }
 
 
-    public function etat($carId)
+    public function etat($carId, $date)
     {
         $access_token = Session::get('personnalToken');
 
@@ -366,6 +366,7 @@ class CarController extends Controller
             "Authorization" => "Bearer " . $access_token
         ])->get(env('SERVER_PC') . 'get_cars', [
             'id' => $carId,
+            'date_etat' => $date
         ]);
 
         $object = json_decode($response->body());
