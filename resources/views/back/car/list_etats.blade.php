@@ -52,7 +52,7 @@
                 <div class="box-header">
                     <h5 class="box-title">Liste des Etats</h5>
                     <div class="flex justify-end">
-                        <a href="{{ url('/backend/car/etat/' . $etat->id) }}" class="ti-btn ti-btn-soft-primary">
+                        <a href="{{ url('/backend/car/etat/' . $car->id) }}" class="ti-btn ti-btn-soft-primary">
                             Ajouter un Etat
                         </a>
                     </div>
