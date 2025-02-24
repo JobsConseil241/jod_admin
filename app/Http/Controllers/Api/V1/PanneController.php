@@ -60,7 +60,7 @@ class PanneController extends BaseController
 
             // Retrieve the single vehicle with its pannes
             $vehicule = Vehicule::with(['categorie', 'marque', 'pannes' => function ($query) {
-                $query->with('categorie_pannes');
+                $query->with('categorie');
             }])->find($datas['id_vehicule']);
 
             // Check if the vehicle exists
