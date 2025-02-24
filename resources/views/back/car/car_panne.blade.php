@@ -100,10 +100,10 @@
                                                 @csrf
                                                 <div class="ti-modal-header">
                                                     <h3 class="ti-modal-title">
-                                                        Modifier Le statut de la panne : {{ $panne->name }}
+                                                        Modifier Le statut de la panne : {{ $panne['name'] }}
                                                     </h3>
                                                     <button type="button" class="hs-dropdown-toggle ti-modal-clode-btn"
-                                                            data-hs-overlay="#cardModalView{{ $panne->id }}">
+                                                            data-hs-overlay="#cardModalView{{ $panne['id'] }}">
                                                         <span class="sr-only">Close</span>
                                                         <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
                                                              xmlns="http://www.w3.org/2000/svg">
@@ -157,7 +157,7 @@
                                                 <div class="ti-modal-footer">
                                                     <button type="button"
                                                             class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
-                                                            data-hs-overlay="#cardModalView{{ $panne->id }}">
+                                                            data-hs-overlay="#cardModalView{{ $panne['id'] }}">
                                                         Annuler
                                                     </button>
                                                     <button class="ti-btn ti-btn-primary" type="submit">
@@ -169,15 +169,15 @@
                                     </div>
                                 </div>
 
-                                <div id="cardModalDelete{{ $panne->id }}" class="hs-overlay ti-modal hidden">
+                                <div id="cardModalDelete{{ $panne['id'] }}" class="hs-overlay ti-modal hidden">
                                     <div class="ti-modal-box">
                                         <div class="ti-modal-content">
                                             <div class="ti-modal-header">
                                                 <h3 class="ti-modal-title">
-                                                    Supprimer une catégorie
+                                                    Supprimer une Panne associé à {{ $car['name'] }}
                                                 </h3>
                                                 <button type="button" class="hs-dropdown-toggle ti-modal-clode-btn"
-                                                        data-hs-overlay="#cardModalDelete{{ $panne->id }}">
+                                                        data-hs-overlay="#cardModalDelete{{ $panne['id'] }}">
                                                     <span class="sr-only">Close</span>
                                                     <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
                                                          xmlns="http://www.w3.org/2000/svg">
@@ -189,16 +189,16 @@
                                             </div>
                                             <div class="ti-modal-body">
                                                 <p class="mt-1 text-gray-800 dark:text-white/70">
-                                                    Êtes-vous sûr de vouloir supprimer cette panne : {{ $panne->name }} ?
+                                                    Êtes-vous sûr de vouloir supprimer cette panne : {{ $panne['nname'] }} ?
                                                 </p>
                                             </div>
                                             <div class="ti-modal-footer">
-                                                <form action="{{ url('backend/panne/update/' . $panne->id) }}" method="POST">
+                                                <form action="{{ url('backend/car/pannes/' . $car['id'].'/delete_update') }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="delete" value="true" />
                                                     <button type="button"
                                                             class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
-                                                            data-hs-overlay="#cardModalView">
+                                                            data-hs-overlay="cardModalDelete{{ $panne['id'] }}">
                                                         Fermer
                                                     </button>
                                                     <button type="submit" class="ti-btn ti-btn-danger">

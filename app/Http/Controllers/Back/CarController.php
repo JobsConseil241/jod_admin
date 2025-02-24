@@ -770,4 +770,24 @@ class CarController extends Controller
         }
 
     }
+
+    public function delete_assign_pannes(Request $request, $carId)
+    {
+
+        $access_token = Session::get('personnalToken');
+        $data = $request->all();
+
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->post(env('SERVER_PC') . 'delete_pannes_vehicule', $data);
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            return redirect('backend/car/view/' . $carId)->with('success', "L'état du véhicule a été mis à jour avec succès.");
+        } else {
+            return back()->with('error', $object->message ?? 'Une erreur s\'est produite.')->withInput();
+        }
+
+    }
 }
