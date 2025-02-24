@@ -75,7 +75,7 @@
                         <tbody>
                             @foreach ($car['pannes'] as $panne)
                                 <tr>
-                                    <td>{{ $panne->id }}</td>
+                                    <td>{{ $panne['id'] }}</td>
                                     <td>{{ $panne->categorie->name }}</td>
                                     <td class="font-bold">{{ $panne->name }}</td>
                                     <td>{{ Str::limit($panne->description, 100, '...') }}</td>
