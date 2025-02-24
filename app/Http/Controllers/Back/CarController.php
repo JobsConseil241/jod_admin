@@ -443,6 +443,7 @@ class CarController extends Controller
                 "Authorization" => "Bearer " . $access_token
             ])->get(env('SERVER_PC') . 'get_cars', [
                 'id' => $carId,
+                'date_etat' => $request->date
             ]);
         }
 
@@ -475,7 +476,7 @@ class CarController extends Controller
         dd(count($car->etats), $car->etats, $request);
 
         // Déterminer si c'est un ajout ou une mise à jour
-        if (empty($car->etats) || count($car->etats) > 1) {
+        if (empty($car->etats)) {
             $url = 'set_state_of_cars';
             $data = [
                 'vehicule_id' => $car->id
