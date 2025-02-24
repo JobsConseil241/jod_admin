@@ -357,7 +357,7 @@ class CarController extends Controller
     }
 
 
-    public function etat($carId, $date)
+    public function etat($carId, $date = null)
     {
         $access_token = Session::get('personnalToken');
 
