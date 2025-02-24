@@ -71,9 +71,9 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        {{ dd(var_dump($car['pannes'][0]['id'])) }}
                         <tbody>
                             @foreach ($car['pannes'] as $panne)
+                                {{ dd($panne) }}
                                 <tr>
                                     <td>{{ $panne->id }}</td>
                                     <td>{{ $panne->categorie->name }}</td>
