@@ -45,6 +45,8 @@
 
     @include('layouts.alert')
 
+    {{ dd($car, $pannes) }}
+
     <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12">
             <div class="box">
