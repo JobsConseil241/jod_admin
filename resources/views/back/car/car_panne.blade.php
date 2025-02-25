@@ -72,9 +72,10 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{ dd($car) }}
+
                             @foreach ($car['pannes'] as $panne)
 
-                                {{ dd($panne) }}
                                 <tr>
                                     <td>{{ $panne['id'] }}</td>
                                     <td>{{ $panne['categorie']['name'] }}</td>
