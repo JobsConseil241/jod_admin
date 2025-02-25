@@ -79,7 +79,18 @@
                                     <td class="font-bold">{{ $panne['name'] }}</td>
                                     <td>{{ Str::limit($panne['description'], 100, '...') }}</td>
                                     <td>{{ $panne['pivot']['montant'] }}</td>
-                                    <td>{{ $panne['pivot']['status'] }}</td>
+                                    <td>
+                                        @switch($panne['pivot']['status'])
+                                            @case('TERMINE')
+                                                <span class="text-success">$panne['pivot']['status']</span>
+                                            @break
+                                            @case('ABANDONNE')
+                                                <span class="text-danger">$panne['pivot']['status']</span>
+                                            @break
+                                            @default
+                                                <span class="text-warning">$panne['pivot']['status']</span>
+                                         @endswitch
+                                    </td>
                                     <td>
                                         <button type="button" class="ti-btn ti-btn-soft-primary"
                                             data-hs-overlay="#cardModalView{{ $panne['id'] }}">
