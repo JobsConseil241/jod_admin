@@ -114,13 +114,13 @@
                                             <!-- Perfect Fleets Body Start -->
                                             <div class="perfect-fleet-body">
                                                 <ul>
-                                                    <li><img src="{{asset('front/images/icon-fleets-single-sidebar-list-1.svg')}}" alt="">Places
+                                                    <li><img src="{{asset('front/images/icon-fleet-list-1.svg')}}" alt="">Places
                                                         {{$crs->nombre_places}}</li>
-                                                    <li><img src="{{asset('front/images/icon-fleets-single-sidebar-list-2.svg')}}" alt="">Bagages
+                                                    <li><img src="{{asset('front/images/icon-fleet-list-3.svg')}}" alt="">Bagages
                                                         Oui</li>
-                                                    <li><img src="{{asset('front/images/icon-fleets-single-sidebar-list-3.svg')}}" alt="">Portes
+                                                    <li><img src="{{asset('front/images/icon-fleet-list-2.svg')}}" alt="">Portes
                                                         {{$crs->nombre_portes}}</li>
-                                                    <li><img src="{{asset('front/images/icon-fleets-single-sidebar-list-4.svg')}}" alt="">
+                                                    <li><img src="{{asset('front/images/icon-fleet-list-4.svg')}}" alt="">
                                                         {{$crs->transmission}}</li>
                                                 </ul>
                                             </div>
