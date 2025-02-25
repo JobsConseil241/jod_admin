@@ -77,7 +77,7 @@
                             <ul class="navbar-nav mr-auto" id="menu">
                                 <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Accueil</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">A Propos</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('cars-list') }}">Véhicule</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('cars-list') }}">Véhicules</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
                             </ul>
                         </div>

@@ -13,11 +13,11 @@
                 <div class="col-lg-12">
                     <!-- Page Header Box Start -->
                     <div class="page-header-box">
-                        <h1 class="text-anime-style-3" data-cursor="-opaque">Our Fleets</h1>
+                        <h1 class="text-anime-style-3" data-cursor="-opaque">Notre flotte</h1>
                         <nav class="wow fadeInUp">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index-2.html">home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">fleets</li>
+                                <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Accueil</a></li>
+                                <li class="breadcrumb-item" aria-current="page">fleets</li>
                             </ol>
                         </nav>
                     </div>
@@ -40,7 +40,7 @@
                             <form id="fleetsForm" action="#" method="POST">
                                 <div class="form-group">
                                     <input type="text" name="search" class="form-control" id="search"
-                                        placeholder="Search..." required>
+                                        placeholder="Rechercher..." required>
                                     <button type="submit" class="section-icon-btn"><i
                                             class="fa-solid fa-magnifying-glass"></i></button>
                                 </div>
@@ -52,39 +52,16 @@
                             <!-- Fleets Sidebar List Start -->
                             <div class="fleets-sidebar-list">
                                 <div class="fleets-list-title">
-                                    <h3>categories</h3>
+                                    <h3>Categories</h3>
                                 </div>
 
                                 <ul>
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                                        <label class="form-check-label" for="checkbox1">sport cars</label>
-                                    </li>
-
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox2">
-                                        <label class="form-check-label" for="checkbox2">electric car</label>
-                                    </li>
-
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox3">
-                                        <label class="form-check-label" for="checkbox3">Convertible</label>
-                                    </li>
-
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox4">
-                                        <label class="form-check-label" for="checkbox4">luxury cars</label>
-                                    </li>
-
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox5">
-                                        <label class="form-check-label" for="checkbox5">sedan</label>
-                                    </li>
-
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox6">
-                                        <label class="form-check-label" for="checkbox6">coupe cars</label>
-                                    </li>
+                                    @foreach($categories as $catego)
+                                        <li class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="id_{{$catego->name}}">
+                                            <label class="form-check-label" for="id_{{$catego->name}}">{{$catego->name}}</label>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <!-- Fleets Sidebar List End -->
@@ -92,57 +69,20 @@
                             <!-- Fleets Sidebar List Start -->
                             <div class="fleets-sidebar-list">
                                 <div class="fleets-list-title">
-                                    <h3>pickup location</h3>
+                                    <h3>Marques</h3>
                                 </div>
 
                                 <ul>
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox7">
-                                        <label class="form-check-label" for="checkbox7">abu dhabi</label>
-                                    </li>
-
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox8">
-                                        <label class="form-check-label" for="checkbox8">alain</label>
-                                    </li>
-
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox9">
-                                        <label class="form-check-label" for="checkbox9">dubai</label>
-                                    </li>
-
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox10">
-                                        <label class="form-check-label" for="checkbox10">sharjah</label>
-                                    </li>
+                                    @foreach($marques as $mq)
+                                        <li class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="id_{{$mq->name}}">
+                                            <label class="form-check-label" for="id_{{$mq->name}}">{{$mq->name}}</label>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <!-- Fleets Sidebar List End -->
 
-                            <!-- Fleets Sidebar List Start -->
-                            <div class="fleets-sidebar-list">
-                                <div class="fleets-list-title">
-                                    <h3>dropoff location</h3>
-                                </div>
-
-                                <ul>
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox11">
-                                        <label class="form-check-label" for="checkbox11">abu dhabi</label>
-                                    </li>
-
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox12">
-                                        <label class="form-check-label" for="checkbox12">alain</label>
-                                    </li>
-
-                                    <li class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkbox13">
-                                        <label class="form-check-label" for="checkbox13">dubai</label>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Fleets Sidebar List End -->
                         </div>
                     </div>
                     <!-- Fleets Sidebar End -->
@@ -154,6 +94,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-6">
                                 <!-- Perfect Fleets Item Start -->
+                                {{ dd($cars) }}
                                 <div class="perfect-fleet-item fleets-collection-item wow fadeInUp">
                                     <!-- Image Box Start -->
                                     <div class="image-box">
