@@ -82,13 +82,13 @@
                                     <td>
                                         @switch($panne['pivot']['status'])
                                             @case('TERMINE')
-                                                <span class="text-success">$panne['pivot']['status']</span>
+                                                <span class="text-success">{{$panne['pivot']['status']}}</span>
                                             @break
                                             @case('ABANDONNE')
-                                                <span class="text-danger">$panne['pivot']['status']</span>
+                                                <span class="text-danger">{{$panne['pivot']['status']}}</span>
                                             @break
                                             @default
-                                                <span class="text-warning">$panne['pivot']['status']</span>
+                                                <span class="text-warning">{{$panne['pivot']['status']}}</span>
                                          @endswitch
                                     </td>
                                     <td>
