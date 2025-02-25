@@ -72,10 +72,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{ dd($car) }}
+                           @php
+                               $index = 0;
+                           @endphp
+
 
                             @foreach ($car['pannes'] as $panne)
-
+                                @php
+                                    ++ $index;
+                                @endphp
                                 <tr>
                                     <td>{{ $panne['id'] }}</td>
                                     <td>{{ $panne['categorie']['name'] }}</td>
@@ -141,7 +146,7 @@
                                                             @endforeach
                                                         </select>
                                                         <input type="hidden" name="id_vehicule" value="{{$car['id']}}">
-                                                        <input type="hidden" name="id_panne" value="{{$panne['id']}}">
+                                                        <input type="hidden" name="id_panne" value="{{$index}}">
                                                     </div>
 
                                                     <div class="mb-3">
