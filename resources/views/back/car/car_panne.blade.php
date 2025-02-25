@@ -138,7 +138,7 @@
                                                             @endforeach
                                                         </select>
                                                         <input type="hidden" name="id_vehicule" value="{{$car['id']}}">
-                                                        <input type="hidden" name="id_panne" value="{{$panne['id']}}">
+                                                        <input type="hidden" name="id_panne" value="{{$panne['pivot']['id']}}">
                                                     </div>
 
                                                     <div class="mb-3">
