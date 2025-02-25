@@ -201,7 +201,7 @@
                                                             data-hs-overlay="cardModalDelete{{ $panne['id'] }}">
                                                         Fermer
                                                     </button>
-                                                    <button type="submit" class="ti-btn ti-btn-danger">
+                                                    <button type="submit" class="ti-btn ti-btn-danger" data-hs-overlay="cardModalDelete{{ $panne['id'] }}">
                                                         Supprimer
                                                     </button>
                                                 </form>
