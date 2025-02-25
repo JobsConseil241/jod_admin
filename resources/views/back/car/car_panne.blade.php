@@ -72,6 +72,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{ dd($panne['pivot']) }}
                             @foreach ($car['pannes'] as $panne)
                                 <tr>
                                     <td>{{ $panne['id'] }}</td>
@@ -138,7 +139,7 @@
                                                             @endforeach
                                                         </select>
                                                         <input type="hidden" name="id_vehicule" value="{{$car['id']}}">
-                                                        <input type="hidden" name="id_panne" value="{{$panne['pivot']['id']}}">
+                                                        <input type="hidden" name="id_panne" value="{{$panne['id']}}">
                                                     </div>
 
                                                     <div class="mb-3">
