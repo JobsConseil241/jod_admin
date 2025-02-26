@@ -33,7 +33,37 @@ class BookingController extends Controller
     }
 
 
-    public function view($booking) {}
+    public function add($request) {
 
-    public function validate($booking) {}
+
+        $access_token = Session::get('personnalToken');
+
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_users', ['user_type_id' => 1000002]);
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            $users = $object->data->users;
+        } else {
+            $users = [];
+        }
+
+        $respond = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_users', ['user_type_id' => 1000002]);
+
+        $object = json_decode($respond->body());
+
+        if ($object && $object->success == true) {
+            $users = $object->data->users;
+        } else {
+            $users = [];
+        }
+
+
+    }
+
+    public function Store($request) {}
 }

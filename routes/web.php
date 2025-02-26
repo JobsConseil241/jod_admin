@@ -155,5 +155,7 @@ Route::middleware(['auth'])->group(function () {
         //Locations Management
         Route::get('booking/list', [BookingController::class, 'index'])->name('backend.booking.list');
         Route::get('booking/list/ajax', [BookingController::class, 'ajax_get_locations'])->name('backend.booking.ajax');
+        Route::get('booking/add', [BookingController::class, 'add'])->name('backend.booking.add');
+        Route::post('booking/add', [BookingController::class, 'Store'])->name('backend.booking.store');
     });
 });
