@@ -153,7 +153,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('language/{langage}', [LanguageController::class, 'update'])->name('backend.update.language');
 
         //Locations Management
-        Route::get('booking/list', [BookingController::class, 'list'])->name('backend.booking.list');
-        Route::get('booking/list/ajax', [BookingController::class, 'list'])->name('backend.booking.ajax');
+        Route::get('booking/list', [BookingController::class, 'index'])->name('backend.booking.list');
+        Route::get('booking/list/ajax', [BookingController::class, 'ajax_get_locations'])->name('backend.booking.ajax');
     });
 });
