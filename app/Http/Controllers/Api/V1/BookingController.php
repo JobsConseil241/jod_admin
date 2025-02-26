@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Api\V1\BaseController;
 use App\Models\Location;
 use App\Models\LocationPanne;
+use App\Models\Panne;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -13,6 +14,28 @@ use Illuminate\Support\Facades\Validator;
 
 class BookingController extends BaseController
 {
+
+    public function get_all_locations(Request $request)
+    {
+        try {
+            Log::info('Get Locations all data  Endpoint Entered.');
+
+            Log::debug('Get Locations all data Endpoint - All Params: ' . json_encode($request->all()));
+
+            $resas = Location::with('user', 'vehicule', 'pannes', 'etatAvantLocation', 'etatApresLocation', 'clientAssocie', 'paiementAssocie');
+
+            $data['resas'] = $resas->get();
+
+            Log::debug('Get Locations all data Endpoint - Response: ' . json_encode($data));
+
+            return $this->sendResponse($data, "Locations all data retrieved successfully");
+        } catch (Exception $e) {
+            Log::error('Get Locations all data Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Get Locations all data Endpoint Exited.');
+        }
+    }
 
     public function registerBooking(Request $request)
     {

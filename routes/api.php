@@ -128,4 +128,7 @@ Route::group([
     Route::post("/add_language", [LanguageController::class, "language_create"])->name('API-GET-LANGUAGE');
     Route::post("/update_language", [LanguageController::class, "update_language"])->name('API-UPDATE-LANGUAGE');
     Route::post("/delete_languages", [LanguageController::class, "delete_language"])->name('API-DELETE-LANGUAGE');
+
+    //Booking Route
+    Route::get("/get_all_locations", [BookingController::class, 'get_all_locations'])->name('API-GET-ALL-LOCATIONS');
 });

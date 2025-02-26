@@ -107,7 +107,7 @@
                                             <!-- Perfect Fleets Title Start -->
                                             <div class="perfect-fleet-title">
                                                 <h3>{{$crs->categorie->name}}</h3>
-                                                <h2>{{$crs->marque->name}} {{$crs->name}}</h2>
+                                                <h2 >{{$crs->marque->name}} {{$crs->name}}</h2>
                                             </div>
                                             <!-- Perfect Fleets Content End -->
 

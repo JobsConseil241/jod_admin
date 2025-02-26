@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Back\BookingController;
 use App\Http\Controllers\Back\CarController as BackCarController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\LanguageController;
@@ -82,16 +83,18 @@ Route::middleware(['auth'])->group(function () {
         Route::post('car/pannes/{car}/assign_update', [BackCarController::class, 'update_assign_pannes'])->name('backend.assign_update.panne');
         Route::delete('car/pannes/{car}/delete_update', [BackCarController::class, 'delete_assign_pannes'])->name('backend.assign_delete.panne');
 
+        //Images
         Route::get('car/picture/{car}', [BackCarController::class, 'media'])->name('backend.picture.car');
         Route::post('car/picture/{car}', [BackCarController::class, 'update_media'])->name('backend.picture.update.car');
 
+        //Etats
         Route::get('car/etats/{car}', [BackCarController::class, 'etats_list'])->name('backend.etats_list.car');
         Route::get('car/etat/{car}/{date}', [BackCarController::class, 'etat'])->name('backend.etat.car');
         Route::get('car/etat/{car}', [BackCarController::class, 'etat'])->name('backend.etat.car');
         Route::post('car/etat/{car}', [BackCarController::class, 'update_etat'])->name('backend.etat.update.car');
         Route::post('car/etat/{car}/{date}', [BackCarController::class, 'update_etat'])->name('backend.etat.update.date.car');
 
-        //Panne
+        //Panne gestion generale
         Route::get('pannes', [PanneController::class, 'index'])->name('backend.list.pannes');
         Route::post('panne/store', [PanneController::class, 'store'])->name('backend.store.panne');
         Route::post('panne/update/{car}', [PanneController::class, 'update'])->name('backend.update.panne');
@@ -148,5 +151,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('edit-language', [LanguageController::class, 'edit'])->name('backend.edit.language');
         Route::post('language', [LanguageController::class, 'store'])->name('backend.store.language');
         Route::post('language/{langage}', [LanguageController::class, 'update'])->name('backend.update.language');
+
+        //Locations Management
+        Route::get('booking/list', [BookingController::class, 'list'])->name('backend.booking.list');
+        Route::get('booking/list/ajax', [BookingController::class, 'list'])->name('backend.booking.ajax');
     });
 });
