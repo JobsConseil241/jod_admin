@@ -33,7 +33,7 @@ class BookingController extends Controller
     }
 
 
-    public function add($request) {
+    public function add(Request $request) {
 
 
         $access_token = Session::get('personnalToken');
@@ -50,18 +50,19 @@ class BookingController extends Controller
             $users = [];
         }
 
-        $respond = Http::withHeaders([
-            "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_users', ['user_type_id' => 1000002]);
+//        $respond = Http::withHeaders([
+//            "Authorization" => "Bearer " . $access_token
+//        ])->get(env('SERVER_PC') . 'get_users', ['user_type_id' => 1000002]);
+//
+//        $object = json_decode($respond->body());
+//
+//        if ($object && $object->success == true) {
+//            $users = $object->data->users;
+//        } else {
+//            $users = [];
+//        }
 
-        $object = json_decode($respond->body());
-
-        if ($object && $object->success == true) {
-            $users = $object->data->users;
-        } else {
-            $users = [];
-        }
-
+        return view('back.booking.add', compact('users'));
 
     }
 
