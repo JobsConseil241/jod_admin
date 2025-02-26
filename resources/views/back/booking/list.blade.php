@@ -50,7 +50,7 @@
                 <div class="box-header">
                     <h5 class="box-title">Liste des Véhicules</h5>
                     <div class="flex justify-end">
-                        <a href="{{ route('backend.add.car') }}">
+                        <a href="{{ route('backend.booking.add') }}">
                             <button type="button" class="ti-btn ti-btn-primary">
                                 Ajouter une Location
                             </button>
