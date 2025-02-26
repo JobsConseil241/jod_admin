@@ -100,11 +100,11 @@
                         <li class="slide has-sub">
                             <a href="javascript:void(0);" class="side-menu__item">
                                 <i class="ti ti-archive side-menu__icon"></i>
-                                <span class="side-menu__label">Réservations</span>
+                                <span class="side-menu__label">Réservations/Locations</span>
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
                             <ul class="slide-menu child1">
-                                <li class="slide"><a href="#" class="side-menu__item">Liste</a></li>
+                                <li class="slide"><a href="{{ route('backend.booking.list') }}" class="side-menu__item">Liste</a></li>
                             </ul>
                         </li>
                         <!-- End::slide -->
