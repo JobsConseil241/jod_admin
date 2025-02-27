@@ -389,7 +389,7 @@
 
                 if(voitureId) {
                     $.ajax({
-                        url: 'booking/car/pannes/' + voitureId + '/ajax',
+                        url: '/booking/car/pannes/' + voitureId + '/ajax',
                         type: 'GET',
                         dataType: 'json',
                         success: function(data) {
