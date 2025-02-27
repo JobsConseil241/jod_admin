@@ -155,7 +155,7 @@
                                 <div class="box">
                                     <div class="box-body space-y-3">
                                         <h5 class="box-title leading-none flex"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Vehicule Informations</h5>
-                                        <div class="grid grid-cols-12 gap-4">
+                                        <div class="grid grid-cols-12 gap-4 mb-5">
 
                                             <div class="col-span-12 lg:col-span-12">
                                                 <div class="space-y-2  product-1">
@@ -258,65 +258,6 @@
                                                 <p class="text-sm text-gray-500 mt-2 dark:text-white/70 tett" id="hs-input-helper-text">Ajouter un etat si pas disponible</p>
                                             </div>
 
-
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2">
-                                                    <label class="ti-form-label">Prix</label>
-                                                    <div class="relative">
-                                                        <input type="text" name="prix_location"
-                                                            value="{{ old('prix_location') }}"
-                                                            class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
-                                                            placeholder="10000" required>
-                                                        <div
-                                                            class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center pointer-events-none z-20 ltr:pl-4 rtl:pr-4">
-                                                            <span class="text-gray-500 dark:text-white/70"></span>
-                                                        </div>
-                                                        <div
-                                                            class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center pointer-events-none z-20 ltr:pr-4 rtl:pl-4">
-                                                            <span class="text-gray-500 dark:text-white/70">F CFA</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2">
-                                                    <label class="ti-form-label">Couleur</label>
-                                                    <select name="couleur" class="ti-form-select product-search" required>
-                                                        <option>Choisissez</option>
-                                                        <option value="bleu"
-                                                            {{ old('couleur') == 'bleu' ? 'selected' : '' }}>Bleu</option>
-                                                        <option value="noir"
-                                                            {{ old('couleur') == 'noir' ? 'selected' : '' }}>Noir</option>
-                                                        <option value="rouge"
-                                                            {{ old('couleur') == 'rouge' ? 'selected' : '' }}>Rouge
-                                                        </option>
-                                                        <option value="vert"
-                                                            {{ old('couleur') == 'vert' ? 'selected' : '' }}>Vert</option>
-                                                        <option value="blanc"
-                                                            {{ old('couleur') == 'blanc' ? 'selected' : '' }}>Blanc
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Nom de l'Assurance</label>
-                                                    <input type="text" name="assurance_nom"
-                                                        class="my-auto ti-form-input" value="{{ old('assurance_nom') }}"
-                                                        placeholder="SUNU" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">date d'expiration de
-                                                        l'assurance</label>
-                                                    <input type="date" name="assurance_date_expi"
-                                                        class="my-auto ti-form-input" min="<?= date('Y-m-d') ?>"
-                                                        value="{{ old('assurance_date_expi') }}" required>
-                                                </div>
-                                            </div>
                                         </div>
 
                                         <h5 class="box-title leading-none flex my-7"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Paiement Information</h5>
@@ -374,10 +315,10 @@
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Reste à payer</label>
                                                     <div class="relative">
-                                                        <input type="text" name="mntant_payer"
+                                                        <input type="text" name="montant_restant"
                                                                value="{{ old('montant_restant') }}"
                                                                class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
-                                                               placeholder="10000" required>
+                                                               placeholder="10000" required disabled>
                                                         <div
                                                             class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center pointer-events-none z-20 ltr:pl-4 rtl:pr-4">
                                                             <span class="text-gray-500 dark:text-white/70"></span>
@@ -455,6 +396,32 @@
             enableTime: true,
             minTime: "08:00",
             maxTime: "20:00"
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupérer les champs d'entrée
+            const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
+            const montantPaye = document.querySelector('input[name="mntant_paye"]');
+            const resteAPayer = document.querySelector('input[name="montant_restant"]');
+
+            function calculerResteAPayer() {
+                // Récupérer les valeurs et convertir en nombres
+                const montantAPayerValue = parseInt(montantAPayer.value.replace(/[^\d.-]/g, '')) || 0;
+                const montantPayeValue = parseInt(montantPaye.value.replace(/[^\d.-]/g, '')) || 0;
+
+                // Calculer le reste à payer
+                const resteAPayerValue = Math.max(0, montantAPayerValue - montantPayeValue);
+
+                // Mettre à jour le champ du reste à payer
+                resteAPayer.value = resteAPayerValue.toLocaleString('fr-FR');
+            }
+
+            // Ajouter des écouteurs d'événements pour les deux premiers champs
+            montantAPayer.addEventListener('input', calculerResteAPayer);
+            montantPaye.addEventListener('input', calculerResteAPayer);
+
+            // Calculer initialement au chargement de la page
+            calculerResteAPayer();
         });
 
         $(document).ready(function() {
