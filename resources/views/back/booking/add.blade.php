@@ -385,11 +385,17 @@
                         dataType: 'json',
                         success: function(data) {
                             // Ajouter une option par défaut
-                            $('#panne_select').append('<option value="">Sélectionnez une panne</option>');
+                            console.log(data)
+                            $('#panne_select').append('<option value="">Sélectionnez un etat</option>');
 
                             // Ajouter chaque panne comme option
                             $.each(data, function(key, panne) {
-                                $('#panne_select').append('<option value="' + panne.id + '">' + panne.nom + '</option>');
+                                var dateObj = new Date(panne.date);
+                                var formattedDate = formatDate(dateObj);
+
+                                console.log(formattedDate)
+
+                                $('#panne_select').append('<option value="' + panne.id + '"> Etat du ' + formattedDate + '</option>');
                             });
 
                             // Activer le select des pannes
@@ -408,6 +414,13 @@
                 }
             });
         });
+
+        function formatDate(date) {
+            var day = ('0' + date.getDate()).slice(-2);
+            var month = ('0' + (date.getMonth() + 1)).slice(-2);
+            var year = date.getFullYear();
+            return day + '/' + month + '/' + year;
+        }
 
         const phoneInputField = document.querySelector("#phone");
         const phonecodeInputField = document.querySelector("#phone_code");
