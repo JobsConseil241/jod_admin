@@ -68,7 +68,7 @@
                             <div class="col-span-12 xl:col-span-6">
                                 <div class="box ">
                                     <div class="box-body">
-                                        <h5 class="box-title leading-none flex"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Client Information</h5>
+                                        <h5 class="box-title leading-none flex my-5"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Client Information</h5>
                                         <div class="space-y-3">
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Client</label>
@@ -319,7 +319,77 @@
                                             </div>
                                         </div>
 
-                                        <h5 class="box-title leading-none flex my-5"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Paiement Information</h5>
+                                        <h5 class="box-title leading-none flex my-7"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Paiement Information</h5>
+                                        <div class="grid grid-cols-12 gap-4">
+
+                                            <div class="col-span-12 lg:col-span-12">
+                                                <div class="space-y-2  product-1">
+                                                    <label class="ti-form-label mb-0">Methode de paiement</label>
+                                                    <select class="my-auto ti-form-select" name="method_paie" required>
+                                                        <option value="" disabled selected>Choisissez une methode de paiement </option>
+                                                        <option value="cash">Cash</option>
+                                                        <option value="mobile_money">Mobile Money</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-span-12 lg:col-span-4">
+                                                <div class="space-y-2  product-1">
+                                                    <label class="ti-form-label mb-0">Montant à payer</label>
+                                                    <div class="relative">
+                                                        <input type="text" name="mntant_a_payer"
+                                                               value="{{ old('mntant_a_payer') }}"
+                                                               class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
+                                                               placeholder="10000" required>
+                                                        <div
+                                                            class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center pointer-events-none z-20 ltr:pl-4 rtl:pr-4">
+                                                            <span class="text-gray-500 dark:text-white/70"></span>
+                                                        </div>
+                                                        <div
+                                                            class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center pointer-events-none z-20 ltr:pr-4 rtl:pl-4">
+                                                            <span class="text-gray-500 dark:text-white/70">F CFA</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-span-12 lg:col-span-4">
+                                                <div class="space-y-2  product-1">
+                                                    <label class="ti-form-label mb-0">Montant payé</label>
+                                                    <div class="relative">
+                                                        <input type="text" name="mntant_paye"
+                                                               value="{{ old('mntant_paye') }}"
+                                                               class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
+                                                               placeholder="10000" required>
+                                                        <div
+                                                            class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center pointer-events-none z-20 ltr:pl-4 rtl:pr-4">
+                                                            <span class="text-gray-500 dark:text-white/70"></span>
+                                                        </div>
+                                                        <div
+                                                            class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center pointer-events-none z-20 ltr:pr-4 rtl:pl-4">
+                                                            <span class="text-gray-500 dark:text-white/70">F CFA</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-span-12 lg:col-span-4">
+                                                <div class="space-y-2  product-1">
+                                                    <label class="ti-form-label mb-0">Reste à payer</label>
+                                                    <div class="relative">
+                                                        <input type="text" name="mntant_payer"
+                                                               value="{{ old('montant_restant') }}"
+                                                               class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
+                                                               placeholder="10000" required>
+                                                        <div
+                                                            class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center pointer-events-none z-20 ltr:pl-4 rtl:pr-4">
+                                                            <span class="text-gray-500 dark:text-white/70"></span>
+                                                        </div>
+                                                        <div
+                                                            class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center pointer-events-none z-20 ltr:pr-4 rtl:pl-4">
+                                                            <span class="text-gray-500 dark:text-white/70">F CFA</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
