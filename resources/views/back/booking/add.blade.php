@@ -230,7 +230,7 @@
                                             <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2">
                                                     <label class="ti-form-label">Etats Vehicule Avant Location</label>
-                                                    <select name="etat_avant" class="ti-form-select product-search" id="panne_select" required >
+                                                    <select name="etat_avant" class="ti-form-select" id="panne_select" required >
                                                         <option disabled selected>Choisissez</option>
                                                     </select>
                                                 </div>
@@ -238,7 +238,7 @@
                                             <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2">
                                                     <label class="ti-form-label">Etats Vehicule Apres Location</label>
-                                                    <select name="etat_apres" class="ti-form-select product-search" id="panne_selects" required >
+                                                    <select name="etat_apres" class="ti-form-select" id="panne_selects" required >
                                                         <option disabled selected>Choisissez</option>
                                                     </select>
                                                 </div>
