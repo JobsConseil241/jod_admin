@@ -133,11 +133,17 @@
                                             </div>
 
                                             <div class="space-y-2">
-                                                <label class="ti-form-label">Note Additionnelle</label>
-                                                <textarea name="note" class="ti-form-input" rows="2">{{ old('nom') }}</textarea>
-                                                <label
-                                                    class="ti-form-label mt-1 text-sm font-normal opacity-70 text-gray-500 dark:text-white/70 mb-0">*500
-                                                    caractères maximum.</label>
+                                                <label class="ti-form-label">Image de La Piece</label>
+                                                <div class="col-span-12 lg:col-span-4">
+                                                    <div class="box">
+                                                        <div class="box-header">
+                                                            <h5 class="box-title">Single File Upload</h5>
+                                                        </div>
+                                                        <div class="box-body">
+                                                            <input type="file" class="filepond basic-filepond" data-allow-reorder="true" data-max-file-size="2MB" data-max-files="1">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -363,17 +369,6 @@
     <script>
         "use strict";
 
-        $(document).ready(function() {
-            $("#data").DataTable({
-                language: {
-                    url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/French.json"
-                },
-                order: [
-                    [0, 'desc']
-                ],
-                searching: true
-            })
-        });
 
         const phoneInputField = document.querySelector("#phone");
         const phonecodeInputField = document.querySelector("#phone_code");
