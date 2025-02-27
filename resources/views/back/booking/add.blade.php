@@ -72,7 +72,7 @@
                                         <div class="space-y-3">
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Client</label>
-                                                <select class="my-auto ti-form-select" name="client_id" id="" required>
+                                                <select class="my-auto ti-form-select" name="client_id" id="">
                                                     <option value="" disabled selected>Choisissez un Client </option>
                                                     <!-- Ajoutez dynamiquement les années si besoin -->
                                                     @foreach($users as $user)
@@ -165,7 +165,7 @@
                                                         <option value="" disabled selected>Choisissez une voiture </option>
                                                         <!-- Ajoutez dynamiquement les années si besoin -->
                                                         @foreach($cars as $car)
-                                                            <option value="{{ $car->id }}">{{ $car->name }}</option>
+                                                            <option value="{{ $car->id }}" data-value="{{ $car->prix_location }}">{{ $car->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -387,23 +387,37 @@
     <script>
         "use strict";
 
-        flatpickr("#limitdatetime", {
-            enableTime: true,
-            minTime: "08:00",
-            maxTime: "20:00"
-        });
+        let car_id = 0
+        let jours = 0
 
-        flatpickr("#limitdatetimes", {
-            enableTime: true,
-            minTime: "08:00",
-            maxTime: "20:00"
-        });
+
 
         document.addEventListener('DOMContentLoaded', function() {
             // Récupérer les champs d'entrée
             const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
             const montantPaye = document.querySelector('input[name="mntant_paye"]');
             const resteAPayer = document.querySelector('input[name="montant_restant"]');
+
+            const dateDebut = document.querySelector('input[name="date_debut"]');
+            const dateRetour = document.querySelector('input[name="date_retour"]');
+
+            // Fonction pour calculer la différence en jours entre deux dates
+            function calculerNombreJours() {
+                // Vérifier que les deux dates sont remplies
+                if (!dateDebut.value || !dateRetour.value) return;
+
+                // Convertir les chaînes en objets Date
+                const dateDebutObj = new Date(dateDebut.value);
+                const dateRetourObj = new Date(dateRetour.value);
+
+                // Calculer la différence en millisecondes
+                const differenceMs = dateRetourObj - dateDebutObj;
+
+                // Convertir en jours (1 jour = 24 * 60 * 60 * 1000 ms)
+                const differenceJours = Math.ceil(differenceMs / (1000 * 60 * 60 * 24));
+
+                jours = differenceJours
+            }
 
             function calculerResteAPayer() {
                 // Récupérer les valeurs et convertir en nombres
@@ -421,15 +435,35 @@
             montantAPayer.addEventListener('input', calculerResteAPayer);
             montantPaye.addEventListener('input', calculerResteAPayer);
 
+            flatpickr("#limitdatetime", {
+                enableTime: true,
+                minTime: "08:00",
+                maxTime: "20:00"
+            });
+
+            flatpickr("#limitdatetimes", {
+                enableTime: true,
+                minTime: "08:00",
+                maxTime: "20:00",
+                onChange: function(selectedDates, dateStr, instance) {
+                    calculerNombreJours();
+                }
+            });
+
+
             // Calculer initialement au chargement de la page
             calculerResteAPayer();
         });
 
+
+
         $(document).ready(function() {
             $('#voiture_select').on('change', function() {
                 var voitureId = $(this).val();
-
+                car_id = voitureId
                 $('#panne_select').empty();
+
+                var prixLocation = $('option:selected', this).data('value');
 
                 if(voitureId) {
                     $.ajax({
@@ -462,6 +496,12 @@
                             });
 
                             $('#panne_select').prop('disabled', false);
+
+                            let netPaie  = parseInt(prixLocation) * parseInt(jours)
+
+                            const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
+                            montantAPayer.value = netPaie
+
                         },
                         error: function(xhr, status, error) {
                             console.error('Erreur lors du chargement des pannes:', error);
