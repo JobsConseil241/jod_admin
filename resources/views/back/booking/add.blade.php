@@ -68,7 +68,21 @@
                             <div class="col-span-12 xl:col-span-6">
                                 <div class="box ">
                                     <div class="box-body">
+                                        <h5 class="box-title leading-none flex"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Client Information</h5>
                                         <div class="space-y-3">
+                                            <div class="col-span-12 lg:col-span-12">
+                                                <div class="space-y-2  product-1">
+                                                    <label class="ti-form-label mb-0">Voiture</label>
+                                                    <select class="my-auto ti-form-select" name="vehicule" id="voiture_select" required>
+                                                        <option value="" disabled selected>Choisissez une voiture </option>
+                                                        <!-- Ajoutez dynamiquement les années si besoin -->
+                                                        @foreach($users as $user)
+                                                            <option value="{{ $user->id }}">{{ $user->first_name }} {{ $user->last_name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                            </div>
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Noms</label>
                                                 <input type="text" name="name" class="my-auto ti-form-input"
@@ -143,6 +157,7 @@
                             <div class="col-span-12 xl:col-span-6">
                                 <div class="box">
                                     <div class="box-body space-y-3">
+                                        <h5 class="box-title leading-none flex"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Vehicule Informations</h5>
                                         <div class="grid grid-cols-12 gap-4">
 
                                             <div class="col-span-12 lg:col-span-12">
@@ -307,6 +322,7 @@
                                             </div>
                                         </div>
 
+                                        <h5 class="box-title leading-none flex my-5"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Paiement Information</h5>
                                     </div>
                                 </div>
                             </div>
@@ -386,11 +402,8 @@
                         type: 'GET',
                         dataType: 'json',
                         success: function(data) {
-                            // Ajouter une option par défaut
-                            console.log(data)
                             $('#panne_select').append('<option value="">Sélectionnez un etat</option>');
 
-                            // Ajouter chaque panne comme option
                             $.each(data, function(key, panne) {
                                 var dateObj = new Date(panne.date);
                                 var formattedDate = formatDate(dateObj);
@@ -407,24 +420,20 @@
                                     'data-index': index
                                 });
 
-                                // Vider le paragraphe et ajouter le nouveau contenu
                                 $(this).empty().append(
                                     'Ajouter un état si pas disponible ',
                                     lien
                                 );
                             });
 
-                            // Activer le select des pannes
                             $('#panne_select').prop('disabled', false);
                         },
                         error: function(xhr, status, error) {
                             console.error('Erreur lors du chargement des pannes:', error);
-                            // Message d'erreur optionnel pour l'utilisateur
                             alert('Impossible de charger les pannes pour cette voiture.');
                         }
                     });
                 } else {
-                    // Si aucune voiture n'est sélectionnée, désactiver le select des pannes
                     $('#panne_select').prop('disabled', true);
                     $('#panne_select').append('<option value="">Sélectionnez d\'abord une voiture</option>');
                 }
