@@ -432,8 +432,6 @@
 
                             $('#panne_select').prop('disabled', false);
 
-                            netPaie  = parseInt(prixLocation) * parseInt(jours)
-
                         },
                         error: function(xhr, status, error) {
                             console.error('Erreur lors du chargement des pannes:', error);
@@ -472,6 +470,9 @@
 
                 jours = differenceJours
 
+
+
+                netPaie  = parseInt(prixLocation) * parseInt(jours)
 
                 const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
                 montantAPayer.value = netPaie
