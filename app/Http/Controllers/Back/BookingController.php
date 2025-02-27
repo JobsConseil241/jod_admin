@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Models\Panne;
+use App\Models\Vehicule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
@@ -35,7 +37,6 @@ class BookingController extends Controller
 
     public function add(Request $request) {
 
-
         $access_token = Session::get('personnalToken');
 
         $response = Http::withHeaders([
@@ -50,6 +51,8 @@ class BookingController extends Controller
             $users = [];
         }
 
+        $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes')->get();
+
 //        $respond = Http::withHeaders([
 //            "Authorization" => "Bearer " . $access_token
 //        ])->get(env('SERVER_PC') . 'get_users', ['user_type_id' => 1000002]);
@@ -62,8 +65,17 @@ class BookingController extends Controller
 //            $users = [];
 //        }
 
-        return view('back.booking.add', compact('users'));
+        return view('back.booking.add', compact('users', 'cars'));
 
+    }
+
+    public function getPannesByVoiture($voitureId)
+    {
+        // Récupérer les pannes associées à cette voiture
+        $pannes = Panne::where('vehicule_id', $voitureId)->get();
+
+        // Retourner les pannes au format JSON
+        return response()->json($pannes);
     }
 
     public function Store($request) {}

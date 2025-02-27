@@ -145,18 +145,15 @@
                                     <div class="box-body space-y-3">
                                         <div class="grid grid-cols-12 gap-4">
 
-                                            <div class="col-span-12 lg:col-span-6">
+                                            <div class="col-span-12 lg:col-span-12">
                                                 <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Année</label>
-                                                    <select class="my-auto ti-form-select" name="annee" required>
-                                                        <option value="" disabled selected>Choisissez une année
-                                                        </option>
+                                                    <label class="ti-form-label mb-0">Voiture</label>
+                                                    <select class="my-auto ti-form-select" name="vehicule" id="voiture_select" required>
+                                                        <option value="" disabled selected>Choisissez une année </option>
                                                         <!-- Ajoutez dynamiquement les années si besoin -->
-                                                        @for ($year = date('Y'); $year >= 1990; $year--)
-                                                            <option value="{{ $year }}"
-                                                                {{ old('annee') == $year ? 'selected' : '' }}>
-                                                                {{ $year }}</option>
-                                                        @endfor
+                                                        @foreach($cars as $car)
+                                                            <option value="{{ $car->id }}">{{ $car->name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
 
@@ -164,76 +161,88 @@
 
                                             <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Immatriculation</label>
-                                                    <input name="immatriculation" type="text"
-                                                        class="my-auto ti-form-input" placeholder="AA111BB"
-                                                        value="{{ old('immatriculation') }}" required>
+                                                    <label class="ti-form-label mb-0">Date de Location</label>
+                                                    <div
+                                                        class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                                                        <span class="text-sm text-gray-500 dark:text-white/70"><i
+                                                                class="ri ri-time-line"></i></span>
+                                                    </div>
+
+                                                    <input type="text"
+                                                           class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                                                           id="limitdatetime" name="date_debut" placeholder="Choississez une date" readonly>
                                                 </div>
                                             </div>
 
                                             <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Type de carburant</label>
-                                                    <select name="type_carburant" class="ti-form-select product-search"
+                                                    <label class="ti-form-label mb-0">Date de Retour</label>
+                                                    <div
+                                                        class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
+                                                        <span class="text-sm text-gray-500 dark:text-white/70"><i
+                                                                class="ri ri-time-line"></i></span>
+                                                    </div>
+
+                                                    <input type="text"
+                                                           class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
+                                                           id="limitdatetimes" name="date_retour" placeholder="Choississez une date" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-span-12 lg:col-span-6">
+                                                <div class="space-y-2  product-1">
+                                                    <label class="ti-form-label mb-0">Type de Location</label>
+                                                    <select name="type_loca" class="ti-form-select product-search"
                                                         required>
-                                                        <option value="essence"
-                                                            {{ old('type_carburant') == 'essence' ? 'selected' : '' }}>
-                                                            Essence
-                                                        </option>
-                                                        <option value="diesel"
-                                                            {{ old('type_carburant') == 'diesel' ? 'selected' : '' }}>
-                                                            Diesel</option>
-                                                        <option value="hybride"
-                                                            {{ old('type_carburant') == 'hybride' ? 'selected' : '' }}>
-                                                            Hybride</option>
-                                                        <option value="électrique"
-                                                            {{ old('type_carburant') == 'électrique' ? 'selected' : '' }}>
-                                                            Électrique</option>
-
+                                                        <option value="courte"
+                                                            {{ old('type_loca') == 'courte' ? 'selected' : '' }}>
+                                                            Courte</option>
+                                                        <option value="longue"
+                                                            {{ old('type_loca') == 'longue' ? 'selected' : '' }}>
+                                                            Longue</option>
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Transmission</label>
-                                                    <select name="transmission" class="ti-form-select product-search"
-                                                        required>
-                                                        <option value="automatique"
-                                                            {{ old('transmission') == 'automatique' ? 'selected' : '' }}>
-                                                            Automatique</option>
-                                                        <option value="manuelle"
-                                                            {{ old('transmission') == 'manuelle' ? 'selected' : '' }}>
-                                                            Manuelle</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-span-12 lg:col-span-4">
                                                 <div class="space-y-2">
-                                                    <label class="ti-form-label mb-0">Kilométrage </label>
-                                                    <div class="relative">
-                                                        <input type="text" id="hs-input-with-leading-and-trailing-icon"
-                                                            name="kilometrage" value="{{ old('kilometrage') }}"
-                                                            class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
-                                                            placeholder="1000" required>
-                                                        <div
-                                                            class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center pointer-events-none z-20 ltr:pl-4 rtl:pr-4">
-                                                            <span class="text-gray-500 dark:text-white/70"></span>
-                                                        </div>
-                                                        <div
-                                                            class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center pointer-events-none z-20 ltr:pr-4 rtl:pl-4">
-                                                            <span class="text-gray-500 dark:text-white/70">KM</span>
-                                                        </div>
+                                                    <label class="ti-form-label mb-0">Livraison ? </label>
+                                                    <div class="grid sm:grid-cols-2 gap-2">
+                                                        <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
+                                                            <span class="text-sm text-gray-500 dark:text-white/70">Oui</span>
+                                                            <input type="radio" name="livraison" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="livraison">
+                                                        </label>
+
+                                                        <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
+                                                            <span class="text-sm text-gray-500 dark:text-white/70">Non</span>
+                                                            <input type="radio" name="livraison" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="livraison" checked>
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-span-12 lg:col-span-4">
+
+                                            <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2">
-                                                    <label class="ti-form-label mb-0">Nombre de place </label>
-                                                    <input type="number" name="nombre_places"
-                                                        class="my-auto ti-form-input" value="{{ old('nombre_places') }}"
-                                                        placeholder="4" required>
+                                                    <label class="ti-form-label mb-0">Commission ? </label>
+                                                    <div class="grid sm:grid-cols-2 gap-2">
+                                                        <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
+                                                            <span class="text-sm text-gray-500 dark:text-white/70">Oui</span>
+                                                            <input type="radio" name="commission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comission">
+                                                        </label>
+
+                                                        <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
+                                                            <span class="text-sm text-gray-500 dark:text-white/70">Non</span>
+                                                            <input type="radio" name="commission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comission" checked>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-span-12 lg:col-span-6">
+                                                <div class="space-y-2">
+                                                    <label class="ti-form-label">Etats Vehicule Avant Location</label>
+                                                    <select name="etat_avant" class="ti-form-select product-search" id="panne_select" required >
+                                                        <option disabled selected>Choisissez</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-span-12 lg:col-span-4">
@@ -336,8 +345,7 @@
     <!-- Filepond JS -->
     <script src="{{ asset('back/libs/filepond/filepond.min.js') }}"></script>
     <script src="{{ asset('back/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js') }}"></script>
-    <script
-        src="{{ asset('back/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js') }}">
+    <script src="{{ asset('back/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js') }}">
     </script>
     <script src="{{ asset('back/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js') }}">
     </script>
@@ -360,6 +368,54 @@
     <script>
         "use strict";
 
+        flatpickr("#limitdatetime", {
+            enableTime: true,
+            minTime: "08:00",
+            maxTime: "20:00"
+        });
+
+        flatpickr("#limitdatetimes", {
+            enableTime: true,
+            minTime: "08:00",
+            maxTime: "20:00"
+        });
+
+        $(document).ready(function() {
+            $('#voiture_select').on('change', function() {
+                var voitureId = $(this).val();
+
+                $('#panne_select').empty();
+
+                if(voitureId) {
+                    $.ajax({
+                        url: 'booking/car/pannes/' + voitureId + '/ajax',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            // Ajouter une option par défaut
+                            $('#panne_select').append('<option value="">Sélectionnez une panne</option>');
+
+                            // Ajouter chaque panne comme option
+                            $.each(data, function(key, panne) {
+                                $('#panne_select').append('<option value="' + panne.id + '">' + panne.nom + '</option>');
+                            });
+
+                            // Activer le select des pannes
+                            $('#panne_select').prop('disabled', false);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Erreur lors du chargement des pannes:', error);
+                            // Message d'erreur optionnel pour l'utilisateur
+                            alert('Impossible de charger les pannes pour cette voiture.');
+                        }
+                    });
+                } else {
+                    // Si aucune voiture n'est sélectionnée, désactiver le select des pannes
+                    $('#panne_select').prop('disabled', true);
+                    $('#panne_select').append('<option value="">Sélectionnez d\'abord une voiture</option>');
+                }
+            });
+        });
 
         const phoneInputField = document.querySelector("#phone");
         const phonecodeInputField = document.querySelector("#phone_code");
