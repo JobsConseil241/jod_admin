@@ -70,18 +70,15 @@
                                     <div class="box-body">
                                         <h5 class="box-title leading-none flex"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Client Information</h5>
                                         <div class="space-y-3">
-                                            <div class="col-span-12 lg:col-span-12">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Voiture</label>
-                                                    <select class="my-auto ti-form-select" name="vehicule" id="voiture_select" required>
-                                                        <option value="" disabled selected>Choisissez une voiture </option>
-                                                        <!-- Ajoutez dynamiquement les années si besoin -->
-                                                        @foreach($users as $user)
-                                                            <option value="{{ $user->id }}">{{ $user->first_name }} {{ $user->last_name }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-
+                                            <div class="space-y-2">
+                                                <label class="ti-form-label mb-0">Client</label>
+                                                <select class="my-auto ti-form-select" name="client_id" id="" required>
+                                                    <option value="" disabled selected>Choisissez un Client </option>
+                                                    <!-- Ajoutez dynamiquement les années si besoin -->
+                                                    @foreach($users as $user)
+                                                        <option value="{{ $user->id }}">{{ $user->first_name }} {{ $user->last_name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Noms</label>
