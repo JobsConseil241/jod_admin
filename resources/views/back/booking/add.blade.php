@@ -392,77 +392,6 @@
         let prixLocation = 0
         let netPaie = 0
 
-
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Récupérer les champs d'entrée
-            const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
-            const montantPaye = document.querySelector('input[name="mntant_paye"]');
-            const resteAPayer = document.querySelector('input[name="montant_restant"]');
-
-            const dateDebut = document.querySelector('input[name="date_debut"]');
-            const dateRetour = document.querySelector('input[name="date_retour"]');
-
-            // Fonction pour calculer la différence en jours entre deux dates
-            function calculerNombreJours() {
-                // Vérifier que les deux dates sont remplies
-                if (!dateDebut.value || !dateRetour.value) return;
-
-                // Convertir les chaînes en objets Date
-                const dateDebutObj = new Date(dateDebut.value);
-                const dateRetourObj = new Date(dateRetour.value);
-
-                // Calculer la différence en millisecondes
-                const differenceMs = dateRetourObj - dateDebutObj;
-
-                // Convertir en jours (1 jour = 24 * 60 * 60 * 1000 ms)
-                const differenceJours = Math.ceil(differenceMs / (1000 * 60 * 60 * 24));
-
-                jours = differenceJours
-
-
-                const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
-                montantAPayer.value = netPaie
-            }
-
-            function calculerResteAPayer() {
-                // Récupérer les valeurs et convertir en nombres
-                const montantAPayerValue = parseInt(montantAPayer.value.replace(/[^\d.-]/g, '')) || 0;
-                const montantPayeValue = parseInt(montantPaye.value.replace(/[^\d.-]/g, '')) || 0;
-
-                // Calculer le reste à payer
-                const resteAPayerValue = Math.max(0, montantAPayerValue - montantPayeValue);
-
-                // Mettre à jour le champ du reste à payer
-                resteAPayer.value = resteAPayerValue.toLocaleString('fr-FR');
-            }
-
-            // Ajouter des écouteurs d'événements pour les deux premiers champs
-            montantAPayer.addEventListener('input', calculerResteAPayer);
-            montantPaye.addEventListener('input', calculerResteAPayer);
-
-            flatpickr("#limitdatetime", {
-                enableTime: true,
-                minTime: "08:00",
-                maxTime: "20:00"
-            });
-
-            flatpickr("#limitdatetimes", {
-                enableTime: true,
-                minTime: "08:00",
-                maxTime: "20:00",
-                onChange: function(selectedDates, dateStr, instance) {
-                    calculerNombreJours();
-                }
-            });
-
-
-            // Calculer initialement au chargement de la page
-            calculerResteAPayer();
-        });
-
-
-
         $(document).ready(function() {
             $('#voiture_select').on('change', function() {
                 var voitureId = $(this).val();
@@ -505,11 +434,9 @@
 
                             netPaie  = parseInt(prixLocation) * parseInt(jours)
 
-
                         },
                         error: function(xhr, status, error) {
                             console.error('Erreur lors du chargement des pannes:', error);
-                            alert('Impossible de charger les pannes pour cette voiture.');
                         }
                     });
                 } else {
@@ -517,6 +444,74 @@
                     $('#panne_select').append('<option value="">Sélectionnez d\'abord une voiture</option>');
                 }
             });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupérer les champs d'entrée
+            const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
+            const montantPaye = document.querySelector('input[name="mntant_paye"]');
+            const resteAPayer = document.querySelector('input[name="montant_restant"]');
+
+            const dateDebut = document.querySelector('input[name="date_debut"]');
+            const dateRetour = document.querySelector('input[name="date_retour"]');
+
+            // Fonction pour calculer la différence en jours entre deux dates
+            function calculerNombreJours() {
+                // Vérifier que les deux dates sont remplies
+                if (!dateDebut.value || !dateRetour.value) return;
+
+                // Convertir les chaînes en objets Date
+                const dateDebutObj = new Date(dateDebut.value);
+                const dateRetourObj = new Date(dateRetour.value);
+
+                // Calculer la différence en millisecondes
+                const differenceMs = dateRetourObj - dateDebutObj;
+
+                // Convertir en jours (1 jour = 24 * 60 * 60 * 1000 ms)
+                const differenceJours = Math.ceil(differenceMs / (1000 * 60 * 60 * 24));
+
+                jours = differenceJours
+
+
+                const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
+                montantAPayer.value = netPaie
+
+            }
+
+            function calculerResteAPayer() {
+                // Récupérer les valeurs et convertir en nombres
+                const montantAPayerValue = parseInt(montantAPayer.value.replace(/[^\d.-]/g, '')) || 0;
+                const montantPayeValue = parseInt(montantPaye.value.replace(/[^\d.-]/g, '')) || 0;
+
+                // Calculer le reste à payer
+                const resteAPayerValue = Math.max(0, montantAPayerValue - montantPayeValue);
+
+                // Mettre à jour le champ du reste à payer
+                resteAPayer.value = resteAPayerValue.toLocaleString('fr-FR');
+            }
+
+            // Ajouter des écouteurs d'événements pour les deux premiers champs
+            montantAPayer.addEventListener('input', calculerResteAPayer);
+            montantPaye.addEventListener('input', calculerResteAPayer);
+
+            flatpickr("#limitdatetime", {
+                enableTime: true,
+                minTime: "08:00",
+                maxTime: "20:00"
+            });
+
+            flatpickr("#limitdatetimes", {
+                enableTime: true,
+                minTime: "08:00",
+                maxTime: "20:00",
+                onChange: function(selectedDates, dateStr, instance) {
+                    calculerNombreJours();
+                }
+            });
+
+
+            // Calculer initialement au chargement de la page
+            calculerResteAPayer();
         });
 
         function formatDate(date) {
