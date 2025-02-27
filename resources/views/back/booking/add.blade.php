@@ -134,16 +134,7 @@
 
                                             <div class="space-y-2">
                                                 <label class="ti-form-label">Image de La Piece</label>
-                                                <div class="col-span-12 lg:col-span-4">
-                                                    <div class="box">
-                                                        <div class="box-header">
-                                                            <h5 class="box-title">Single File Upload</h5>
-                                                        </div>
-                                                        <div class="box-body">
-                                                            <input type="file" class="filepond basic-filepond" data-allow-reorder="true" data-max-file-size="2MB" data-max-files="1">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <input type="file" class="filepond basic-filepond" name="thumb" data-allow-reorder="true" data-max-file-size="2MB" data-max-files="1">
                                             </div>
                                         </div>
                                     </div>
