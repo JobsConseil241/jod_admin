@@ -149,7 +149,7 @@
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Voiture</label>
                                                     <select class="my-auto ti-form-select" name="vehicule" id="voiture_select" required>
-                                                        <option value="" disabled selected>Choisissez une année </option>
+                                                        <option value="" disabled selected>Choisissez une voiture </option>
                                                         <!-- Ajoutez dynamiquement les années si besoin -->
                                                         @foreach($cars as $car)
                                                             <option value="{{ $car->id }}">{{ $car->name }}</option>
@@ -162,11 +162,6 @@
                                             <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Date de Location</label>
-                                                    <div
-                                                        class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
-                                                        <span class="text-sm text-gray-500 dark:text-white/70"><i
-                                                                class="ri ri-time-line"></i></span>
-                                                    </div>
 
                                                     <input type="text"
                                                            class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
@@ -177,11 +172,6 @@
                                             <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Date de Retour</label>
-                                                    <div
-                                                        class="px-4 inline-flex items-center min-w-fit ltr:rounded-l-sm rtl:rounded-r-sm border ltr:border-r-0 rtl:border-l-0 border-gray-200 bg-gray-50 dark:bg-black/20 dark:border-white/10">
-                                                        <span class="text-sm text-gray-500 dark:text-white/70"><i
-                                                                class="ri ri-time-line"></i></span>
-                                                    </div>
 
                                                     <input type="text"
                                                            class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
@@ -189,7 +179,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-span-12 lg:col-span-6">
+                                            <div class="col-span-12 lg:col-span-12">
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Type de Location</label>
                                                     <select name="type_loca" class="ti-form-select product-search"
@@ -245,14 +235,15 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-span-12 lg:col-span-4">
+                                            <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2">
-                                                    <label class="ti-form-label mb-0">Nombre de porte</label>
-                                                    <input type="number" name="nombre_portes"
-                                                        class="my-auto ti-form-input" value="{{ old('nombre_portes') }}"
-                                                        placeholder="4" required>
+                                                    <label class="ti-form-label">Etats Vehicule Apres Location</label>
+                                                    <select name="etat_apres" class="ti-form-select product-search" id="panne_selects" required >
+                                                        <option disabled selected>Choisissez</option>
+                                                    </select>
                                                 </div>
                                             </div>
+
 
                                             <div class="col-span-12 lg:col-span-6">
                                                 <div class="space-y-2">

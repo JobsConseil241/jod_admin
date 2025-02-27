@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Models\EtatVehicule;
 use App\Models\Panne;
 use App\Models\Vehicule;
 use Illuminate\Http\Request;
@@ -72,7 +73,7 @@ class BookingController extends Controller
     public function getPannesByVoiture($voitureId)
     {
         // Récupérer les pannes associées à cette voiture
-        $pannes = Panne::where('vehicule_id', $voitureId)->get();
+        $pannes = EtatVehicule::where('vehicule_id', $voitureId)->get();
 
         // Retourner les pannes au format JSON
         return response()->json($pannes);
