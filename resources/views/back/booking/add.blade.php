@@ -419,6 +419,10 @@
                 const differenceJours = Math.ceil(differenceMs / (1000 * 60 * 60 * 24));
 
                 jours = differenceJours
+
+
+                const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
+                montantAPayer.value = netPaie
             }
 
             function calculerResteAPayer() {
@@ -431,9 +435,6 @@
 
                 // Mettre à jour le champ du reste à payer
                 resteAPayer.value = resteAPayerValue.toLocaleString('fr-FR');
-
-                const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
-                montantAPayer.value = netPaie
             }
 
             // Ajouter des écouteurs d'événements pour les deux premiers champs
