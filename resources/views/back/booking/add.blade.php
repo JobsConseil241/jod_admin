@@ -213,12 +213,12 @@
                                                     <div class="grid sm:grid-cols-2 gap-2">
                                                         <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
                                                             <span class="text-sm text-gray-500 dark:text-white/70">Oui</span>
-                                                            <input type="radio" name="livraison" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="livraison">
+                                                            <input type="radio" value="false" name="livraison" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="livraison">
                                                         </label>
 
                                                         <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
                                                             <span class="text-sm text-gray-500 dark:text-white/70">Non</span>
-                                                            <input type="radio" name="livraison" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="livraison" checked>
+                                                            <input type="radio" value="false" name="livraison" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="livraison" checked>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -230,12 +230,12 @@
                                                     <div class="grid sm:grid-cols-2 gap-2">
                                                         <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
                                                             <span class="text-sm text-gray-500 dark:text-white/70">Oui</span>
-                                                            <input type="radio" name="commission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comission">
+                                                            <input type="radio" value="true" name="commission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comission">
                                                         </label>
 
                                                         <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
                                                             <span class="text-sm text-gray-500 dark:text-white/70">Non</span>
-                                                            <input type="radio" name="commission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comission" checked>
+                                                            <input type="radio"value="false" name="commission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comission" checked>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -319,7 +319,7 @@
                                                         <input type="text" name="montant_restant"
                                                                value="{{ old('montant_restant') }}"
                                                                class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
-                                                               placeholder="10000" required disabled>
+                                                               placeholder="10000" required readonly>
                                                         <div
                                                             class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center pointer-events-none z-20 ltr:pl-4 rtl:pr-4">
                                                             <span class="text-gray-500 dark:text-white/70"></span>
