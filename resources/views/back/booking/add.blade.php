@@ -389,6 +389,8 @@
 
         let car_id = 0
         let jours = 0
+        let prixLocation = 0
+        let netPaie = 0
 
 
 
@@ -429,6 +431,9 @@
 
                 // Mettre à jour le champ du reste à payer
                 resteAPayer.value = resteAPayerValue.toLocaleString('fr-FR');
+
+                const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
+                montantAPayer.value = netPaie
             }
 
             // Ajouter des écouteurs d'événements pour les deux premiers champs
@@ -463,7 +468,7 @@
                 car_id = voitureId
                 $('#panne_select').empty();
 
-                var prixLocation = $('option:selected', this).data('value');
+                prixLocation = $('option:selected', this).data('value');
 
                 if(voitureId) {
                     $.ajax({
@@ -497,10 +502,8 @@
 
                             $('#panne_select').prop('disabled', false);
 
-                            let netPaie  = parseInt(prixLocation) * parseInt(jours)
+                            netPaie  = parseInt(prixLocation) * parseInt(jours)
 
-                            const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
-                            montantAPayer.value = netPaie
 
                         },
                         error: function(xhr, status, error) {
