@@ -402,8 +402,8 @@
                                 // Créer un lien
                                 var lien = $('<a>', {
                                     href: '/public/backend/car/etat/' + voitureId,
-                                    text: 'Ajouter un état',
-                                    class: 'lien-ajouter-etat',
+                                    text: 'ICI',
+                                    class: 'lien-ajouter-etat text-success',
                                     'data-index': index
                                 });
 
