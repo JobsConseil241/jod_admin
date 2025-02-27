@@ -79,5 +79,7 @@ class BookingController extends Controller
         return response()->json($pannes);
     }
 
-    public function Store($request) {}
+    public function Store($request) {
+        dd($request);
+    }
 }

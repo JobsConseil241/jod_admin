@@ -151,6 +151,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-span-12 xl:col-span-6">
                                 <div class="box">
                                     <div class="box-body space-y-3">
@@ -259,7 +260,7 @@
                                             </div>
 
                                         </div>
-
+                                        <br>
                                         <h5 class="box-title leading-none flex my-7"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Paiement Information</h5>
                                         <div class="grid grid-cols-12 gap-4">
 
@@ -269,7 +270,7 @@
                                                     <select class="my-auto ti-form-select" name="method_paie" required>
                                                         <option value="" disabled selected>Choisissez une methode de paiement </option>
                                                         <option value="cash">Cash</option>
-                                                        <option value="mobile_money">Mobile Money</option>
+                                                        <option value="mobile money">Mobile Money</option>
                                                     </select>
                                                 </div>
                                             </div>
