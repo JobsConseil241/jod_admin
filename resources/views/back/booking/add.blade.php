@@ -233,6 +233,7 @@
                                                     <select name="etat_avant" class="ti-form-select" id="panne_select" required >
                                                         <option disabled selected>Choisissez</option>
                                                     </select>
+                                                    <p class="text-sm text-gray-500 mt-2 dark:text-white/70 tett">Ajouter un etat si pas disponible</p>
                                                 </div>
                                             </div>
                                             <div class="col-span-12 lg:col-span-6">
@@ -242,6 +243,7 @@
                                                         <option disabled selected>Choisissez</option>
                                                     </select>
                                                 </div>
+                                                <p class="text-sm text-gray-500 mt-2 dark:text-white/70 tett" id="hs-input-helper-text">Ajouter un etat si pas disponible</p>
                                             </div>
 
 
@@ -393,9 +395,23 @@
                                 var dateObj = new Date(panne.date);
                                 var formattedDate = formatDate(dateObj);
 
-                                console.log(formattedDate)
-
                                 $('#panne_select').append('<option value="' + panne.id + '"> Etat du ' + formattedDate + '</option>');
+                            });
+
+                            $('.tett').each(function(index) {
+                                // Créer un lien
+                                var lien = $('<a>', {
+                                    href: '/public/backend/car/etat/' + voitureId,
+                                    text: 'Ajouter un état',
+                                    class: 'lien-ajouter-etat',
+                                    'data-index': index
+                                });
+
+                                // Vider le paragraphe et ajouter le nouveau contenu
+                                $(this).empty().append(
+                                    'Ajouter un état si pas disponible ',
+                                    lien
+                                );
                             });
 
                             // Activer le select des pannes
