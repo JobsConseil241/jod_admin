@@ -47,8 +47,8 @@ class BookingController extends BaseController
             Log::debug('Add Reservation Endpoint - All Params: ' . json_encode($request->all()));
             $datas = $request->all();
             $rules = [
-                'date_debut' => 'required|date_format:Y-m-d H:i:s|after_or_equal:today',
-                'date_retour' => 'required|date_format:Y-m-d H:i:s|after:date_heure_debut',
+                'date_debut' => 'required|date_format:Y-m-d H:i|after_or_equal:today',
+                'date_retour' => 'required|date_format:Y-m-d H:i|after:date_heure_debut',
                 'vehicule' => 'required|integer',
                 'type_loca' => 'required|string|in:courte,longue',
                 'comission' => 'required|boolean',
