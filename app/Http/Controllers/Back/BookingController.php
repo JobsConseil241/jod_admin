@@ -80,6 +80,19 @@ class BookingController extends Controller
     }
 
     public function Store(Request $request) {
-        dd($request);
+        $access_token = Session::get('personnalToken');
+
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->post(env('SERVER_PC') . 'set_reservation_cars', $request->all());
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            return back()->with('success', "la catégorie a été créé avec succès.");
+        } else {
+
+            return back()->with('error', $object->message ??  'Une erreur s\'est produite.');
+        }
     }
 }
