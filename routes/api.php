@@ -97,7 +97,7 @@ Route::group([
     Route::post('/delete_state_of_cars', [EtatVehiculeController::class, 'delete_etat_vehicule'])->name('API-DELETE-STATE-OF-VEHICULES');
 
     // Booking Process
-    Route::post('/set_reservation_cars', [BookingController::class, 'registerBooking'])->name('API-ADD-BOOKING-VEHICULES');
+    Route::post('/set_reservation_cars', [BookingController::class, 'registerBookingBack'])->name('API-ADD-BOOKING-VEHICULES');
     Route::post('/update_reservation_cars', [BookingController::class, 'updateBooking'])->name('API-UPDATE-BOOKING-VEHICULES');
     Route::post('/validate_reservation_cars', [BookingController::class, 'validateBooking'])->name('API-VALIDATE-BOOKING-VEHICULES');
     Route::post('/reject_reservation_cars', [BookingController::class, 'rejectBooking'])->name('API-REJECT-BOOKING-VEHICULES');

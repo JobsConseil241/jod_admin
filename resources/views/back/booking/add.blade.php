@@ -189,6 +189,8 @@
                                                     <input type="text"
                                                            class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
                                                            id="limitdatetimes" name="date_retour" placeholder="Choississez une date" readonly>
+
+                                                    <input type="hidden" name="jours" value="0" id="jours">
                                                 </div>
                                             </div>
 
@@ -470,7 +472,7 @@
 
                 jours = differenceJours
 
-
+                $('#jours').val(jours)
 
                 netPaie  = parseInt(prixLocation) * parseInt(jours)
 
@@ -485,10 +487,8 @@
                 const montantPayeValue = parseInt(montantPaye.value.replace(/[^\d.-]/g, '')) || 0;
 
                 // Calculer le reste à payer
-                const resteAPayerValue = Math.max(0, montantAPayerValue - montantPayeValue);
-
                 // Mettre à jour le champ du reste à payer
-                resteAPayer.value = resteAPayerValue.toLocaleString('fr-FR');
+                resteAPayer.value = Math.max(0, montantAPayerValue - montantPayeValue);
             }
 
             // Ajouter des écouteurs d'événements pour les deux premiers champs

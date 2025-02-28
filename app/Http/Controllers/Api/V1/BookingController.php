@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Api\V1\BaseController;
 use App\Models\Location;
 use App\Models\LocationPanne;
+use App\Models\Paiement;
 use App\Models\Panne;
+use App\Models\User;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -37,7 +39,7 @@ class BookingController extends BaseController
         }
     }
 
-    public function registerBooking(Request $request)
+    public function registerBookingBack(Request $request)
     {
         try {
             Log::info('Add the reservation of a vehicule  Endpoint Entered.');
@@ -45,14 +47,29 @@ class BookingController extends BaseController
             Log::debug('Add Reservation Endpoint - All Params: ' . json_encode($request->all()));
             $datas = $request->all();
             $rules = [
-                'date_heure_debut' => 'required|date|after_or_equal:today',
-                'date_heure_fin' => 'required|date|after:date_heure_debut',
+                'date_heure_debut' => 'required|date_format:Y-m-d H:i:s|after_or_equal:today',
+                'date_heure_fin' => 'required|date_format:Y-m-d H:i:s|after:date_heure_debut',
                 'vehicule_id' => 'required|integer',
                 'type_location' => 'required|string|in:courte,longue',
                 'comission' => 'required|boolean',
+                'jours' => 'required|integer',
                 'etat_livraison_id' => 'required|integer',
                 'livraison' => 'required|boolean',
-                'client_id' => 'required|integer'
+                'methode_paiement' => 'required|string',
+                'montant_total' => 'required|integer',
+                'montant_paye' => 'required|integer',
+                'montant_restant' => 'required|integer',
+                'client_id' => 'sometimes|integer',
+                'name' => 'sometimes|string',
+                'surname' => 'sometimes|string',
+                'phone' => 'sometimes|string',
+                'phone_code' => 'sometimes|string',
+                'email' => 'sometimes|string',
+                'adresse' => 'sometimes|string',
+                'bp' => 'sometimes|string',
+                'npiece' => 'sometimes|string',
+                'piece' => 'sometimes|string'
+
             ];
 
             $validator = Validator::make($request->all(), $rules);
@@ -61,27 +78,95 @@ class BookingController extends BaseController
                 $errors = $validator->errors();
                 return $this->sendError($errors->first(), $errors);
             }
+            // Deja fait sur le frontend
+            //            $dateDebut = Carbon::parse($datas['date_heure_debut']);
+            //            $dateFin = Carbon::parse($datas['date_heure_fin']);
+            //
+            //            // Calculer la différence en jours
+            //            $differenceEnJours = $dateDebut->diffInDays($dateFin);
 
-            $dateDebut = Carbon::parse($datas['date_heure_debut']);
-            $dateFin = Carbon::parse($datas['date_heure_fin']);
+            if ($request->has('client_id')) {
 
-            // Calculer la différence en jours
-            $differenceEnJours = $dateDebut->diffInDays($dateFin);
+                $paie_id = Paiement::create([
+                    'reference' => Paiement::generateUniqueCode(),
+                    'methode_paiement' => $datas['type_location'],
+                    'montant_total' => $datas['montant_total'],
+                    'montant_paye' => $datas['montant_restant'],
+                    'montant_restant' => $datas['montant_restant'],
+                    'statut' => 0,
+
+                ]);
+
+                $location = Location::create([
+                    'code_contrat' => Location::generateUniqueCode(),
+                    'date_heure_debut' => $datas['date_heure_debut'],
+                    'date_heure_fin' => $datas['date_heure_fin'],
+                    'vehicule_id' => $datas['vehicule_id'],
+                    'type_location' => $datas['type_location'],
+                    'jours' => $datas['jours'],
+                    'statut' => 2,
+                    'comission' => $datas['comission'],
+                    'etat_livraison_id' => $datas['etat_livraison_id'],
+                    'livraison' => $datas['livraison'],
+                    'client_id' => $datas['client_id'],
+                    'paiement_id' => $paie_id->id,
+                ]);
+            } else {
+
+                if ($request->hasFile('thumb_url')) {
+                    // Générer un nom unique pour le fichier
+                    $fileName = time() . '_' . $request->file('thumb')->getClientOriginalName();
+
+                    // Déplacer le fichier vers le dossier public/thumbs
+                    $request->file('thumb')->move(public_path('Permis_De_Conduire'), $fileName);
+
+                    // Chemin pour stocker en base de données
+                    $thumbUrl = 'Permis_De_Conduire/' . $fileName;
+                }
+
+                $clientId = User::create([
+                    'first_name' => $datas['name'],
+                    'last_name' => $datas['surname'],
+                    'email' => $datas['email'],
+                    'phone' => $datas['phone'],
+                    'phone_code' => $datas['phone_code'],
+                    'password' => hash('sha256', $datas['password']),
+                    'adresse' => $datas['adresse'],
+                    'bp' => $datas['bp'],
+                    'thumb_url' => $thumbUrl,
+                    'piece_identite' => $datas['piece'],
+                    'numero_piece' => $datas['npiece'],
+                    'user_type_id' => 1000002,
+                    'is_active' => 1,
+                ]);
+
+                $paie_id = Paiement::create([
+                    'reference' => Paiement::generateUniqueCode(),
+                    'methode_paiement' => $datas['methode_paiement'],
+                    'montant_total' => $datas['montant_total'],
+                    'montant_paye' => $datas['montant_restant'],
+                    'montant_restant' => $datas['montant_restant'],
+                    'statut' => 0,
+
+                ]);
+
+                $location = Location::create([
+                    'code_contrat' => Location::generateUniqueCode(),
+                    'date_heure_debut' => $datas['date_heure_debut'],
+                    'date_heure_fin' => $datas['date_heure_fin'],
+                    'vehicule_id' => $datas['vehicule_id'],
+                    'type_location' => $datas['type_location'],
+                    'jours' => $datas['jours'],
+                    'statut' => 2,
+                    'comission' => $datas['comission'],
+                    'etat_livraison_id' => $datas['etat_livraison_id'],
+                    'livraison' => $datas['livraison'],
+                    'client_id' => $clientId->id,
+                    'paiement_id' => $paie_id->id,
+                ]);
+            }
 
 
-            $location = Location::create([
-                'code_contrat' => Location::generateUniqueCode(),
-                'date_heure_debut' => $datas['date_heure_debut'],
-                'date_heure_fin' => $datas['date_heure_fin'],
-                'vehicule_id' => $datas['vehicule_id'],
-                'type_location' => $datas['type_location'],
-                'jours' => round($differenceEnJours),
-                'statut' => 1,
-                'comission' => $datas['comission'],
-                'etat_livraison_id' => $datas['etat_livraison_id'],
-                'livraison' => $datas['livraison'],
-                'client_id' => $datas['client_id']
-            ]);
 
             $data['location'] = $location;
 
