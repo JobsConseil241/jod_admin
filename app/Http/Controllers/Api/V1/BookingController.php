@@ -55,7 +55,7 @@ class BookingController extends BaseController
                 'jours' => 'required|integer',
                 'etat_avant' => 'required|integer',
                 'livraison' => 'required|in:true,false',
-                'methode_paiement' => 'required|string',
+                'method_paie' => 'required|string',
                 'mntant_a_payer' => 'required|integer',
                 'mntant_paye' => 'required|integer',
                 'montant_restant' => 'required|integer',
@@ -95,7 +95,7 @@ class BookingController extends BaseController
 
                 $paie_id = Paiement::create([
                     'reference' => Paiement::generateUniqueCode(),
-                    'methode_paiement' => $datas['methode_paiement'],
+                    'methode_paiement' => $datas['method_paie'],
                     'montant_total' => $datas['mntant_a_payer'],
                     'montant_paye' => $datas['mntant_paye'],
                     'montant_restant' => $datas['montant_restant'],
@@ -148,7 +148,7 @@ class BookingController extends BaseController
 
                 $paie_id = Paiement::create([
                     'reference' => Paiement::generateUniqueCode(),
-                    'methode_paiement' => $datas['methode_paiement'],
+                    'methode_paiement' => $datas['method_paie'],
                     'montant_total' => $datas['mntant_a_payer'],
                     'montant_paye' => $datas['mntant_paye'],
                     'montant_restant' => $datas['montant_restant'],
