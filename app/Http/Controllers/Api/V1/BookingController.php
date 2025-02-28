@@ -51,10 +51,10 @@ class BookingController extends BaseController
                 'date_retour' => 'required|date_format:Y-m-d H:i|after:date_heure_debut',
                 'vehicule' => 'required|integer',
                 'type_loca' => 'required|string|in:courte,longue',
-                'comission' => 'required|boolean',
+                'comission' => 'required|in:true,false',
                 'jours' => 'required|integer',
                 'etat_avant' => 'required|integer',
-                'livraison' => 'required|boolean',
+                'livraison' => 'required|in:true,false',
                 'methode_paiement' => 'required|string',
                 'mntant_a_payer' => 'required|integer',
                 'mntant_paye' => 'required|integer',
@@ -72,7 +72,13 @@ class BookingController extends BaseController
 
             ];
 
+
             $validator = Validator::make($request->all(), $rules);
+
+
+            // Convertir les chaînes en booléens
+            $datas['comission'] = $datas['comission'] === 'true';
+            $datas['livraison'] = $datas['livraison'] === 'true';
 
             if ($validator->fails()) {
                 $errors = $validator->errors();
