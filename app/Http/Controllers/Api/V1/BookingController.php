@@ -136,7 +136,7 @@ class BookingController extends BaseController
                     'email' => $datas['email'],
                     'phone' => $datas['phone'],
                     'phone_code' => $datas['phone_code'],
-                    'password' => hash('sha256', $datas['password']),
+                    'password' => hash('sha256', $datas['phone']),
                     'adresse' => $datas['adresse'],
                     'bp' => $datas['bp'],
                     'thumb_url' => $thumbUrl,
