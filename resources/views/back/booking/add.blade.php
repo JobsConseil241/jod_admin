@@ -232,12 +232,12 @@
                                                     <div class="grid sm:grid-cols-2 gap-2">
                                                         <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
                                                             <span class="text-sm text-gray-500 dark:text-white/70">Oui</span>
-                                                            <input type="radio" value="true" name="commission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comission">
+                                                            <input type="radio" value="true" name="comission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comission">
                                                         </label>
 
                                                         <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
                                                             <span class="text-sm text-gray-500 dark:text-white/70">Non</span>
-                                                            <input type="radio"value="false" name="commission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comission" checked>
+                                                            <input type="radio"value="false" name="comission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comission" checked>
                                                         </label>
                                                     </div>
                                                 </div>
