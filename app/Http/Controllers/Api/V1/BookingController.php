@@ -118,6 +118,7 @@ class BookingController extends BaseController
                     'paiement_id' => $paie_id->id,
                 ]);
             } else {
+                $thumbUrl = '';
 
                 if ($request->hasFile('thumb')) {
                     // Générer un nom unique pour le fichier
