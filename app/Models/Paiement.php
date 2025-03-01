@@ -10,6 +10,15 @@ class Paiement extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+      'reference',
+      'methode_paiement',
+      'montant_total',
+      'montant_paye',
+      'montant_restant',
+      'statut',
+    ];
+
     public function contrat()
     {
         return $this->hasOne(Contrat::class);
