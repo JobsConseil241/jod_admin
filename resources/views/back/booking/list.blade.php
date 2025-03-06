@@ -104,6 +104,7 @@
                     'url': "https://cdn.datatables.net/plug-ins/1.10.25/i18n/French.json"
                 },
                 processing: true,
+                responsive: true,
                 order: [
                     [0, 'desc']
                 ],
