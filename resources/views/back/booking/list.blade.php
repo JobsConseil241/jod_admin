@@ -67,15 +67,15 @@
                                 <th>Date Heure Debut</th>
                                 <th>Date Heure Fin</th>
                                 <th>Vehicule</th>
-                                <th>Type de Location</th>
-                                <th>Jours</th>
-                                <th>Statut</th>
-                                <th>comission</th>
-                                <th>livraison</th>
-                                <th>Etat Avant</th>
-                                <th>Etat Apres</th>
-                                <th>Paiement</th>
-                                <th>Client</th>
+{{--                                <th>Type de Location</th>--}}
+{{--                                <th>Jours</th>--}}
+{{--                                <th>Statut</th>--}}
+{{--                                <th>comission</th>--}}
+{{--                                <th>livraison</th>--}}
+{{--                                <th>Etat Avant</th>--}}
+{{--                                <th>Etat Apres</th>--}}
+{{--                                <th>Paiement</th>--}}
+{{--                                <th>Client</th>--}}
                                 <th>Actions</th>
                             </tr>
                         </thead>

@@ -159,7 +159,7 @@
                                         <div class="grid grid-cols-12 gap-4 mb-5">
 
                                             <div class="col-span-12 lg:col-span-12">
-                                              5  <div class="space-y-2  product-1">
+                                               <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Voiture</label>
                                                     <select class="my-auto ti-form-select" name="vehicule" id="voiture_select" required>
                                                         <option value="" disabled selected>Choisissez une voiture </option>
