@@ -3,6 +3,8 @@
 @push('styles')
     <!--datatable css-->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.tailwindcss.css" />
+    <!-- DataTables Responsive CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.8/css/responsive.dataTables.min.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
@@ -58,7 +60,7 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <table id="data" class="table table-bordered dt-responsive nowrap table-striped align-middle"
+                    <table id="data" class="table table-bordered dt-responsive nowrap table-striped align-middle w-full divide-y divide-gray-200 shadow-sm border-gray-200 border rounded"
                         style="width:100%">
                         <thead>
                             <tr>
