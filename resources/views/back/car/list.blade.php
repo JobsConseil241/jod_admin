@@ -130,7 +130,7 @@
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
                             return row.marque.name;
-                            return formatAmount(row.price_estimate_low) + ' FCFA';
+                            // return formatAmount(row.price_estimate_low) + ' FCFA';
                         },
                     },
                     {

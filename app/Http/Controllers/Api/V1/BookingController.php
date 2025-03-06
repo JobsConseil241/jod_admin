@@ -8,11 +8,13 @@ use App\Models\LocationPanne;
 use App\Models\Paiement;
 use App\Models\Panne;
 use App\Models\User;
+use App\Models\Vehicule;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\Facades\DataTables;
 
 class BookingController extends BaseController
 {
@@ -30,7 +32,7 @@ class BookingController extends BaseController
 
             Log::debug('Get Locations all data Endpoint - Response: ' . json_encode($data));
 
-            return $this->sendResponse($data, "Locations all data retrieved successfully");
+            return DataTables::of($resas->get())->make(true);
         } catch (Exception $e) {
             Log::error('Get Locations all data Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");
