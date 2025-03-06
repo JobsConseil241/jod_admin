@@ -73,7 +73,7 @@
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Client</label>
                                                 <select class="my-auto ti-form-select" name="client_id" id="">
-                                                    <option value="" disabled selected>Choisissez un Client </option>
+                                                    <option value="" selected>-- Choisissez un Client --</option>
                                                     <!-- Ajoutez dynamiquement les années si besoin -->
                                                     @foreach($users as $user)
                                                         <option value="{{ $user->id }}">{{ $user->first_name }} {{ $user->last_name }}</option>
@@ -107,7 +107,7 @@
                                                         <input type="text" name="adresse" class="my-auto ti-form-input"
                                                                placeholder="Centre Medico" value="{{ old('adresse') }}" required>
 {{--                                                        <select name="category_id" class="ti-form-select" required>--}}
-{{--                                                            <option>Choisissez</option>--}}
+{{--                                                               <option>Choisissez</option>--}}
 {{--                                                            @foreach ($categories as $item)--}}
 {{--                                                                <option value="{{ $item->id }}"--}}
 {{--                                                                    {{ old('category_id') == $item->id ? 'selected' : '' }}>--}}
@@ -159,7 +159,7 @@
                                         <div class="grid grid-cols-12 gap-4 mb-5">
 
                                             <div class="col-span-12 lg:col-span-12">
-                                                <div class="space-y-2  product-1">
+                                              5  <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Voiture</label>
                                                     <select class="my-auto ti-form-select" name="vehicule" id="voiture_select" required>
                                                         <option value="" disabled selected>Choisissez une voiture </option>
@@ -395,6 +395,9 @@
         let netPaie = 0
 
         $(document).ready(function() {
+
+
+
             $('#voiture_select').on('change', function() {
                 var voitureId = $(this).val();
                 car_id = voitureId

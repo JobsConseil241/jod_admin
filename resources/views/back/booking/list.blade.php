@@ -48,7 +48,7 @@
         <div class="col-span-12">
             <div class="box">
                 <div class="box-header">
-                    <h5 class="box-title">Liste des Véhicules</h5>
+                    <h5 class="box-title">Liste des Locations</h5>
                     <div class="flex justify-end">
                         <a href="{{ route('backend.booking.add') }}">
                             <button type="button" class="ti-btn ti-btn-primary">
@@ -140,48 +140,6 @@
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
                             return row.vehicule ? row.vehicule.name : '';
-                        },
-                    },
-                    {
-                        data: 'name',
-                        name: 'name',
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
-                        data: 'marque_id',
-                        name: 'marque_id',
-                        render: function(data, type, row) {
-                            // Customize this function to generate content for your custom column
-                            return row.marque.name;
-                            return formatAmount(row.price_estimate_low) + ' FCFA';
-                        },
-                    },
-                    {
-                        data: 'modele',
-                        name: 'modele',
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
-                        data: 'annee',
-                        name: 'annee',
-                        orderable: false,
-                        searchable: false,
-                    },
-                    {
-                        data: 'immatriculation',
-                        name: 'immatriculation',
-                        orderable: false,
-                        searchable: true,
-
-                    },
-                    {
-                        data: 'prix_location',
-                        name: 'prix_location',
-                        render: function(data, type, row) {
-                            // Customize this function to generate content for your custom column
-                            return formatAmount(row.prix_location) + ' FCFA';
                         },
                     },
                     {
