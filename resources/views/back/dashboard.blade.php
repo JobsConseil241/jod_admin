@@ -77,7 +77,7 @@
                                 class="ti ti-trending-up"></i> 0.8%</span>
                     </div>
                     <div class="mt-2">
-                        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">$56,35,262</h2>
+                        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">15 000 FCFA</h2>
                         <p class="text-xs text-gray-400 ">la semaine dernière</p>
                     </div>
                 </div>
