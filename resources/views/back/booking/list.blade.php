@@ -66,18 +66,10 @@
                             <tr>
                                 <th data-ordering="false">ID</th>
                                 <th>Code du Contrat</th>
-                                <th>Date Heure Debut</th>
-                                <th>Date Heure Fin</th>
+                                <th>Date-Heure Debut</th>
+                                <th>Date-Heure Fin</th>
                                 <th>Vehicule</th>
-                                <th>Type de Location</th>
-                                <th>Jours</th>
                                 <th>Statut</th>
-                                <th>Comission</th>
-                                <th>Livraison</th>
-                                <th>Etat Avant</th>
-{{--                                <th>Etat Apres</th>--}}
-{{--                                <th>Paiement</th>--}}
-{{--                                <th>Client</th>--}}
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -147,63 +139,10 @@
                         },
                     },
                     {
-                        data: 'type_location',
-                        name: 'type_location',
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
-                        data: 'jours',
-                        name: 'jours',
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
                         data: 'statut',
                         name: 'statut',
                         orderable: true,
                         searchable: true
-                    },
-                    {
-                        data: null,
-                        name: 'comission',
-                        render: function(data, type, row, meta) {
-                            // Condition ici
-                            if (row.comission == 0) {
-                                return '<span class="badge bg-success">Non</span>';
-                            } else if (row.comission == 1) {
-                                return '<span class="badge bg-warning">Oui</span>';
-                            }
-                        },
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
-                        data: null,
-                        name: 'livraison',
-                        orderable: true,
-                        searchable: true,
-                        render: function(data, type, row, meta) {
-                            // Condition ici
-                            if (row.livraison == 0) {
-                                return '<span class="badge bg-success">Non</span>';
-                            } else if (row.livraison == 1) {
-                                return '<span class="badge bg-warning">Oui</span>';
-                            }
-                        }
-                    },
-                    {
-                        data: null,
-                        name: 'etat_livraison_id',
-                        orderable: true,
-                        searchable: true,
-                        render: function(data, type, row, meta) {
-                            return `<a href="{{ url('backend/car/etat/') }}/` + row.id + `/` + row.etat_avant_location.date + `" >
-                                       <button type="button" class="ti-btn ti-btn-soft-primary">
-                                            <i class="ti ti-eye align-bottom me-2"></i> Voir
-                                        </button>
-                                    </a>`;
-                        }
                     },
                     {
                         targets: -1,
