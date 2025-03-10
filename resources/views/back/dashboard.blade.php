@@ -10,19 +10,19 @@
     <div class="block justify-between page-header md:flex">
         <div>
             <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
-                Dashboard</h3>
+                Tableau de Bord</h3>
         </div>
         <ol class="flex items-center whitespace-nowrap min-w-0">
             <li class="text-sm">
                 <a class="flex items-center font-semibold text-primary hover:text-primary dark:text-primary truncate"
-                    href="javascript:void(0);">
-                    Home
+                    href="{{route('dashboard')}}">
+                    Accueil
                     <i
                         class="ti ti-chevrons-right flex-shrink-0 mx-3 overflow-visible text-gray-300 dark:text-gray-300 rtl:rotate-180"></i>
                 </a>
             </li>
             <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">
-                Dashboard
+                Tableau de Bord
             </li>
         </ol>
     </div>
@@ -44,15 +44,15 @@
                                 </svg>
                             </div>
                             <h6 class="text-lg font-medium text-gray-800 mb-2 dark:text-white my-auto">
-                                Total Revenue</h6>
+                                Revenues Total</h6>
                         </div>
                         <span class="badge bg-primary/10 text-primary py-1 ltr:ml-auto rtl:mr-auto !my-auto">
-                            <i class="ti ti-trending-up"></i> 20%
+                            <i class="ti ti-trending-up"></i> 5%
                         </span>
                     </div>
                     <div class="mt-2">
-                        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">$26,35,262</h2>
-                        <p class="text-xs text-gray-400 ">in last week</p>
+                        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">95 000 FCFA</h2>
+                        <p class="text-xs text-gray-400 ">la semaine derniere</p>
                     </div>
                 </div>
             </div>
@@ -71,14 +71,14 @@
                                 </svg>
                             </div>
                             <h6 class="text-lg font-medium text-gray-800 mb-2 dark:text-white my-auto">
-                                Total Sales</h6>
+                                Total Dépenses Pannes</h6>
                         </div>
                         <span class="badge bg-secondary/10 text-secondary py-1 ltr:ml-auto rtl:mr-auto !my-auto"><i
-                                class="ti ti-trending-up"></i> 1.8%</span>
+                                class="ti ti-trending-up"></i> 0.8%</span>
                     </div>
                     <div class="mt-2">
                         <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">$56,35,262</h2>
-                        <p class="text-xs text-gray-400 ">in last week</p>
+                        <p class="text-xs text-gray-400 ">la semaine dernière</p>
                     </div>
                 </div>
             </div>
@@ -97,14 +97,14 @@
                                 </svg>
                             </div>
                             <h6 class="text-lg font-medium text-gray-800 mb-2 dark:text-white my-auto">
-                                Total Products</h6>
+                                nombres de vehicules</h6>
                         </div>
                         <span class="badge bg-warning/10 text-warning py-1 ltr:ml-auto rtl:mr-auto !my-auto"><i
-                                class="ti ti-trending-down"></i> 1.8%</span>
+                                class="ti ti-trending-down"></i> 0%</span>
                     </div>
                     <div class="mt-2">
-                        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">$4,262</h2>
-                        <p class="text-xs text-gray-400 ">in last week</p>
+                        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">10</h2>
+                        <p class="text-xs text-gray-400 ">la semaine dernière</p>
                     </div>
                 </div>
             </div>
@@ -123,14 +123,14 @@
                                 </svg>
                             </div>
                             <h6 class="text-lg font-medium text-gray-800 mb-2 dark:text-white my-auto">
-                                Total Expenses</h6>
+                                Nombre de reservations</h6>
                         </div>
                         <span class="badge bg-success/10 text-success py-1 ltr:ml-auto rtl:mr-auto !my-auto"><i
-                                class="ti ti-trending-up"></i> 1.2%</span>
+                                class="ti ti-trending-up"></i> 0.2%</span>
                     </div>
                     <div class="mt-2">
-                        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">$35,262</h2>
-                        <p class="text-xs text-gray-400 ">in last week</p>
+                        <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">4</h2>
+                        <p class="text-xs text-gray-400 ">la semaine dernière</p>
                     </div>
                 </div>
             </div>
@@ -689,472 +689,6 @@
         </div>
     </div>
     <!-- End::row-2 -->
-
-    <!-- Start::row-3 -->
-    <div class="grid grid-cols-12 gap-x-6">
-        <div class="col-span-12">
-            <div class="box">
-                <div class="box-header">
-                    <div class="flex">
-                        <h5 class="box-title my-auto">Recent Order Details</h5>
-                        <div class="hs-dropdown ti-dropdown block ltr:ml-auto rtl:mr-auto my-auto">
-                            <button type="button"
-                                class="hs-dropdown-toggle ti-dropdown-toggle rounded-sm p-1 px-3 !border border-gray-200 text-gray-400 hover:text-gray-500 hover:bg-gray-200 hover:border-gray-200 focus:ring-gray-200  dark:hover:bg-black/30 dark:border-white/10 dark:hover:border-white/20 dark:focus:ring-white/10 dark:focus:ring-offset-white/10">
-                                View All <i class="ti ti-chevron-down"></i></button>
-                            <div class="hs-dropdown-menu ti-dropdown-menu">
-                                <a class="ti-dropdown-item" href="javascript:void(0)">Download</a>
-                                <a class="ti-dropdown-item" href="javascript:void(0)">Import</a>
-                                <a class="ti-dropdown-item" href="javascript:void(0)">Export</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <div class="table-bordered rounded-sm ti-custom-table-head overflow-auto">
-                        <table class="ti-custom-table ti-custom-table-head whitespace-nowrap">
-                            <thead class="bg-gray-50 dark:bg-black/20">
-                                <tr class="">
-                                    <th scope="col" class="dark:text-white/80">S.no</th>
-                                    <th scope="col" class="dark:text-white/80">Item Details</th>
-                                    <th scope="col" class="dark:text-white/80">Customer ID</th>
-                                    <th scope="col" class="dark:text-white/80 min-w-[300px]">Customer
-                                        Details</th>
-                                    <th scope="col" class="dark:text-white/80">Ordered Date</th>
-                                    <th scope="col" class="dark:text-white/80">Status</th>
-                                    <th scope="col" class="dark:text-white/80">Price</th>
-                                    <th scope="col" class="dark:text-white/80">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="">
-                                <tr class="">
-                                    <td>1</td>
-                                    <td>
-                                        <div class="flex space-x-3 rtl:space-x-reverse w-full">
-                                            <img class="avatar rounded-sm bg-gray-100 dark:bg-black/20 p-2"
-                                                src="../assets/img/ecommerce/products/1.png" alt="Image Description">
-                                            <div class="block w-full my-auto">
-                                                <span
-                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-300 min-w-[180px] truncate">Black
-                                                    Heals For Women</span>
-                                                <span
-                                                    class="block text-xs text-gray-400 dark:text-white/80 !font-normal">#2343</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="!text-success font-semibold text-base">#user1</td>
-                                    <td>
-                                        <div class="flex space-x-3 rtl:space-x-reverse text-start">
-                                            <img class="avatar avatar-sm rounded-sm" src="../assets/img/users/2.jpg"
-                                                alt="Image Description">
-                                            <div class="block my-auto">
-                                                <p
-                                                    class="block text-sm font-semibold my-auto text-gray-800 dark:text-white">
-                                                    Socrates
-                                                    Itumay</p>
-                                                <span
-                                                    class="block text-xs text-gray-400 dark:text-white/80 !font-normal my-auto">socratesitumay@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>10-12-2022</td>
-                                    <td><span
-                                            class="truncate whitespace-nowrap inline-block py-1 px-3 rounded-full text-xs font-medium bg-success/10 text-success/80">Success</span>
-                                    </td>
-                                    <td>$999</td>
-                                    <td class="font-medium space-x-2 rtl:space-x-reverse">
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-primary">
-                                                <i class="ti ti-eye"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    View
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="customer-edit m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
-                                                <i class="ti ti-pencil"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    Edit
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-danger">
-                                                <i class="ti ti-trash"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    Delete
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td>2</td>
-                                    <td>
-                                        <div class="flex space-x-3 rtl:space-x-reverse w-full">
-                                            <img class="avatar rounded-sm bg-gray-100 dark:bg-black/20 p-2"
-                                                src="../assets/img/ecommerce/products/2.png" alt="Image Description">
-                                            <div class="block w-full my-auto">
-                                                <span
-                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-300 min-w-[180px] truncate">White
-                                                    Tshirt</span>
-                                                <span
-                                                    class="block text-xs text-gray-400 dark:text-white/80 !font-normal">#5655</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="!text-success font-semibold text-base">#user2</td>
-                                    <td>
-                                        <div class="flex space-x-3 rtl:space-x-reverse text-start">
-                                            <img class="avatar avatar-sm rounded-sm" src="../assets/img/users/3.jpg"
-                                                alt="Image Description">
-                                            <div class="block my-auto">
-                                                <p
-                                                    class="block text-sm font-semibold my-auto text-gray-800 dark:text-white">
-                                                    Json Taylor</p>
-                                                <span
-                                                    class="block text-xs text-gray-400 dark:text-white/80 !font-normal my-auto">jsontaylor2416@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>11-12-2022</td>
-                                    <td><span
-                                            class="truncate whitespace-nowrap inline-block py-1 px-3 rounded-full text-xs font-medium bg-info/10 text-info/80">Shipping</span>
-                                    </td>
-                                    <td>$699</td>
-                                    <td class="font-medium space-x-2 rtl:space-x-reverse">
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-primary">
-                                                <i class="ti ti-eye"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    View
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="customer-edit m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
-                                                <i class="ti ti-pencil"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    Edit
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-danger">
-                                                <i class="ti ti-trash"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    Delete
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td>3</td>
-                                    <td>
-                                        <div class="flex space-x-3 rtl:space-x-reverse w-full">
-                                            <img class="avatar rounded-sm bg-gray-100 dark:bg-black/20 p-2"
-                                                src="../assets/img/ecommerce/products/3.png" alt="Image Description">
-                                            <div class="block w-full my-auto">
-                                                <span
-                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-300 min-w-[180px] truncate">Jacket
-                                                    For Men</span>
-                                                <span
-                                                    class="block text-xs text-gray-400 dark:text-white/80 !font-normal">#15245</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="!text-success font-semibold text-base">#user3</td>
-                                    <td>
-                                        <div class="flex space-x-3 rtl:space-x-reverse text-start">
-                                            <img class="avatar avatar-sm rounded-sm" src="../assets/img/users/4.jpg"
-                                                alt="Image Description">
-                                            <div class="block my-auto">
-                                                <p
-                                                    class="block text-sm font-semibold my-auto text-gray-800 dark:text-white">
-                                                    Suzika Stallone</p>
-                                                <span
-                                                    class="block text-xs text-gray-400 dark:text-white/80 !font-normal my-auto">suzikastallone3214@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>12-12-2022</td>
-                                    <td><span
-                                            class="truncate whitespace-nowrap inline-block py-1 px-3 rounded-full text-xs font-medium bg-warning/10 text-warning/80">Out
-                                            For Delivery</span>
-                                    </td>
-                                    <td>$599</td>
-                                    <td class="font-medium space-x-2 rtl:space-x-reverse">
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-primary">
-                                                <i class="ti ti-eye"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    View
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="customer-edit m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
-                                                <i class="ti ti-pencil"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    Edit
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-danger">
-                                                <i class="ti ti-trash"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    Delete
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td>4</td>
-                                    <td>
-                                        <div class="flex space-x-3 rtl:space-x-reverse w-full">
-                                            <img class="avatar rounded-sm bg-gray-100 dark:bg-black/20 p-2"
-                                                src="../assets/img/ecommerce/products/4.png" alt="Image Description">
-                                            <div class="block w-full my-auto">
-                                                <span
-                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-300 min-w-[180px] truncate">Airpods</span>
-                                                <span
-                                                    class="block text-xs text-gray-400 dark:text-white/80 !font-normal">#45415</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="!text-success font-semibold text-base">#user4</td>
-                                    <td>
-                                        <div class="flex space-x-3 rtl:space-x-reverse text-start">
-                                            <img class="avatar avatar-sm rounded-sm" src="../assets/img/users/5.jpg"
-                                                alt="Image Description">
-                                            <div class="block my-auto">
-                                                <p
-                                                    class="block text-sm font-semibold my-auto text-gray-800 dark:text-white">
-                                                    Selena Deoyl</p>
-                                                <span
-                                                    class="block text-xs text-gray-400 dark:text-white/80 !font-normal my-auto">selenadeoyl114@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>12-12-2022</td>
-                                    <td><span
-                                            class="truncate whitespace-nowrap inline-block py-1 px-3 rounded-full text-xs font-medium bg-danger/10 text-danger/80">Cancelled</span>
-                                    </td>
-                                    <td>$299</td>
-                                    <td class="font-medium space-x-2 rtl:space-x-reverse">
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-primary">
-                                                <i class="ti ti-eye"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    View
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="customer-edit m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
-                                                <i class="ti ti-pencil"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    Edit
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-danger">
-                                                <i class="ti ti-trash"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    Delete
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td>5</td>
-                                    <td>
-                                        <div class="flex space-x-3 rtl:space-x-reverse w-full">
-                                            <img class="avatar rounded-sm bg-gray-100 dark:bg-black/20 p-2"
-                                                src="../assets/img/ecommerce/products/5.png" alt="Image Description">
-                                            <div class="block w-full my-auto">
-                                                <span
-                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-300 min-w-[180px] truncate">Jasmine
-                                                    Fragrance</span>
-                                                <span
-                                                    class="block text-xs text-gray-400 dark:text-white/80 !font-normal">#35656</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="!text-success font-semibold text-base">#user5</td>
-                                    <td>
-                                        <div class="flex space-x-3 rtl:space-x-reverse text-start">
-                                            <img class="avatar avatar-sm rounded-sm" src="../assets/img/users/9.jpg"
-                                                alt="Image Description">
-                                            <div class="block my-auto">
-                                                <p
-                                                    class="block text-sm font-semibold my-auto text-gray-800 dark:text-white">
-                                                    Roman Killon</p>
-                                                <span
-                                                    class="block text-xs text-gray-400 dark:text-white/80 !font-normal my-auto">romankillon143@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>13-12-2022</td>
-                                    <td><span
-                                            class="truncate whitespace-nowrap inline-block py-1 px-3 rounded-full text-xs font-medium bg-primary/10 text-primary/80">Ordered</span>
-                                    </td>
-                                    <td>$299</td>
-                                    <td class="font-medium space-x-2 rtl:space-x-reverse">
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-primary">
-                                                <i class="ti ti-eye"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    View
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="customer-edit m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
-                                                <i class="ti ti-pencil"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    Edit
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-danger">
-                                                <i class="ti ti-trash"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    Delete
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="">
-                                    <td>6</td>
-                                    <td>
-                                        <div class="flex space-x-3 rtl:space-x-reverse w-full">
-                                            <img class="avatar rounded-sm bg-gray-100 dark:bg-black/20 p-2"
-                                                src="../assets/img/ecommerce/products/6.png" alt="Image Description">
-                                            <div class="block w-full my-auto">
-                                                <span
-                                                    class="block text-sm font-semibold text-gray-800 dark:text-gray-300 min-w-[180px] truncate">Smart
-                                                    Watch</span>
-                                                <span
-                                                    class="block text-xs text-gray-400 dark:text-white/80 !font-normal">#622545</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="!text-success font-semibold text-base">#user6</td>
-                                    <td>
-                                        <div class="flex space-x-3 rtl:space-x-reverse text-start">
-                                            <img class="avatar avatar-sm rounded-sm" src="../assets/img/users/10.jpg"
-                                                alt="Image Description">
-                                            <div class="block my-auto">
-                                                <p
-                                                    class="block text-sm font-semibold my-auto text-gray-800 dark:text-white">
-                                                    Charlie Davieson</p>
-                                                <span
-                                                    class="block text-xs text-gray-400 dark:text-white/80 !font-normal my-auto">charliedavieson@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>13-12-2022</td>
-                                    <td><span
-                                            class="truncate whitespace-nowrap inline-block py-1 px-3 rounded-full text-xs font-medium bg-secondary/10 text-secondary/80">Packed</span>
-                                    </td>
-                                    <td>$299</td>
-                                    <td class="font-medium space-x-2 rtl:space-x-reverse">
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-primary">
-                                                <i class="ti ti-eye"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    View
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="customer-edit m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary">
-                                                <i class="ti ti-pencil"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    Edit
-                                                </span>
-                                            </a>
-                                        </div>
-                                        <div class="hs-tooltip ti-main-tooltip">
-                                            <a href="javascript:void(0);"
-                                                class="m-0 hs-tooltip-toggle relative w-8 h-8 ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-danger">
-                                                <i class="ti ti-trash"></i>
-                                                <span
-                                                    class="hs-tooltip-content ti-main-tooltip-content py-1 px-2 bg-gray-900 text-xs font-medium text-white shadow-sm dark:bg-slate-700"
-                                                    role="tooltip">
-                                                    Delete
-                                                </span>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End::row-3 -->
 @endsection
 
 @push('scripts')
