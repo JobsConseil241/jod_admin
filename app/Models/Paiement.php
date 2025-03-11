@@ -37,4 +37,9 @@ class Paiement extends Model
     {
         return $this->hasOne(Location::class);
     }
+
+    public function recouvrements()
+    {
+        return $this->hasMany(Recouvrement::class);
+    }
 }
