@@ -166,9 +166,9 @@
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
                             if (data == 0) {
-                                return `<span class="font-bold text-danger">`+ data +`</span>`;
+                                return `<span class="font-bold text-danger">En Cours</span>`;
                             }else {
-                                return `<span class="font-bold text-success">`+ data +`</span>`;
+                                return `<span class="font-bold text-success"> Solde</span>`;
                             }
 
                         },
