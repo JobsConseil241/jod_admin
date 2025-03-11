@@ -137,7 +137,7 @@
                         searchable: true,
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
-                            return `<span class="font-bold text-primary">`+ data +`</span>`;
+                            return `<span class="font-bold text-primary">`+ data +` FCFA</span>`;
                         },
                     },
                     {
@@ -145,7 +145,7 @@
                         name: 'montant_paye',
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
-                            return `<span class="font-bold text-info">`+ data +`</span>`;
+                            return `<span class="font-bold text-info">`+ data +` FCFA</span>`;
                         },
                     },
                     {
@@ -155,7 +155,7 @@
                         searchable: true,
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
-                            return `<span class="font-bold text-warning">`+ data +`</span>`;
+                            return `<span class="font-bold text-danger">`+ data +` FCFA</span>`;
                         },
                     },
                     {
@@ -166,7 +166,7 @@
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
                             if (data == 0) {
-                                return `<span class="font-bold text-danger">En Cours</span>`;
+                                return `<span class="font-bold text-warning">En Cours</span>`;
                             }else {
                                 return `<span class="font-bold text-success"> Solde</span>`;
                             }
