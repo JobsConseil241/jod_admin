@@ -118,7 +118,11 @@
                         data: 'reference',
                         name: 'reference',
                         orderable: true,
-                        searchable: true
+                        searchable: true,
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return `<span class="font-bold">`+ data +`</span>`;
+                        },
                     },
                     {
                         data: 'methode_paiement',
@@ -130,36 +134,55 @@
                         data: 'montant_total',
                         name: 'montant_total',
                         orderable: true,
-                        searchable: true
-                    },
-                    {
-                        data: 'montant_total',
-                        name: 'montant_total',
-                        orderable: true,
-                        searchable: true
+                        searchable: true,
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return `<span class="font-bold text-primary">`+ data +`</span>`;
+                        },
                     },
                     {
                         data: 'montant_paye',
                         name: 'montant_paye',
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return `<span class="font-bold text-info">`+ data +`</span>`;
+                        },
                     },
                     {
                         data: 'montant_restant',
                         name: 'montant_restant',
                         orderable: true,
-                        searchable: true
+                        searchable: true,
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return `<span class="font-bold text-warning">`+ data +`</span>`;
+                        },
                     },
                     {
                         data: 'statut',
                         name: 'statut',
                         orderable: true,
-                        searchable: true
+                        searchable: true,
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            if (data == 0) {
+                                return `<span class="font-bold text-danger">`+ data +`</span>`;
+                            }else {
+                                return `<span class="font-bold text-success">`+ data +`</span>`;
+                            }
+
+                        },
                     },
                     {
                         data: 'location',
                         name: 'location',
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
-                            return row.location ? row.location.id : '';
+                            return `<a href="{{ url('backend/booking/detail/') }}/` + row.location.code_contrat + `" >
+                                       <button type="button" class="ti-btn ti-btn-soft-primary btn-sm">
+                                            <i class="ti ti-eye align-bottom me-2"></i> Consuler
+                                        </button>
+                                    </a>`;
                         },
                     },
                     {
