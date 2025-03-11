@@ -70,6 +70,40 @@ class BookingController extends Controller
 
     }
 
+    public function get_detail_booking(Request $request, $refence) {
+
+        $access_token = Session::get('personnalToken');
+
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_detail_reservation_car', ['id' => $refence]);
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            $users = $object->data->users;
+        } else {
+            $users = [];
+        }
+
+        $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes')->get();
+
+//        $respond = Http::withHeaders([
+//            "Authorization" => "Bearer " . $access_token
+//        ])->get(env('SERVER_PC') . 'get_users', ['user_type_id' => 1000002]);
+//
+//        $object = json_decode($respond->body());
+//
+//        if ($object && $object->success == true) {
+//            $users = $object->data->users;
+//        } else {
+//            $users = [];
+//        }
+
+        return view('back.booking.add', compact('users', 'cars'));
+
+    }
+
     public function getPannesByVoiture($voitureId)
     {
         // Récupérer les pannes associées à cette voiture

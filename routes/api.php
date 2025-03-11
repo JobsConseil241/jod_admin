@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\V1\EtatVehiculeController;
 use App\Http\Controllers\Api\V1\LanguageController;
 use App\Http\Controllers\Api\V1\MarqueController;
 use App\Http\Controllers\Api\V1\PanneController;
+use App\Http\Controllers\Api\V1\PaymentController;
 use App\Http\Controllers\Api\V1\PrivilegeController;
 use App\Http\Controllers\Api\V1\RoleController;
 use App\Http\Controllers\Api\V1\UserController;
@@ -97,6 +98,7 @@ Route::group([
     Route::post('/delete_state_of_cars', [EtatVehiculeController::class, 'delete_etat_vehicule'])->name('API-DELETE-STATE-OF-VEHICULES');
 
     // Booking Process
+    Route::post('/get_detail_reservation_car', [BookingController::class, 'getDetailBooking'])->name('API-GET-DETAILS-BOOKING-VEHICULE');
     Route::post('/set_reservation_cars', [BookingController::class, 'registerBookingBack'])->name('API-ADD-BOOKING-VEHICULES');
     Route::post('/update_reservation_cars', [BookingController::class, 'updateBooking'])->name('API-UPDATE-BOOKING-VEHICULES');
     Route::post('/validate_reservation_cars', [BookingController::class, 'validateBooking'])->name('API-VALIDATE-BOOKING-VEHICULES');
@@ -105,6 +107,9 @@ Route::group([
     Route::post('/assign_pannes_location', [BookingController::class, 'assign_pannes_locations'])->name('API-ASSIGN-PANNES-LOCATIONS');
     Route::post('/update_pannes_location', [BookingController::class, 'update_pannes_locations'])->name('API-UPDATE-PANNES-LOCATIONS');
     Route::delete('/delete_pannes_location', [BookingController::class, 'delete_pannes_locations'])->name('API-DELETE-PANNES-LOCATIONS');
+
+    // Paiements Values
+    Route::get('/get_all_paiements', [PaymentController::class, 'get_all_paiements'])->name('API-GET-ALL-PAYMENTS');
 
     // categories pannes
     Route::get('/get_category_pannes', [CategoriePanneController::class, 'get_categories_pannes'])->name('API-GET-CATEGORIES-PANNES');

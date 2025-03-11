@@ -32,4 +32,9 @@ class Paiement extends Model
 
         return $code;
     }
+
+    public function location()
+    {
+        return $this->hasOne(Location::class);
+    }
 }

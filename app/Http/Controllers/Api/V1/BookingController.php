@@ -273,6 +273,43 @@ class BookingController extends BaseController
         }
     }
 
+     public function getDetailBooking(Request $request)
+    {
+        try {
+            Log::info('Get detail Booking vehicules  Endpoint Entered.');
+
+            Log::debug('Get detail Booking Vehicules Endpoint - All Params: ' . json_encode($request->all()));
+            $data = $request->all();
+            $rules = [
+                'id' => 'required|string'
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+
+
+            $category = Location::with('user', 'vehicule', 'pannes', 'etatAvantLocation', 'etatApresLocation', 'clientAssocie', 'paiementAssocie')
+                        ->where('code_contrat', $data['id'])->get();
+
+            if ($category == null) {
+                return $this->sendError("Contrat de Location not found");
+            }
+
+            Log::debug('detail Booking Vehicules - Response: ' . json_encode($data));
+
+            return $this->sendResponse($category, "Detail Booking retrieve successfully");
+        } catch (Exception $e) {
+            Log::error('Cancel Booking Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Cancel Booking Endpoint Exited.');
+        }
+    }
+
     public function validateBooking(Request $request)
     {
         try {

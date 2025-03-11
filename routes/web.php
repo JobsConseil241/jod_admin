@@ -7,6 +7,7 @@ use App\Http\Controllers\Back\CarController as BackCarController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\LanguageController;
 use App\Http\Controllers\Back\PanneController;
+use App\Http\Controllers\Back\PaymentController;
 use App\Http\Controllers\Back\RoleController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\CarsController;
@@ -156,7 +157,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('booking/list', [BookingController::class, 'index'])->name('backend.booking.list');
         Route::get('booking/list/ajax', [BookingController::class, 'ajax_get_locations'])->name('backend.booking.ajax');
         Route::get('booking/add', [BookingController::class, 'add'])->name('backend.booking.add');
+        Route::get('booking/detail/{reference}', [BookingController::class, 'get_detail_booking'])->name('backend.booking.details');
+//        Route::post('booking/detail/{reference}', [BookingController::class, 'add'])->name('backend.booking.add');
         Route::post('booking/add', [BookingController::class, 'Store'])->name('backend.booking.store');
         Route::get('booking/car/pannes/{voiture}/ajax', [BookingController::class, 'getPannesByVoiture'])->name('backend.booking.pannes.ajax');
+
+
+        //Paiements Management
+        Route::get('paiements/list', [PaymentController::class, 'index'])->name('backend.paiements.list');
+        Route::get('paiements/list/ajax', [PaymentController::class, 'ajax_get_paiements'])->name('backend.paiements.ajax');
     });
 });
