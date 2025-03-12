@@ -7,12 +7,16 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+
+    protected $commands = [
+      Commands\DetecterRetardsPaiement::class,
+    ];
     /**
      * Define the application's command schedule.
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('recouvrements:detecter-retards')->daily();
+        $schedule->command('recouvrements:detecter-retards')->everyMinute();
     }
 
     /**
