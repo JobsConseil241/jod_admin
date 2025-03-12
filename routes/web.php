@@ -8,6 +8,7 @@ use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\LanguageController;
 use App\Http\Controllers\Back\PanneController;
 use App\Http\Controllers\Back\PaymentController;
+use App\Http\Controllers\Back\RecouvrementController;
 use App\Http\Controllers\Back\RoleController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\CarsController;
@@ -162,6 +163,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('booking/add', [BookingController::class, 'Store'])->name('backend.booking.store');
         Route::get('booking/car/pannes/{voiture}/ajax', [BookingController::class, 'getPannesByVoiture'])->name('backend.booking.pannes.ajax');
 
+        //recouvrements issues
+        Route::resource('recouvrements', RecouvrementController::class);
+        Route::post('recouvrements/{recouvrement}/paiement', [RecouvrementController::class, 'enregistrerPaiement'])->name('recouvrements.paiement');
 
         //Paiements Management
         Route::get('paiements/list', [PaymentController::class, 'index'])->name('backend.paiements.list');
