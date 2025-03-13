@@ -81,7 +81,7 @@ class BookingController extends Controller
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            $booking = $object->data;
+            $booking = $object->data[0];
         } else {
             $booking = [];
         }
