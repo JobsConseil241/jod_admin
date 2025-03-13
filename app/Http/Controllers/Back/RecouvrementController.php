@@ -22,8 +22,7 @@ class RecouvrementController extends Controller
     public function index()
     {
         $recouvrements = Recouvrement::with(['location', 'paiementAssocie', 'agent'])
-            ->orderBy('date_echeance')
-            ->paginate(15);
+            ->orderBy('date_echeance');
 
         dd($recouvrements);
 
@@ -55,8 +54,8 @@ class RecouvrementController extends Controller
             $request->date_echeance
         );
 
-//        return redirect()->route('recouvrements.index')
-//            ->with('success', 'Recouvrement créé avec succès');
+        return redirect()->route('recouvrements.index')
+            ->with('success', 'Recouvrement créé avec succès');
     }
 
     public function edit(Recouvrement $recouvrement)

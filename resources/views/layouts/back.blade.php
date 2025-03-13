@@ -136,7 +136,7 @@
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
                             <ul class="slide-menu child1">
-                                <li class="slide"><a href="#" class="side-menu__item">Liste</a></li>
+                                <li class="slide"><a href="{{ route('recouvrements.index') }}" class="side-menu__item">Liste</a></li>
                                 <li class="slide"><a href="#" class="side-menu__item">Ajouter</a></li>
                             </ul>
                         </li>
