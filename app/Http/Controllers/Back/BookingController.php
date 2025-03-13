@@ -86,6 +86,8 @@ class BookingController extends Controller
             $booking = [];
         }
 
+        dd($booking);
+
         $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes')->get();
 
 //        $respond = Http::withHeaders([
