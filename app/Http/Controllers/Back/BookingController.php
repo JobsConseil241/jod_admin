@@ -78,12 +78,24 @@ class BookingController extends Controller
             "Authorization" => "Bearer " . $access_token
         ])->get(env('SERVER_PC') . 'get_detail_reservation_car', ['id' => $reference]);
 
+        $responses = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_users', ['user_type_id' => 1000002]);
+
         $object = json_decode($response->body());
+
+        $objects = json_decode($responses->body());
 
         if ($object && $object->success == true) {
             $booking = $object->data[0];
         } else {
             $booking = [];
+        }
+
+        if ($objects && $objects->success == true) {
+            $users = $objects->data->users;
+        } else {
+            $users = [];
         }
 
         $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes')->get();
@@ -100,7 +112,7 @@ class BookingController extends Controller
 //            $users = [];
 //        }
 
-        return view('back.booking.detail', compact('booking', 'cars'));
+        return view('back.booking.detail', compact('booking', 'cars', 'users'));
 
     }
 
