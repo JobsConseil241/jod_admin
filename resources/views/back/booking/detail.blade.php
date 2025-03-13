@@ -75,9 +75,9 @@
                                                 <select class="my-auto ti-form-select" name="client_id" id="">
                                                     <option value="" selected disabled>-- Choisissez un Client --</option>
                                                     <!-- Ajoutez dynamiquement les années si besoin -->
-{{--                                                    @foreach($users as $user)--}}
-{{--                                                        <option value="{{ $user->id }}">{{ $user->first_name }} {{ $user->last_name }}</option>--}}
-{{--                                                    @endforeach--}}
+                                                    @foreach($users as $user)
+                                                        <option value="{{ $user->id }}" @if($user->id == $booking->client_id) selected @endif>{{ $user->first_name }} {{ $user->last_name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="space-y-2">
