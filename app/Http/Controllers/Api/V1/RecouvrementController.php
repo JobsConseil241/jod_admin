@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Location;
+use App\Models\Recouvrement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Yajra\DataTables\Facades\DataTables;
@@ -17,7 +18,7 @@ class RecouvrementController extends BaseController
 
             Log::debug('Get Recouvrements all data Endpoint - All Params: ' . json_encode($request->all()));
 
-            $recou = Location::with('user', 'vehicule', 'pannes', 'etatAvantLocation', 'etatApresLocation', 'clientAssocie', 'paiementAssocie');
+            $recou = Recouvrement::with(['location', 'paiement', 'agent'])->orderBy('date_echeance');
 
             $data['recouvrement'] = $recou->get();
 

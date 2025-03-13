@@ -21,14 +21,9 @@ class RecouvrementController extends Controller
         $this->recouvrementService = $recouvrementService;
     }
 
-    public function index()
-    {
-        $recouvrements = Recouvrement::with(['location', 'paiement', 'agent'])
-            ->orderBy('date_echeance')->get();
+    public function index(){
 
-        dd($recouvrements);
-
-        return view('recouvrements.index', compact('recouvrements'));
+        return view('back.recouvrements.index');
     }
 
     public function ajax_get_recouvrements(Request $request)
