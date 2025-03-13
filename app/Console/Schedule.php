@@ -12,7 +12,7 @@ class Schedule
     public function __invoke(): void
     {
         // Votre tâche de détection des retards de paiement
-        ScheduleFacade::command('recouvrements:detecter-retards')->everyMinute();
+        ScheduleFacade::command('recouvrements:detecter-retards')->everyMinute()->sendOutputTo('recouvrement-output.log');
 
         // Vous pouvez ajouter d'autres tâches planifiées ici
         // Exemple:
