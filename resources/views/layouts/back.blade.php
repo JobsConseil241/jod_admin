@@ -61,10 +61,10 @@
             <!-- Start::main-sidebar-header -->
             <div class="main-sidebar-header">
                 <a href="{{ route('dashboard') }}" class="header-logo">
-                    <img src="{{ asset('front/images/logo_two.png') }}" alt="logo" class="main-logo desktop-logo">
-                    <img src="{{ asset('front/images/logo_two.png') }}" alt="logo" class="main-logo toggle-logo">
-                    <img src="{{ asset('front/images/logo_two.png') }}" alt="logo" class="main-logo desktop-dark">
-                    <img src="{{ asset('front/images/logo_two.png') }}" alt="logo" class="main-logo toggle-dark">
+                    <img src="{{ asset('front/images/jod.png') }}" alt="logo" class="main-logo desktop-logo">
+                    <img src="{{ asset('front/images/jod.png') }}" alt="logo" class="main-logo toggle-logo">
+                    <img src="{{ asset('front/images/jod_white.png') }}" alt="logo" class="main-logo desktop-dark">
+                    <img src="{{ asset('front/images/jod_white.png') }}" alt="logo" class="main-logo toggle-dark">
                 </a>
             </div>
             <!-- End::main-sidebar-header -->
