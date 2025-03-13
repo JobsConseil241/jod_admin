@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\V1\MarqueController;
 use App\Http\Controllers\Api\V1\PanneController;
 use App\Http\Controllers\Api\V1\PaymentController;
 use App\Http\Controllers\Api\V1\PrivilegeController;
+use App\Http\Controllers\Api\V1\RecouvrementController;
 use App\Http\Controllers\Api\V1\RoleController;
 use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\UserTypeController;
@@ -110,6 +111,9 @@ Route::group([
 
     // Paiements Values
     Route::get('/get_all_paiements', [PaymentController::class, 'get_all_paiements'])->name('API-GET-ALL-PAYMENTS');
+
+    // Recouvrements Values
+    Route::get('/get_all_recouvrements', [RecouvrementController::class, 'get_all_recouvrements'])->name('API-GET-ALL-RECOUVREMENTS');
 
     // categories pannes
     Route::get('/get_category_pannes', [CategoriePanneController::class, 'get_categories_pannes'])->name('API-GET-CATEGORIES-PANNES');

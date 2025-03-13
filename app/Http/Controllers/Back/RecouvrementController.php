@@ -9,6 +9,8 @@ use App\Models\Recouvrement;
 use App\Services\RecouvrementService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 class RecouvrementController extends Controller
 {
@@ -29,6 +31,22 @@ class RecouvrementController extends Controller
         return view('recouvrements.index', compact('recouvrements'));
     }
 
+    public function ajax_get_recouvrements(Request $request)
+    {
+        $access_token = Session::get('personnalToken');
+
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_all_recouvrements', $request->all());
+
+        $objet = json_decode($response->getBody());
+
+        if (!$objet) {
+            dd($response);
+        }
+
+        return response()->json($objet);
+    }
     public function create()
     {
         $locations = Location::whereHas('paiementAssocie', function($query) {
