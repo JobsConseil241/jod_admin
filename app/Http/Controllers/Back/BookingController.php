@@ -86,7 +86,7 @@ class BookingController extends Controller
             $booking = [];
         }
 
-        dd($booking);
+        dd($object->data);
 
         $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes')->get();
 
