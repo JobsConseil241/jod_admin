@@ -21,7 +21,7 @@ class RecouvrementController extends Controller
 
     public function index()
     {
-        $recouvrements = Recouvrement::with(['location', 'paiementAssocie', 'agent'])
+        $recouvrements = Recouvrement::with(['location', 'paiement', 'agent'])
             ->orderBy('date_echeance')->get();
 
         dd($recouvrements);
