@@ -70,20 +70,20 @@ class BookingController extends Controller
 
     }
 
-    public function get_detail_booking(Request $request, $refence) {
+    public function get_detail_booking(Request $request, $reference) {
 
         $access_token = Session::get('personnalToken');
 
         $response = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_detail_reservation_car', ['id' => $refence]);
+        ])->get(env('SERVER_PC') . 'get_detail_reservation_car', ['id' => $reference]);
 
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            $users = $object->data->users;
+            $booking = $object->data->users;
         } else {
-            $users = [];
+            $booking = [];
         }
 
         $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes')->get();
@@ -100,7 +100,7 @@ class BookingController extends Controller
 //            $users = [];
 //        }
 
-        return view('back.booking.add', compact('users', 'cars'));
+        return view('back.booking.detail', compact('booking', 'cars'));
 
     }
 
