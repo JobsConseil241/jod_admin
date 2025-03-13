@@ -46,7 +46,7 @@ class DetecterRetardsPaiement extends Command
 
             if (!$existingRecouvrement) {
                 // Créer un nouveau recouvrement avec échéance dans 7 jours
-                $montantDu = $location->paiement->montant_restant;
+                $montantDu = $location->paiementAssocie->montant_restant;
                 $dateEcheance = Carbon::now()->addDays(7);
 
                 $this->recouvrementService->creerRecouvrement(
