@@ -81,12 +81,12 @@ class BookingController extends Controller
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            $booking = $object->data->users;
+            $booking = $object->data;
         } else {
             $booking = [];
         }
 
-        dd($object);
+        dd($object->data);
 
         $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes')->get();
 
