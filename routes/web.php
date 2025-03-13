@@ -158,6 +158,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('booking/list', [BookingController::class, 'index'])->name('backend.booking.list');
         Route::get('booking/list/ajax', [BookingController::class, 'ajax_get_locations'])->name('backend.booking.ajax');
         Route::get('booking/add', [BookingController::class, 'add'])->name('backend.booking.add');
+
         Route::get('booking/detail/{reference}', [BookingController::class, 'get_detail_booking'])->name('backend.booking.details');
         Route::post('booking/detail/{reference}', [BookingController::class, 'get_detail_booking'])->name('backend.booking.details.update');
 //        Route::post('booking/detail/{reference}', [BookingController::class, 'add'])->name('backend.booking.add');
