@@ -22,8 +22,7 @@ class RecouvrementController extends Controller
     }
 
     public function index(){
-
-        return view('back.recouvrements.index');
+        return view('back.recouvrements.list');
     }
 
     public function ajax_get_recouvrements(Request $request)
