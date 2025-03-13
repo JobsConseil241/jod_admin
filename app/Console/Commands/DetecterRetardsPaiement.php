@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Services\RecouvrementService;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class DetecterRetardsPaiement extends Command
 {
@@ -59,6 +60,7 @@ class DetecterRetardsPaiement extends Command
             }
         }
 
+        Log::info("{$count} nouveaux recouvrements ont été créés.");
         $this->info("{$count} nouveaux recouvrements ont été créés.");
 
         return Command::SUCCESS;
