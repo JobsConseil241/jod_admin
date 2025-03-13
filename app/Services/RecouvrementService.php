@@ -27,7 +27,7 @@ class RecouvrementService
      */
     public function identifierRetards()
     {
-        $locationsAvecRetard = Location::whereHas('paiement', function($query) {
+        $locationsAvecRetard = Location::whereHas('paiementAssocie', function($query) {
             $query->where('montant_restant', '>', 0);
         })
             ->where(function($query) {
@@ -48,8 +48,8 @@ class RecouvrementService
         $recouvrement->montant_recouvre += $montant;
 
         // Mettre à jour le paiement principal si existant
-        if ($recouvrement->paiement) {
-            $paiement = $recouvrement->paiement;
+        if ($recouvrement->paiementAssocie) {
+            $paiement = $recouvrement->paiementAssocie;
             $paiement->montant_paye += $montant;
             $paiement->montant_restant -= $montant;
 

@@ -21,7 +21,7 @@ class RecouvrementController extends Controller
 
     public function index()
     {
-        $recouvrements = Recouvrement::with(['location', 'paiement', 'agent'])
+        $recouvrements = Recouvrement::with(['location', 'paiementAssocie', 'agent'])
             ->orderBy('date_echeance')
             ->paginate(15);
 
@@ -32,7 +32,7 @@ class RecouvrementController extends Controller
 
     public function create()
     {
-        $locations = Location::whereHas('paiement', function($query) {
+        $locations = Location::whereHas('paiementAssocie', function($query) {
             $query->where('montant_restant', '>', 0);
         })->get();
 
