@@ -61,7 +61,7 @@ class BookingController extends BaseController
                 'mntant_a_payer' => 'required|integer',
                 'mntant_paye' => 'required|integer',
                 'montant_restant' => 'required|integer',
-                'client_id' => 'sometimes|integer',
+                'client_id' => 'sometimes|numeric|nullable',
                 'name' => 'sometimes|string',
                 'surname' => 'sometimes|string',
                 'phone' => 'sometimes|string',
@@ -74,8 +74,6 @@ class BookingController extends BaseController
 
             ];
 
-
-            dd($datas);
 
             $validator = Validator::make($request->all(), $rules);
 
