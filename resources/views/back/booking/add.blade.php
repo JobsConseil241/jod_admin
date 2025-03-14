@@ -467,6 +467,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(data) {
+                        console.log(data)
                         // Remplir les champs avec les données reçues
                         $('input[name="name"]').val(data.last_name || '');
                         $('input[name="surname"]').val(data.first_name || '');
