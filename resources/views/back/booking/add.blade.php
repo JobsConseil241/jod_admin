@@ -493,8 +493,14 @@
 
         // Fonction pour réinitialiser le formulaire
         function resetForm() {
-            $('input[type="text"], input[type="tel"], input[type="hidden"]').val('');
-            $('select:not(#client_id)').prop('selectedIndex', 0);
+            $('input[name="name"]').val('');
+            $('input[name="surname"]').val('');
+            $('input[name="phone"]').val('');
+            $('input[name="phone_code"]').val('');
+            $('input[name="email"]').val('');
+            $('input[name="adresse"]').val('');
+            $('input[name="bp"]').val('');
+            $('input[name="npiece"]').val('');
         }
 
 
