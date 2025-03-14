@@ -101,7 +101,7 @@ class BookingController extends BaseController
                     'montant_total' => $datas['mntant_a_payer'],
                     'montant_paye' => $datas['mntant_paye'],
                     'montant_restant' => $datas['montant_restant'],
-                    'statut' => 0,
+                    'statut' => ($datas['montant_restant'] == 0) ? 1 : 0,
 
                 ]);
 
@@ -155,7 +155,7 @@ class BookingController extends BaseController
                     'montant_total' => $datas['mntant_a_payer'],
                     'montant_paye' => $datas['mntant_paye'],
                     'montant_restant' => $datas['montant_restant'],
-                    'statut' => 0,
+                    'statut' => ($datas['montant_restant'] == 0) ? 1 : 0,
 
                 ]);
 

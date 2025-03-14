@@ -455,6 +455,25 @@ class UserController extends Controller
         }
     }
 
+    public function detail_user(Request $request, $user)
+    {
+        $access_token = Session::get('personnalToken');
+
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_user_detail', ['id' => $user]);
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            $users = $object->data->users;
+        } else {
+            $users = [];
+        }
+
+        return response()->json(['success' => true, 'user' => $users]);
+    }
+
     public function updateProfil(Request $request)
     {
 

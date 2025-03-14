@@ -140,6 +140,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('user/edit', [UserController::class, 'edit'])->name('backend.user.edit');
         Route::post('user/assign', [UserController::class, 'assign'])->name('backend.user.assign');
         Route::post('user/update/{user}', [UserController::class, 'update'])->name('backend.user.update');
+        Route::get('user/detail/{user}', [UserController::class, 'detail_user'])->name('backend.user.detail');
         Route::post('user/assign-role', [UserController::class, 'assignRole'])->name('backend.user.assign.role');
 
         Route::post('reset2fa', [UserController::class, 'reset2fa'])->name('backend.reset2fa');

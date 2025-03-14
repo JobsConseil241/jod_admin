@@ -66,6 +66,7 @@ Route::group([
 
     //user
     Route::get('/get_users', [UserController::class, 'get_users'])->name('API-GET-USER');
+    Route::get('/get_user_detail', [UserController::class, 'get_detail_user'])->name('API-GET-USER-DETAIL');
     Route::get('/get_user_datatable', [UserController::class, 'get_user_datatable'])->name('API-GET-USER-DATATABLE');
     Route::post('/add_user', [UserController::class, "add_user"])->name('API-ADD-USER');
     Route::post('/update_user', [UserController::class, 'update_user'])->name('API-UPDATE-USER');
