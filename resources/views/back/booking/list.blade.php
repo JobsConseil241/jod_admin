@@ -116,26 +116,45 @@
                         data: 'code_contrat',
                         name: 'code_contrat',
                         orderable: true,
-                        searchable: true
+                        searchable: true,
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return `<span class="font-bold">`+ data +`</span>`;
+                        },
                     },
                     {
                         data: 'date_heure_debut',
                         name: 'date_heure_debut',
                         orderable: true,
-                        searchable: true
+                        searchable: true,
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return `<span class="font-bold text-success">`+ data +`</span>`;
+                        },
                     },
                     {
                         data: 'date_heure_fin',
                         name: 'date_heure_fin',
                         orderable: true,
-                        searchable: true
+                        searchable: true,
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return `<span class="font-bold text-danger">`+ data +`</span>`;
+                        },
                     },
                     {
                         data: 'vehicule',
                         name: 'vehicule',
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
-                            return row.vehicule ? row.vehicule.name : '';
+
+                            return `<div class="flex space-x-3 rtl:space-x-reverse text-start min-w-[220px] truncate">
+                                        <img class="avatar avatar-sm rounded-sm" src="/public/`+ row.vehicule.vehiculeMedias.photo_avant +`" alt="Image Description">
+                                        <div class="block">
+                                            <p class="block text-sm font-semibold text-gray-800 dark:text-white my-auto">` + row.vehicule.name +` </p>
+                                            <p class="block text-xs text-gray-500 dark:text-white/70 my-auto">` + row.vehicule.modele + `</p>
+                                        </div>
+                                    </div>`;
                         },
                     },
                     {
@@ -149,11 +168,7 @@
                         data: 'null',
                         name: 'customColumn',
                         render: function(data, type, row) {
-                            return `<a href="{{ url('backend/booking/detail/') }}/` + row.code_contrat + `" >
-                                       <button type="button" class="ti-btn ti-btn-soft-primary">
-                                            <i class="ti ti-eye align-bottom me-2"></i> Voir
-                                        </button>
-                                    </a>`;
+
 
                         },
                         orderable: false,
