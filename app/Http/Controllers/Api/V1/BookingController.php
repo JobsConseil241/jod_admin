@@ -26,7 +26,7 @@ class BookingController extends BaseController
 
             Log::debug('Get Locations all data Endpoint - All Params: ' . json_encode($request->all()));
 
-            $resas = Location::with('user', 'vehicule', 'pannes', 'etatAvantLocation', 'etatApresLocation', 'clientAssocie', 'paiementAssocie');
+            $resas = Location::with('user', 'vehicule.vehiculeMedias', 'pannes', 'etatAvantLocation', 'etatApresLocation', 'clientAssocie', 'paiementAssocie',);
 
             $data['resas'] = $resas->get();
 
