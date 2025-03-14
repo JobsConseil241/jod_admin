@@ -178,8 +178,7 @@
                         name: 'location',
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
-                            console.log(row.location)
-                            return `<a href="{{ url('backend/booking/detail/') }}/` + row.location + `" >
+                            return `<a href="{{ url('backend/booking/detail/') }}/` + row.location.code_contrat + `" >
                                        <button type="button" class="ti-btn ti-btn-soft-primary btn-sm">
                                             <i class="ti ti-eye align-bottom me-2"></i> Consuler
                                         </button>
