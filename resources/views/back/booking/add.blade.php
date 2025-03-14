@@ -460,7 +460,7 @@
             if (clientId !== '') {
                 // Envoi de la requête AJAX
                 $.ajax({
-                    url: 'backend/user/detail/' + clientId,
+                    url: '/backend/user/detail/' + clientId,
                     type: 'GET',
                     dataType: 'json',
                     headers: {
