@@ -146,9 +146,10 @@
                         data: 'vehicule',
                         name: 'vehicule',
                         render: function(data, type, row) {
+                            console.log(row.vehicule)
                             // Customize this function to generate content for your custom column
                             return `<div class="flex space-x-3 rtl:space-x-reverse text-start min-w-[220px] truncate">
-                                        <img class="avatar avatar-sm rounded-sm" src="/public/`+ row.vehicule.vehiculeMedias[0].photo_avant +`" alt="Image Description">
+                                        <img class="avatar avatar-sm rounded-sm" src="/public/`+ 1 +`" alt="Image Description">
                                         <div class="block">
                                             <p class="block text-sm font-semibold text-gray-800 dark:text-white my-auto">` + row.vehicule.name +` </p>
                                             <p class="block text-xs text-gray-500 dark:text-white/70 my-auto">` + row.vehicule.modele + `</p>
