@@ -167,8 +167,11 @@
                         data: 'null',
                         name: 'customColumn',
                         render: function(data, type, row) {
-
-
+                            return `<a href="{{ url('backend/booking/detail/') }}/` + row.code_contrat + `" >
+                                       <button type="button" class="ti-btn ti-btn-soft-primary">
+                                            <i class="ti ti-eye align-bottom me-2"></i> Voir
+                                        </button>
+                                    </a>`;
                         },
                         orderable: false,
                         searchable: false
