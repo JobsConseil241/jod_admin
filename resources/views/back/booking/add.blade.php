@@ -475,9 +475,9 @@
                         $('input[name="phone"]').val(data.phone || '');
                         $('input[name="phone_code"]').val(data.phone_code || '');
                         $('input[name="email"]').val(data.email || '');
-                        $('input[name="adresse"]').val(data.address || '');
+                        $('input[name="adresse"]').val(data.adresse || '');
                         $('input[name="bp"]').val(data.bp || '');
-                        $('input[name="npiece"]').val(data.id_number || '');
+                        $('input[name="npiece"]').val(data.numero_piece || '');
 
                     },
                     error: function(xhr, status, error) {
