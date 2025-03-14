@@ -93,7 +93,7 @@ class BookingController extends BaseController
             //            // Calculer la différence en jours
             //            $differenceEnJours = $dateDebut->diffInDays($dateFin);
 
-            if ($request->has('client_id')) {
+            if ($request->has('client_id') && $request->filled('client_id')) {
 
                 $paie_id = Paiement::create([
                     'reference' => Paiement::generateUniqueCode(),
