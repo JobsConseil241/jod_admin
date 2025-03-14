@@ -466,7 +466,7 @@ class UserController extends Controller
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            $users = $object->data;
+            $users = $object->data->user;
         } else {
             $users = [];
         }
