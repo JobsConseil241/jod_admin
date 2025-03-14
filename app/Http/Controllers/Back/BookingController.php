@@ -135,7 +135,7 @@ class BookingController extends Controller
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            return back()->with('success', "la catégorie a été créé avec succès.");
+            return back()->with('success', "la Location a été enregistré avec succès.");
         } else {
 
             return back()->with('error', $object->message ??  'Une erreur s\'est produite.');

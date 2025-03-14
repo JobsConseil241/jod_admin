@@ -75,6 +75,8 @@ class BookingController extends BaseController
             ];
 
 
+            dd($datas);
+
             $validator = Validator::make($request->all(), $rules);
 
 
