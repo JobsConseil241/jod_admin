@@ -1,6 +1,9 @@
 @extends('layouts.front')
 
 @push('styles')
+    <!-- Inclusion du plugin intlTelInput pour le sélecteur de téléphone international -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+
     <style>
         /* Styles pour le stepper */
         .reservation-stepper-wrapper {
@@ -227,6 +230,27 @@
             border-color: #02172C;
         }
 
+        /* Styles pour le téléphone international */
+        .iti {
+            width: 100%;
+        }
+
+        .phone-input-container {
+            position: relative;
+        }
+
+        /* Style pour l'upload de fichier */
+        input[type="file"].booking-form-control {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .form-text.text-muted {
+            font-size: 12px;
+            color: #616161;
+            margin-top: 5px;
+        }
+
         /* Styles responsive */
         @media only screen and (max-width: 767px) {
             .btn-default, .btn-outline {
@@ -360,7 +384,7 @@
                                                 <div class="stepper-items d-flex justify-content-between">
                                                     <div class="stepper-item active" data-step="1">
                                                         <div class="step-counter">1</div>
-                                                        <div class="step-name">Véhicules</div>
+                                                        <div class="step-name">Véhicule</div>
                                                     </div>
                                                     <div class="stepper-item" data-step="2">
                                                         <div class="step-counter">2</div>
@@ -391,7 +415,12 @@
                                                 <div class="booking-form-group col-md-12 mb-4">
                                                     <select name="cartype" class="booking-form-control form-select" id="cartype" required>
                                                         <option value="" disabled selected>Choisissez votre vehicule</option>
-                                                        <option value="{{ $car->id }}">{{ $car->marque->name }} {{ $car->modele }} {{ $car->couleur }}</option>
+                                                        <option value="sport_car">Sport car</option>
+                                                        <option value="convertible_car">Convertible car</option>
+                                                        <option value="sedan_car">Sedan car</option>
+                                                        <option value="luxury_car">Luxury car</option>
+                                                        <option value="electric_car">Electric car</option>
+                                                        <option value="coupe_car">Coupe car</option>
                                                     </select>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
@@ -433,7 +462,7 @@
                                                     </div>
 
                                                     <div class="booking-form-group col-md-6 mb-4">
-                                                        <input type="text" name="returndate" class="booking-form-control datepicker" id="returndate" placeholder="Date de retour" required>
+                                                        <input type="text" name="returndate" class="booking-form-control datepicker" id="returndate" placeholder="Date de retour (min. 2 jours après récupération)" required>
                                                         <div class="help-block with-errors"></div>
                                                     </div>
                                                 </div>
@@ -471,7 +500,10 @@
                                                     </div>
 
                                                     <div class="booking-form-group col-md-6 mb-4">
-                                                        <input type="tel" name="phone" class="booking-form-control" placeholder="Téléphone" required>
+                                                        <div class="phone-input-container">
+                                                            <input type="tel" name="phone" id="phone" class="booking-form-control" placeholder="Téléphone" required>
+                                                            <input id="phone_code" type="hidden" name="phone_code" />
+                                                        </div>
                                                         <div class="help-block with-errors"></div>
                                                     </div>
 
@@ -481,18 +513,23 @@
                                                     </div>
 
                                                     <div class="booking-form-group col-md-6 mb-4">
-                                                        <select name="piece" class="booking-form-control form-select" required>
-                                                            <option value="" disabled selected>Type de pièce d'identité</option>
-                                                            <option value="permis">Permis de conduire</option>
-                                                            <option value="cni">Carte Nationale d'Identité</option>
-                                                            <option value="passeport">Passeport</option>
+                                                        <select name="piece" class="booking-form-control form-select" id="pieceType" required>
+                                                            <option value="permis" selected>Permis de conduire</option>
                                                         </select>
                                                         <div class="help-block with-errors"></div>
+                                                        <small class="form-text text-muted">Seul le permis de conduire est accepté pour la location.</small>
                                                     </div>
 
                                                     <div class="booking-form-group col-md-6 mb-4">
-                                                        <input type="text" name="pieceNumber" class="booking-form-control" placeholder="Numéro de pièce d'identité" required>
+                                                        <input type="text" name="pieceNumber" class="booking-form-control" placeholder="Numéro de permis de conduire" required>
                                                         <div class="help-block with-errors"></div>
+                                                    </div>
+
+                                                    <div class="booking-form-group col-md-12 mb-4">
+                                                        <label for="pieceFile" class="form-label">Photo du permis de conduire</label>
+                                                        <input type="file" name="pieceFile" id="pieceFile" class="booking-form-control" accept="image/*" required>
+                                                        <div class="help-block with-errors"></div>
+                                                        <small class="form-text text-muted">Format accepté: jpg, png (max 5MB)</small>
                                                     </div>
 
                                                     <div class="booking-form-group col-md-12 mb-4">
@@ -1115,6 +1152,7 @@
 @endsection
 
 @push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Initialisation des éléments
@@ -1127,14 +1165,54 @@
             const paymentMethodSelect = document.getElementById('paymentMethod');
             const paymentFields = document.querySelectorAll('.payment-fields');
 
-            // Configuration des datepickers (si vous utilisez un plugin comme bootstrap-datepicker)
+            // Configuration des datepickers
             if (typeof $.fn.datepicker !== 'undefined') {
-                $('.datepicker').datepicker({
+                const today = new Date();
+
+                $('#pickupdate').datepicker({
                     format: 'dd/mm/yyyy',
                     autoclose: true,
                     language: 'fr',
-                    startDate: 'today'
+                    startDate: today
+                }).on('changeDate', function(e) {
+                    // Calculer la date minimum de retour (date de récupération + 2 jours)
+                    const minReturnDate = new Date(e.date);
+                    minReturnDate.setDate(minReturnDate.getDate() + 2);
+
+                    // Mettre à jour les options du datepicker de retour
+                    $('#returndate').datepicker('setStartDate', minReturnDate);
+
+                    // Si une date de retour est déjà sélectionnée et qu'elle est < à la nouvelle date min
+                    const returnDateVal = $('#returndate').datepicker('getDate');
+                    if (returnDateVal && returnDateVal < minReturnDate) {
+                        $('#returndate').datepicker('setDate', minReturnDate);
+                    }
                 });
+
+                $('#returndate').datepicker({
+                    format: 'dd/mm/yyyy',
+                    autoclose: true,
+                    language: 'fr',
+                    startDate: '+2d' // Par défaut, commence à aujourd'hui + 2 jours
+                });
+            }
+
+            // Initialisation du plugin de téléphone international si disponible
+            if (typeof intlTelInput !== 'undefined') {
+                const phoneInput = document.querySelector("#phone");
+                const iti = intlTelInput(phoneInput, {
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                    preferredCountries: ['ci', 'sn', 'ml', 'bj', 'tg', 'gh', 'gn'],
+                    separateDialCode: true
+                });
+
+                // Mettez à jour le champ caché avec le code pays à chaque changement
+                phoneInput.addEventListener("countrychange", function() {
+                    document.querySelector('#phone_code').value = iti.getSelectedCountryData().dialCode;
+                });
+
+                // Définir la valeur initiale du code de téléphone
+                document.querySelector('#phone_code').value = iti.getSelectedCountryData().dialCode;
             }
 
             // Gestion des étapes
@@ -1239,6 +1317,65 @@
                         }
                     }
                 });
+
+                // Validations spécifiques pour l'étape 2 (dates)
+                if (stepNumber === 2) {
+                    const pickupDate = new Date(document.getElementById('pickupdate').value);
+                    const returnDate = new Date(document.getElementById('returndate').value);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0); // Réinitialiser les heures pour comparer uniquement les dates
+
+                    // Vérifier si la date de récupération est dans le futur
+                    if (pickupDate < today) {
+                        isValid = false;
+                        document.getElementById('pickupdate').classList.add('is-invalid');
+                        const pickupErrorContainer = document.getElementById('pickupdate').nextElementSibling;
+                        if (pickupErrorContainer && pickupErrorContainer.classList.contains('with-errors')) {
+                            pickupErrorContainer.textContent = 'La date de récupération doit être ultérieure à aujourd\'hui';
+                        }
+                    }
+
+                    // Vérifier si la date de retour est au moins 2 jours après la date de récupération
+                    const minReturnDate = new Date(pickupDate);
+                    minReturnDate.setDate(minReturnDate.getDate() + 2);
+
+                    if (returnDate < minReturnDate) {
+                        isValid = false;
+                        document.getElementById('returndate').classList.add('is-invalid');
+                        const returnErrorContainer = document.getElementById('returndate').nextElementSibling;
+                        if (returnErrorContainer && returnErrorContainer.classList.contains('with-errors')) {
+                            returnErrorContainer.textContent = 'La date de retour doit être au moins 2 jours après la date de récupération';
+                        }
+                    }
+                }
+
+                // Validation spécifique pour l'étape 3 (fichier du permis)
+                if (stepNumber === 3 && document.getElementById('pieceFile').files.length > 0) {
+                    const fileInput = document.getElementById('pieceFile');
+                    const file = fileInput.files[0];
+
+                    // Vérifier le type de fichier
+                    const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+                    if (!validTypes.includes(file.type)) {
+                        isValid = false;
+                        fileInput.classList.add('is-invalid');
+                        const errorContainer = fileInput.nextElementSibling;
+                        if (errorContainer && errorContainer.classList.contains('with-errors')) {
+                            errorContainer.textContent = 'Format de fichier non pris en charge. Utilisez JPG ou PNG.';
+                        }
+                    }
+
+                    // Vérifier la taille du fichier (max 5MB)
+                    const maxSize = 5 * 1024 * 1024; // 5MB en octets
+                    if (file.size > maxSize) {
+                        isValid = false;
+                        fileInput.classList.add('is-invalid');
+                        const errorContainer = fileInput.nextElementSibling;
+                        if (errorContainer && errorContainer.classList.contains('with-errors')) {
+                            errorContainer.textContent = 'La taille du fichier ne doit pas dépasser 5MB.';
+                        }
+                    }
+                }
 
                 return isValid;
             }
