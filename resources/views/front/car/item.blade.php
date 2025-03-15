@@ -352,8 +352,8 @@
                         <!-- Booking Form Box Start -->
                         <div class="booking-form-box">
                             <!-- Booking PopUp Form Start -->
-                            <form id="bookingform" class="white-popup-block mfp-hide booking-form" enctype="multipart/form-data" method="post" action="{{ route('car-details-save-resa', ['name' => $name]) }}">
-                                @csrf
+                            <form id="bookingform" class="white-popup-block mfp-hide booking-form" >
+
                                 <div class="section-title">
                                     <h2>Réservez votre véhicule dès aujourd'hui!</h2>
                                     <p>Remplissez le formulaire ci-dessous pour réserver votre véhicule. Remplissez les détails nécessaires pour
@@ -379,7 +379,8 @@
 {{--                                            <div class="help-block with-errors"></div>--}}
 {{--                                        </div>--}}
 
-                                        <form id="reservationForm" action="" method="post">
+                                        <form id="reservationForm" enctype="multipart/form-data" method="post" action="{{ route('car-details-save-resa', ['name' => $name]) }}">
+                                            @csrf
                                             <!-- Indicateur de progression du stepper -->
                                             <div class="reservation-stepper-wrapper mb-5">
                                                 <div class="stepper-items d-flex justify-content-between">
