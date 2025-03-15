@@ -10,6 +10,6 @@ class CustomerController extends Controller
     public function index() {
         $user = auth()->user();
 
-        return view('front.customer.index', compact('user'));
+        return view('front.customer.profil', compact('user'));
     }
 }
