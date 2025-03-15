@@ -1,6 +1,114 @@
 @extends('layouts.front')
 
 @push('styles')
+    <style>
+        /* Styles pour le stepper */
+        .stepper-wrapper {
+            margin-bottom: 40px;
+        }
+
+        .stepper-items {
+            position: relative;
+            z-index: 1;
+        }
+
+        .stepper-item {
+            text-align: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .step-counter {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .stepper-item.active .step-counter,
+        .stepper-item.completed .step-counter {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .stepper-item.completed .step-counter::after {
+            content: '✓';
+        }
+
+        .step-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .stepper-progress {
+            height: 4px;
+            background-color: #e9ecef;
+            margin-top: -22px;
+            position: relative;
+            z-index: 0;
+        }
+
+        .stepper-progress-bar {
+            height: 100%;
+            background-color: #4caf50;
+            transition: width 0.3s ease;
+        }
+
+        /* Styles pour les étapes du contenu */
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        .step-title {
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Styles pour les boutons */
+        .btn-default {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-default:hover {
+            background-color: #3d8b40;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #4caf50;
+            border: 1px solid #4caf50;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: #f1f8e9;
+        }
+
+        /* Styles pour le résumé de réservation */
+        .reservation-summary {
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+    </style>
 @endpush
 
 @inject('Lang', 'App\Services\LanguageService')
@@ -100,63 +208,235 @@
 {{--                                            <div class="help-block with-errors"></div>--}}
 {{--                                        </div>--}}
 
-                                        <div class="booking-form-group col-md-12 mb-4">
-                                            <select name="cartype" class="booking-form-control form-select" id="cartype"
-                                                required>
-                                                <option value="" disabled selected>Choisissez votre vehicule</option>
-                                                <option value="sport_car">sport car</option>
-                                                <option value="convertible_car">convertible car</option>
-                                                <option value="sedan_car">sedan car</option>
-                                                <option value="luxury_car">luxury car</option>
-                                                <option value="electric_car">electric car</option>
-                                                <option value="coupe_car">coupe car</option>
-                                            </select>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
+                                        <form id="reservationForm" action="" method="post">
+                                            <!-- Indicateur de progression du stepper -->
+                                            <div class="stepper-wrapper mb-5">
+                                                <div class="stepper-items d-flex justify-content-between">
+                                                    <div class="stepper-item active" data-step="1">
+                                                        <div class="step-counter">1</div>
+                                                        <div class="step-name">Véhicule</div>
+                                                    </div>
+                                                    <div class="stepper-item" data-step="2">
+                                                        <div class="step-counter">2</div>
+                                                        <div class="step-name">Dates</div>
+                                                    </div>
+                                                    <div class="stepper-item" data-step="3">
+                                                        <div class="step-counter">3</div>
+                                                        <div class="step-name">Informations</div>
+                                                    </div>
+                                                    <div class="stepper-item" data-step="4">
+                                                        <div class="step-counter">4</div>
+                                                        <div class="step-name">Paiement</div>
+                                                    </div>
+                                                    <div class="stepper-item" data-step="5">
+                                                        <div class="step-counter">5</div>
+                                                        <div class="step-name">Confirmation</div>
+                                                    </div>
+                                                </div>
+                                                <div class="stepper-progress">
+                                                    <div class="stepper-progress-bar" style="width: 20%"></div>
+                                                </div>
+                                            </div>
 
-                                        <div class="booking-form-group col-md-6 mb-4">
-                                            <select name="location" class="booking-form-control form-select"
-                                                id="pickuplocation" required>
-                                                <option value="" disabled selected>Zone de Recuperation du Vehicule</option>
-                                                <option value="livraison">Livraison</option>
-                                                <option value="Agence">A L'agence</option>
-                                            </select>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
+                                            <!-- Étape 1: Choix du véhicule -->
+                                            <div class="step-content active" data-step="1">
+                                                <h3 class="step-title mb-4">Choisissez votre véhicule</h3>
 
-                                        <div class="booking-form-group col-md-6 mb-4">
-                                            <input type="text" name="date" placeholder="Date de Recuperation"
-                                                class="booking-form-control datepicker" id="pickupdate" required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
+                                                <div class="booking-form-group col-md-12 mb-4">
+                                                    <select name="cartype" class="booking-form-control form-select" id="cartype" required>
+                                                        <option value="" disabled selected>Choisissez votre vehicule</option>
+                                                        <option value="sport_car">Sport car</option>
+                                                        <option value="convertible_car">Convertible car</option>
+                                                        <option value="sedan_car">Sedan car</option>
+                                                        <option value="luxury_car">Luxury car</option>
+                                                        <option value="electric_car">Electric car</option>
+                                                        <option value="coupe_car">Coupe car</option>
+                                                    </select>
+                                                    <div class="help-block with-errors"></div>
+                                                </div>
 
-                                        <div class="booking-form-group col-md-6 mb-4">
-                                            <select name="droplocation" class="booking-form-control form-select"
-                                                id="droplocation" required>
-                                                <option value="" disabled selected>Drop Off Location</option>
-                                                <option value="abu_dhabi">abu dhabi</option>
-                                                <option value="alain">alain</option>
-                                                <option value="sharjah">sharjah</option>
-                                            </select>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
+                                                <div class="mt-4 d-flex justify-content-end">
+                                                    <button type="button" class="btn-default next-step">Suivant</button>
+                                                </div>
+                                            </div>
 
-                                        <div class="booking-form-group col-md-6 mb-4">
-                                            <input type="text" name="date" class="booking-form-control datepicker"
-                                                id="returndate" placeholder="Date de retour" required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
+                                            <!-- Étape 2: Dates et lieux -->
+                                            <div class="step-content" data-step="2">
+                                                <h3 class="step-title mb-4">Dates et lieux</h3>
 
-                                        <div class="booking-form-group col-md-12 mb-4">
-                                            <textarea name="msg" class="booking-form-control" id="msg" rows="3"
-                                                placeholder="Entrez des details" required></textarea>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
+                                                <div class="row">
+                                                    <div class="booking-form-group col-md-6 mb-4">
+                                                        <select name="location" class="booking-form-control form-select" id="pickuplocation" required>
+                                                            <option value="" disabled selected>Zone de Récupération du Véhicule</option>
+                                                            <option value="livraison">Livraison</option>
+                                                            <option value="Agence">À L'agence</option>
+                                                        </select>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
 
-                                        <div class="col-md-12 booking-form-group">
-                                            <button type="submit" class="btn-default">Reservez Maintenant</button>
-                                            <div id="msgSubmit" class="h3 hidden"></div>
-                                        </div>
+                                                    <div class="booking-form-group col-md-6 mb-4">
+                                                        <input type="text" name="pickupdate" placeholder="Date de Récupération" class="booking-form-control datepicker" id="pickupdate" required>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+
+                                                    <div class="booking-form-group col-md-6 mb-4">
+                                                        <select name="droplocation" class="booking-form-control form-select" id="droplocation" required>
+                                                            <option value="" disabled selected>Lieu de Retour</option>
+                                                            <option value="livraison">Livraison</option>
+                                                            <option value="Agence">À L'agence</option>
+                                                        </select>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+
+                                                    <div class="booking-form-group col-md-6 mb-4">
+                                                        <input type="text" name="returndate" class="booking-form-control datepicker" id="returndate" placeholder="Date de retour" required>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mt-4 d-flex justify-content-between">
+                                                    <button type="button" class="btn-outline prev-step">Précédent</button>
+                                                    <button type="button" class="btn-default next-step">Suivant</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Étape 3: Informations utilisateur -->
+                                            <div class="step-content" data-step="3">
+                                                <h3 class="step-title mb-4">Vos informations</h3>
+
+                                                <div class="row">
+                                                    <div class="booking-form-group col-md-6 mb-4">
+                                                        <input type="text" name="firstname" class="booking-form-control" placeholder="Prénom" required>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+
+                                                    <div class="booking-form-group col-md-6 mb-4">
+                                                        <input type="text" name="lastname" class="booking-form-control" placeholder="Nom" required>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+
+                                                    <div class="booking-form-group col-md-6 mb-4">
+                                                        <input type="email" name="email" class="booking-form-control" placeholder="Email" required>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+
+                                                    <div class="booking-form-group col-md-6 mb-4">
+                                                        <input type="tel" name="phone" class="booking-form-control" placeholder="Téléphone" required>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+
+                                                    <div class="booking-form-group col-md-12 mb-4">
+                                                        <input type="text" name="address" class="booking-form-control" placeholder="Adresse" required>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+
+                                                    <div class="booking-form-group col-md-6 mb-4">
+                                                        <select name="piece" class="booking-form-control form-select" required>
+                                                            <option value="" disabled selected>Type de pièce d'identité</option>
+                                                            <option value="permis">Permis de conduire</option>
+                                                            <option value="cni">Carte Nationale d'Identité</option>
+                                                            <option value="passeport">Passeport</option>
+                                                        </select>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+
+                                                    <div class="booking-form-group col-md-6 mb-4">
+                                                        <input type="text" name="pieceNumber" class="booking-form-control" placeholder="Numéro de pièce d'identité" required>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+
+                                                    <div class="booking-form-group col-md-12 mb-4">
+                                                        <textarea name="msg" class="booking-form-control" id="msg" rows="3" placeholder="Informations complémentaires"></textarea>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mt-4 d-flex justify-content-between">
+                                                    <button type="button" class="btn-outline prev-step">Précédent</button>
+                                                    <button type="button" class="btn-default next-step">Suivant</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Étape 4: Paiement -->
+                                            <div class="step-content" data-step="4">
+                                                <h3 class="step-title mb-4">Paiement</h3>
+
+                                                <div class="row">
+                                                    <div class="booking-form-group col-md-12 mb-4">
+                                                        <select name="paymentMethod" class="booking-form-control form-select" required>
+                                                            <option value="" disabled selected>Méthode de paiement</option>
+                                                            <option value="card">Carte bancaire</option>
+                                                            <option value="cash">Espèces à la récupération</option>
+                                                            <option value="transfer">Virement bancaire</option>
+                                                        </select>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+
+                                                    <!-- Champs conditionnels pour paiement par carte -->
+                                                    <div class="card-payment-fields" style="display: none;">
+                                                        <div class="booking-form-group col-md-12 mb-4">
+                                                            <input type="text" name="cardHolder" class="booking-form-control" placeholder="Nom du titulaire">
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+
+                                                        <div class="booking-form-group col-md-12 mb-4">
+                                                            <input type="text" name="cardNumber" class="booking-form-control" placeholder="Numéro de carte">
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="booking-form-group col-md-6 mb-4">
+                                                                <input type="text" name="expiryDate" class="booking-form-control" placeholder="Date d'expiration (MM/AA)">
+                                                                <div class="help-block with-errors"></div>
+                                                            </div>
+
+                                                            <div class="booking-form-group col-md-6 mb-4">
+                                                                <input type="text" name="cvv" class="booking-form-control" placeholder="CVV">
+                                                                <div class="help-block with-errors"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="booking-form-group col-md-12 mb-4">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                                                            <label class="form-check-label" for="termsCheck">
+                                                                J'accepte les <a href="#" class="text-primary">conditions générales de location</a>
+                                                            </label>
+                                                        </div>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mt-4 d-flex justify-content-between">
+                                                    <button type="button" class="btn-outline prev-step">Précédent</button>
+                                                    <button type="button" class="btn-default next-step">Suivant</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Étape 5: Confirmation -->
+                                            <div class="step-content" data-step="5">
+                                                <h3 class="step-title mb-4">Confirmation de votre réservation</h3>
+
+                                                <div class="reservation-summary card p-4 mb-4">
+                                                    <h4 class="mb-3">Récapitulatif de votre réservation</h4>
+                                                    <div id="reservationSummary">
+                                                        <!-- Le contenu sera rempli dynamiquement par JavaScript -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="booking-form-group col-md-12 mb-4">
+                                                    <div class="alert alert-info" role="alert">
+                                                        Veuillez vérifier les informations ci-dessus. Une fois la réservation confirmée, vous recevrez un email avec les détails de votre réservation.
+                                                    </div>
+                                                </div>
+
+                                                <div class="mt-4 d-flex justify-content-between">
+                                                    <button type="button" class="btn-outline prev-step">Précédent</button>
+                                                    <button type="submit" class="btn-default">Confirmer la réservation</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </fieldset>
                             </form>
@@ -639,4 +919,171 @@
 @endsection
 
 @push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialisation des éléments
+            const form = document.getElementById('reservationForm');
+            const stepItems = document.querySelectorAll('.stepper-item');
+            const stepContents = document.querySelectorAll('.step-content');
+            const progressBar = document.querySelector('.stepper-progress-bar');
+            const nextButtons = document.querySelectorAll('.next-step');
+            const prevButtons = document.querySelectorAll('.prev-step');
+            const paymentMethodSelect = document.querySelector('select[name="paymentMethod"]');
+            const cardPaymentFields = document.querySelector('.card-payment-fields');
+
+            // Configuration des datepickers (si vous utilisez un plugin comme bootstrap-datepicker)
+            if (typeof $.fn.datepicker !== 'undefined') {
+                $('.datepicker').datepicker({
+                    format: 'dd/mm/yyyy',
+                    autoclose: true,
+                    language: 'fr',
+                    startDate: 'today'
+                });
+            }
+
+            // Gestion des étapes
+            function goToStep(stepNumber) {
+                // Mise à jour des classes des étapes
+                stepItems.forEach(item => {
+                    const itemStep = parseInt(item.dataset.step);
+                    item.classList.remove('active', 'completed');
+
+                    if (itemStep === stepNumber) {
+                        item.classList.add('active');
+                    } else if (itemStep < stepNumber) {
+                        item.classList.add('completed');
+                    }
+                });
+
+                // Afficher la bonne étape de contenu
+                stepContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (parseInt(content.dataset.step) === stepNumber) {
+                        content.classList.add('active');
+                    }
+                });
+
+                // Mettre à jour la barre de progression
+                const progressPercentage = ((stepNumber - 1) / (stepItems.length - 1)) * 100;
+                progressBar.style.width = progressPercentage + '%';
+            }
+
+            // Événements pour les boutons suivant
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentStep = parseInt(this.closest('.step-content').dataset.step);
+
+                    // Valider les champs avant de passer à l'étape suivante
+                    if (validateStep(currentStep)) {
+                        // Si c'est la dernière étape avant la confirmation, générer le résumé
+                        if (currentStep === 4) {
+                            generateSummary();
+                        }
+
+                        goToStep(currentStep + 1);
+                    }
+                });
+            });
+
+            // Événements pour les boutons précédent
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const currentStep = parseInt(this.closest('.step-content').dataset.step);
+                    goToStep(currentStep - 1);
+                });
+            });
+
+            // Gestion des champs de paiement conditionnels
+            if (paymentMethodSelect) {
+                paymentMethodSelect.addEventListener('change', function() {
+                    if (this.value === 'card') {
+                        cardPaymentFields.style.display = 'block';
+                    } else {
+                        cardPaymentFields.style.display = 'none';
+                    }
+                });
+            }
+
+            // Fonction pour valider les champs d'une étape
+            function validateStep(stepNumber) {
+                const currentStepContent = document.querySelector(`.step-content[data-step="${stepNumber}"]`);
+                const requiredFields = currentStepContent.querySelectorAll('[required]');
+
+                let isValid = true;
+
+                requiredFields.forEach(field => {
+                    if (!field.value) {
+                        isValid = false;
+                        field.classList.add('is-invalid');
+
+                        // Ajouter un message d'erreur
+                        const errorContainer = field.nextElementSibling;
+                        if (errorContainer && errorContainer.classList.contains('with-errors')) {
+                            errorContainer.textContent = 'Ce champ est requis';
+                        }
+                    } else {
+                        field.classList.remove('is-invalid');
+
+                        // Supprimer le message d'erreur
+                        const errorContainer = field.nextElementSibling;
+                        if (errorContainer && errorContainer.classList.contains('with-errors')) {
+                            errorContainer.textContent = '';
+                        }
+                    }
+                });
+
+                return isValid;
+            }
+
+            // Fonction pour générer le résumé de la réservation
+            function generateSummary() {
+                const summaryContainer = document.getElementById('reservationSummary');
+                const carType = document.getElementById('cartype').options[document.getElementById('cartype').selectedIndex].text;
+                const pickupLocation = document.getElementById('pickuplocation').options[document.getElementById('pickuplocation').selectedIndex].text;
+                const pickupDate = document.getElementById('pickupdate').value;
+                const dropLocation = document.getElementById('droplocation').options[document.getElementById('droplocation').selectedIndex].text;
+                const returnDate = document.getElementById('returndate').value;
+                const firstName = document.querySelector('input[name="firstname"]').value;
+                const lastName = document.querySelector('input[name="lastname"]').value;
+                const paymentMethod = document.querySelector('select[name="paymentMethod"]').options[document.querySelector('select[name="paymentMethod"]').selectedIndex].text;
+
+                let summaryHTML = `
+            <div class="row mb-2">
+                <div class="col-md-4 fw-bold">Véhicule:</div>
+                <div class="col-md-8">${carType}</div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-4 fw-bold">Client:</div>
+                <div class="col-md-8">${firstName} ${lastName}</div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-4 fw-bold">Prise en charge:</div>
+                <div class="col-md-8">${pickupLocation} - ${pickupDate}</div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-4 fw-bold">Retour:</div>
+                <div class="col-md-8">${dropLocation} - ${returnDate}</div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-4 fw-bold">Méthode de paiement:</div>
+                <div class="col-md-8">${paymentMethod}</div>
+            </div>
+        `;
+
+                summaryContainer.innerHTML = summaryHTML;
+            }
+
+            // Soumission du formulaire
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Validation finale
+                if (validateStep(5)) {
+                    // Ici, vous pourriez envoyer les données via AJAX ou laisser le formulaire se soumettre normalement
+                    alert('Votre réservation a été confirmée! Vous recevrez un email de confirmation.');
+                    // form.submit(); // Décommentez pour soumettre le formulaire
+                }
+            });
+        });
+    </script>
 @endpush
