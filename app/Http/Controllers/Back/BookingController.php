@@ -116,6 +116,52 @@ class BookingController extends Controller
 
     }
 
+    public function get_details_booking(Request $request, $reference) {
+
+        $access_token = Session::get('personnalToken');
+
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_detail_reservation_car', ['id' => $reference]);
+
+        $responses = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_users', ['user_type_id' => 1000002]);
+
+        $object = json_decode($response->body());
+
+        $objects = json_decode($responses->body());
+
+        if ($object && $object->success == true) {
+            $booking = $object->data[0];
+        } else {
+            $booking = [];
+        }
+
+        if ($objects && $objects->success == true) {
+            $users = $objects->data->users;
+        } else {
+            $users = [];
+        }
+
+        $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes')->get();
+
+//        $respond = Http::withHeaders([
+//            "Authorization" => "Bearer " . $access_token
+//        ])->get(env('SERVER_PC') . 'get_users', ['user_type_id' => 1000002]);
+//
+//        $object = json_decode($respond->body());
+//
+//        if ($object && $object->success == true) {
+//            $users = $object->data->users;
+//        } else {
+//            $users = [];
+//        }
+
+        return view('back.booking.edit', compact('booking', 'cars', 'users'));
+
+    }
+
     public function getPannesByVoiture($voitureId)
     {
         // Récupérer les pannes associées à cette voiture
