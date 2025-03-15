@@ -42,21 +42,22 @@
             color: #FFFFFF;
         }
 
-        .stepper-item.completed .step-counter::after {
-            content: '✓';
-            position: absolute;
+        .stepper-item.completed .step-counter {
+            background-color: #4caf50; /* Couleur verte */
+            color: #FFFFFF;
         }
 
         .step-name {
             font-size: 14px;
             font-weight: 500;
             color: #040401;
+            margin-bottom: 15px; /* Ajoute de l'espace entre le nom et la barre de progression */
         }
 
         .stepper-progress {
             height: 4px;
             background-color: #ECECEC;
-            margin-top: -22px;
+            margin-top: 0; /* Ajusté pour respecter l'espace ajouté au step-name */
             position: relative;
             z-index: 0;
         }
