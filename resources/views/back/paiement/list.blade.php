@@ -26,7 +26,7 @@
     <div class="block justify-between page-header md:flex">
         <div>
             <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
-                Locations</h3>
+                Paiements</h3>
         </div>
         <ol class="flex items-center whitespace-nowrap min-w-0">
             <li class="text-sm">
@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">
-                Locations
+                Paiements
             </li>
         </ol>
     </div>
@@ -50,11 +50,11 @@
         <div class="col-span-12">
             <div class="box">
                 <div class="box-header">
-                    <h5 class="box-title">Liste des Locations</h5>
+                    <h5 class="box-title">Liste des Paiements</h5>
                     <div class="flex justify-end">
                         <a href="{{ route('backend.booking.add') }}">
                             <button type="button" class="ti-btn ti-btn-primary">
-                                Ajouter une Location
+                                Ajouter un Paiement
                             </button>
                         </a>
                     </div>
@@ -65,11 +65,13 @@
                         <thead>
                             <tr>
                                 <th data-ordering="false">ID</th>
-                                <th>Code du Contrat</th>
-                                <th>Date-Heure Debut</th>
-                                <th>Date-Heure Fin</th>
-                                <th>Vehicule</th>
+                                <th>Reference</th>
+                                <th>Methode Paiement</th>
+                                <th>Total</th>
+                                <th>Paye</th>
+                                <th>Restant</th>
                                 <th>Statut</th>
+                                <th>Location</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -104,7 +106,7 @@
                 ],
                 serverSide: true,
                 searching: true,
-                ajax: "{{ route('backend.booking.ajax') }}",
+                ajax: "{{ route('backend.paiements.ajax') }}",
                 columns: [
                     {
                         data: 'id',
@@ -113,8 +115,8 @@
                         searchable: true
                     },
                     {
-                        data: 'code_contrat',
-                        name: 'code_contrat',
+                        data: 'reference',
+                        name: 'reference',
                         orderable: true,
                         searchable: true,
                         render: function(data, type, row) {
@@ -123,55 +125,77 @@
                         },
                     },
                     {
-                        data: 'date_heure_debut',
-                        name: 'date_heure_debut',
+                        data: 'methode_paiement',
+                        name: 'methode_paiement',
+                        orderable: true,
+                        searchable: true
+                    },
+                    {
+                        data: 'montant_total',
+                        name: 'montant_total',
                         orderable: true,
                         searchable: true,
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
-                            return `<span class="font-bold text-success">`+ data +`</span>`;
+                            return `<span class="font-bold text-primary">`+ data +` FCFA</span>`;
                         },
                     },
                     {
-                        data: 'date_heure_fin',
-                        name: 'date_heure_fin',
+                        data: 'montant_paye',
+                        name: 'montant_paye',
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return `<span class="font-bold text-info">`+ data +` FCFA</span>`;
+                        },
+                    },
+                    {
+                        data: 'montant_restant',
+                        name: 'montant_restant',
                         orderable: true,
                         searchable: true,
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
-                            return `<span class="font-bold text-danger">`+ data +`</span>`;
-                        },
-                    },
-                    {
-                        data: 'vehicule',
-                        name: 'vehicule',
-                        render: function(data, type, row) {
-                            // Customize this function to generate content for your custom column
-                            return `<div class="flex space-x-3 rtl:space-x-reverse text-start min-w-[220px] truncate">
-                                        <img class="avatar avatar-sm rounded-sm" src="/public/`+ row.vehicule.vehicule_medias[0].photo_avant +`" alt="Image Description">
-                                        <div class="block">
-                                            <p class="block text-sm font-semibold text-gray-800 dark:text-white my-auto">` + row.vehicule.name +` </p>
-                                            <p class="block text-xs text-gray-500 dark:text-white/70 my-auto">` + row.vehicule.modele + `</p>
-                                        </div>
-                                    </div>`;
+                            return `<span class="font-bold text-danger">`+ data +` FCFA</span>`;
                         },
                     },
                     {
                         data: 'statut',
                         name: 'statut',
                         orderable: true,
-                        searchable: true
+                        searchable: true,
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            if (data == 0) {
+                                return `<span class="font-bold text-warning">En Cours</span>`;
+                            }else {
+                                return `<span class="font-bold text-success"> Solde</span>`;
+                            }
+
+                        },
+                    },
+                    {
+                        data: 'location',
+                        name: 'location',
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return `<a href="{{ url('backend/booking/detail/') }}/` + row.location.code_contrat + `" >
+                                       <button type="button" class="ti-btn ti-btn-soft-primary btn-sm">
+                                            <i class="ti ti-eye align-bottom me-2"></i> Consuler
+                                        </button>
+                                    </a>`;
+                        },
                     },
                     {
                         targets: -1,
                         data: 'null',
                         name: 'customColumn',
                         render: function(data, type, row) {
-                            return `<a href="{{ url('backend/booking/detail/') }}/` + row.code_contrat + `/edit" >
+                            return `<a href="{{ url('backend/car/view/') }}/` + row.id + `" >
                                        <button type="button" class="ti-btn ti-btn-soft-primary">
                                             <i class="ti ti-eye align-bottom me-2"></i> Voir
                                         </button>
                                     </a>`;
+
                         },
                         orderable: false,
                         searchable: false

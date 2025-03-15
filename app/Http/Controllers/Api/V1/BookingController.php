@@ -26,7 +26,7 @@ class BookingController extends BaseController
 
             Log::debug('Get Locations all data Endpoint - All Params: ' . json_encode($request->all()));
 
-            $resas = Location::with('user', 'vehicule', 'pannes', 'etatAvantLocation', 'etatApresLocation', 'clientAssocie', 'paiementAssocie');
+            $resas = Location::with('user', 'vehicule.vehiculeMedias', 'pannes', 'etatAvantLocation', 'etatApresLocation', 'clientAssocie', 'paiementAssocie',);
 
             $data['resas'] = $resas->get();
 
@@ -61,7 +61,7 @@ class BookingController extends BaseController
                 'mntant_a_payer' => 'required|integer',
                 'mntant_paye' => 'required|integer',
                 'montant_restant' => 'required|integer',
-                'client_id' => 'sometimes|integer',
+                'client_id' => 'sometimes|numeric|nullable',
                 'name' => 'sometimes|string',
                 'surname' => 'sometimes|string',
                 'phone' => 'sometimes|string',
@@ -93,7 +93,7 @@ class BookingController extends BaseController
             //            // Calculer la différence en jours
             //            $differenceEnJours = $dateDebut->diffInDays($dateFin);
 
-            if ($request->has('client_id')) {
+            if ($request->has('client_id') && $request->filled('client_id')) {
 
                 $paie_id = Paiement::create([
                     'reference' => Paiement::generateUniqueCode(),
@@ -101,7 +101,7 @@ class BookingController extends BaseController
                     'montant_total' => $datas['mntant_a_payer'],
                     'montant_paye' => $datas['mntant_paye'],
                     'montant_restant' => $datas['montant_restant'],
-                    'statut' => 0,
+                    'statut' => ($datas['montant_restant'] == 0) ? 1 : 0,
 
                 ]);
 
@@ -155,7 +155,7 @@ class BookingController extends BaseController
                     'montant_total' => $datas['mntant_a_payer'],
                     'montant_paye' => $datas['mntant_paye'],
                     'montant_restant' => $datas['montant_restant'],
-                    'statut' => 0,
+                    'statut' => ($datas['montant_restant'] == 0) ? 1 : 0,
 
                 ]);
 
@@ -265,6 +265,43 @@ class BookingController extends BaseController
             Log::debug('Cancel Booking Cars Endpoint - Response: ' . json_encode($data));
 
             return $this->sendResponse($category, "Cancel Booking successfully");
+        } catch (Exception $e) {
+            Log::error('Cancel Booking Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Cancel Booking Endpoint Exited.');
+        }
+    }
+
+     public function getDetailBooking(Request $request)
+    {
+        try {
+            Log::info('Get detail Booking vehicules  Endpoint Entered.');
+
+            Log::debug('Get detail Booking Vehicules Endpoint - All Params: ' . json_encode($request->all()));
+            $data = $request->all();
+            $rules = [
+                'id' => 'required|string'
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+
+
+            $category = Location::with('user', 'vehicule', 'pannes', 'etatAvantLocation', 'etatApresLocation', 'clientAssocie', 'paiementAssocie')
+                        ->where('code_contrat', $data['id'])->get();
+
+            if ($category == null) {
+                return $this->sendError("Contrat de Location not found");
+            }
+
+            Log::debug('detail Booking Vehicules - Response: ' . json_encode($data));
+
+            return $this->sendResponse($category, "Detail Booking retrieve successfully");
         } catch (Exception $e) {
             Log::error('Cancel Booking Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");

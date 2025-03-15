@@ -10,7 +10,6 @@ class DashboardController extends Controller
     //
     public function index()
     {
-        dd('En maintenance');
         return view('back.dashboard');
     }
 }

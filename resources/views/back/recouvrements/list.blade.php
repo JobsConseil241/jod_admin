@@ -26,7 +26,7 @@
     <div class="block justify-between page-header md:flex">
         <div>
             <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
-                Locations</h3>
+                Recouvrements</h3>
         </div>
         <ol class="flex items-center whitespace-nowrap min-w-0">
             <li class="text-sm">
@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li class="text-sm text-gray-500 hover:text-primary dark:text-white/70 " aria-current="page">
-                Locations
+                Recouvrements
             </li>
         </ol>
     </div>
@@ -50,11 +50,11 @@
         <div class="col-span-12">
             <div class="box">
                 <div class="box-header">
-                    <h5 class="box-title">Liste des Locations</h5>
+                    <h5 class="box-title">Liste des Recouvrements</h5>
                     <div class="flex justify-end">
                         <a href="{{ route('backend.booking.add') }}">
                             <button type="button" class="ti-btn ti-btn-primary">
-                                Ajouter une Location
+                                Ajouter un Recouvrement
                             </button>
                         </a>
                     </div>
@@ -65,11 +65,12 @@
                         <thead>
                             <tr>
                                 <th data-ordering="false">ID</th>
-                                <th>Code du Contrat</th>
-                                <th>Date-Heure Debut</th>
-                                <th>Date-Heure Fin</th>
-                                <th>Vehicule</th>
-                                <th>Statut</th>
+                                <th>Montant Du</th>
+                                <th>Montant Recouvre</th>
+                                <th>date echeance</th>
+                                <th>date recouvrement</th>
+                                <th>statut</th>
+                                <th>Location</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -104,7 +105,7 @@
                 ],
                 serverSide: true,
                 searching: true,
-                ajax: "{{ route('backend.booking.ajax') }}",
+                ajax: "{{ route('backend.recouvrement.ajax') }}",
                 columns: [
                     {
                         data: 'id',
@@ -113,28 +114,28 @@
                         searchable: true
                     },
                     {
-                        data: 'code_contrat',
-                        name: 'code_contrat',
+                        data: 'montant_du',
+                        name: 'montant_du',
                         orderable: true,
                         searchable: true,
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
-                            return `<span class="font-bold">`+ data +`</span>`;
+                            return `<span class="font-bold text-warning">`+ data +` FCFA</span>`;
                         },
                     },
                     {
-                        data: 'date_heure_debut',
-                        name: 'date_heure_debut',
+                        data: 'montant_recouvre',
+                        name: 'montant_recouvre',
                         orderable: true,
                         searchable: true,
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
-                            return `<span class="font-bold text-success">`+ data +`</span>`;
+                            return `<span class="font-bold">`+ data +` FCFA</span>`;
                         },
                     },
                     {
-                        data: 'date_heure_fin',
-                        name: 'date_heure_fin',
+                        data: 'date_echeance',
+                        name: 'date_echeance',
                         orderable: true,
                         searchable: true,
                         render: function(data, type, row) {
@@ -143,35 +144,52 @@
                         },
                     },
                     {
-                        data: 'vehicule',
-                        name: 'vehicule',
+                        data: 'date_recouvrement',
+                        name: 'date_recouvrement',
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
-                            return `<div class="flex space-x-3 rtl:space-x-reverse text-start min-w-[220px] truncate">
-                                        <img class="avatar avatar-sm rounded-sm" src="/public/`+ row.vehicule.vehicule_medias[0].photo_avant +`" alt="Image Description">
-                                        <div class="block">
-                                            <p class="block text-sm font-semibold text-gray-800 dark:text-white my-auto">` + row.vehicule.name +` </p>
-                                            <p class="block text-xs text-gray-500 dark:text-white/70 my-auto">` + row.vehicule.modele + `</p>
-                                        </div>
-                                    </div>`;
+                            return `<span class="font-bold text-info">`+ data +`</span>`;
                         },
                     },
                     {
                         data: 'statut',
                         name: 'statut',
                         orderable: true,
-                        searchable: true
+                        searchable: true,
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            if (data == 'en_attente') {
+                                return `<span class="font-bold text-danger">En Attente</span>`;
+                            }else if(data == 'partiellement_recouvre') {
+                                return `<span class="font-bold text-warning"> Partiellement</span>`;
+                            }else if(data == 'recouvre') {
+                                return `<span class="font-bold text-success"> Recouvré </span>`;
+                            }
+                        },
+                    },
+                    {
+                        data: 'location',
+                        name: 'location',
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return `<a href="{{ url('backend/booking/detail/') }}/` + row.location.code_contrat + `" >
+                                       <button type="button" class="ti-btn ti-btn-soft-primary btn-sm">
+                                            <i class="ti ti-eye align-bottom me-2"></i> Consuler
+                                        </button>
+                                    </a>`;
+                        },
                     },
                     {
                         targets: -1,
                         data: 'null',
                         name: 'customColumn',
                         render: function(data, type, row) {
-                            return `<a href="{{ url('backend/booking/detail/') }}/` + row.code_contrat + `/edit" >
+                            return `<a href="{{ url('backend/car/view/') }}/` + row.id + `" >
                                        <button type="button" class="ti-btn ti-btn-soft-primary">
                                             <i class="ti ti-eye align-bottom me-2"></i> Voir
                                         </button>
                                     </a>`;
+
                         },
                         orderable: false,
                         searchable: false

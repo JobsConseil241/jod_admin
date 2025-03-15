@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Api\V1\BaseController;
+use App\Models\Location;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\UserRole;
@@ -246,6 +247,41 @@ class UserController extends BaseController
             return $this->sendError("Unexpected error occurred, please try again later.");
         } finally {
             Log::info('Assign role Endpoint Exited.');
+        }
+    }
+
+    public function get_detail_user(Request $request) {
+        try {
+            Log::info('Get detail User  Endpoint Entered.');
+
+            Log::debug('Get detail User Endpoint - All Params: ' . json_encode($request->all()));
+            $data = $request->all();
+            $rules = [
+                'id' => 'required|string'
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                $errors = $validator->errors();
+                return $this->sendError($errors->first(), $errors);
+            }
+
+
+            $category = User::where('id', $data['id'])->get();
+
+            if ($category == null) {
+                return $this->sendError("Contrat de Location not found");
+            }
+
+            Log::debug('detail User - Response: ' . json_encode($data));
+
+            return $this->sendResponse($category, "Detail User retrieve successfully");
+        } catch (Exception $e) {
+            Log::error('Cancel User Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Cancel User Endpoint Exited.');
         }
     }
 

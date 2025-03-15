@@ -7,6 +7,8 @@ use App\Http\Controllers\Back\CarController as BackCarController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\LanguageController;
 use App\Http\Controllers\Back\PanneController;
+use App\Http\Controllers\Back\PaymentController;
+use App\Http\Controllers\Back\RecouvrementController;
 use App\Http\Controllers\Back\RoleController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\CarsController;
@@ -138,6 +140,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('user/edit', [UserController::class, 'edit'])->name('backend.user.edit');
         Route::post('user/assign', [UserController::class, 'assign'])->name('backend.user.assign');
         Route::post('user/update/{user}', [UserController::class, 'update'])->name('backend.user.update');
+        Route::get('user/detail/{user}', [UserController::class, 'detail_user'])->name('backend.user.detail');
         Route::post('user/assign-role', [UserController::class, 'assignRole'])->name('backend.user.assign.role');
 
         Route::post('reset2fa', [UserController::class, 'reset2fa'])->name('backend.reset2fa');
@@ -156,7 +159,22 @@ Route::middleware(['auth'])->group(function () {
         Route::get('booking/list', [BookingController::class, 'index'])->name('backend.booking.list');
         Route::get('booking/list/ajax', [BookingController::class, 'ajax_get_locations'])->name('backend.booking.ajax');
         Route::get('booking/add', [BookingController::class, 'add'])->name('backend.booking.add');
+
+        Route::get('booking/detail/{reference}', [BookingController::class, 'get_detail_booking'])->name('backend.booking.details');
+
+        Route::get('booking/detail/{reference}/edit', [BookingController::class, 'get_details_booking'])->name('backend.booking.details.view');
+        Route::post('booking/detail/{reference}/edit', [BookingController::class, 'get_details_booking'])->name('backend.booking.details.update.value');
+//        Route::post('booking/detail/{reference}', [BookingController::class, 'add'])->name('backend.booking.add');
         Route::post('booking/add', [BookingController::class, 'Store'])->name('backend.booking.store');
         Route::get('booking/car/pannes/{voiture}/ajax', [BookingController::class, 'getPannesByVoiture'])->name('backend.booking.pannes.ajax');
+
+        //recouvrements issues
+        Route::resource('recouvrements', RecouvrementController::class);
+        Route::get('recouvrement/list/ajax', [RecouvrementController::class, 'ajax_get_recouvrements'])->name('backend.recouvrement.ajax');
+        Route::post('recouvrements/{recouvrement}/paiement', [RecouvrementController::class, 'enregistrerPaiement'])->name('recouvrements.paiement');
+
+        //Paiements Management
+        Route::get('paiements/list', [PaymentController::class, 'index'])->name('backend.paiements.list');
+        Route::get('paiements/list/ajax', [PaymentController::class, 'ajax_get_paiements'])->name('backend.paiements.ajax');
     });
 });

@@ -65,4 +65,8 @@ class Location extends Model
         return $this->belongsTo(Paiement::class, 'paiement_id');
     }
 
+    public function recouvrements()
+    {
+        return $this->hasMany(Recouvrement::class);
+    }
 }
