@@ -3,7 +3,7 @@
 @push('styles')
     <style>
         /* Styles pour le stepper */
-        .stepper-wrapper {
+        .reservation-stepper-wrapper {
             margin-bottom: 40px;
         }
 
@@ -19,36 +19,43 @@
         }
 
         .step-counter {
-            width: 40px;
-            height: 40px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            background-color: #e9ecef;
+            background-color: #ECECEC;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0 auto 10px;
             font-weight: bold;
             transition: all 0.3s ease;
+            color: #040401;
         }
 
-        .stepper-item.active .step-counter,
+        .stepper-item.active .step-counter {
+            background-color: #02172C;
+            color: #FFFFFF;
+        }
+
         .stepper-item.completed .step-counter {
-            background-color: #4caf50;
-            color: white;
+            background-color: #02172C;
+            color: #FFFFFF;
         }
 
         .stepper-item.completed .step-counter::after {
             content: '✓';
+            position: absolute;
         }
 
         .step-name {
             font-size: 14px;
             font-weight: 500;
+            color: #040401;
         }
 
         .stepper-progress {
             height: 4px;
-            background-color: #e9ecef;
+            background-color: #ECECEC;
             margin-top: -22px;
             position: relative;
             z-index: 0;
@@ -56,7 +63,7 @@
 
         .stepper-progress-bar {
             height: 100%;
-            background-color: #4caf50;
+            background-color: #02172C;
             transition: width 0.3s ease;
         }
 
@@ -70,43 +77,181 @@
         }
 
         .step-title {
-            color: #333;
+            color: #040401;
             font-weight: 600;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Styles pour les champs du formulaire */
+        .booking-form-control {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: transparent;
+            border: 1px solid #ECECEC;
+            border-radius: 10px;
+            color: #040401;
+            box-shadow: none;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.7em;
+        }
+
+        .booking-form-control:focus {
+            border-color: #02172C;
+            outline: none;
+            box-shadow: none;
+        }
+
+        .booking-form-control::placeholder {
+            color: #616161;
         }
 
         /* Styles pour les boutons */
         .btn-default {
-            background-color: #4caf50;
-            color: white;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1em;
+            text-transform: capitalize;
+            background: #02172C;
+            color: #FFFFFF;
+            border-radius: 100px;
+            padding: 16px 25px;
+            margin-right: 48px;
             border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.5s ease-in-out;
+            position: relative;
+            z-index: 1;
         }
 
-        .btn-default:hover {
-            background-color: #3d8b40;
+        .btn-default::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #02172C;
+            background-image: url('../images/arrow-white.svg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 14px auto;
+            transform: translate(48px, 0px);
+            transition: all 0.4s ease-in-out;
+        }
+
+        .btn-default:hover::before {
+            background-color: #040401;
+            background-size: 14px auto;
+            transform: translate(48px, 0px) rotate(45deg);
         }
 
         .btn-outline {
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1em;
+            text-transform: capitalize;
+            background: transparent;
+            color: #040401;
+            border: 1px solid #ECECEC;
+            border-radius: 100px;
+            padding: 16px 25px;
+            margin-right: 48px;
+            transition: all 0.5s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
             background-color: transparent;
-            color: #4caf50;
-            border: 1px solid #4caf50;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            background-image: url('../images/arrow-black.svg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 14px auto;
+            transform: translate(48px, 0px) rotate(180deg);
+            transition: all 0.4s ease-in-out;
         }
 
         .btn-outline:hover {
-            background-color: #f1f8e9;
+            background-color: #f8f9fa;
+            color: #040401;
+        }
+
+        .btn-outline:hover::before {
+            transform: translate(48px, 0px) rotate(225deg);
         }
 
         /* Styles pour le résumé de réservation */
         .reservation-summary {
-            background-color: #f8f9fa;
-            border-radius: 4px;
+            background-color: #FFF8F6;
+            border-radius: 16px;
+            border: 1px solid #ECECEC;
+        }
+
+        .text-accent {
+            color: #02172C;
+        }
+
+        /* Styles pour les champs de paiement */
+        .payment-fields {
+            background-color: #FFF8F6;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Styles pour l'alerte d'info */
+        .alert-info {
+            background-color: #FFF8F6;
+            border-color: #02172C;
+            color: #040401;
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .form-check-input:checked {
+            background-color: #02172C;
+            border-color: #02172C;
+        }
+
+        /* Styles responsive */
+        @media only screen and (max-width: 767px) {
+            .btn-default, .btn-outline {
+                font-size: 14px;
+                padding: 12px 20px;
+                margin-right: 30px;
+            }
+
+            .btn-default::before, .btn-outline::before {
+                width: 36px;
+                height: 36px;
+                transform: translate(30px, 0px);
+            }
+
+            .step-counter {
+                width: 36px;
+                height: 36px;
+            }
+
+            .step-name {
+                font-size: 12px;
+            }
+
+            .step-title {
+                font-size: 18px;
+            }
         }
     </style>
 @endpush
@@ -210,7 +355,7 @@
 
                                         <form id="reservationForm" action="" method="post">
                                             <!-- Indicateur de progression du stepper -->
-                                            <div class="stepper-wrapper mb-5">
+                                            <div class="reservation-stepper-wrapper mb-5">
                                                 <div class="stepper-items d-flex justify-content-between">
                                                     <div class="stepper-item active" data-step="1">
                                                         <div class="step-counter">1</div>
@@ -256,7 +401,10 @@
                                                 </div>
 
                                                 <div class="mt-4 d-flex justify-content-end">
-                                                    <button type="button" class="btn-default next-step">Suivant</button>
+                                                    <button type="button" class="btn-default next-step">
+                                                        Suivant
+                                                        <span class="btn-icon"></span>
+                                                    </button>
                                                 </div>
                                             </div>
 
@@ -295,8 +443,14 @@
                                                 </div>
 
                                                 <div class="mt-4 d-flex justify-content-between">
-                                                    <button type="button" class="btn-outline prev-step">Précédent</button>
-                                                    <button type="button" class="btn-default next-step">Suivant</button>
+                                                    <button type="button" class="btn-outline prev-step">
+                                                        Précédent
+                                                        <span class="btn-icon prev-icon"></span>
+                                                    </button>
+                                                    <button type="button" class="btn-default next-step">
+                                                        Suivant
+                                                        <span class="btn-icon"></span>
+                                                    </button>
                                                 </div>
                                             </div>
 
@@ -352,8 +506,14 @@
                                                 </div>
 
                                                 <div class="mt-4 d-flex justify-content-between">
-                                                    <button type="button" class="btn-outline prev-step">Précédent</button>
-                                                    <button type="button" class="btn-default next-step">Suivant</button>
+                                                    <button type="button" class="btn-outline prev-step">
+                                                        Précédent
+                                                        <span class="btn-icon prev-icon"></span>
+                                                    </button>
+                                                    <button type="button" class="btn-default next-step">
+                                                        Suivant
+                                                        <span class="btn-icon"></span>
+                                                    </button>
                                                 </div>
                                             </div>
 
@@ -363,17 +523,19 @@
 
                                                 <div class="row">
                                                     <div class="booking-form-group col-md-12 mb-4">
-                                                        <select name="paymentMethod" class="booking-form-control form-select" required>
+                                                        <select name="paymentMethod" class="booking-form-control form-select" id="paymentMethod" required>
                                                             <option value="" disabled selected>Méthode de paiement</option>
                                                             <option value="card">Carte bancaire</option>
                                                             <option value="cash">Espèces à la récupération</option>
                                                             <option value="transfer">Virement bancaire</option>
+                                                            <option value="momo">Mobile Money (MTN, Orange, etc.)</option>
+                                                            <option value="wave">Wave</option>
                                                         </select>
                                                         <div class="help-block with-errors"></div>
                                                     </div>
 
                                                     <!-- Champs conditionnels pour paiement par carte -->
-                                                    <div class="card-payment-fields" style="display: none;">
+                                                    <div class="payment-fields card-payment-fields" style="display: none;">
                                                         <div class="booking-form-group col-md-12 mb-4">
                                                             <input type="text" name="cardHolder" class="booking-form-control" placeholder="Nom du titulaire">
                                                             <div class="help-block with-errors"></div>
@@ -397,11 +559,37 @@
                                                         </div>
                                                     </div>
 
+                                                    <!-- Champs conditionnels pour paiement Mobile Money -->
+                                                    <div class="payment-fields momo-payment-fields" style="display: none;">
+                                                        <div class="booking-form-group col-md-12 mb-4">
+                                                            <select name="momoProvider" class="booking-form-control form-select">
+                                                                <option value="" disabled selected>Choisissez votre opérateur</option>
+                                                                <option value="mtn">MTN Mobile Money</option>
+                                                                <option value="orange">Orange Money</option>
+                                                                <option value="moov">Moov Money</option>
+                                                            </select>
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+
+                                                        <div class="booking-form-group col-md-12 mb-4">
+                                                            <input type="tel" name="momoNumber" class="booking-form-control" placeholder="Numéro de téléphone Mobile Money">
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Champs conditionnels pour paiement Wave -->
+                                                    <div class="payment-fields wave-payment-fields" style="display: none;">
+                                                        <div class="booking-form-group col-md-12 mb-4">
+                                                            <input type="tel" name="waveNumber" class="booking-form-control" placeholder="Numéro de téléphone Wave">
+                                                            <div class="help-block with-errors"></div>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="booking-form-group col-md-12 mb-4">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox" id="termsCheck" required>
                                                             <label class="form-check-label" for="termsCheck">
-                                                                J'accepte les <a href="#" class="text-primary">conditions générales de location</a>
+                                                                J'accepte les <a href="#" class="text-accent">conditions générales de location</a>
                                                             </label>
                                                         </div>
                                                         <div class="help-block with-errors"></div>
@@ -409,8 +597,14 @@
                                                 </div>
 
                                                 <div class="mt-4 d-flex justify-content-between">
-                                                    <button type="button" class="btn-outline prev-step">Précédent</button>
-                                                    <button type="button" class="btn-default next-step">Suivant</button>
+                                                    <button type="button" class="btn-outline prev-step">
+                                                        Précédent
+                                                        <span class="btn-icon prev-icon"></span>
+                                                    </button>
+                                                    <button type="button" class="btn-default next-step">
+                                                        Suivant
+                                                        <span class="btn-icon"></span>
+                                                    </button>
                                                 </div>
                                             </div>
 
@@ -432,8 +626,14 @@
                                                 </div>
 
                                                 <div class="mt-4 d-flex justify-content-between">
-                                                    <button type="button" class="btn-outline prev-step">Précédent</button>
-                                                    <button type="submit" class="btn-default">Confirmer la réservation</button>
+                                                    <button type="button" class="btn-outline prev-step">
+                                                        Précédent
+                                                        <span class="btn-icon prev-icon"></span>
+                                                    </button>
+                                                    <button type="submit" class="btn-default">
+                                                        Confirmer la réservation
+                                                        <span class="btn-icon"></span>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </form>
@@ -928,8 +1128,8 @@
             const progressBar = document.querySelector('.stepper-progress-bar');
             const nextButtons = document.querySelectorAll('.next-step');
             const prevButtons = document.querySelectorAll('.prev-step');
-            const paymentMethodSelect = document.querySelector('select[name="paymentMethod"]');
-            const cardPaymentFields = document.querySelector('.card-payment-fields');
+            const paymentMethodSelect = document.getElementById('paymentMethod');
+            const paymentFields = document.querySelectorAll('.payment-fields');
 
             // Configuration des datepickers (si vous utilisez un plugin comme bootstrap-datepicker)
             if (typeof $.fn.datepicker !== 'undefined') {
@@ -996,10 +1196,22 @@
             // Gestion des champs de paiement conditionnels
             if (paymentMethodSelect) {
                 paymentMethodSelect.addEventListener('change', function() {
-                    if (this.value === 'card') {
-                        cardPaymentFields.style.display = 'block';
-                    } else {
-                        cardPaymentFields.style.display = 'none';
+                    // Cacher tous les champs de paiement
+                    paymentFields.forEach(field => {
+                        field.style.display = 'none';
+                    });
+
+                    // Afficher les champs correspondant à la méthode de paiement sélectionnée
+                    switch(this.value) {
+                        case 'card':
+                            document.querySelector('.card-payment-fields').style.display = 'block';
+                            break;
+                        case 'momo':
+                            document.querySelector('.momo-payment-fields').style.display = 'block';
+                            break;
+                        case 'wave':
+                            document.querySelector('.wave-payment-fields').style.display = 'block';
+                            break;
                     }
                 });
             }
@@ -1045,7 +1257,14 @@
                 const returnDate = document.getElementById('returndate').value;
                 const firstName = document.querySelector('input[name="firstname"]').value;
                 const lastName = document.querySelector('input[name="lastname"]').value;
-                const paymentMethod = document.querySelector('select[name="paymentMethod"]').options[document.querySelector('select[name="paymentMethod"]').selectedIndex].text;
+                const email = document.querySelector('input[name="email"]').value;
+                const phone = document.querySelector('input[name="phone"]').value;
+
+                // Récupérer la méthode de paiement
+                let paymentMethod = '';
+                if (document.querySelector('select[name="paymentMethod"]').selectedIndex > 0) {
+                    paymentMethod = document.querySelector('select[name="paymentMethod"]').options[document.querySelector('select[name="paymentMethod"]').selectedIndex].text;
+                }
 
                 let summaryHTML = `
             <div class="row mb-2">
@@ -1057,6 +1276,10 @@
                 <div class="col-md-8">${firstName} ${lastName}</div>
             </div>
             <div class="row mb-2">
+                <div class="col-md-4 fw-bold">Contact:</div>
+                <div class="col-md-8">${email} | ${phone}</div>
+            </div>
+            <div class="row mb-2">
                 <div class="col-md-4 fw-bold">Prise en charge:</div>
                 <div class="col-md-8">${pickupLocation} - ${pickupDate}</div>
             </div>
@@ -1064,11 +1287,16 @@
                 <div class="col-md-4 fw-bold">Retour:</div>
                 <div class="col-md-8">${dropLocation} - ${returnDate}</div>
             </div>
-            <div class="row mb-2">
-                <div class="col-md-4 fw-bold">Méthode de paiement:</div>
-                <div class="col-md-8">${paymentMethod}</div>
-            </div>
         `;
+
+                if (paymentMethod) {
+                    summaryHTML += `
+                <div class="row mb-2">
+                    <div class="col-md-4 fw-bold">Méthode de paiement:</div>
+                    <div class="col-md-8">${paymentMethod}</div>
+                </div>
+            `;
+                }
 
                 summaryContainer.innerHTML = summaryHTML;
             }
