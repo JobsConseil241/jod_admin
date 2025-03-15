@@ -17,7 +17,7 @@ class UserController extends Controller
     //
     public function profil()
     {
-        return view('backend.user.profil');
+        return view('back.user.profil');
     }
 
     public function reset2fa(Request $request)
