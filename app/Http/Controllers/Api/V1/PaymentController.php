@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Yajra\DataTables\Facades\DataTables;
 
-class PaymentController extends BaseController {
+class PaymentController extends BaseController
+{
     public function get_all_paiements(Request $request)
     {
         try {
