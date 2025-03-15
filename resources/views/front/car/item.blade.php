@@ -360,7 +360,7 @@
                                                 <div class="stepper-items d-flex justify-content-between">
                                                     <div class="stepper-item active" data-step="1">
                                                         <div class="step-counter">1</div>
-                                                        <div class="step-name">Véhicule</div>
+                                                        <div class="step-name">Véhicules</div>
                                                     </div>
                                                     <div class="stepper-item" data-step="2">
                                                         <div class="step-counter">2</div>
@@ -391,12 +391,7 @@
                                                 <div class="booking-form-group col-md-12 mb-4">
                                                     <select name="cartype" class="booking-form-control form-select" id="cartype" required>
                                                         <option value="" disabled selected>Choisissez votre vehicule</option>
-                                                        <option value="sport_car">Sport car</option>
-                                                        <option value="convertible_car">Convertible car</option>
-                                                        <option value="sedan_car">Sedan car</option>
-                                                        <option value="luxury_car">Luxury car</option>
-                                                        <option value="electric_car">Electric car</option>
-                                                        <option value="coupe_car">Coupe car</option>
+                                                        <option value="{{ $car->id }}">{{ $car->marque->name }} {{ $car->modele }} {{ $car->couleur }}</option>
                                                     </select>
                                                     <div class="help-block with-errors"></div>
                                                 </div>
