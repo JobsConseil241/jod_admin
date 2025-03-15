@@ -353,6 +353,7 @@
                         <div class="booking-form-box">
                             <!-- Booking PopUp Form Start -->
                             <form id="bookingform" class="white-popup-block mfp-hide booking-form" enctype="multipart/form-data" method="post" action="{{ route('car-details-save-resa', ['name' => $name]) }}">
+                                @csrf
                                 <div class="section-title">
                                     <h2>Réservez votre véhicule dès aujourd'hui!</h2>
                                     <p>Remplissez le formulaire ci-dessous pour réserver votre véhicule. Remplissez les détails nécessaires pour
