@@ -10,4 +10,8 @@ class BookingController extends Controller
     public function index(Request $request){
 
     }
+
+    public function booking(Request $request){
+        dd($request->all());
+    }
 }

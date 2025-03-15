@@ -352,7 +352,7 @@
                         <!-- Booking Form Box Start -->
                         <div class="booking-form-box">
                             <!-- Booking PopUp Form Start -->
-                            <form id="bookingform" class="white-popup-block mfp-hide booking-form">
+                            <form id="bookingform" class="white-popup-block mfp-hide booking-form" enctype="multipart/form-data" method="post" action="{{ route('car-details-save-resa') }}">
                                 <div class="section-title">
                                     <h2>Réservez votre véhicule dès aujourd'hui!</h2>
                                     <p>Remplissez le formulaire ci-dessous pour réserver votre véhicule. Remplissez les détails nécessaires pour
@@ -556,7 +556,7 @@
                                                             <option value="card">Carte bancaire</option>
                                                             <option value="cash">Espèces à la récupération</option>
                                                             <option value="transfer">Virement bancaire</option>
-                                                            <option value="momo">Mobile Money (MTN, Orange, etc.)</option>
+                                                            <option value="momo">Mobile Money (Airtel Money, Moov Money, etc.)</option>
                                                             <option value="wave">Wave</option>
                                                         </select>
                                                         <div class="help-block with-errors"></div>
@@ -592,8 +592,7 @@
                                                         <div class="booking-form-group col-md-12 mb-4">
                                                             <select name="momoProvider" class="booking-form-control form-select">
                                                                 <option value="" disabled selected>Choisissez votre opérateur</option>
-                                                                <option value="mtn">MTN Mobile Money</option>
-                                                                <option value="orange">Orange Money</option>
+                                                                <option value="airtel">Airtel Money</option>
                                                                 <option value="moov">Moov Money</option>
                                                             </select>
                                                             <div class="help-block with-errors"></div>
@@ -1196,8 +1195,10 @@
             if (typeof intlTelInput !== 'undefined') {
                 const phoneInput = document.querySelector("#phone");
                 const iti = intlTelInput(phoneInput, {
+                    preferredCountries: ["ga", "cm", "ci", "fr"],
+                    initialCountry: "auto",
+                    geoIpLookup: getIp,
                     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-                    preferredCountries: ['ci', 'sn', 'ml', 'bj', 'tg', 'gh', 'gn'],
                     separateDialCode: true
                 });
 
@@ -1283,6 +1284,21 @@
                             break;
                     }
                 });
+            }
+
+            function getIp(callback) {
+                fetch('https://ipinfo.io/json?token=4ccc52719ff8dc', {
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                    .then((resp) => resp.json())
+                    .catch(() => {
+                        return {
+                            country: 'ga',
+                        };
+                    })
+                    .then((resp) => callback(resp.country));
             }
 
             // Fonction pour valider les champs d'une étape
@@ -1437,7 +1453,7 @@
                 if (validateStep(5)) {
                     // Ici, vous pourriez envoyer les données via AJAX ou laisser le formulaire se soumettre normalement
                     alert('Votre réservation a été confirmée! Vous recevrez un email de confirmation.');
-                    // form.submit(); // Décommentez pour soumettre le formulaire
+                    form.submit(); // Décommentez pour soumettre le formulaire
                 }
             });
         });

@@ -14,6 +14,7 @@ use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\CarsController;
 use App\Http\Controllers\Front\CustomerController;
 use App\Http\Controllers\WelcomeController;
+use \App\Http\Controllers\Front\BookingController as BookingFrontController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,7 @@ Route::get('/home', [WelcomeController::class, 'index'])->name('home');
 Route::get('/about', [WelcomeController::class, 'about'])->name('about');
 Route::get('/cars', [CarsController::class, 'index'])->name('cars-list');
 Route::get('/cars/{name}', [CarsController::class, 'show'])->name('car-details');
+Route::post('/cars/{name}', [BookingFrontController::class, 'booking'])->name('car-details-save-resa');
 Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
 
 Route::get('/complete-registration', [RegisterController::class, 'completeRegistration'])->name('complete.registration');
