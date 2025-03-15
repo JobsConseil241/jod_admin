@@ -352,7 +352,7 @@
                         <!-- Booking Form Box Start -->
                         <div class="booking-form-box">
                             <!-- Booking PopUp Form Start -->
-                            <form id="bookingform" class="white-popup-block mfp-hide booking-form" >
+                            <div id="bookingform" class="white-popup-block mfp-hide booking-form" >
 
                                 <div class="section-title">
                                     <h2>Réservez votre véhicule dès aujourd'hui!</h2>
@@ -668,7 +668,7 @@
                                         </form>
                                     </div>
                                 </fieldset>
-                            </form>
+                            </div>
                             <!-- Booking PopUp Form End -->
                         </div>
                         <!-- Booking Form Box End -->
@@ -1453,7 +1453,6 @@
 
                 // Validation finale
                 if (validateStep(5)) {
-                    // Ici, vous pourriez envoyer les données via AJAX ou laisser le formulaire se soumettre normalement
                     alert('Votre réservation a été confirmée! Vous recevrez un email de confirmation.');
                     form.submit(); // Décommentez pour soumettre le formulaire
                 }
