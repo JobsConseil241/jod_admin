@@ -518,6 +518,14 @@
             // Appeler la fonction à chaque changement du select source
             $("#voiture_select").on("change", updateDependentSelect);
 
+            if ($("#phone_code").val()) {
+                // Trouver le code ISO du pays à partir du code téléphonique
+                var countryCode = iti.getCountryByDialCode($("#phone_code").val());
+                if (countryCode) {
+                    iti.setCountry(countryCode);
+                }
+            }
+
         });
 
         // Écouter le changement sur le select client_id
@@ -680,7 +688,6 @@
             nationalNumber = nationalNumber.replace(/\s/g, '');
             var codePays = phoneInput.getSelectedCountryData().dialCode;
             var numeroComplet = codePays + "-" + nationalNumber;
-            console.log("Numéro de téléphone complet : " + numeroComplet);
             phoneInputField.value = nationalNumber;
             phonecodeInputField.value = codePays;
         });
