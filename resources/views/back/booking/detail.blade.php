@@ -145,8 +145,8 @@
                                     <h3 class="text-base font-semibold text-gray-900 mb-4">Détails du véhicule</h3>
 
                                     <div class="flex flex-col sm:flex-row">
-                                        <div class="flex-shrink-0 sm:w-48 mb-4 sm:mb-0">
-                                            <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-gray-200 px-5">
+                                        <div class="flex-shrink-0 sm:w-48 mb-4 sm:mb-0 mr-5">
+                                            <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-gray-200">
                                                 <img class="w-full h-auto object-cover" src="{{ url($booking->vehicule->vehicule_medias[0]->photo_avant) }}" alt="Volkswagen Golf">
                                             </div>
                                         </div>
@@ -274,7 +274,7 @@
                             <div class="bg-white rounded-xl shadow-sm overflow-hidden">
                                 <div class="p-6">
                                     <div class="flex items-center justify-between mb-4">
-                                        <h3 class="text-base font-semibold text-gray-900">Historique des statuts</h3>
+                                        <h3 class="text-base font-semibold text-gray-900">Historique des pannes</h3>
                                         <button class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
                                             Voir tout
                                         </button>
@@ -284,29 +284,21 @@
                                         <table class="min-w-full divide-y divide-gray-200">
                                             <thead class="bg-gray-50">
                                             <tr>
-                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Panne</th>
                                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
-                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Utilisateur</th>
-                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Commentaire</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Montant</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
                                             </tr>
                                             </thead>
                                             <tbody class="bg-white divide-y divide-gray-200">
-                                            <tr>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">16/03/2025 14:32</td>
-                                                <td class="px-6 py-4 whitespace-nowrap">
-                                                    <span class="px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-blue-100 text-blue-800">Paiement reçu</span>
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Système</td>
-                                                <td class="px-6 py-4 text-sm text-gray-500">Paiement en ligne confirmé</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">15/03/2025 18:05</td>
-                                                <td class="px-6 py-4 whitespace-nowrap">
-                                                    <span class="px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-yellow-100 text-yellow-800">En attente</span>
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Système</td>
-                                                <td class="px-6 py-4 text-sm text-gray-500">Réservation créée, en attente de paiement</td>
-                                            </tr>
+{{--                                                <tr>--}}
+{{--                                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">16/03/2025 14:32</td>--}}
+{{--                                                    <td class="px-6 py-4 whitespace-nowrap">--}}
+{{--                                                        <span class="px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-blue-100 text-blue-800">Paiement reçu</span>--}}
+{{--                                                    </td>--}}
+{{--                                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Système</td>--}}
+{{--                                                    <td class="px-6 py-4 text-sm text-gray-500">Paiement en ligne confirmé</td>--}}
+{{--                                                </tr>--}}
                                             </tbody>
                                         </table>
                                     </div>
@@ -323,11 +315,11 @@
 
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0">
-                                            <img class="h-12 w-12 rounded-full" src="/api/placeholder/48/48" alt="Photo du client">
+                                            <img class="h-12 w-12 rounded-full" src="{{ url('back/img/users/1.jpg') }}" alt="Photo du client">
                                         </div>
                                         <div class="ml-4">
-                                            <h4 class="text-sm font-medium text-gray-900">Jean Dupont</h4>
-                                            <p class="text-sm text-gray-500">Client depuis le 01/01/2024</p>
+                                            <h4 class="text-sm font-medium text-gray-900">{{ $booking->client_associe->first_name }} {{ $booking->client_associe->last_name }}</h4>
+                                            <p class="text-sm text-gray-500">Client depuis le {{ Carbon::parse($booking->client_associe->created_at)->locale('fr')->isoFormat('D MMMM YYYY [à] HH[h]mm')  }}</p>
                                         </div>
                                     </div>
 
@@ -335,19 +327,19 @@
                                         <dl class="space-y-3">
                                             <div class="flex justify-between">
                                                 <dt class="text-sm font-medium text-gray-500">Email</dt>
-                                                <dd class="text-sm text-gray-900">jean.dupont@exemple.fr</dd>
+                                                <dd class="text-sm text-gray-900">{{ $booking->client_associe->email }}</dd>
                                             </div>
                                             <div class="flex justify-between">
                                                 <dt class="text-sm font-medium text-gray-500">Téléphone</dt>
-                                                <dd class="text-sm text-gray-900">+33 6 12 34 56 78</dd>
+                                                <dd class="text-sm text-gray-900">+ {{ $booking->client_associe->phone_code }} {{ $booking->client_associe->phone }}</dd>
                                             </div>
                                             <div class="flex justify-between">
                                                 <dt class="text-sm font-medium text-gray-500">N° de permis</dt>
-                                                <dd class="text-sm text-gray-900">123456789AB</dd>
+                                                <dd class="text-sm text-gray-900">{{ $booking->client_associe->numero_piece }}</dd>
                                             </div>
                                             <div class="flex justify-between">
-                                                <dt class="text-sm font-medium text-gray-500">Date de naissance</dt>
-                                                <dd class="text-sm text-gray-900">15/07/1985</dd>
+                                                <dt class="text-sm font-medium text-gray-500">Adresse</dt>
+                                                <dd class="text-sm text-gray-900">{{ $booking->client_associe->adresse }}</dd>
                                             </div>
                                         </dl>
                                     </div>
@@ -374,49 +366,30 @@
                                                 <p class="text-sm font-medium text-gray-900">Montant total</p>
                                                 <p class="text-xs text-gray-500">TVA incluse</p>
                                             </div>
-                                            <span class="text-lg font-bold text-indigo-600">385,00 €</span>
-                                        </div>
-
-                                        <div class="mt-4 pt-4 border-t border-gray-200">
-                                            <div class="text-sm font-medium text-gray-500 mb-2">Payé avec</div>
-                                            <div class="flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                                                    <line x1="1" y1="10" x2="23" y2="10"></line>
-                                                </svg>
-                                                <span class="ml-2 text-sm text-gray-700">Carte Visa •••• 4242</span>
-                                            </div>
+                                            <span class="text-lg font-bold text-indigo-600"> {{ $booking->paiement_associe->montant_total }} FCFA</span>
                                         </div>
                                     </div>
 
                                     <div class="space-y-3">
                                         <div class="flex justify-between text-sm">
                                             <span class="text-gray-500">Prix journalier</span>
-                                            <span class="text-gray-900">55,00 €</span>
+                                            <span class="text-gray-900">{{ $booking->vehicule->prix_location }} FCFA</span>
                                         </div>
                                         <div class="flex justify-between text-sm">
                                             <span class="text-gray-500">Nombre de jours</span>
-                                            <span class="text-gray-900">7</span>
-                                        </div>
-                                        <div class="flex justify-between text-sm">
-                                            <span class="text-gray-500">Sous-total location</span>
-                                            <span class="text-gray-900">385,00 €</span>
+                                            <span class="text-gray-900">{{ $booking->vehicule->jours }}</span>
                                         </div>
                                         <div class="flex justify-between text-sm">
                                             <span class="text-gray-500">Assurance tous risques</span>
-                                            <span class="text-gray-900">70,00 €</span>
+                                            <span class="text-gray-900">0 FCFA</span>
                                         </div>
                                         <div class="flex justify-between text-sm">
                                             <span class="text-gray-500">Équipements supplémentaires</span>
-                                            <span class="text-gray-900">0,00 €</span>
-                                        </div>
-                                        <div class="flex justify-between text-sm pb-3 border-b border-gray-200">
-                                            <span class="text-gray-500">Réduction (15%)</span>
-                                            <span class="text-red-600">-70,00 €</span>
-                                        </div>
+                                            <span class="text-gray-900">0 FCFA</span>
+                                        </div>\
                                         <div class="flex justify-between text-sm font-semibold pt-1">
                                             <span class="text-gray-900">Total</span>
-                                            <span class="text-indigo-600">385,00 €</span>
+                                            <span class="text-indigo-600">{{ $booking->paiement_associe->montant_total }} FCFA</span>
                                         </div>
                                     </div>
 
