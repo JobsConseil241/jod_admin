@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="px-6 py-5">
                                     <dt class="text-sm font-medium text-gray-500">Montant total</dt>
-                                    <dd class="mt-1 text-base font-semibold text-gray-900">{{ $booking->montant_total }} FCFA</dd>
+                                    <dd class="mt-1 text-base font-semibold text-gray-900">{{ $booking->paiement_associe->montant_total }} FCFA</dd>
                                 </div>
                             </div>
                         </div>
