@@ -33,7 +33,6 @@
 @inject('Lang', 'App\Services\LanguageService')
 
 @section('content')
-    {{ dd($booking) }}
     <!-- Page Header -->
     <div class="block justify-between page-header md:flex">
         <div>
@@ -62,294 +61,500 @@
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
             <div class="box !bg-transparent border-0 shadow-none">
-                <form method="post" action="{{ route('backend.booking.store') }}">
-                    @csrf
-                    <div class="box-body p-0">
-                        <div class="grid grid-cols-12 gap-x-6">
-                            <div class="col-span-12 xl:col-span-6">
-                                <div class="box ">
-                                    <div class="box-body">
-                                        <h5 class="box-title leading-none flex my-5"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Client Information</h5>
-                                        <div class="space-y-3">
-                                            <div class="space-y-2">
-                                                <label class="ti-form-label mb-0">Client</label>
-                                                <select class="my-auto ti-form-select" name="client_id" id="">
-                                                    <option value="" selected disabled>-- Choisissez un Client --</option>
-                                                    <!-- Ajoutez dynamiquement les années si besoin -->
-                                                    @foreach($users as $user)
-                                                        <option value="{{ $user->id }}" @if($user->id == $booking->client_id) selected @endif>{{ $user->first_name }} {{ $user->last_name }}</option>
-                                                    @endforeach
-                                                </select>
+                <div class="p-4 lg:p-6">
+                    <!-- Page header -->
+                    <div class="mb-6">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                            <div>
+                                <h1 class="text-2xl font-semibold text-gray-900">Détails de Location</h1>
+                                <p class="mt-1 text-sm text-gray-500">Informations détaillées sur la location de véhicule</p>
+                            </div>
+                            <div class="mt-4 md:mt-0 flex space-x-3">
+                                <button class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    <span>Exporter</span>
+                                </button>
+                                <button class="px-4 py-2 bg-indigo-600 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    <span>Modifier</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rental status card -->
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
+                        <div class="p-6">
+                            <div class="sm:flex sm:items-center sm:justify-between">
+                                <div>
+                                    <div class="flex items-center">
+                                        <h3 class="text-lg font-semibold text-gray-900">Réservation #CR-3782</h3>
+                                        <span class="ml-3 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                En cours
+              </span>
+                                    </div>
+                                    <p class="mt-1 text-sm text-gray-500">Créée le 15 mars 2025</p>
+                                </div>
+                                <div class="mt-4 sm:mt-0 flex space-x-3">
+                                    <button class="inline-flex items-center px-3 py-1.5 border border-gray-300 rounded-md text-xs font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                                        </svg>
+                                        Télécharger
+                                    </button>
+                                    <button class="inline-flex items-center px-3 py-1.5 border border-gray-300 rounded-md text-xs font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                                        </svg>
+                                        Imprimer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-200">
+                            <div class="bg-gray-50 grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-gray-200">
+                                <div class="px-6 py-5">
+                                    <dt class="text-sm font-medium text-gray-500">Date de début</dt>
+                                    <dd class="mt-1 text-base font-semibold text-gray-900">17/03/2025</dd>
+                                </div>
+                                <div class="px-6 py-5">
+                                    <dt class="text-sm font-medium text-gray-500">Date de fin</dt>
+                                    <dd class="mt-1 text-base font-semibold text-gray-900">24/03/2025</dd>
+                                </div>
+                                <div class="px-6 py-5">
+                                    <dt class="text-sm font-medium text-gray-500">Durée</dt>
+                                    <dd class="mt-1 text-base font-semibold text-indigo-600">7 jours</dd>
+                                </div>
+                                <div class="px-6 py-5">
+                                    <dt class="text-sm font-medium text-gray-500">Montant total</dt>
+                                    <dd class="mt-1 text-base font-semibold text-gray-900">385,00 €</dd>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Main content column -->
+                        <div class="lg:col-span-2 space-y-6">
+                            <!-- Vehicle card -->
+                            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                                <div class="p-6">
+                                    <h3 class="text-base font-semibold text-gray-900 mb-4">Détails du véhicule</h3>
+
+                                    <div class="flex flex-col sm:flex-row">
+                                        <div class="flex-shrink-0 sm:w-48 mb-4 sm:mb-0">
+                                            <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-gray-200">
+                                                <img class="w-full h-auto object-cover" src="/api/placeholder/256/144" alt="Volkswagen Golf">
                                             </div>
-                                            <div class="space-y-2">
-                                                <label class="ti-form-label mb-0">Noms</label>
-                                                <input type="text" name="name" class="my-auto ti-form-input"
-                                                    placeholder="John" value="{{ old('name') }}" required>
-                                            </div>
-                                            <div class="space-y-2">
-                                                <label class="ti-form-label mb-0">Prenoms</label>
-                                                <input type="text" name="surname" class="my-auto ti-form-input"
-                                                    placeholder="Doe" value="{{ old('surname') }}" required>
-                                            </div>
-                                            <div class="space-y-2">
-                                                <label for="input-phone" class="ti-form-label">Téléphone</label>
-                                                <input type="tel" name="phone" id="phone" class="ti-form-input" required>
-                                                <input id="phone_code" type="hidden" name="phone_code" />
-                                            </div>
-                                            <div class="space-y-2">
-                                                <label class="ti-form-label mb-0">Email</label>
-                                                <input type="text" name="email" class="my-auto ti-form-input"
-                                                       placeholder="johndoe@gmail.com" value="{{ old('email') }}" required>
-                                            </div>
-                                            <div class="grid grid-cols-12 gap-4">
-                                                <div class="col-span-12 lg:col-span-6">
-                                                    <div class="space-y-2 product-1">
-                                                        <label class="ti-form-label mb-0">Adresse</label>
-                                                        <input type="text" name="adresse" class="my-auto ti-form-input"
-                                                               placeholder="Centre Medico" value="{{ old('adresse') }}" required>
-{{--                                                        <select name="category_id" class="ti-form-select" required>--}}
-{{--                                                               <option>Choisissez</option>--}}
-{{--                                                            @foreach ($categories as $item)--}}
-{{--                                                                <option value="{{ $item->id }}"--}}
-{{--                                                                    {{ old('category_id') == $item->id ? 'selected' : '' }}>--}}
-{{--                                                                    {{ $item->name }}--}}
-{{--                                                                </option>--}}
-{{--                                                            @endforeach--}}
-{{--                                                        </select>--}}
-                                                    </div>
+                                        </div>
+                                        <div class="sm:ml-6 flex-1">
+                                            <div class="flex justify-between items-start">
+                                                <div>
+                                                    <h4 class="text-lg font-semibold text-gray-900">Volkswagen Golf 8</h4>
+                                                    <p class="mt-1 text-sm text-gray-500">Immatriculation: AB-123-CD</p>
                                                 </div>
-                                                <div class="col-span-12 lg:col-span-6">
-                                                    <div class="space-y-2  product-1">
-                                                        <label class="ti-form-label mb-0">Boite Postale</label>
-                                                        <input type="text" name="bp" class="my-auto ti-form-input"
-                                                               placeholder="2376 rue de Cointet" value="{{ old('bp') }}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="grid grid-cols-12 gap-4">
-                                                <div class="col-span-12 lg:col-span-6">
-                                                    <div class="space-y-2 product-1">
-                                                        <label class="ti-form-label mb-0">Piece Identite</label>
-                                                        <select name="piece" class="ti-form-select" required>
-                                                            <option value="permis">Permis de conduire</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-span-12 lg:col-span-6">
-                                                    <div class="space-y-2  product-1">
-                                                        <label class="ti-form-label mb-0">Numero Piece</label>
-                                                        <input type="text" name="npiece" class="my-auto ti-form-input"
-                                                               placeholder="23098IE" value="{{ old('npiece') }}">
-                                                    </div>
-                                                </div>
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    Disponible
+                  </span>
                                             </div>
 
-                                            <div class="space-y-2">
-                                                <label class="ti-form-label">Image de La Piece</label>
-                                                <input type="file" class="filepond basic-filepond" name="thumb" data-allow-reorder="true" data-max-file-size="2MB" data-max-files="1">
+                                            <div class="mt-4 grid grid-cols-2 gap-4">
+                                                <div>
+                                                    <dt class="text-sm font-medium text-gray-500">Catégorie</dt>
+                                                    <dd class="mt-1 text-sm text-gray-900">Compacte</dd>
+                                                </div>
+                                                <div>
+                                                    <dt class="text-sm font-medium text-gray-500">Année</dt>
+                                                    <dd class="mt-1 text-sm text-gray-900">2023</dd>
+                                                </div>
+                                                <div>
+                                                    <dt class="text-sm font-medium text-gray-500">Carburant</dt>
+                                                    <dd class="mt-1 text-sm text-gray-900">Essence</dd>
+                                                </div>
+                                                <div>
+                                                    <dt class="text-sm font-medium text-gray-500">Boîte de vitesse</dt>
+                                                    <dd class="mt-1 text-sm text-gray-900">Automatique</dd>
+                                                </div>
+                                                <div>
+                                                    <dt class="text-sm font-medium text-gray-500">Kilométrage</dt>
+                                                    <dd class="mt-1 text-sm text-gray-900">24,568 km</dd>
+                                                </div>
+                                                <div>
+                                                    <dt class="text-sm font-medium text-gray-500">Couleur</dt>
+                                                    <dd class="mt-1 text-sm text-gray-900">Gris métallisé</dd>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Features section -->
+                                    <div class="mt-6">
+                                        <h4 class="text-sm font-medium text-gray-500 mb-3">Équipements</h4>
+                                        <div class="grid grid-cols-2 md:grid-cols-3 gap-y-2 gap-x-4">
+                                            <div class="flex items-center text-sm text-gray-600">
+                                                <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                <span>GPS</span>
+                                            </div>
+                                            <div class="flex items-center text-sm text-gray-600">
+                                                <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                <span>Bluetooth</span>
+                                            </div>
+                                            <div class="flex items-center text-sm text-gray-600">
+                                                <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                <span>Climatisation</span>
+                                            </div>
+                                            <div class="flex items-center text-sm text-gray-600">
+                                                <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                <span>Caméra de recul</span>
+                                            </div>
+                                            <div class="flex items-center text-sm text-gray-600">
+                                                <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                <span>Sièges chauffants</span>
+                                            </div>
+                                            <div class="flex items-center text-sm text-gray-600">
+                                                <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                <span>Apple CarPlay</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-span-12 xl:col-span-6">
-                                <div class="box">
-                                    <div class="box-body space-y-3">
-                                        <h5 class="box-title leading-none flex"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Vehicule Informations</h5>
-                                        <div class="grid grid-cols-12 gap-4 mb-5">
+                            <!-- Pickup & Return -->
+                            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                                <div class="p-6">
+                                    <h3 class="text-base font-semibold text-gray-900 mb-4">Prise en charge et retour</h3>
 
-                                            <div class="col-span-12 lg:col-span-12">
-                                               <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Voiture</label>
-                                                    <select class="my-auto ti-form-select" name="vehicule" id="voiture_select" required>
-                                                        <option value="" disabled selected>Choisissez une voiture </option>
-                                                        <!-- Ajoutez dynamiquement les années si besoin -->
-                                                        @foreach($cars as $car)
-                                                            <option value="{{ $car->id }}" data-value="{{ $car->prix_location }}">{{ $car->name }}</option>
-                                                        @endforeach
-                                                    </select>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <!-- Pickup -->
+                                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                            <div class="flex items-start">
+                                                <div class="flex-shrink-0">
+                                                    <div class="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-indigo-100 text-indigo-600">
+                                                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                                        </svg>
+                                                    </div>
                                                 </div>
-
-                                            </div>
-
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Date de Location</label>
-
-                                                    <input type="text"
-                                                           class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
-                                                           id="limitdatetime" name="date_debut" placeholder="Choississez une date" readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Date de Retour</label>
-
-                                                    <input type="text"
-                                                           class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
-                                                           id="limitdatetimes" name="date_retour" placeholder="Choississez une date" readonly>
-
-                                                    <input type="hidden" name="jours" value="0" id="jours">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-span-12 lg:col-span-12">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Type de Location</label>
-                                                    <select name="type_loca" class="ti-form-select product-search"
-                                                        required>
-                                                        <option value="courte"
-                                                            {{ old('type_loca') == 'courte' ? 'selected' : '' }}>
-                                                            Courte</option>
-                                                        <option value="longue"
-                                                            {{ old('type_loca') == 'longue' ? 'selected' : '' }}>
-                                                            Longue</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2">
-                                                    <label class="ti-form-label mb-0">Livraison ? </label>
-                                                    <div class="grid sm:grid-cols-2 gap-2">
-                                                        <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
-                                                            <span class="text-sm text-gray-500 dark:text-white/70">Oui</span>
-                                                            <input type="radio" value="true" name="livraison" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="livraisonOn">
-                                                        </label>
-
-                                                        <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
-                                                            <span class="text-sm text-gray-500 dark:text-white/70">Non</span>
-                                                            <input type="radio" value="false" name="livraison" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="livraisonOff" checked>
-                                                        </label>
+                                                <div class="ml-4">
+                                                    <h4 class="text-sm font-medium text-gray-900">Prise en charge</h4>
+                                                    <div class="mt-2 text-sm text-gray-600">
+                                                        <p class="font-medium">17 Mars 2025, 10:00</p>
+                                                        <p class="mt-1">Agence Centrale<br>123 Avenue des Champs-Élysées, Paris</p>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2">
-                                                    <label class="ti-form-label mb-0">Commission ? </label>
-                                                    <div class="grid sm:grid-cols-2 gap-2">
-                                                        <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
-                                                            <span class="text-sm text-gray-500 dark:text-white/70">Oui</span>
-                                                            <input type="radio" value="true" name="comission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comission)n">
-                                                        </label>
-
-                                                        <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
-                                                            <span class="text-sm text-gray-500 dark:text-white/70">Non</span>
-                                                            <input type="radio" value="false" name="comission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comissionOff" checked>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2">
-                                                    <label class="ti-form-label">Etats Vehicule Avant Location</label>
-                                                    <select name="etat_avant" class="ti-form-select" id="panne_select" required >
-                                                        <option disabled selected>Choisissez</option>
-                                                    </select>
-                                                    <p class="text-sm text-gray-500 mt-2 dark:text-white/70 tett">Ajouter un etat si pas disponible</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-span-12 lg:col-span-6">
-                                                <div class="space-y-2">
-                                                    <label class="ti-form-label">Etats Vehicule Apres Location</label>
-                                                    <select name="etat_apres" class="ti-form-select" id="panne_selects" required >
-                                                        <option disabled selected>Choisissez</option>
-                                                    </select>
-                                                </div>
-                                                <p class="text-sm text-gray-500 mt-2 dark:text-white/70 tett" id="hs-input-helper-text">Ajouter un etat si pas disponible</p>
-                                            </div>
-
                                         </div>
-                                        <br>
-                                        <h5 class="box-title leading-none flex my-7"><i class="ri ri-shield-user-line ltr:mr-2 rtl:ml-2"></i> Paiement Information</h5>
-                                        <div class="grid grid-cols-12 gap-4">
 
-                                            <div class="col-span-12 lg:col-span-12">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Methode de paiement</label>
-                                                    <select class="my-auto ti-form-select" name="method_paie" required>
-                                                        <option value="" disabled selected>Choisissez une methode de paiement </option>
-                                                        <option value="cash">Cash</option>
-                                                        <option value="mobile money">Mobile Money</option>
-                                                    </select>
+                                        <!-- Return -->
+                                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                            <div class="flex items-start">
+                                                <div class="flex-shrink-0">
+                                                    <div class="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-indigo-100 text-indigo-600">
+                                                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                                        </svg>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-span-12 lg:col-span-4">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Montant à payer</label>
-                                                    <div class="relative">
-                                                        <input type="text" name="mntant_a_payer"
-                                                               value="{{ old('mntant_a_payer') }}"
-                                                               class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
-                                                               placeholder="10000" required>
-                                                        <div
-                                                            class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center pointer-events-none z-20 ltr:pl-4 rtl:pr-4">
-                                                            <span class="text-gray-500 dark:text-white/70"></span>
-                                                        </div>
-                                                        <div
-                                                            class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center pointer-events-none z-20 ltr:pr-4 rtl:pl-4">
-                                                            <span class="text-gray-500 dark:text-white/70">F CFA</span>
-                                                        </div>
+                                                <div class="ml-4">
+                                                    <h4 class="text-sm font-medium text-gray-900">Retour</h4>
+                                                    <div class="mt-2 text-sm text-gray-600">
+                                                        <p class="font-medium">24 Mars 2025, 10:00</p>
+                                                        <p class="mt-1">Agence Centrale<br>123 Avenue des Champs-Élysées, Paris</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-span-12 lg:col-span-4">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Montant payé</label>
-                                                    <div class="relative">
-                                                        <input type="text" name="mntant_paye"
-                                                               value="{{ old('mntant_paye') }}"
-                                                               class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
-                                                               placeholder="10000" required>
-                                                        <div
-                                                            class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center pointer-events-none z-20 ltr:pl-4 rtl:pr-4">
-                                                            <span class="text-gray-500 dark:text-white/70"></span>
-                                                        </div>
-                                                        <div
-                                                            class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center pointer-events-none z-20 ltr:pr-4 rtl:pl-4">
-                                                            <span class="text-gray-500 dark:text-white/70">F CFA</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Special requests -->
+                                    <div class="mt-6">
+                                        <h4 class="text-sm font-medium text-gray-500 mb-2">Demandes spéciales</h4>
+                                        <div class="bg-yellow-50 border border-yellow-100 rounded-lg p-4">
+                                            <p class="text-sm text-yellow-800">
+                                                Le client a demandé un siège enfant pour un enfant de 3 ans.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Rental status history -->
+                            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                                <div class="p-6">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h3 class="text-base font-semibold text-gray-900">Historique des statuts</h3>
+                                        <button class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                            Voir tout
+                                        </button>
+                                    </div>
+
+                                    <div class="overflow-hidden">
+                                        <table class="min-w-full divide-y divide-gray-200">
+                                            <thead class="bg-gray-50">
+                                            <tr>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Utilisateur</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Commentaire</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="bg-white divide-y divide-gray-200">
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">16/03/2025 14:32</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <span class="px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-blue-100 text-blue-800">Paiement reçu</span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Système</td>
+                                                <td class="px-6 py-4 text-sm text-gray-500">Paiement en ligne confirmé</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">15/03/2025 18:05</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <span class="px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-yellow-100 text-yellow-800">En attente</span>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Système</td>
+                                                <td class="px-6 py-4 text-sm text-gray-500">Réservation créée, en attente de paiement</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Side column -->
+                        <div class="space-y-6">
+                            <!-- Customer info -->
+                            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                                <div class="p-6">
+                                    <h3 class="text-base font-semibold text-gray-900 mb-4">Informations client</h3>
+
+                                    <div class="flex items-center">
+                                        <div class="flex-shrink-0">
+                                            <img class="h-12 w-12 rounded-full" src="/api/placeholder/48/48" alt="Photo du client">
+                                        </div>
+                                        <div class="ml-4">
+                                            <h4 class="text-sm font-medium text-gray-900">Jean Dupont</h4>
+                                            <p class="text-sm text-gray-500">Client depuis le 01/01/2024</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-5 border-t border-gray-200 pt-5">
+                                        <dl class="space-y-3">
+                                            <div class="flex justify-between">
+                                                <dt class="text-sm font-medium text-gray-500">Email</dt>
+                                                <dd class="text-sm text-gray-900">jean.dupont@exemple.fr</dd>
                                             </div>
-                                            <div class="col-span-12 lg:col-span-4">
-                                                <div class="space-y-2  product-1">
-                                                    <label class="ti-form-label mb-0">Reste à payer</label>
-                                                    <div class="relative">
-                                                        <input type="text" name="montant_restant"
-                                                               value="{{ old('montant_restant') }}"
-                                                               class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
-                                                               placeholder="10000" required readonly>
-                                                        <div
-                                                            class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center pointer-events-none z-20 ltr:pl-4 rtl:pr-4">
-                                                            <span class="text-gray-500 dark:text-white/70"></span>
-                                                        </div>
-                                                        <div
-                                                            class="absolute inset-y-0 ltr:right-0 rtl:left-0 flex items-center pointer-events-none z-20 ltr:pr-4 rtl:pl-4">
-                                                            <span class="text-gray-500 dark:text-white/70">F CFA</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="flex justify-between">
+                                                <dt class="text-sm font-medium text-gray-500">Téléphone</dt>
+                                                <dd class="text-sm text-gray-900">+33 6 12 34 56 78</dd>
                                             </div>
+                                            <div class="flex justify-between">
+                                                <dt class="text-sm font-medium text-gray-500">N° de permis</dt>
+                                                <dd class="text-sm text-gray-900">123456789AB</dd>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <dt class="text-sm font-medium text-gray-500">Date de naissance</dt>
+                                                <dd class="text-sm text-gray-900">15/07/1985</dd>
+                                            </div>
+                                        </dl>
+                                    </div>
+
+                                    <div class="mt-5">
+                                        <button class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                                            </svg>
+                                            Voir toutes les locations
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Payment details -->
+                            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                                <div class="p-6">
+                                    <h3 class="text-base font-semibold text-gray-900 mb-4">Détails du paiement</h3>
+
+                                    <div class="bg-gray-50 rounded-lg p-4 mb-5">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <p class="text-sm font-medium text-gray-900">Montant total</p>
+                                                <p class="text-xs text-gray-500">TVA incluse</p>
+                                            </div>
+                                            <span class="text-lg font-bold text-indigo-600">385,00 €</span>
+                                        </div>
+
+                                        <div class="mt-4 pt-4 border-t border-gray-200">
+                                            <div class="text-sm font-medium text-gray-500 mb-2">Payé avec</div>
+                                            <div class="flex items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                                                </svg>
+                                                <span class="ml-2 text-sm text-gray-700">Carte Visa •••• 4242</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between text-sm">
+                                            <span class="text-gray-500">Prix journalier</span>
+                                            <span class="text-gray-900">55,00 €</span>
+                                        </div>
+                                        <div class="flex justify-between text-sm">
+                                            <span class="text-gray-500">Nombre de jours</span>
+                                            <span class="text-gray-900">7</span>
+                                        </div>
+                                        <div class="flex justify-between text-sm">
+                                            <span class="text-gray-500">Sous-total location</span>
+                                            <span class="text-gray-900">385,00 €</span>
+                                        </div>
+                                        <div class="flex justify-between text-sm">
+                                            <span class="text-gray-500">Assurance tous risques</span>
+                                            <span class="text-gray-900">70,00 €</span>
+                                        </div>
+                                        <div class="flex justify-between text-sm">
+                                            <span class="text-gray-500">Équipements supplémentaires</span>
+                                            <span class="text-gray-900">0,00 €</span>
+                                        </div>
+                                        <div class="flex justify-between text-sm pb-3 border-b border-gray-200">
+                                            <span class="text-gray-500">Réduction (15%)</span>
+                                            <span class="text-red-600">-70,00 €</span>
+                                        </div>
+                                        <div class="flex justify-between text-sm font-semibold pt-1">
+                                            <span class="text-gray-900">Total</span>
+                                            <span class="text-indigo-600">385,00 €</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-5">
+                                        <button class="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                                            </svg>
+                                            Générer la facture
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Actions card -->
+                            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                                <div class="p-6">
+                                    <h3 class="text-base font-semibold text-gray-900 mb-4">Actions</h3>
+
+                                    <div class="space-y-3">
+                                        <button class="w-full flex items-center justify-between px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <span class="flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                  </svg>
+                  Modifier la réservation
+                </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
+
+                                        <button class="w-full flex items-center justify-between px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <span class="flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Changer les dates
+                </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
+
+                                        <button class="w-full flex items-center justify-between px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <span class="flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  </svg>
+                  Ajouter un paiement
+                </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
+
+                                        <button class="w-full flex items-center justify-between px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-red-600 bg-white hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                <span class="flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                  Annuler la réservation
+                </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Notes -->
+                            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                                <div class="p-6">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h3 class="text-base font-semibold text-gray-900">Notes</h3>
+                                        <button class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                            Ajouter
+                                        </button>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                                            <div class="flex justify-between">
+                                                <p class="text-sm font-medium text-gray-900">Sarah Martin</p>
+                                                <p class="text-xs text-gray-500">16/03/2025 15:45</p>
+                                            </div>
+                                            <p class="mt-2 text-sm text-gray-600">
+                                                Le client a appelé pour confirmer la disponibilité du siège enfant. J'ai confirmé que ce sera mis à disposition.
+                                            </p>
+                                        </div>
+
+                                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                                            <div class="flex justify-between">
+                                                <p class="text-sm font-medium text-gray-900">Thomas Richard</p>
+                                                <p class="text-xs text-gray-500">15/03/2025 18:30</p>
+                                            </div>
+                                            <p class="mt-2 text-sm text-gray-600">
+                                                Client fidèle, propose-lui une mise à niveau gratuite si disponible à l'agence.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4">
+                                        <div class="relative">
+                                            <textarea rows="3" class="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm" placeholder="Ajouter une note..."></textarea>
+                                            <button class="absolute bottom-2 right-2 inline-flex items-center justify-center h-8 w-8 rounded-full bg-indigo-600 text-white hover:bg-indigo-700">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                                </svg>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="box-footer text-end border-t-0 px-0">
-
-                        <button type="submit" class="ti-btn ti-btn-primary"><i
-                                class="ri-add-line"></i>Enregistrer</button>
-
-                        <button type="reset" class="ti-btn ti-btn-danger"><i
-                                class="ri-delete-bin-line"></i>Annuler</button>
-
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

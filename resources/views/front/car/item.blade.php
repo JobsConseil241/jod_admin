@@ -1454,7 +1454,7 @@
                 // Validation finale
                 if (validateStep(5)) {
                     alert('Votre réservation a été confirmée! Vous recevrez un email de confirmation.');
-                    form.submit(); // Décommentez pour soumettre le formulaire
+                    form.submit();
                 }
             });
         });
