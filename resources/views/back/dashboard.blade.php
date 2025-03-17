@@ -9,8 +9,6 @@
     <!-- Page Header -->
     <div class="block justify-between page-header md:flex">
         <div>
-            <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
-                Tableau de Bord</h3>
         </div>
         <ol class="flex items-center whitespace-nowrap min-w-0">
             <li class="text-sm">
@@ -29,7 +27,7 @@
     <!-- Page Header Close -->
 
     <!-- Start::row-2 -->
-    <div class="p-6">
+    <div class="px-0">
         <!-- Page Header -->
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
             <div>
