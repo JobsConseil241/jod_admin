@@ -377,7 +377,7 @@
                                         </div>
                                         <div class="flex justify-between text-sm">
                                             <span class="text-gray-500">Nombre de jours</span>
-                                            <span class="text-gray-900">{{ $booking->vehicule->jours }}</span>
+                                            <span class="text-gray-900">{{ $booking->jours }}</span>
                                         </div>
                                         <div class="flex justify-between text-sm">
                                             <span class="text-gray-500">Assurance tous risques</span>
