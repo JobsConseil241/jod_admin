@@ -401,6 +401,110 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Rentabilité par véhicule -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden mt-6">
+                    <div class="px-6 py-5 border-b border-gray-200">
+                        <h3 class="text-lg font-medium text-gray-900">Rentabilité par véhicule</h3>
+                        <p class="mt-1 text-sm text-gray-500">Rapport entre revenus générés et coûts de maintenance</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Véhicule</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Revenus</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Coûts maintenance</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rentabilité</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Taux</th>
+                                </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                @foreach($vehicleProfitability as $vehicle)
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                @if($vehicle['image'])
+                                                    <div class="flex-shrink-0 h-10 w-10">
+                                                        <img class="h-10 w-10 rounded-md object-cover" src="{{ asset($vehicle['image']) }}" alt="{{ $vehicle['name'] }}">
+                                                    </div>
+                                                @else
+                                                    <div class="flex-shrink-0 h-10 w-10 bg-gray-100 rounded-md flex items-center justify-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a2 2 0 01-2 2H9m11-3a2 2 0 01-2 2h-1" />
+                                                        </svg>
+                                                    </div>
+                                                @endif
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900">{{ $vehicle['name'] }}</div>
+                                                    <div class="text-sm text-gray-500">{{ $vehicle['brand'] }} | {{ $vehicle['model'] }}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            {{ number_format($vehicle['revenue'], 0, ',', ' ') }} FCFA
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            {{ number_format($vehicle['maintenance_cost'], 0, ',', ' ') }} FCFA
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm">
+                            <span class="{{ $vehicle['profitability'] >= 0 ? 'text-green-600 font-medium' : 'text-red-600 font-medium' }}">
+                                {{ number_format($vehicle['profitability'], 0, ',', ' ') }} FCFA
+                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                @if($vehicle['profitability_rate'] >= 50)
+                                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    {{ $vehicle['profitability_rate'] }}%
+                                </span>
+                                                @elseif($vehicle['profitability_rate'] >= 20)
+                                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                    {{ $vehicle['profitability_rate'] }}%
+                                </span>
+                                                @else
+                                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                    {{ $vehicle['profitability_rate'] }}%
+                                </span>
+                                                @endif
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analyse de la saisonnalité -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden mt-6">
+                    <div class="px-6 py-5 border-b border-gray-200">
+                        <h3 class="text-lg font-medium text-gray-900">Analyse de la saisonnalité</h3>
+                        <p class="mt-1 text-sm text-gray-500">Tendances mensuelles des revenus sur plusieurs années</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-4 flex items-center space-x-4">
+                            @foreach($seasonality['years'] as $year)
+                                <div class="flex items-center">
+                                    <div class="h-3 w-3 rounded-full mr-1" style="background-color: {{ $seasonality['datasets'][$loop->index]['color'] }}"></div>
+                                    <span class="text-sm text-gray-600">{{ $year }}</span>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div id="seasonalityChart" class="h-80"></div>
+
+                        <div class="mt-6">
+                            <h4 class="text-sm font-medium text-gray-700 mb-2">Insights</h4>
+                            <div class="bg-indigo-50 rounded-lg p-4 text-sm text-indigo-700">
+                                <p>Cette analyse vous permet d'identifier les périodes de haute et basse saison pour mieux planifier votre stratégie commerciale, les opérations de maintenance et l'ajustement des tarifs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -567,6 +671,133 @@
                 // In a real application, this would trigger an AJAX request to update the stats
                 alert('Changement de période : ' + this.options[this.selectedIndex].text);
             });
+
+            // Configuration du graphique de saisonnalité
+            const seasonalityChartOptions = {
+                series: [
+                        @foreach($seasonality['datasets'] as $dataset)
+                    {
+                        name: '{{ $dataset['year'] }}',
+                        data: [{{ implode(',', $dataset['data']) }}],
+                        color: '{{ $dataset['color'] }}'
+                    },
+                    @endforeach
+                ],
+                chart: {
+                    height: 320,
+                    type: 'line',
+                    dropShadow: {
+                        enabled: true,
+                        color: '#000',
+                        top: 18,
+                        left: 7,
+                        blur: 10,
+                        opacity: 0.1
+                    },
+                    toolbar: {
+                        show: false
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: 3
+                },
+                grid: {
+                    borderColor: '#E5E7EB',
+                    strokeDashArray: 4,
+                    xaxis: {
+                        lines: {
+                            show: true
+                        }
+                    },
+                    yaxis: {
+                        lines: {
+                            show: true
+                        }
+                    }
+                },
+                markers: {
+                    size: 5,
+                    hover: {
+                        size: 7
+                    }
+                },
+                xaxis: {
+                    categories: [
+                        @foreach($seasonality['labels'] as $label)
+                            '{{ $label }}',
+                        @endforeach
+                    ],
+                    labels: {
+                        style: {
+                            colors: '#6B7280',
+                            fontSize: '12px',
+                            fontFamily: 'Inter, sans-serif',
+                        }
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        formatter: function(value) {
+                            return value.toLocaleString() + ' FCFA';
+                        },
+                        style: {
+                            colors: '#6B7280',
+                            fontSize: '12px',
+                            fontFamily: 'Inter, sans-serif',
+                        }
+                    }
+                },
+                legend: {
+                    position: 'top',
+                    horizontalAlign: 'right',
+                    floating: true,
+                    offsetY: -25,
+                    offsetX: -5,
+                    showForSingleSeries: true,
+                    markers: {
+                        width: 10,
+                        height: 10,
+                        strokeWidth: 0,
+                        strokeColor: '#fff',
+                        radius: 12,
+                    }
+                },
+                tooltip: {
+                    shared: true,
+                    intersect: false,
+                    y: {
+                        formatter: function(value) {
+                            return value.toLocaleString() + ' FCFA';
+                        }
+                    }
+                }
+            };
+
+            const seasonalityChart = new ApexCharts(document.querySelector("#seasonalityChart"), seasonalityChartOptions);
+            seasonalityChart.render();
+
+            // Créer une interaction entre les deux graphiques
+            document.querySelector("#seasonalityChart").addEventListener('mouseenter', function() {
+                // Animation à l'entrée de la souris
+                seasonalityChart.updateOptions({
+                    chart: {
+                        animations: {
+                            enabled: true,
+                            easing: 'easeinout',
+                            speed: 800,
+                            dynamicAnimation: {
+                                enabled: true,
+                                speed: 350
+                            }
+                        }
+                    }
+                });
+            });
         });
+
     </script>
 @endpush

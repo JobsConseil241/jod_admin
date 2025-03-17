@@ -47,13 +47,18 @@ class DashboardController extends Controller
         // Informations sur la flotte
         $fleetInfo = $this->getFleetInfo();
 
+        $vehicleProfitability = $this->calculateVehicleProfitability();
+        $seasonality = $this->analyzeSeasonality();
+
         return view('back.dashboard', compact(
             'stats',
             'monthlyRevenue',
             'recentRentals',
             'categoryStats',
             'customerTypes',
-            'fleetInfo'
+            'fleetInfo',
+            'vehicleProfitability',
+            'seasonality'
         ));
     }
 
@@ -401,5 +406,133 @@ class DashboardController extends Controller
         ];
 
         return $fleetInfo;
+    }
+
+    /**
+     * Calcule la rentabilité pour chaque véhicule
+     * Revenus - Coûts de maintenance
+     */
+    private function calculateVehicleProfitability()
+    {
+        $vehicles = Vehicule::with(['locations', 'vehiculePannes'])
+            ->get();
+
+        $profitabilityData = [];
+
+        foreach ($vehicles as $vehicle) {
+            // Calculer les revenus générés par ce véhicule
+            $revenue = 0;
+            foreach ($vehicle->locations as $location) {
+                if ($location->paiement) {
+                    $revenue += $location->paiement->montant_paye;
+                }
+            }
+
+            // Calculer les coûts de maintenance
+            $maintenanceCost = 0;
+            foreach ($vehicle->vehiculePannes as $panne) {
+                $maintenanceCost += $panne->montant;
+            }
+
+            // Calculer la rentabilité
+            $profitability = $revenue - $maintenanceCost;
+            $profitabilityRate = ($revenue > 0) ? ($profitability / $revenue) * 100 : 0;
+
+            $profitabilityData[] = [
+                'id' => $vehicle->id,
+                'name' => $vehicle->name ?? $vehicle->modele,
+                'brand' => $vehicle->marque->name ?? 'N/A',
+                'model' => $vehicle->modele,
+                'revenue' => $revenue,
+                'maintenance_cost' => $maintenanceCost,
+                'profitability' => $profitability,
+                'profitability_rate' => round($profitabilityRate, 2),
+                'image' => $vehicle->vehiculeMedia->photo_avant ?? null
+            ];
+        }
+
+        // Trier par rentabilité décroissante
+        usort($profitabilityData, function ($a, $b) {
+            return $b['profitability'] <=> $a['profitability'];
+        });
+
+        return $profitabilityData;
+    }
+
+    /**
+     * Analyse la saisonnalité des revenus
+     * Montrant les tendances mensuelles sur plusieurs années
+     */
+    private function analyzeSeasonality()
+    {
+        // Déterminer la période d'analyse (années disponibles)
+        $firstPayment = Paiement::orderBy('created_at', 'asc')->first();
+        $lastPayment = Paiement::orderBy('created_at', 'desc')->first();
+
+        if (!$firstPayment || !$lastPayment) {
+            return [
+                'years' => [],
+                'labels' => [],
+                'datasets' => []
+            ];
+        }
+
+        $startYear = Carbon::parse($firstPayment->created_at)->year;
+        $endYear = Carbon::now()->year;
+
+        // Préparer les données par année et par mois
+        $monthlyData = [];
+        $yearlyData = [];
+
+        // Noms des mois en français
+        $monthNames = [
+            1 => 'Janvier', 2 => 'Février', 3 => 'Mars', 4 => 'Avril', 5 => 'Mai', 6 => 'Juin',
+            7 => 'Juillet', 8 => 'Août', 9 => 'Septembre', 10 => 'Octobre', 11 => 'Novembre', 12 => 'Décembre'
+        ];
+
+        // Initialiser le tableau avec des zéros pour tous les mois de toutes les années
+        for ($year = $startYear; $year <= $endYear; $year++) {
+            $yearlyData[$year] = [];
+            for ($month = 1; $month <= 12; $month++) {
+                $yearlyData[$year][$month] = 0;
+            }
+        }
+
+        // Récupérer les données réelles
+        $payments = Paiement::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, SUM(montant_paye) as revenue')
+            ->groupBy('year', 'month')
+            ->get();
+
+        foreach ($payments as $payment) {
+            if (isset($yearlyData[$payment->year][$payment->month])) {
+                $yearlyData[$payment->year][$payment->month] = $payment->revenue;
+            }
+        }
+
+        // Préparer les données pour le graphique
+        $datasets = [];
+        $colorPalette = [
+            $endYear => '#4F46E5',      // Indigo (année actuelle)
+            $endYear - 1 => '#60A5FA',  // Bleu
+            $endYear - 2 => '#34D399',  // Vert
+            $endYear - 3 => '#FBBF24',  // Jaune
+            $endYear - 4 => '#F87171',  // Rouge
+        ];
+
+        foreach ($yearlyData as $year => $monthData) {
+            $color = isset($colorPalette[$year]) ? $colorPalette[$year] : '#9CA3AF'; // Gris par défaut
+
+            $datasets[] = [
+                'year' => $year,
+                'data' => array_values($monthData),
+                'color' => $color
+            ];
+        }
+
+        return [
+            'years' => array_keys($yearlyData),
+            'labels' => array_values($monthNames),
+            'datasets' => $datasets
+        ];
     }
 }
