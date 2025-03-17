@@ -76,7 +76,7 @@
                                                     <option value="">-- Choisissez un Client --</option>
                                                     <!-- Ajoutez dynamiquement les années si besoin -->
                                                     @foreach($users as $user)
-                                                        <option value="{{ $user->id }}" @if($booking->client_associe->id == $user->id) selected@endif>{{ $user->first_name }} {{ $user->last_name }}</option>
+                                                        <option value="{{ $user->id }}" @if($booking->client_associe->id == $user->id) selected @endif>{{ $user->first_name }} {{ $user->last_name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
