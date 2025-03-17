@@ -414,7 +414,7 @@ class DashboardController extends Controller
      */
     private function calculateVehicleProfitability()
     {
-        $vehicles = Vehicule::with(['locations', 'pannes'])
+        $vehicles = Vehicule::with(['locations.paiementAssocie', 'pannes'])
             ->get();
 
         $profitabilityData = [];
@@ -423,8 +423,8 @@ class DashboardController extends Controller
             // Calculer les revenus générés par ce véhicule
             $revenue = 0;
             foreach ($vehicle->locations as $location) {
-                if ($location->paiement) {
-                    $revenue += $location->paiement->montant_paye;
+                if ($location->paiementAssocie) {
+                    $revenue += $location->paiementAssocie->montant_paye;
                 }
             }
 
@@ -486,8 +486,8 @@ class DashboardController extends Controller
 
         // Noms des mois en français
         $monthNames = [
-            1 => 'Janvier', 2 => 'Février', 3 => 'Mars', 4 => 'Avril', 5 => 'Mai', 6 => 'Juin',
-            7 => 'Juillet', 8 => 'Août', 9 => 'Septembre', 10 => 'Octobre', 11 => 'Novembre', 12 => 'Décembre'
+            1 => 'Jan', 2 => 'Fé', 3 => 'Ma', 4 => 'Avr.', 5 => 'Mai', 6 => 'Juin',
+            7 => 'Juil', 8 => 'Août', 9 => 'Sept', 10 => 'Oct', 11 => 'Nov', 12 => 'Déc'
         ];
 
         // Initialiser le tableau avec des zéros pour tous les mois de toutes les années
