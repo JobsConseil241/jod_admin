@@ -52,7 +52,7 @@
         </div>
 
         <!-- Stats Overview Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-5 mb-6">
             <!-- Total Revenue Card -->
             <div class="bg-white rounded-xl shadow-sm overflow-hidden">
                 <div class="p-5">
