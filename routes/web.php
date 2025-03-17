@@ -164,7 +164,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('booking/detail/{reference}', [BookingController::class, 'get_detail_booking'])->name('backend.booking.details');
 
-        Route::get('booking/detail/{reference}/edit', [BookingController::class, 'get_details_booking'])->name('backend.booking.details.view');
+        Route::get('booking/detail/{reference}/edit', [BookingController::class, 'get_details_booking_edit'])->name('backend.booking.details.view');
         Route::post('booking/detail/{reference}/edit', [BookingController::class, 'get_details_booking'])->name('backend.booking.details.update.value');
 //        Route::post('booking/detail/{reference}', [BookingController::class, 'add'])->name('backend.booking.add');
         Route::post('booking/add', [BookingController::class, 'Store'])->name('backend.booking.store');

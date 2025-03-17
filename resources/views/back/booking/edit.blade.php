@@ -37,7 +37,7 @@
     <div class="block justify-between page-header md:flex">
         <div>
             <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
-                Detail Location ({{ $booking->code_contrat }})</h3>
+                Modifier une Location #{{ $booking->code_contrat }}</h3>
         </div>
         <ol class="flex items-center whitespace-nowrap min-w-0">
             <li class="text-sm">
@@ -61,7 +61,7 @@
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
             <div class="box !bg-transparent border-0 shadow-none">
-                <form method="post" action="{{ route('backend.booking.details.update.value', ) }}">
+                <form method="post" action="{{ route('backend.booking.details.view', ['reference' => $reference]) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="box-body p-0">
                         <div class="grid grid-cols-12 gap-x-6">
@@ -72,40 +72,40 @@
                                         <div class="space-y-3">
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Client</label>
-                                                <select class="my-auto ti-form-select" name="client_id" id="">
-                                                    <option value="" selected disabled>-- Choisissez un Client --</option>
+                                                <select class="my-auto ti-form-select" name="client_id" id="client_id">
+                                                    <option value="">-- Choisissez un Client --</option>
                                                     <!-- Ajoutez dynamiquement les années si besoin -->
                                                     @foreach($users as $user)
-                                                        <option value="{{ $user->id }}" @if($user->id == $booking->client_id) selected @endif>{{ $user->first_name }} {{ $user->last_name }}</option>
+                                                        <option value="{{ $user->id }}" @if($booking->client_associe->id == $user->id) selected@endif>{{ $user->first_name }} {{ $user->last_name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Noms</label>
                                                 <input type="text" name="name" class="my-auto ti-form-input"
-                                                    placeholder="John" value="{{ old('name') ?? $booking->client_associe->first_name }}" required>
+                                                    placeholder="John" value="{{ old('name') ?? $booking->client_associe->first_name }} }}" required>
                                             </div>
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Prenoms</label>
                                                 <input type="text" name="surname" class="my-auto ti-form-input"
-                                                    placeholder="Doe" value="{{ old('surname') }}" required>
+                                                    placeholder="Doe" value="{{ old('surname') ?? $booking->client_associe->last_name }}" required>
                                             </div>
                                             <div class="space-y-2">
                                                 <label for="input-phone" class="ti-form-label">Téléphone</label>
-                                                <input type="tel" name="phone" id="phone" class="ti-form-input" required>
-                                                <input id="phone_code" type="hidden" name="phone_code" />
+                                                <input type="tel" name="phone" id="phone" class="ti-form-input" value="{{ old('phone') ?? $booking->client_associe->phone }}" required>
+                                                <input id="phone_code" type="hidden" name="phone_code"  value="{{ old('phone_code') ?? $booking->client_associe->phone_code }}"/>
                                             </div>
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Email</label>
                                                 <input type="text" name="email" class="my-auto ti-form-input"
-                                                       placeholder="johndoe@gmail.com" value="{{ old('email') }}" required>
+                                                       placeholder="johndoe@gmail.com" value="{{ old('email') ?? $booking->client_associe->email }}" required>
                                             </div>
                                             <div class="grid grid-cols-12 gap-4">
                                                 <div class="col-span-12 lg:col-span-6">
                                                     <div class="space-y-2 product-1">
                                                         <label class="ti-form-label mb-0">Adresse</label>
                                                         <input type="text" name="adresse" class="my-auto ti-form-input"
-                                                               placeholder="Centre Medico" value="{{ old('adresse') }}" required>
+                                                               placeholder="Centre Medico" value="{{ old('adresse') ?? $booking->client_associe->adresse }}" required>
 {{--                                                        <select name="category_id" class="ti-form-select" required>--}}
 {{--                                                               <option>Choisissez</option>--}}
 {{--                                                            @foreach ($categories as $item)--}}
@@ -121,7 +121,7 @@
                                                     <div class="space-y-2  product-1">
                                                         <label class="ti-form-label mb-0">Boite Postale</label>
                                                         <input type="text" name="bp" class="my-auto ti-form-input"
-                                                               placeholder="2376 rue de Cointet" value="{{ old('bp') }}">
+                                                               placeholder="2376 rue de Cointet" value="{{ old('bp') ?? $booking->client_associe->bp }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -138,7 +138,7 @@
                                                     <div class="space-y-2  product-1">
                                                         <label class="ti-form-label mb-0">Numero Piece</label>
                                                         <input type="text" name="npiece" class="my-auto ti-form-input"
-                                                               placeholder="23098IE" value="{{ old('npiece') }}">
+                                                               placeholder="23098IE" value="{{ old('npiece') ?? $booking->client_associe->numero_piece }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,10 +162,10 @@
                                                <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Voiture</label>
                                                     <select class="my-auto ti-form-select" name="vehicule" id="voiture_select" required>
-                                                        <option value="" disabled selected>Choisissez une voiture </option>
+                                                        <option value="" disabled>Choisissez une voiture </option>
                                                         <!-- Ajoutez dynamiquement les années si besoin -->
                                                         @foreach($cars as $car)
-                                                            <option value="{{ $car->id }}" data-value="{{ $car->prix_location }}">{{ $car->name }}</option>
+                                                            <option value="{{ $car->id }}" @if($booking->vehicule->id == $car->id) selected @endif data-value="{{ $car->prix_location }}">{{ $car->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -176,7 +176,7 @@
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Date de Location</label>
 
-                                                    <input type="text"
+                                                    <input type="text" value="{{ old('date_debut') ?? $booking->date_heure_debut }}"
                                                            class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
                                                            id="limitdatetime" name="date_debut" placeholder="Choississez une date" readonly>
                                                 </div>
@@ -186,7 +186,7 @@
                                                 <div class="space-y-2  product-1">
                                                     <label class="ti-form-label mb-0">Date de Retour</label>
 
-                                                    <input type="text"
+                                                    <input type="text" value="{{ old('date_retour') ?? $booking->date_heure_fin }}"
                                                            class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
                                                            id="limitdatetimes" name="date_retour" placeholder="Choississez une date" readonly>
 
@@ -200,10 +200,14 @@
                                                     <select name="type_loca" class="ti-form-select product-search"
                                                         required>
                                                         <option value="courte"
-                                                            {{ old('type_loca') == 'courte' ? 'selected' : '' }}>
+                                                            {{ old('type_loca') == 'courte' ? 'selected' : '' }}
+                                                            @selected($booking->type_location == 'courte')
+                                                        >
                                                             Courte</option>
                                                         <option value="longue"
-                                                            {{ old('type_loca') == 'longue' ? 'selected' : '' }}>
+                                                            {{ old('type_loca') == 'longue' ? 'selected' : '' }}
+                                                            @selected($booking->type_location == 'longue')
+                                                        >
                                                             Longue</option>
                                                     </select>
                                                 </div>
@@ -215,12 +219,12 @@
                                                     <div class="grid sm:grid-cols-2 gap-2">
                                                         <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
                                                             <span class="text-sm text-gray-500 dark:text-white/70">Oui</span>
-                                                            <input type="radio" value="true" name="livraison" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="livraisonOn">
+                                                            <input type="radio" value="true" name="livraison" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="livraisonOn" @checked($booking->livraison == 1)>
                                                         </label>
 
                                                         <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
                                                             <span class="text-sm text-gray-500 dark:text-white/70">Non</span>
-                                                            <input type="radio" value="false" name="livraison" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="livraisonOff" checked>
+                                                            <input type="radio" value="false" name="livraison" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="livraisonOff" @checked($booking->livraison == 0)>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -232,12 +236,12 @@
                                                     <div class="grid sm:grid-cols-2 gap-2">
                                                         <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
                                                             <span class="text-sm text-gray-500 dark:text-white/70">Oui</span>
-                                                            <input type="radio" value="true" name="comission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comission)n">
+                                                            <input type="radio" value="true" name="comission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comissionOn" @checked($booking->comission == 1)>
                                                         </label>
 
                                                         <label class="flex p-3 w-full bg-white border border-gray-200 rounded-sm text-sm focus:border-primary focus:ring-primary dark:bg-bgdark dark:border-white/10 dark:text-white/70">
                                                             <span class="text-sm text-gray-500 dark:text-white/70">Non</span>
-                                                            <input type="radio" value="false" name="comission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comissionOff" checked>
+                                                            <input type="radio" value="false" name="comission" class="ti-form-radio pointer-events-none ltr:ml-auto rtl:mr-auto" id="comissionOff" @checked($booking->comission == 0)>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -271,8 +275,8 @@
                                                     <label class="ti-form-label mb-0">Methode de paiement</label>
                                                     <select class="my-auto ti-form-select" name="method_paie" required>
                                                         <option value="" disabled selected>Choisissez une methode de paiement </option>
-                                                        <option value="cash">Cash</option>
-                                                        <option value="mobile money">Mobile Money</option>
+                                                        <option value="cash" @selected($booking->paiement_associe->methode_paiement == 'cash')>Cash</option>
+                                                        <option value="mobile money" @selected($booking->paiement_associe->methode_paiement == 'mobile money')>Mobile Money</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -281,7 +285,7 @@
                                                     <label class="ti-form-label mb-0">Montant à payer</label>
                                                     <div class="relative">
                                                         <input type="text" name="mntant_a_payer"
-                                                               value="{{ old('mntant_a_payer') }}"
+                                                               value="{{ old('mntant_a_payer') ?? $booking->paiement_associe->montant_total }}"
                                                                class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
                                                                placeholder="10000" required>
                                                         <div
@@ -300,7 +304,7 @@
                                                     <label class="ti-form-label mb-0">Montant payé</label>
                                                     <div class="relative">
                                                         <input type="text" name="mntant_paye"
-                                                               value="{{ old('mntant_paye') }}"
+                                                               value="{{ old('mntant_paye') ?? $booking->paiement_associe->montant_paye }}"
                                                                class="ti-form-input ltr:pl-9 ltr:pr-16 rtl:pr-9 rtl:pl-16 focus:z-10"
                                                                placeholder="10000" required>
                                                         <div
@@ -448,6 +452,61 @@
                 }
             });
         });
+
+        //LOAD USER DETAIL
+
+        // Écouter le changement sur le select client_id
+        $('#client_id').change(function() {
+            // Récupérer l'ID du client sélectionné
+            var clientId = $(this).val();
+
+            // Vérifier si un client a été sélectionné
+            if (clientId !== '') {
+                // Envoi de la requête AJAX
+                $.ajax({
+                    url: '/public/backend/user/detail/' + clientId,
+                    type: 'GET',
+                    dataType: 'json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                        data = data.user[0]
+                        // Remplir les champs avec les données reçues
+                        $('input[name="name"]').val(data.last_name || '');
+                        $('input[name="surname"]').val(data.first_name || '');
+                        $('input[name="phone"]').val(data.phone || '');
+                        $('input[name="phone_code"]').val(data.phone_code || '');
+                        $('input[name="email"]').val(data.email || '');
+                        $('input[name="adresse"]').val(data.adresse || '');
+                        $('input[name="bp"]').val(data.bp || '');
+                        $('input[name="npiece"]').val(data.numero_piece || '');
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Erreur lors de la récupération des données:', error);
+                        alert('Impossible de récupérer les informations du client. Veuillez réessayer.');
+                    }
+                });
+            } else {
+                // Réinitialiser le formulaire si aucun client n'est sélectionné
+                resetForm();
+            }
+        });
+
+        // Fonction pour réinitialiser le formulaire
+        function resetForm() {
+            $('input[name="name"]').val('');
+            $('input[name="surname"]').val('');
+            $('input[name="phone"]').val('');
+            $('input[name="phone_code"]').val('');
+            $('input[name="email"]').val('');
+            $('input[name="adresse"]').val('');
+            $('input[name="bp"]').val('');
+            $('input[name="npiece"]').val('');
+        }
+
+
 
         document.addEventListener('DOMContentLoaded', function() {
             // Récupérer les champs d'entrée

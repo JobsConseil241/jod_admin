@@ -116,7 +116,7 @@ class BookingController extends Controller
 
     }
 
-    public function get_details_booking(Request $request, $reference) {
+    public function get_details_booking_edit(Request $request, $reference) {
 
         $access_token = Session::get('personnalToken');
 
@@ -158,7 +158,7 @@ class BookingController extends Controller
 //            $users = [];
 //        }
 
-        return view('back.booking.edit', compact('booking', 'cars', 'users'));
+        return view('back.booking.edit', compact('booking', 'cars', 'users', 'reference'));
 
     }
 
