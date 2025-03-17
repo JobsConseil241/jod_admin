@@ -663,10 +663,10 @@
             customerDistributionChart.render();
 
             // Export functionality
-            document.getElementById('exportStats').addEventListener('click', function() {
-                // In a real application, this would trigger an AJAX request to download a report
-                alert('Exportation des statistiques en cours...');
-            });
+            // document.getElementById('exportStats').addEventListener('click', function() {
+            //     // In a real application, this would trigger an AJAX request to download a report
+            //     alert('Exportation des statistiques en cours...');
+            // });
 
             // Date filter functionality
             document.getElementById('dateFilter').addEventListener('change', function() {
