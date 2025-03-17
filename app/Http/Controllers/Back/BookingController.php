@@ -112,7 +112,7 @@ class BookingController extends Controller
 //            $users = [];
 //        }
 
-        return view('back.booking.detail', compact('booking', 'cars', 'users'));
+        return view('back.booking.detail', compact('booking', 'cars', 'users', 'reference'));
 
     }
 
