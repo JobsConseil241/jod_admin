@@ -684,6 +684,14 @@
             phonecodeInputField.value = codePays;
         });
 
+        if ($("#phone_code").val()) {
+            // Trouver le code ISO du pays à partir du code téléphonique
+            var countryCode = phoneInput.getCountryByDialCode($("#phone_code").val());
+            if (countryCode) {
+                phoneInput.setCountry(countryCode);
+            }
+        }
+
         $(document).on("click", ".edit_action", function() {
             var id = $(this).data('id');
             $.ajax({
@@ -734,18 +742,6 @@
                     $('#cardModalView').removeClass('hidden').addClass('open');
                 }
             });
-        });
-
-        $(document).ready(function() {
-
-            // Définir le pays initial en fonction du code pays
-            if ($("#phone_code").val()) {
-                // Trouver le code ISO du pays à partir du code téléphonique
-                var countryCode = phoneInput.getCountryByDialCode($("#phone_code").val());
-                if (countryCode) {
-                    phoneInput.setCountry(countryCode);
-                }
-            }
         });
 
     </script>
