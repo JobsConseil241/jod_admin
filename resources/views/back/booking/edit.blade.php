@@ -458,6 +458,7 @@
                 var voitureId = $("#voiture_select").val();
                 car_id = voitureId
                 $('#panne_select').empty();
+                $('#panne_selects').empty();
 
                 prixLocation = $('option:selected', this).data('value');
 
@@ -468,12 +469,14 @@
                         dataType: 'json',
                         success: function(data) {
                             $('#panne_select').append('<option value="">Sélectionnez un etat</option>');
+                            $('#panne_selects').append('<option value="">Sélectionnez un etat</option>');
 
                             $.each(data, function(key, panne) {
                                 var dateObj = new Date(panne.date);
                                 var formattedDate = formatDate(dateObj);
 
                                 $('#panne_select').append('<option value="' + panne.id + '"> Etat du ' + formattedDate + '</option>');
+                                $('#panne_selects').append('<option value="' + panne.id + '"> Etat du ' + formattedDate + '</option>');
                             });
 
                             $('.tett').each(function(index) {
@@ -492,6 +495,7 @@
                             });
 
                             $('#panne_select').prop('disabled', false);
+                            $('#panne_selects').prop('disabled', false);
 
                         },
                         error: function(xhr, status, error) {
@@ -501,6 +505,9 @@
                 } else {
                     $('#panne_select').prop('disabled', true);
                     $('#panne_select').append('<option value="">Sélectionnez d\'abord une voiture</option>');
+
+                    $('#panne_selects').prop('disabled', true);
+                    $('#panne_selects').append('<option value="">Sélectionnez d\'abord une voiture</option>');
                 }
             }
 
