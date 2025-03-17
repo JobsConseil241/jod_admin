@@ -83,7 +83,7 @@
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Noms</label>
                                                 <input type="text" name="name" class="my-auto ti-form-input"
-                                                    placeholder="John" value="{{ old('name') ?? $booking->client_associe->first_name }} }}" required>
+                                                    placeholder="John" value="{{ old('name') ?? $booking->client_associe->first_name }}" required>
                                             </div>
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Prenoms</label>
@@ -402,58 +402,116 @@
 
 
 
-            $('#voiture_select').on('change', function() {
-                var voitureId = $(this).val();
-                car_id = voitureId
-                $('#panne_select').empty();
+        //     $('#voiture_select').on('change', function() {
+        //         var voitureId = $(this).val();
+        //         car_id = voitureId
+        //         $('#panne_select').empty();
+        //
+        //         prixLocation = $('option:selected', this).data('value');
+        //
+        //         if(voitureId) {
+        //             $.ajax({
+        //                 url: '/public/backend/booking/car/pannes/' + voitureId + '/ajax',
+        //                 type: 'GET',
+        //                 dataType: 'json',
+        //                 success: function(data) {
+        //                     $('#panne_select').append('<option value="">Sélectionnez un etat</option>');
+        //
+        //                     $.each(data, function(key, panne) {
+        //                         var dateObj = new Date(panne.date);
+        //                         var formattedDate = formatDate(dateObj);
+        //
+        //                         $('#panne_select').append('<option value="' + panne.id + '"> Etat du ' + formattedDate + '</option>');
+        //                     });
+        //
+        //                     $('.tett').each(function(index) {
+        //                         // Créer un lien
+        //                         var lien = $('<a>', {
+        //                             href: '/public/backend/car/etat/' + voitureId,
+        //                             text: 'ICI',
+        //                             class: 'lien-ajouter-etat text-success',
+        //                             'data-index': index
+        //                         });
+        //
+        //                         $(this).empty().append(
+        //                             'Ajouter un état si pas disponible ',
+        //                             lien
+        //                         );
+        //                     });
+        //
+        //                     $('#panne_select').prop('disabled', false);
+        //
+        //                 },
+        //                 error: function(xhr, status, error) {
+        //                     console.error('Erreur lors du chargement des pannes:', error);
+        //                 }
+        //             });
+        //         } else {
+        //             $('#panne_select').prop('disabled', true);
+        //             $('#panne_select').append('<option value="">Sélectionnez d\'abord une voiture</option>');
+        //         }
+        //     });
+        // });
 
-                prixLocation = $('option:selected', this).data('value');
+        function updateDependentSelect() {
+            // Récupérer la valeur sélectionnée
+            var selectedValue = $("#voiture_select").val();
 
-                if(voitureId) {
-                    $.ajax({
-                        url: '/public/backend/booking/car/pannes/' + voitureId + '/ajax',
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            $('#panne_select').append('<option value="">Sélectionnez un etat</option>');
+            var voitureId = selectedValue.val();
+            car_id = voitureId
+            $('#panne_select').empty();
 
-                            $.each(data, function(key, panne) {
-                                var dateObj = new Date(panne.date);
-                                var formattedDate = formatDate(dateObj);
+            prixLocation = $('option:selected', this).data('value');
 
-                                $('#panne_select').append('<option value="' + panne.id + '"> Etat du ' + formattedDate + '</option>');
+            if(voitureId) {
+                $.ajax({
+                    url: '/public/backend/booking/car/pannes/' + voitureId + '/ajax',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#panne_select').append('<option value="">Sélectionnez un etat</option>');
+
+                        $.each(data, function(key, panne) {
+                            var dateObj = new Date(panne.date);
+                            var formattedDate = formatDate(dateObj);
+
+                            $('#panne_select').append('<option value="' + panne.id + '"> Etat du ' + formattedDate + '</option>');
+                        });
+
+                        $('.tett').each(function(index) {
+                            // Créer un lien
+                            var lien = $('<a>', {
+                                href: '/public/backend/car/etat/' + voitureId,
+                                text: 'ICI',
+                                class: 'lien-ajouter-etat text-success',
+                                'data-index': index
                             });
 
-                            $('.tett').each(function(index) {
-                                // Créer un lien
-                                var lien = $('<a>', {
-                                    href: '/public/backend/car/etat/' + voitureId,
-                                    text: 'ICI',
-                                    class: 'lien-ajouter-etat text-success',
-                                    'data-index': index
-                                });
+                            $(this).empty().append(
+                                'Ajouter un état si pas disponible ',
+                                lien
+                            );
+                        });
 
-                                $(this).empty().append(
-                                    'Ajouter un état si pas disponible ',
-                                    lien
-                                );
-                            });
+                        $('#panne_select').prop('disabled', false);
 
-                            $('#panne_select').prop('disabled', false);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Erreur lors du chargement des pannes:', error);
+                    }
+                });
+            } else {
+                $('#panne_select').prop('disabled', true);
+                $('#panne_select').append('<option value="">Sélectionnez d\'abord une voiture</option>');
+            }
+        }
 
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Erreur lors du chargement des pannes:', error);
-                        }
-                    });
-                } else {
-                    $('#panne_select').prop('disabled', true);
-                    $('#panne_select').append('<option value="">Sélectionnez d\'abord une voiture</option>');
-                }
-            });
-        });
+        // Appeler la fonction au chargement de la page
+        updateDependentSelect();
 
-        //LOAD USER DETAIL
+        // Appeler la fonction à chaque changement du select source
+        $("#voiture_select").on("change", updateDependentSelect);
+
 
         // Écouter le changement sur le select client_id
         $('#client_id').change(function() {
