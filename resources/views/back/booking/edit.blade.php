@@ -684,13 +684,20 @@
             phonecodeInputField.value = codePays;
         });
 
-        if ($("#phone_code").val()) {
-            // Trouver le code ISO du pays à partir du code téléphonique
-            var countryCode = phoneInput.getCountryByDialCode($("#phone_code").val());
-            if (countryCode) {
-                phoneInput.setCountry(countryCode);
+        setTimeout(function() {
+            // Récupérer le code pays depuis votre champ caché
+            var dialCode = $("#phone_code").val(); // Par exemple "241"
+
+            // Parcourir tous les pays disponibles pour trouver celui avec le bon code
+            var countryData = window.intlTelInputGlobals.getCountryData();
+            for (var i = 0; i < countryData.length; i++) {
+                if (countryData[i].dialCode == dialCode) {
+                    // Définir le pays à l'aide du code ISO
+                    phoneInput.setCountry(countryData[i].iso2);
+                    break;
+                }
             }
-        }
+        }, 500);
 
         $(document).on("click", ".edit_action", function() {
             var id = $(this).data('id');
