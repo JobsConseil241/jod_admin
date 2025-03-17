@@ -117,11 +117,11 @@
                             <div class="bg-gray-50 grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-gray-200">
                                 <div class="px-6 py-5">
                                     <dt class="text-sm font-medium text-gray-500">Date de début</dt>
-                                    <dd class="mt-1 text-base font-semibold text-gray-900">{{ Carbon::parse($booking->date_heure_debut)->locale('fr')->isoFormat('D MMMM YYYY H:i:s')  }}</dd>
+                                    <dd class="mt-1 text-base font-semibold text-gray-900">{{ Carbon::parse($booking->date_heure_debut)->locale('fr')->isoFormat('D MMMM YYYY [à] HH[h]mm')  }}</dd>
                                 </div>
                                 <div class="px-6 py-5">
                                     <dt class="text-sm font-medium text-gray-500">Date de fin</dt>
-                                    <dd class="mt-1 text-base font-semibold text-gray-900">{{ Carbon::parse($booking->date_heure_fin)->locale('fr')->isoFormat('D MMMM YYYY H:i:s')  }}</dd>
+                                    <dd class="mt-1 text-base font-semibold text-gray-900">{{ Carbon::parse($booking->date_heure_fin)->locale('fr')->isoFormat('D MMMM YYYY [à] HH[h]mm')  }}</dd>
                                 </div>
                                 <div class="px-6 py-5">
                                     <dt class="text-sm font-medium text-gray-500">Durée</dt>
@@ -146,7 +146,7 @@
 
                                     <div class="flex flex-col sm:flex-row">
                                         <div class="flex-shrink-0 sm:w-48 mb-4 sm:mb-0">
-                                            <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-gray-200">
+                                            <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-gray-200 px-5">
                                                 <img class="w-full h-auto object-cover" src="{{ url($booking->vehicule->vehicule_medias[0]->photo_avant) }}" alt="Volkswagen Golf">
                                             </div>
                                         </div>
@@ -194,42 +194,18 @@
                                     <div class="mt-6">
                                         <h4 class="text-sm font-medium text-gray-500 mb-3">Équipements</h4>
                                         <div class="grid grid-cols-2 md:grid-cols-3 gap-y-2 gap-x-4">
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                                </svg>
-                                                <span>GPS</span>
-                                            </div>
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                                </svg>
-                                                <span>Bluetooth</span>
-                                            </div>
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                                </svg>
-                                                <span>Climatisation</span>
-                                            </div>
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                                </svg>
-                                                <span>Caméra de recul</span>
-                                            </div>
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                                </svg>
-                                                <span>Sièges chauffants</span>
-                                            </div>
-                                            <div class="flex items-center text-sm text-gray-600">
-                                                <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                                </svg>
-                                                <span>Apple CarPlay</span>
-                                            </div>
+                                            @if($car->latestEtat)
+                                                @foreach ($car->latestEtat->toArray() as $key => $value)
+                                                    @if ($value === 1)
+                                                        <div class="flex items-center text-sm text-gray-600">
+                                                            <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                            </svg>
+                                                            <span>{{ str_replace('_', ' ', $key) }}</span>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -254,8 +230,8 @@
                                                 <div class="ml-4">
                                                     <h4 class="text-sm font-medium text-gray-900">Prise en charge</h4>
                                                     <div class="mt-2 text-sm text-gray-600">
-                                                        <p class="font-medium">17 Mars 2025, 10:00</p>
-                                                        <p class="mt-1">Agence Centrale<br>123 Avenue des Champs-Élysées, Paris</p>
+                                                        <p class="font-medium">{{ Carbon::parse($booking->date_heure_debut)->locale('fr')->isoFormat('D MMMM YYYY [à] HH[h]mm')  }}</p>
+                                                        <p class="mt-1">Agence Centrale<br>Avenue de Cointet, Libreville</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -274,8 +250,8 @@
                                                 <div class="ml-4">
                                                     <h4 class="text-sm font-medium text-gray-900">Retour</h4>
                                                     <div class="mt-2 text-sm text-gray-600">
-                                                        <p class="font-medium">24 Mars 2025, 10:00</p>
-                                                        <p class="mt-1">Agence Centrale<br>123 Avenue des Champs-Élysées, Paris</p>
+                                                        <p class="font-medium">{{ Carbon::parse($booking->date_heure_fin)->locale('fr')->isoFormat('D MMMM YYYY [à] HH[h]mm')  }}</p>
+                                                        <p class="mt-1">Agence Centrale<br>Avenue de Cointet, Libreville</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -285,11 +261,11 @@
                                     <!-- Special requests -->
                                     <div class="mt-6">
                                         <h4 class="text-sm font-medium text-gray-500 mb-2">Demandes spéciales</h4>
-                                        <div class="bg-yellow-50 border border-yellow-100 rounded-lg p-4">
-                                            <p class="text-sm text-yellow-800">
-                                                Le client a demandé un siège enfant pour un enfant de 3 ans.
-                                            </p>
-                                        </div>
+{{--                                        <div class="bg-yellow-50 border border-yellow-100 rounded-lg p-4">--}}
+{{--                                            <p class="text-sm text-yellow-800">--}}
+{{--                                                Le client a demandé un siège enfant pour un enfant de 3 ans.--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
                                     </div>
                                 </div>
                             </div>
