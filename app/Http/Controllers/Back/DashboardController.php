@@ -266,7 +266,7 @@ class DashboardController extends Controller
      */
     private function getRecentRentals()
     {
-        $recentRentals = Location::with(['client', 'vehicule', 'paiement'])
+        $recentRentals = Location::with(['client_associe', 'vehicule', 'paiement'])
             ->orderBy('created_at', 'desc')
             ->take(5)
             ->get()
@@ -292,7 +292,7 @@ class DashboardController extends Controller
 
                 return [
                     'id' => $location->code_contrat,
-                    'client' => $location->client->first_name . ' ' . $location->client->last_name,
+                    'client' => $location->client_associe->first_name . ' ' . $location->client_associe->last_name,
                     'vehicle' => $location->vehicule->name ?? $location->vehicule->modele,
                     'start_date' => Carbon::parse($location->date_heure_debut)->format('d/m/Y'),
                     'end_date' => Carbon::parse($location->date_heure_fin)->format('d/m/Y'),
