@@ -235,6 +235,164 @@
                 </div>
             </div>
 
+
+            <!-- Fleet Info Card -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                <div class="px-6 py-5 border-b border-gray-200">
+                    <h3 class="text-lg font-medium text-gray-900">Informations sur la flotte</h3>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm font-medium text-gray-500">Total des véhicules</span>
+                        <span class="text-lg font-semibold text-gray-900">{{ $fleetInfo['total'] }}</span>
+                    </div>
+                    <div class="space-y-4">
+                        <!-- Par catégorie -->
+                        <div>
+                            <h4 class="text-sm font-medium text-gray-500 mb-2">Par catégorie</h4>
+                            <div class="space-y-2">
+                                @foreach($fleetInfo['by_category'] as $category)
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-gray-600">{{ $category->name }}</span>
+                                        <span class="text-sm font-medium text-gray-900">{{ $category->count }}</span>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- Par marque -->
+                        <div>
+                            <h4 class="text-sm font-medium text-gray-500 mb-2">Par marque</h4>
+                            <div class="space-y-2">
+                                @foreach($fleetInfo['by_brand'] as $brand)
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-gray-600">{{ $brand->name }}</span>
+                                        <span class="text-sm font-medium text-gray-900">{{ $brand->count }}</span>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- Par type de carburant -->
+                        <div>
+                            <h4 class="text-sm font-medium text-gray-500 mb-2">Par carburant</h4>
+                            <div class="space-y-2">
+                                @foreach($fleetInfo['by_fuel'] as $fuel)
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm text-gray-600">{{ ucfirst($fuel->type_carburant) }}</span>
+                                        <span class="text-sm font-medium text-gray-900">{{ $fuel->count }}</span>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rentabilité par véhicule -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden mt-6">
+                <div class="px-6 py-5 border-b border-gray-200">
+                    <h3 class="text-lg font-medium text-gray-900">Rentabilité par véhicule</h3>
+                    <p class="mt-1 text-sm text-gray-500">Rapport entre revenus générés et coûts de maintenance</p>
+                </div>
+                <div class="p-6">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Véhicule</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Revenus</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Coûts maintenance</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rentabilité</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Taux</th>
+                            </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                            @foreach($vehicleProfitability as $vehicle)
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            @if($vehicle['image'])
+                                                <div class="flex-shrink-0 h-10 w-10">
+                                                    <img class="h-10 w-10 rounded-md object-cover" src="{{ asset($vehicle['image']) }}" alt="{{ $vehicle['name'] }}">
+                                                </div>
+                                            @else
+                                                <div class="flex-shrink-0 h-10 w-10 bg-gray-100 rounded-md flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a2 2 0 01-2 2H9m11-3a2 2 0 01-2 2h-1" />
+                                                    </svg>
+                                                </div>
+                                            @endif
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">{{ $vehicle['name'] }}</div>
+                                                <div class="text-sm text-gray-500">{{ $vehicle['brand'] }} | {{ $vehicle['model'] }}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ number_format($vehicle['revenue'], 0, ',', ' ') }} FCFA
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ number_format($vehicle['maintenance_cost'], 0, ',', ' ') }} FCFA
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                            <span class="{{ $vehicle['profitability'] >= 0 ? 'text-green-600 font-medium' : 'text-red-600 font-medium' }}">
+                                {{ number_format($vehicle['profitability'], 0, ',', ' ') }} FCFA
+                            </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            @if($vehicle['profitability_rate'] >= 50)
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    {{ $vehicle['profitability_rate'] }}%
+                                </span>
+                                            @elseif($vehicle['profitability_rate'] >= 20)
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                    {{ $vehicle['profitability_rate'] }}%
+                                </span>
+                                            @else
+                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                    {{ $vehicle['profitability_rate'] }}%
+                                </span>
+                                            @endif
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analyse de la saisonnalité -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden mt-6">
+                <div class="px-6 py-5 border-b border-gray-200">
+                    <h3 class="text-lg font-medium text-gray-900">Analyse de la saisonnalité</h3>
+                    <p class="mt-1 text-sm text-gray-500">Tendances mensuelles des revenus sur plusieurs années</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4 flex items-center space-x-4">
+                        @foreach($seasonality['years'] as $year)
+                            <div class="flex items-center">
+                                <div class="h-3 w-3 rounded-full mr-1" style="background-color: {{ $seasonality['datasets'][$loop->index]['color'] }}"></div>
+                                <span class="text-sm text-gray-600">{{ $year }}</span>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div id="seasonalityChart" class="h-80"></div>
+
+                    <div class="mt-6">
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Insights</h4>
+                        <div class="bg-indigo-50 rounded-lg p-4 text-sm text-indigo-700">
+                            <p>Cette analyse vous permet d'identifier les périodes de haute et basse saison pour mieux planifier votre stratégie commerciale, les opérations de maintenance et l'ajustement des tarifs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Amount to Recover Card (1/3 width) -->
             <div class="bg-white rounded-xl shadow-sm overflow-hidden">
                 <div class="px-6 py-5 border-b border-gray-200">
@@ -345,163 +503,6 @@
                                     <span class="text-sm font-medium text-gray-900">{{ $type['count'] }}</span>
                                 </div>
                             @endforeach
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Fleet Info Card -->
-                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-                    <div class="px-6 py-5 border-b border-gray-200">
-                        <h3 class="text-lg font-medium text-gray-900">Informations sur la flotte</h3>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-sm font-medium text-gray-500">Total des véhicules</span>
-                            <span class="text-lg font-semibold text-gray-900">{{ $fleetInfo['total'] }}</span>
-                        </div>
-                        <div class="space-y-4">
-                            <!-- Par catégorie -->
-                            <div>
-                                <h4 class="text-sm font-medium text-gray-500 mb-2">Par catégorie</h4>
-                                <div class="space-y-2">
-                                    @foreach($fleetInfo['by_category'] as $category)
-                                        <div class="flex items-center justify-between">
-                                            <span class="text-sm text-gray-600">{{ $category->name }}</span>
-                                            <span class="text-sm font-medium text-gray-900">{{ $category->count }}</span>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-
-                            <!-- Par marque -->
-                            <div>
-                                <h4 class="text-sm font-medium text-gray-500 mb-2">Par marque</h4>
-                                <div class="space-y-2">
-                                    @foreach($fleetInfo['by_brand'] as $brand)
-                                        <div class="flex items-center justify-between">
-                                            <span class="text-sm text-gray-600">{{ $brand->name }}</span>
-                                            <span class="text-sm font-medium text-gray-900">{{ $brand->count }}</span>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-
-                            <!-- Par type de carburant -->
-                            <div>
-                                <h4 class="text-sm font-medium text-gray-500 mb-2">Par carburant</h4>
-                                <div class="space-y-2">
-                                    @foreach($fleetInfo['by_fuel'] as $fuel)
-                                        <div class="flex items-center justify-between">
-                                            <span class="text-sm text-gray-600">{{ ucfirst($fuel->type_carburant) }}</span>
-                                            <span class="text-sm font-medium text-gray-900">{{ $fuel->count }}</span>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Rentabilité par véhicule -->
-                <div class="bg-white rounded-xl shadow-sm overflow-hidden mt-6">
-                    <div class="px-6 py-5 border-b border-gray-200">
-                        <h3 class="text-lg font-medium text-gray-900">Rentabilité par véhicule</h3>
-                        <p class="mt-1 text-sm text-gray-500">Rapport entre revenus générés et coûts de maintenance</p>
-                    </div>
-                    <div class="p-6">
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-50">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Véhicule</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Revenus</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Coûts maintenance</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rentabilité</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Taux</th>
-                                </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach($vehicleProfitability as $vehicle)
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                                @if($vehicle['image'])
-                                                    <div class="flex-shrink-0 h-10 w-10">
-                                                        <img class="h-10 w-10 rounded-md object-cover" src="{{ asset($vehicle['image']) }}" alt="{{ $vehicle['name'] }}">
-                                                    </div>
-                                                @else
-                                                    <div class="flex-shrink-0 h-10 w-10 bg-gray-100 rounded-md flex items-center justify-center">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a2 2 0 01-2 2H9m11-3a2 2 0 01-2 2h-1" />
-                                                        </svg>
-                                                    </div>
-                                                @endif
-                                                <div class="ml-4">
-                                                    <div class="text-sm font-medium text-gray-900">{{ $vehicle['name'] }}</div>
-                                                    <div class="text-sm text-gray-500">{{ $vehicle['brand'] }} | {{ $vehicle['model'] }}</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ number_format($vehicle['revenue'], 0, ',', ' ') }} FCFA
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ number_format($vehicle['maintenance_cost'], 0, ',', ' ') }} FCFA
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm">
-                            <span class="{{ $vehicle['profitability'] >= 0 ? 'text-green-600 font-medium' : 'text-red-600 font-medium' }}">
-                                {{ number_format($vehicle['profitability'], 0, ',', ' ') }} FCFA
-                            </span>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                                @if($vehicle['profitability_rate'] >= 50)
-                                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    {{ $vehicle['profitability_rate'] }}%
-                                </span>
-                                                @elseif($vehicle['profitability_rate'] >= 20)
-                                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                    {{ $vehicle['profitability_rate'] }}%
-                                </span>
-                                                @else
-                                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                                    {{ $vehicle['profitability_rate'] }}%
-                                </span>
-                                                @endif
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Analyse de la saisonnalité -->
-                <div class="bg-white rounded-xl shadow-sm overflow-hidden mt-6">
-                    <div class="px-6 py-5 border-b border-gray-200">
-                        <h3 class="text-lg font-medium text-gray-900">Analyse de la saisonnalité</h3>
-                        <p class="mt-1 text-sm text-gray-500">Tendances mensuelles des revenus sur plusieurs années</p>
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-4 flex items-center space-x-4">
-                            @foreach($seasonality['years'] as $year)
-                                <div class="flex items-center">
-                                    <div class="h-3 w-3 rounded-full mr-1" style="background-color: {{ $seasonality['datasets'][$loop->index]['color'] }}"></div>
-                                    <span class="text-sm text-gray-600">{{ $year }}</span>
-                                </div>
-                            @endforeach
-                        </div>
-
-                        <div id="seasonalityChart" class="h-80"></div>
-
-                        <div class="mt-6">
-                            <h4 class="text-sm font-medium text-gray-700 mb-2">Insights</h4>
-                            <div class="bg-indigo-50 rounded-lg p-4 text-sm text-indigo-700">
-                                <p>Cette analyse vous permet d'identifier les périodes de haute et basse saison pour mieux planifier votre stratégie commerciale, les opérations de maintenance et l'ajustement des tarifs.</p>
-                            </div>
                         </div>
                     </div>
                 </div>
