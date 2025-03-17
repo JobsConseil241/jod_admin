@@ -457,6 +457,7 @@
                 // Récupérer la valeur sélectionnée
                 var voitureId = $("#voiture_select").val();
                 car_id = voitureId
+
                 $('#panne_select').empty();
                 $('#panne_selects').empty();
 
