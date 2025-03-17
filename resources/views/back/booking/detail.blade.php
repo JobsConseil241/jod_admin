@@ -36,8 +36,8 @@
     <!-- Page Header -->
     <div class="block justify-between page-header md:flex">
         <div>
-            <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">
-                Detail Location ({{ $booking->code_contrat }})</h3>
+{{--            <h3 class="text-gray-700 hover:text-gray-900 dark:text-white dark:hover:text-white text-2xl font-medium">--}}
+{{--                Detail Location ()</h3>--}}
         </div>
         <ol class="flex items-center whitespace-nowrap min-w-0">
             <li class="text-sm">
@@ -58,6 +58,9 @@
     @include('layouts.alert')
 
     <!-- Start::row-1 -->
+    @php
+        use Carbon\Carbon;
+    @endphp
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
             <div class="box !bg-transparent border-0 shadow-none">
@@ -86,12 +89,12 @@
                             <div class="sm:flex sm:items-center sm:justify-between">
                                 <div>
                                     <div class="flex items-center">
-                                        <h3 class="text-lg font-semibold text-gray-900">Réservation #CR-3782</h3>
+                                        <h3 class="text-lg font-semibold text-gray-900">Réservation {{ $booking->code_contrat }}</h3>
                                         <span class="ml-3 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                En cours
-              </span>
+                                            En cours
+                                        </span>
                                     </div>
-                                    <p class="mt-1 text-sm text-gray-500">Créée le 15 mars 2025</p>
+                                    <p class="mt-1 text-sm text-gray-500">Créée le {{ Carbon::parse($booking->created_at)->locale('fr')->isoFormat('D MMMM YYYY')  }}</p>
                                 </div>
                                 <div class="mt-4 sm:mt-0 flex space-x-3">
                                     <button class="inline-flex items-center px-3 py-1.5 border border-gray-300 rounded-md text-xs font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none">
@@ -113,19 +116,19 @@
                             <div class="bg-gray-50 grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-gray-200">
                                 <div class="px-6 py-5">
                                     <dt class="text-sm font-medium text-gray-500">Date de début</dt>
-                                    <dd class="mt-1 text-base font-semibold text-gray-900">17/03/2025</dd>
+                                    <dd class="mt-1 text-base font-semibold text-gray-900">{{ Carbon::parse($booking->date_heure_debut)->locale('fr')->isoFormat('D MMMM YYYY H:i:s')  }}</dd>
                                 </div>
                                 <div class="px-6 py-5">
                                     <dt class="text-sm font-medium text-gray-500">Date de fin</dt>
-                                    <dd class="mt-1 text-base font-semibold text-gray-900">24/03/2025</dd>
+                                    <dd class="mt-1 text-base font-semibold text-gray-900">{{ Carbon::parse($booking->date_heure_fin)->locale('fr')->isoFormat('D MMMM YYYY H:i:s')  }}</dd>
                                 </div>
                                 <div class="px-6 py-5">
                                     <dt class="text-sm font-medium text-gray-500">Durée</dt>
-                                    <dd class="mt-1 text-base font-semibold text-indigo-600">7 jours</dd>
+                                    <dd class="mt-1 text-base font-semibold text-indigo-600">{{ $booking->jours }} jours</dd>
                                 </div>
                                 <div class="px-6 py-5">
                                     <dt class="text-sm font-medium text-gray-500">Montant total</dt>
-                                    <dd class="mt-1 text-base font-semibold text-gray-900">385,00 €</dd>
+                                    <dd class="mt-1 text-base font-semibold text-gray-900">{{ $booking->montant_total }} FCFA</dd>
                                 </div>
                             </div>
                         </div>
@@ -143,14 +146,14 @@
                                     <div class="flex flex-col sm:flex-row">
                                         <div class="flex-shrink-0 sm:w-48 mb-4 sm:mb-0">
                                             <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-gray-200">
-                                                <img class="w-full h-auto object-cover" src="/api/placeholder/256/144" alt="Volkswagen Golf">
+                                                <img class="w-full h-auto object-cover" src="{{ url($booking->vehicule->vehiculeMedias[0]->photo_avant) }}" alt="Volkswagen Golf">
                                             </div>
                                         </div>
                                         <div class="sm:ml-6 flex-1">
                                             <div class="flex justify-between items-start">
                                                 <div>
-                                                    <h4 class="text-lg font-semibold text-gray-900">Volkswagen Golf 8</h4>
-                                                    <p class="mt-1 text-sm text-gray-500">Immatriculation: AB-123-CD</p>
+                                                    <h4 class="text-lg font-semibold text-gray-900">{{ $booking->vehicule->marque->name }} {{ $booking->vehicule->modele }} {{ $booking->vehicule->couleur }}</h4>
+                                                    <p class="mt-1 text-sm text-gray-500">Immatriculation: {{ $booking->vehicule->immatriculation }}</p>
                                                 </div>
                                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
                     Disponible
@@ -160,27 +163,27 @@
                                             <div class="mt-4 grid grid-cols-2 gap-4">
                                                 <div>
                                                     <dt class="text-sm font-medium text-gray-500">Catégorie</dt>
-                                                    <dd class="mt-1 text-sm text-gray-900">Compacte</dd>
+                                                    <dd class="mt-1 text-sm text-gray-900">{{ $booking->vehicule->categorie->name }}</dd>
                                                 </div>
                                                 <div>
                                                     <dt class="text-sm font-medium text-gray-500">Année</dt>
-                                                    <dd class="mt-1 text-sm text-gray-900">2023</dd>
+                                                    <dd class="mt-1 text-sm text-gray-900">{{ $booking->vehicule->annee }}</dd>
                                                 </div>
                                                 <div>
                                                     <dt class="text-sm font-medium text-gray-500">Carburant</dt>
-                                                    <dd class="mt-1 text-sm text-gray-900">Essence</dd>
+                                                    <dd class="mt-1 text-sm text-gray-900">{{ $booking->vehicule->type_carburant }}</dd>
                                                 </div>
                                                 <div>
                                                     <dt class="text-sm font-medium text-gray-500">Boîte de vitesse</dt>
-                                                    <dd class="mt-1 text-sm text-gray-900">Automatique</dd>
+                                                    <dd class="mt-1 text-sm text-gray-900">{{ $booking->vehicule->transmission }}</dd>
                                                 </div>
                                                 <div>
                                                     <dt class="text-sm font-medium text-gray-500">Kilométrage</dt>
-                                                    <dd class="mt-1 text-sm text-gray-900">24,568 km</dd>
+                                                    <dd class="mt-1 text-sm text-gray-900">{{ $booking->vehicule->latestEtat->kilometrage }} km</dd>
                                                 </div>
                                                 <div>
                                                     <dt class="text-sm font-medium text-gray-500">Couleur</dt>
-                                                    <dd class="mt-1 text-sm text-gray-900">Gris métallisé</dd>
+                                                    <dd class="mt-1 text-sm text-gray-900">{{ $booking->vehicule->couleur }}</dd>
                                                 </div>
                                             </div>
                                         </div>

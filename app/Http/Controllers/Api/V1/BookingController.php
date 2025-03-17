@@ -292,7 +292,10 @@ class BookingController extends BaseController
             }
 
 
-            $category = Location::with('user', 'vehicule.locations', 'pannes', 'etatAvantLocation', 'etatApresLocation', 'clientAssocie', 'paiementAssocie')
+            $category = Location::with(['user',
+                'vehicule' => function($query) {
+                $query->with(['locations', 'vehiculeMedias', 'categorie', 'marque', 'latestEtat']);
+            }, 'pannes', 'etatAvantLocation', 'etatApresLocation', 'clientAssocie', 'paiementAssocie'])
                         ->where('code_contrat', $data['id'])->get();
 
             if ($category == null) {
