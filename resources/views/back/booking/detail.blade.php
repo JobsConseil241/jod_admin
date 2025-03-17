@@ -62,7 +62,6 @@
         use Carbon\Carbon;
     @endphp
 
-    {{ dd($booking) }}
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
             <div class="box !bg-transparent border-0 shadow-none">
@@ -148,7 +147,7 @@
                                     <div class="flex flex-col sm:flex-row">
                                         <div class="flex-shrink-0 sm:w-48 mb-4 sm:mb-0">
                                             <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden bg-gray-200">
-                                                <img class="w-full h-auto object-cover" src="{{ url($booking->vehicule->vehiculeMedias[0]->photo_avant) }}" alt="Volkswagen Golf">
+                                                <img class="w-full h-auto object-cover" src="{{ url($booking->vehicule->vehicule_medias[0]->photo_avant) }}" alt="Volkswagen Golf">
                                             </div>
                                         </div>
                                         <div class="sm:ml-6 flex-1">
