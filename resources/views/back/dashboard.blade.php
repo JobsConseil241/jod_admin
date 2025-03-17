@@ -254,12 +254,12 @@
 
                     <div id="seasonalityChart" class="h-80"></div>
 
-                    <div class="mt-6">
-                        <h4 class="text-sm font-medium text-gray-700 mb-2">Insights</h4>
-                        <div class="bg-indigo-50 rounded-lg p-4 text-sm text-indigo-700">
-                            <p>Cette analyse vous permet d'identifier les périodes de haute et basse saison pour mieux planifier votre stratégie commerciale, les opérations de maintenance et l'ajustement des tarifs.</p>
-                        </div>
-                    </div>
+{{--                    <div class="mt-6">--}}
+{{--                        <h4 class="text-sm font-medium text-gray-700 mb-2">Insights</h4>--}}
+{{--                        <div class="bg-indigo-50 rounded-lg p-4 text-sm text-indigo-700">--}}
+{{--                            <p>Cette analyse vous permet d'identifier les périodes de haute et basse saison pour mieux planifier votre stratégie commerciale, les opérations de maintenance et l'ajustement des tarifs.</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
 
