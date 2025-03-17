@@ -236,6 +236,33 @@
             </div>
 
 
+            <!-- Analyse de la saisonnalité -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden mt-6">
+                <div class="px-6 py-5 border-b border-gray-200">
+                    <h3 class="text-lg font-medium text-gray-900">Analyse de la saisonnalité</h3>
+                    <p class="mt-1 text-sm text-gray-500">Tendances mensuelles des revenus sur plusieurs années</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-4 flex items-center space-x-4">
+                        @foreach($seasonality['years'] as $year)
+                            <div class="flex items-center">
+                                <div class="h-3 w-3 rounded-full mr-1" style="background-color: {{ $seasonality['datasets'][$loop->index]['color'] }}"></div>
+                                <span class="text-sm text-gray-600">{{ $year }}</span>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div id="seasonalityChart" class="h-80"></div>
+
+                    <div class="mt-6">
+                        <h4 class="text-sm font-medium text-gray-700 mb-2">Insights</h4>
+                        <div class="bg-indigo-50 rounded-lg p-4 text-sm text-indigo-700">
+                            <p>Cette analyse vous permet d'identifier les périodes de haute et basse saison pour mieux planifier votre stratégie commerciale, les opérations de maintenance et l'ajustement des tarifs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Fleet Info Card -->
             <div class="bg-white rounded-xl shadow-sm overflow-hidden">
                 <div class="px-6 py-5 border-b border-gray-200">
@@ -366,32 +393,6 @@
                 </div>
             </div>
 
-            <!-- Analyse de la saisonnalité -->
-            <div class="bg-white rounded-xl shadow-sm overflow-hidden mt-6">
-                <div class="px-6 py-5 border-b border-gray-200">
-                    <h3 class="text-lg font-medium text-gray-900">Analyse de la saisonnalité</h3>
-                    <p class="mt-1 text-sm text-gray-500">Tendances mensuelles des revenus sur plusieurs années</p>
-                </div>
-                <div class="p-6">
-                    <div class="mb-4 flex items-center space-x-4">
-                        @foreach($seasonality['years'] as $year)
-                            <div class="flex items-center">
-                                <div class="h-3 w-3 rounded-full mr-1" style="background-color: {{ $seasonality['datasets'][$loop->index]['color'] }}"></div>
-                                <span class="text-sm text-gray-600">{{ $year }}</span>
-                            </div>
-                        @endforeach
-                    </div>
-
-                    <div id="seasonalityChart" class="h-80"></div>
-
-                    <div class="mt-6">
-                        <h4 class="text-sm font-medium text-gray-700 mb-2">Insights</h4>
-                        <div class="bg-indigo-50 rounded-lg p-4 text-sm text-indigo-700">
-                            <p>Cette analyse vous permet d'identifier les périodes de haute et basse saison pour mieux planifier votre stratégie commerciale, les opérations de maintenance et l'ajustement des tarifs.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Amount to Recover Card (1/3 width) -->
             <div class="bg-white rounded-xl shadow-sm overflow-hidden">
@@ -433,7 +434,7 @@
         </div>
 
         <!-- Grid Layout for Bottom Content -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-5">
             <!-- Recent Rentals (2/3 width) -->
             <div class="lg:col-span-2 bg-white rounded-xl shadow-sm overflow-hidden">
                 <div class="px-6 py-5 border-b border-gray-200">
