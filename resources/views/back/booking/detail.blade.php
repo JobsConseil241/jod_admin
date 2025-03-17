@@ -61,6 +61,8 @@
     @php
         use Carbon\Carbon;
     @endphp
+
+    {{ dd($booking) }}
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
             <div class="box !bg-transparent border-0 shadow-none">
