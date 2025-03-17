@@ -180,7 +180,7 @@
                                                 </div>
                                                 <div>
                                                     <dt class="text-sm font-medium text-gray-500">Kilométrage</dt>
-                                                    <dd class="mt-1 text-sm text-gray-900">{{ $booking->vehicule->latestEtat->kilometrage }} km</dd>
+                                                    <dd class="mt-1 text-sm text-gray-900">{{ $booking->vehicule->latest_etat->kilometrage }} km</dd>
                                                 </div>
                                                 <div>
                                                     <dt class="text-sm font-medium text-gray-500">Couleur</dt>
