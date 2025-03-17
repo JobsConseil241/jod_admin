@@ -271,7 +271,6 @@ class DashboardController extends Controller
             ->take(5)
             ->get()
             ->map(function ($location) {
-                dd($location);
                 $status = '';
                 switch ($location->statut) {
                     case 1:
@@ -293,11 +292,11 @@ class DashboardController extends Controller
 
                 return [
                     'id' => $location->code_contrat,
-                    'client' => $location->client_associe->first_name . ' ' . $location->client_associe->last_name,
+                    'client' => $location->clientAssocie->first_name . ' ' . $location->clientAssocie->last_name,
                     'vehicle' => $location->vehicule->name ?? $location->vehicule->modele,
                     'start_date' => Carbon::parse($location->date_heure_debut)->format('d/m/Y'),
                     'end_date' => Carbon::parse($location->date_heure_fin)->format('d/m/Y'),
-                    'amount' => $location->paiement_associe ? $location->paiement_associe->montant_total : 0,
+                    'amount' => $location->paiementAssocie ? $location->paiementAssocie->montant_total : 0,
                     'status' => $status
                 ];
             });
