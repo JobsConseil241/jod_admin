@@ -271,6 +271,7 @@ class DashboardController extends Controller
             ->take(5)
             ->get()
             ->map(function ($location) {
+                dd($location);
                 $status = '';
                 switch ($location->statut) {
                     case 1:
@@ -288,7 +289,7 @@ class DashboardController extends Controller
                         break;
                     default:
                         $status = 'Inconnu';
-                }
+                };
 
                 return [
                     'id' => $location->code_contrat,
