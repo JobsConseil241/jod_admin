@@ -195,7 +195,7 @@
                                         <h4 class="text-sm font-medium text-gray-500 mb-3">Équipements</h4>
                                         <div class="grid grid-cols-2 md:grid-cols-3 gap-y-2 gap-x-4">
                                             @if($booking->vehicule->latest_etat)
-                                                @foreach ($booking->vehicule->latest_etat->toArray() as $key => $value)
+                                                @foreach ((array)$booking->vehicule->latest_etat as $key => $value)
                                                     @if ($value === 1)
                                                         <div class="flex items-center text-sm text-gray-600">
                                                             <svg class="flex-shrink-0 mr-1.5 h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
