@@ -440,7 +440,7 @@ class DashboardController extends Controller
                 $maintenanceCost += $panne->pivot->montant;
             }
 
-            if ($vehicle->locations->pannes()->exists()) {
+            if ($vehicle->locations->pannes->exists()) {
                 foreach ($vehicle->locations->pannes as $pan) {
                     $maintenanceCost += $pan->pivot->montant;
                 }
