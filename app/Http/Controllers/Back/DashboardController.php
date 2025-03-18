@@ -422,6 +422,7 @@ class DashboardController extends Controller
 
         $profitabilityData = [];
 
+        dd($vehicles);
 
         foreach ($vehicles as $vehicle) {
             // Calculer les revenus générés par ce véhicule
