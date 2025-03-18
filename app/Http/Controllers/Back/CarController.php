@@ -664,7 +664,7 @@ class CarController extends Controller
         $vehi_op = 'open';
         $vehi_mar_on = 'active';
 
-        return view('back.car.marques', compact('marques', 'vehi_on', 'vehi_op', 'vehi_cate_on'));
+        return view('back.car.marques', compact('marques', 'vehi_on', 'vehi_op', 'vehi_mar_on'));
     }
 
     public function store_marque(Request $request)
