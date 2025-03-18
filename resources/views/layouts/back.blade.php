@@ -84,8 +84,8 @@
                         <!-- End::slide__category -->
 
                         <!-- Start::slide -->
-                        <li class="slide {{ $dash_on }}">
-                            <a href="{{ route('dashboard') }}" class="side-menu__item {{ $dash_on }}">
+                        <li class="slide {{ $dash_on ?? '' }}">
+                            <a href="{{ route('dashboard') }}" class="side-menu__item {{ $dash_on ?? '' }}">
                                 <i class="ri-home-8-line side-menu__icon"></i>
                                 <span class="side-menu__label">Tableau de Bord</span>
                             </a>
