@@ -439,10 +439,11 @@ class DashboardController extends Controller
                 $maintenanceCost += $panne->pivot->montant;
             }
 
-            foreach ($vehicle->locations->pannes as $pan) {
-                $maintenanceCost += $pan->pivot->montant;
+            if ($vehicle->locations->pannes) {
+                foreach ($vehicle->locations->pannes as $pan) {
+                    $maintenanceCost += $pan->pivot->montant;
+                }
             }
-
             // Calculer la rentabilité
             $profitability = $revenue - $maintenanceCost;
             $profitabilityRate = ($revenue > 0) ? ($profitability / $revenue) * 100 : 0;
