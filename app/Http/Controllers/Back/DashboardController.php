@@ -422,7 +422,7 @@ class DashboardController extends Controller
 
         $profitabilityData = [];
 
-        dd($vehicles);
+//        dd($vehicles);
 
         foreach ($vehicles as $vehicle) {
             // Calculer les revenus générés par ce véhicule
@@ -440,7 +440,7 @@ class DashboardController extends Controller
                 $maintenanceCost += $panne->pivot->montant;
             }
 
-            if ($vehicle->locations->pannes) {
+            if ($vehicle->locations()->exists()) {
                 foreach ($vehicle->locations->pannes as $pan) {
                     $maintenanceCost += $pan->pivot->montant;
                 }
