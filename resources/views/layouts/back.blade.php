@@ -97,7 +97,7 @@
                         <!-- End::slide__category -->
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub {{ $resa_on ?? '' }}">
+                        <li class="slide has-sub {{ $resa_op ?? '' }} ">
                             <a href="javascript:void(0);" class="side-menu__item {{ $resa_on ?? '' }}">
                                 <i class="ti ti-archive side-menu__icon"></i>
                                 <span class="side-menu__label">Réservations/Locations</span>
