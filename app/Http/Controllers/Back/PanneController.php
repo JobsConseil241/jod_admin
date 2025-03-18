@@ -39,7 +39,11 @@ class PanneController extends Controller
             $categories = [];
         }
 
-        return view('back.panne.list', compact('pannes', 'categories'));
+        $pan_on = 'active';
+        $pan_op = 'open';
+        $pan_list_on = 'active';
+
+        return view('back.panne.list', compact('pannes', 'categories', 'pan_on', 'pan_op', 'pan_list_on'));
     }
 
     public function store(Request $request)
@@ -119,7 +123,12 @@ class PanneController extends Controller
             $categories = [];
         }
 
-        return view('back.panne.categories', compact('categories'));
+
+        $pan_on = 'active';
+        $pan_op = 'open';
+        $pan_cate_on = 'active';
+
+        return view('back.panne.categories', compact('categories', 'pan_on', 'pan_op', 'pan_cate_on'));
     }
 
     public function store_category(Request $request)

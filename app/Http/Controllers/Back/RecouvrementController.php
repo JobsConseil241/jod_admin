@@ -22,7 +22,11 @@ class RecouvrementController extends Controller
     }
 
     public function index(){
-        return view('back.recouvrements.list');
+
+        $recou_on = 'active';
+        $recou_op = 'open';
+        $recou_list_on = 'active';
+        return view('back.recouvrements.list', compact('recou_on','recou_op','recou_list_on'));
     }
 
     public function ajax_get_recouvrements(Request $request)

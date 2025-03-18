@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\Session;
 class PaymentController extends Controller
 {
     public function index()
-    {;
+    {
         $paie_on = 'active';
+        $paie_op = 'open';
         $paie_list_on = 'active';
 
-        return view('back.paiement.list', compact('paie_on', 'paie_list_on'));
+        return view('back.paiement.list', compact('paie_on', 'paie_list_on', 'paie_op'));
     }
 
     public function ajax_get_paiements(Request $request)

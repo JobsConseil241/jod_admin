@@ -15,7 +15,11 @@ class CarController extends Controller
     //
     public function index()
     {
-        return view('back.car.list');
+        $vehi_on = 'active';
+        $vehi_op = 'open';
+        $vehi_list_on = 'active';
+
+        return view('back.car.list', compact('vehi_on', 'vehi_op', 'vehi_list_on'));
     }
 
     public function ajax_get_cars(Request $request)
@@ -65,7 +69,11 @@ class CarController extends Controller
             $marques = [];
         }
 
-        return view('back.car.add', compact('categories', 'marques'));
+        $vehi_on = 'active';
+        $vehi_op = 'open';
+        $vehi_add_on = 'active';
+
+        return view('back.car.add', compact('categories', 'marques', 'vehi_on', 'vehi_op', 'vehi_add_on'));
     }
 
     public function store(Request $request)
@@ -570,7 +578,11 @@ class CarController extends Controller
             $categories = [];
         }
 
-        return view('back.car.categories', compact('categories'));
+        $vehi_on = 'active';
+        $vehi_op = 'open';
+        $vehi_cate_on = 'active';
+
+        return view('back.car.categories', compact('categories', 'vehi_on', 'vehi_op', 'vehi_cate_on'));
     }
 
     public function store_category(Request $request)
@@ -648,7 +660,11 @@ class CarController extends Controller
             $marques = [];
         }
 
-        return view('back.car.marques', compact('marques'));
+        $vehi_on = 'active';
+        $vehi_op = 'open';
+        $vehi_mar_on = 'active';
+
+        return view('back.car.marques', compact('marques', 'vehi_on', 'vehi_op', 'vehi_cate_on'));
     }
 
     public function store_marque(Request $request)

@@ -115,7 +115,7 @@
                         <!-- End::slide__category -->
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub {{ $paie_on ?? '' }}">
+                        <li class="slide has-sub {{ $paie_op ?? '' }}">
                             <a href="javascript:void(0);" class="side-menu__item {{ $paie_on ?? '' }}">
                                 <i class="ti ti-cash side-menu__icon"></i>
                                 <span class="side-menu__label">Paiements</span>
@@ -129,7 +129,7 @@
                         <!-- End::slide -->
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub {{ $recou_on ?? '' }}">
+                        <li class="slide has-sub {{ $recou_op ?? '' }}">
                             <a href="javascript:void(0);" class="side-menu__item {{ $recou_on ?? '' }}">
                                 <i class="ri-inbox-unarchive-line side-menu__icon"></i>
                                 <span class="side-menu__label">Recouvrements</span>
@@ -147,7 +147,7 @@
                         <!-- End::slide__category -->
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub {{ $vehi_on ?? '' }}">
+                        <li class="slide has-sub {{ $vehi_op ?? '' }}">
                             <a href="javascript:void(0);" class="side-menu__item {{ $vehi_on ?? '' }}">
                                 <i class="ti ti-car side-menu__icon"></i>
                                 <span class="side-menu__label">Véhicules</span>
@@ -168,7 +168,7 @@
 
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub {{ $pan_on ?? '' }}">
+                        <li class="slide has-sub {{ $pan_op ?? '' }}">
                             <a href="javascript:void(0);" class="side-menu__item {{ $pan_on ?? '' }}">
                                 <i class="ti ti-alert-triangle side-menu__icon"></i>
                                 <span class="side-menu__label">Pannes</span>
