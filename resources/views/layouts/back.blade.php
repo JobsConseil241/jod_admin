@@ -84,8 +84,8 @@
                         <!-- End::slide__category -->
 
                         <!-- Start::slide -->
-                        <li class="slide active">
-                            <a href="{{ route('dashboard') }}" class="side-menu__item active">
+                        <li class="slide {{ $dash_on }}">
+                            <a href="{{ route('dashboard') }}" class="side-menu__item {{ $dash_on }}">
                                 <i class="ri-home-8-line side-menu__icon"></i>
                                 <span class="side-menu__label">Tableau de Bord</span>
                             </a>
@@ -97,15 +97,15 @@
                         <!-- End::slide__category -->
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub">
-                            <a href="javascript:void(0);" class="side-menu__item">
+                        <li class="slide has-sub {{ $resa_on ?? '' }}">
+                            <a href="javascript:void(0);" class="side-menu__item {{ $resa_on ?? '' }}">
                                 <i class="ti ti-archive side-menu__icon"></i>
                                 <span class="side-menu__label">Réservations/Locations</span>
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
-                            <ul class="slide-menu child1">
-                                <li class="slide"><a href="{{ route('backend.booking.add') }}" class="side-menu__item">Ajouter</a></li>
-                                <li class="slide"><a href="{{ route('backend.booking.list') }}" class="side-menu__item">Liste</a></li>
+                            <ul class="slide-menu child1 {{ $resa_on ?? '' }}">
+                                <li class="slide"><a href="{{ route('backend.booking.add') }}" class="side-menu__item {{ $resa_add_on ?? '' }}">Ajouter</a></li>
+                                <li class="slide"><a href="{{ route('backend.booking.list') }}" class="side-menu__item {{ $resa_list_on ?? '' }}">Liste</a></li>
                             </ul>
                         </li>
                         <!-- End::slide -->
@@ -115,29 +115,29 @@
                         <!-- End::slide__category -->
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub">
-                            <a href="javascript:void(0);" class="side-menu__item">
+                        <li class="slide has-sub {{ $paie_on ?? '' }}">
+                            <a href="javascript:void(0);" class="side-menu__item {{ $paie_on ?? '' }}">
                                 <i class="ti ti-cash side-menu__icon"></i>
                                 <span class="side-menu__label">Paiements</span>
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
-                            <ul class="slide-menu child1">
-                                <li class="slide"><a href="{{ route('backend.paiements.list') }}" class="side-menu__item">Liste</a></li>
-                                <li class="slide"><a href="#" class="side-menu__item">Ajouter</a></li>
+                            <ul class="slide-menu child1 {{ $paie_on ?? '' }}">
+                                <li class="slide"><a href="{{ route('backend.paiements.list') }}" class="side-menu__item {{ $paie_list_on ?? '' }}">Liste</a></li>
+                                <li class="slide"><a href="#" class="side-menu__item {{ $paie_add_on ?? '' }}">Ajouter</a></li>
                             </ul>
                         </li>
                         <!-- End::slide -->
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub">
-                            <a href="javascript:void(0);" class="side-menu__item">
+                        <li class="slide has-sub {{ $recou_on ?? '' }}">
+                            <a href="javascript:void(0);" class="side-menu__item {{ $recou_on ?? '' }}">
                                 <i class="ri-inbox-unarchive-line side-menu__icon"></i>
                                 <span class="side-menu__label">Recouvrements</span>
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
-                            <ul class="slide-menu child1">
-                                <li class="slide"><a href="{{ route('recouvrements.index') }}" class="side-menu__item">Liste</a></li>
-                                <li class="slide"><a href="#" class="side-menu__item">Ajouter</a></li>
+                            <ul class="slide-menu child1 {{ $recou_on ?? '' }}">
+                                <li class="slide"><a href="{{ route('recouvrements.index') }}" class="side-menu__item {{ $recou_list_on ?? '' }}">Liste</a></li>
+                                <li class="slide"><a href="#" class="side-menu__item {{ $recou_add_on ?? '' }}">Ajouter</a></li>
                             </ul>
                         </li>
                         <!-- End::slide -->
@@ -147,38 +147,38 @@
                         <!-- End::slide__category -->
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub">
-                            <a href="javascript:void(0);" class="side-menu__item">
+                        <li class="slide has-sub {{ $vehi_on ?? '' }}">
+                            <a href="javascript:void(0);" class="side-menu__item {{ $vehi_on ?? '' }}">
                                 <i class="ti ti-car side-menu__icon"></i>
                                 <span class="side-menu__label">Véhicules</span>
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
-                            <ul class="slide-menu child1">
+                            <ul class="slide-menu child1 {{ $vehi_on ?? '' }}">
                                 <li class="slide"><a href="{{ route('backend.list.cars') }}"
-                                        class="side-menu__item">Liste</a></li>
+                                        class="side-menu__item {{ $vehi_list_on ?? '' }}">Liste</a></li>
                                 <li class="slide"><a href="{{ route('backend.add.car') }}"
-                                        class="side-menu__item">Ajouter</a></li>
+                                        class="side-menu__item {{ $vehi_add_on ?? '' }}">Ajouter</a></li>
                                 <li class="slide"><a href="{{ route('backend.list.categories') }}"
-                                        class="side-menu__item">Catégorie</a></li>
+                                        class="side-menu__item {{ $vehi_cate_on ?? '' }}">Catégorie</a></li>
                                 <li class="slide"><a href="{{ route('backend.list.marques') }}"
-                                        class="side-menu__item">Marques</a></li>
+                                        class="side-menu__item {{ $vehi_mar_on ?? '' }}">Marques</a></li>
                             </ul>
                         </li>
                         <!-- End::slide -->
 
 
                         <!-- Start::slide -->
-                        <li class="slide has-sub">
-                            <a href="javascript:void(0);" class="side-menu__item">
+                        <li class="slide has-sub {{ $pan_on ?? '' }}">
+                            <a href="javascript:void(0);" class="side-menu__item {{ $pan_on ?? '' }}">
                                 <i class="ti ti-alert-triangle side-menu__icon"></i>
                                 <span class="side-menu__label">Pannes</span>
                                 <i class="ri ri-arrow-right-s-line side-menu__angle"></i>
                             </a>
-                            <ul class="slide-menu child1">
+                            <ul class="slide-menu child1 {{ $pan_on ?? '' }}">
                                 <li class="slide"><a href="{{ route('backend.list.pannes') }}"
-                                        class="side-menu__item">Liste</a></li>
+                                        class="side-menu__item {{ $pan_list_on ?? '' }}">Liste</a></li>
                                 <li class="slide"><a href="{{ route('backend.list.panne.categories') }}"
-                                        class="side-menu__item">Catégorie</a></li>
+                                        class="side-menu__item {{ $pan_cate_on ?? '' }}">Catégorie</a></li>
                             </ul>
                         </li>
                         <!-- End::slide -->

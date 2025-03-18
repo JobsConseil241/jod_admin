@@ -50,7 +50,10 @@ class DashboardController extends Controller
         $vehicleProfitability = $this->calculateVehicleProfitability();
         $seasonality = $this->analyzeSeasonality();
 
+        $dash_on = 'active';
+
         return view('back.dashboard', compact(
+            'dash_on',
             'stats',
             'monthlyRevenue',
             'recentRentals',

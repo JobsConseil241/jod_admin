@@ -11,7 +11,10 @@ class PaymentController extends Controller
 {
     public function index()
     {;
-        return view('back.paiement.list');
+        $paie_on = 'active';
+        $paie_list_on = 'active';
+
+        return view('back.paiement.list', compact('paie_on', 'paie_list_on'));
     }
 
     public function ajax_get_paiements(Request $request)

@@ -14,8 +14,10 @@ class BookingController extends Controller
 {
     //
     public function index()
-    {;
-        return view('back.booking.list');
+    {
+        $resa_on = 'active';
+        $resa_list_on = 'active';
+        return view('back.booking.list', compact('resa_on', 'resa_list_on'));
     }
 
     public function ajax_get_locations(Request $request)
@@ -66,7 +68,10 @@ class BookingController extends Controller
 //            $users = [];
 //        }
 
-        return view('back.booking.add', compact('users', 'cars'));
+        $resa_on = 'active';
+        $resa_add_on = 'active';
+
+        return view('back.booking.add', compact('users', 'cars', 'resa_on', 'resa_add_on'));
 
     }
 
