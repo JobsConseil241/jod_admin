@@ -440,9 +440,17 @@ class DashboardController extends Controller
                 $maintenanceCost += $panne->pivot->montant;
             }
 
-            if ($vehicle->locations->pannes->exists()) {
-                foreach ($vehicle->locations->pannes as $pan) {
-                    $maintenanceCost += $pan->pivot->montant;
+            if ($vehicle->locations && $vehicle->locations->count() > 0) {
+                foreach ($vehicle->locations as $location) {
+                    // Vérifier si la relation pannes existe pour cette location
+                    if (isset($location->pannes) && $location->pannes->count() > 0) {
+                        foreach ($location->pannes as $pan) {
+                            // Vérifier si la relation pivot existe et contient un montant
+                            if (isset($pan->pivot) && isset($pan->pivot->montant)) {
+                                $maintenanceCost += $pan->pivot->montant;
+                            }
+                        }
+                    }
                 }
             }
             // Calculer la rentabilité
