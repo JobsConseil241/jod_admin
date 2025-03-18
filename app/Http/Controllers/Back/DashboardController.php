@@ -417,7 +417,7 @@ class DashboardController extends Controller
      */
     private function calculateVehicleProfitability()
     {
-        $vehicles = Vehicule::with(['locations.paiementAssocie', 'pannes'])
+        $vehicles = Vehicule::with(['locations.paiementAssocie', 'locations.pannes', 'pannes'])
             ->get();
 
         $profitabilityData = [];
@@ -435,8 +435,13 @@ class DashboardController extends Controller
 
             // Calculer les coûts de maintenance
             $maintenanceCost = 0;
+
             foreach ($vehicle->pannes as $panne) {
                 $maintenanceCost += $panne->montant;
+            }
+
+            foreach ($vehicle->locations->pannes as $pan) {
+                $maintenanceCost += $pan->montant;
             }
 
             // Calculer la rentabilité
