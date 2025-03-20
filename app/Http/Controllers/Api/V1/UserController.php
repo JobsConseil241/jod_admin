@@ -178,7 +178,7 @@ class UserController extends BaseController
 
             $query = User::with(['userType',
                 'roles' => function ($query) {
-                    $query->where('id', 1000002);
+                    $query->where('role_id', 1000002);
                 },
                 'roles.privileges']);
             $query = $query->where('deleted', NULL);

@@ -76,8 +76,4 @@ class UserTypeController extends BaseController
             Log::info('Get users types Endpoint Exited.');
         }
     }
-
-    public function get_user_type(Request $request){
-
-    }
 }
