@@ -176,12 +176,9 @@ class UserController extends BaseController
             $data['page'] = $page_number;
             $data['records'] = $records;
 
-            $query = User::with(['userType',
-                'roles' => function ($query) {
-                    $query->where('user_roles.role_id', 1000002);
-                },
-                'roles.privileges']);
+            $query = User::with(['userType', 'roles', 'roles.privileges']);
             $query = $query->where('deleted', NULL);
+            $query->where('roles.pivot.role_id', 1000002);
 
             $data['count'] = $query->count();
             $pagination = $query
