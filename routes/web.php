@@ -115,7 +115,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('category/update/{car}', [BackCarController::class, 'update_category'])->name('backend.update.category');
 
         //marques
-        Route::get('marques', [BackCarController::class, 'mar ques'])->name('backend.list.marques');
+        Route::get('marques', [BackCarController::class, 'marques'])->name('backend.list.marques');
         Route::post('marque/store', [BackCarController::class, 'store_marque'])->name('backend.store.marque');
         Route::post('marque/update/{car}', [BackCarController::class, 'update_marque'])->name('backend.update.marque');
 
