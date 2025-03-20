@@ -56,13 +56,13 @@
                                                         <span class="my-auto">{{ $label }}</span>
                                                     </label>
                                                     <input type="file"
-                                                        class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
-                              file:bg-transparent file:border-0
-                              file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
-                              file:py-2 file:px-4
-                              dark:file:bg-black/20 dark:file:text-white/70"
-                                                        name="{{ $field }}" accept="image/*" data-max-file-size="2MB"
-                                                        data-current-url="{{ $car->vehicule_medias[0]->{$field} ? asset($car->vehicule_medias[0]->{$field}) : '' }}">
+                                                           class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70
+                                                                    file:bg-transparent file:border-0
+                                                                    file:bg-gray-100 ltr:file:mr-4 rtl:file:ml-4
+                                                                    file:py-2 file:px-4
+                                                                    dark:file:bg-black/20 dark:file:text-white/70"
+                                                           name="{{ $field }}" accept="image/*" data-max-file-size="2MB"
+                                                           data-current-url="{{ isset($car->vehicule_medias[0]) && isset($car->vehicule_medias[0]->{$field}) ? asset($car->vehicule_medias[0]->{$field}) : '' }}">
 
                                                     <!-- Conteneur de prévisualisation -->
                                                     <div id="preview-{{ $field }}" class="preview-container mt-3">
