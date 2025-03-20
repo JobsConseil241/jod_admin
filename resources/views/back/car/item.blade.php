@@ -127,7 +127,11 @@
 
                             <div class="sm:flex sm:space-x-5">
                                 <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Status :</h5>
-                                <span class="my-auto font-medium text-sm text-success">Disponible</span>
+                                @if($car->statut_location == 1)
+                                    <span class="my-auto font-medium text-sm text-success">Disponible</span>
+                                @else
+                                    <span class="my-auto font-medium text-sm text-danger">Indisponible</span>
+                                @endif
                             </div>
 
                             <div class="sm:flex sm:space-x-3 product-des">
