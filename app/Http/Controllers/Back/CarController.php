@@ -72,7 +72,7 @@ class CarController extends Controller
         //suppliers get all data
         $response_supp = Http::withHeaders([
             "Authorization" => "Bearer " . $access_token
-        ])->get(env('SERVER_PC') . 'get_supplier_users');
+        ])->get(env('SERVER_PC') . 'get_suppliers');
 
         $object_sp = json_decode($response_supp->body());
 
