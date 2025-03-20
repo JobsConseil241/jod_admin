@@ -59,19 +59,19 @@
                         <div class="swiper mySwiper2">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img alt="photo_avant" src="{{ asset($car->vehicule_medias[0]->photo_avant) ?? url('public/back/img/ecommerce/product-details/1.png') }}">
+                                    <img alt="photo_avant" src="{{ asset($car->vehicule_medias[0]?->photo_avant) ?? url('public/back/img/ecommerce/product-details/1.png') }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_arriere" src="{{ asset($car->vehicule_medias[0]->photo_arriere) ?? url('public/back/img/ecommerce/product-details/2.png')  }}">
+                                    <img alt="photo_arriere" src="{{ asset($car->vehicule_medias[0]?->photo_arriere) ?? url('public/back/img/ecommerce/product-details/2.png')  }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_gauche" src="{{ asset($car->vehicule_medias[0]->photo_gauche) }} ?? url('public/back/img/ecommerce/product-details/3.png') ">
+                                    <img alt="photo_gauche" src="{{ asset($car->vehicule_medias[0]?->photo_gauche) }} ?? url('public/back/img/ecommerce/product-details/3.png') ">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_droite" src="{{ asset($car->vehicule_medias[0]->photo_droite) ?? url('public/back/img/ecommerce/product-details/4.png')  }}">
+                                    <img alt="photo_droite" src="{{ asset($car->vehicule_medias[0]?->photo_droite) ?? url('public/back/img/ecommerce/product-details/4.png')  }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_dashboard" src="{{ asset($car->vehicule_medias[0]->photo_dashboard) ?? url('public/back/img/ecommerce/product-details/5.png')  }}">
+                                    <img alt="photo_dashboard" src="{{ asset($car->vehicule_medias[0]?->photo_dashboard) ?? url('public/back/img/ecommerce/product-details/5.png')  }}">
                                 </div>
                                 <div class="swiper-slide">
                                     <img alt="photo_interieur"
