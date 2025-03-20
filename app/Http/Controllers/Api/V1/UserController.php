@@ -165,6 +165,38 @@ class UserController extends BaseController
         }
     }
 
+    public function get_supplier_users(Request $request)
+    {
+        try {
+            Log::info('Get suppliers users Endpoint Entered.');
+
+            Log::debug('Get suppliers users Endpoint - All Params: ' . json_encode($request->all()));
+            $page_number = $request->has('page') && $request->page != null ? $request->page : 1;
+            $records = $request->has('records') && $request->records != null ? $request->records : 20;
+            $data['page'] = $page_number;
+            $data['records'] = $records;
+
+            $query = User::with(['userType',
+                'roles' => function ($query) {
+                    $query->where('id', 1000002);
+                },
+                'roles.privileges']);
+            $query = $query->where('deleted', NULL);
+
+            $data['count'] = $query->count();
+            $pagination = $query
+                ->paginate($records, ['*'], 'page', $page_number);
+            $data['users'] = $pagination->items();
+            Log::debug('Get suppliers users Endpoint - Response: ' . json_encode($data));
+            return $this->sendResponse($data, "users retrieved successfully");
+        } catch (Exception $e) {
+            Log::error('Get suppliers users Endpoint - Exception: ' . $e);
+            return $this->sendError("Unexpected error occurred, please try again later.");
+        } finally {
+            Log::info('Get suppliers users Endpoint Exited.');
+        }
+    }
+
 
 
 

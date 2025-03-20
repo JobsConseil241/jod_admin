@@ -50,6 +50,9 @@ Route::group([
     //user_type
     Route::get('/get_user_type', [UserTypeController::class, 'get_user_types'])->name('API-GET-USERTYPES');
 
+    //get suppliers values
+    Route::get('/get_suppliers', [UserController::class, 'get_supplier_users'])->name('API-SUPPLIER-USER');
+
     //privilege
     Route::get('/get_privilege', [PrivilegeController::class, 'get_privilege'])->name('API-GET-PERMISSIONS');
     Route::post('/clear_privilege', [PrivilegeController::class, 'clear_privilege'])->name('API-CLEAR-PRIVILEGES');

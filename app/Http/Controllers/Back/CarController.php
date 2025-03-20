@@ -69,11 +69,24 @@ class CarController extends Controller
             $marques = [];
         }
 
+        //suppliers get all data
+        $response_supp = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_supplier_users');
+
+        $object_sp = json_decode($response_supp->body());
+
+        if ($object_sp && $object_sp->success == true) {
+            $suppliers = $object_sp->data->brands;
+        } else {
+            $suppliers = [];
+        }
+
         $vehi_on = 'active';
         $vehi_op = 'open';
         $vehi_add_on = 'active';
 
-        return view('back.car.add', compact('categories', 'marques', 'vehi_on', 'vehi_op', 'vehi_add_on'));
+        return view('back.car.add', compact('categories', 'marques', 'vehi_on', 'vehi_op', 'vehi_add_on', 'suppliers'));
     }
 
     public function store(Request $request)

@@ -60,6 +60,7 @@
     <!-- Start::row-1 -->
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
+            {{ dd($suppliers) }}
             <div class="box !bg-transparent border-0 shadow-none">
                 <form method="post" action="{{ route('backend.store.car') }}">
                     @csrf
