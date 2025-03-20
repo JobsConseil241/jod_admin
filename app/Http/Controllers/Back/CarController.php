@@ -110,6 +110,7 @@ class CarController extends Controller
             'assurance_nom' => $request->assurance_nom,
             'assurance_date_expi' => $request->assurance_date_expi,
             'category_id' => $request->category_id,
+            'supplier_id' => $request->supplier_id,
             'marque_id' => $request->marque_id,
             'note' => $request->note
         ]);

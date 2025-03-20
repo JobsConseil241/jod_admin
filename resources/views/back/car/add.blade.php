@@ -60,7 +60,6 @@
     <!-- Start::row-1 -->
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
-            {{ dd($suppliers) }}
             <div class="box !bg-transparent border-0 shadow-none">
                 <form method="post" action="{{ route('backend.store.car') }}">
                     @csrf
@@ -105,6 +104,20 @@
                                                                 <option value="{{ $item->id }}"
                                                                     {{ old('marque_id') == $item->id ? 'selected' : '' }}>
                                                                     {{ $item->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-span-12 lg:col-span-12">
+                                                    <div class="space-y-2  product-1">
+                                                        <label class="ti-form-label mb-0">Fournisseurs</label>
+                                                        <select name="supplier_id" class="ti-form-select" required>
+                                                            <option selected disabled>Choisissez</option>
+                                                            @foreach ($suppliers as $item)
+                                                                <option value="{{ $item->id }}"
+                                                                    {{ old('supplier_id') == $item->id ? 'selected' : '' }}>
+                                                                    {{ $item->last_name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>

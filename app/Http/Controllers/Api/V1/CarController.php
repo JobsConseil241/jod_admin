@@ -90,6 +90,7 @@ class CarController extends BaseController
                 'assurance_date_expi' => 'required|date',
                 'category_id' => 'required|exists:categories,id', // Vérifie que l'ID existe dans la table `categories`
                 'marque_id' => 'required|exists:marques,id', // Vérifie que l'ID existe dans la table `marques`
+                'supplier_id' => 'required|exists:users,id', // Vérifie que l'ID existe dans la table `users`
             ];
 
             $validator = Validator::make($request->all(), $rules);
@@ -114,6 +115,7 @@ class CarController extends BaseController
                 'assurance_nom' => $datas['assurance_nom'],
                 'assurance_date_expi' => $datas['assurance_date_expi'],
                 'category_id' => $datas['category_id'],
+                'supplier_id' => $datas['supplier_id'],
                 'marque_id' => $datas['marque_id'],
                 'note' => $datas['note'] ?? ''
             ]);
@@ -174,6 +176,7 @@ class CarController extends BaseController
                 'assurance_date_expi' => $datas['assurance_date_expi'],
                 'category_id' => $datas['category_id'],
                 'marque_id' => $datas['marque_id'],
+                'supplier_id' => $datas['supplier_id'],
                 'note' => $datas['note'] ?? ''
             ]);
 
