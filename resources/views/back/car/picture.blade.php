@@ -66,9 +66,9 @@
 
                                                     <!-- Conteneur de prévisualisation -->
                                                     <div id="preview-{{ $field }}" class="preview-container mt-3">
-                                                        @if ($car->vehicule_medias[0]->{$field})
+                                                        @if (isset($car->vehicule_medias[0]) && !empty($car->vehicule_medias[0]->{$field}))
                                                             <img src="{{ asset($car->vehicule_medias[0]->{$field}) }}"
-                                                                alt="{{ $label }}" class="max-h-32 rounded shadow">
+                                                                 alt="{{ $label }}" class="max-h-32 rounded shadow">
                                                         @endif
                                                     </div>
                                                 </div>
