@@ -34,10 +34,26 @@ class DatabaseSeeder extends Seeder
             'user_type_id' => 1000001,
         ]);
 
+        Role::firstOrCreate([
+            'name' => "Supplier",
+            'description' => "supplier",
+            'active' => true,
+            'user_type_id' => 1000001,
+        ]);
+
         User::firstOrCreate([
             'last_name' => 'admin',
             'email' => 'admin@admin.ga',
             'phone' => '074010203',
+            'phone_code' => '241',
+            'password' => bcrypt('12345678'),
+            'user_type_id' => 1000001,
+        ]);
+
+        User::firstOrCreate([
+            'last_name' => 'supplier',
+            'email' => 'supplier@supplier.ga',
+            'phone' => '074030405',
             'phone_code' => '241',
             'password' => bcrypt('12345678'),
             'user_type_id' => 1000001,
