@@ -65,9 +65,9 @@
                         <tbody>
                             @foreach ($pannes as $panne)
                                 <tr>
-                                    <td>{{ $panne->id }}</td>
-                                    <td>{{ $panne->categorie->name }}</td>
-                                    <td>{{ $panne->name }}</td>
+                                    <td>#{{ $panne->id }}</td>
+                                    <td class="text-primary font-bold">{{ $panne->categorie->name }}</td>
+                                    <td class="font-bold">{{ $panne->name }}</td>
                                     <td>{{ Str::limit($panne->description, 100, '...') }}</td>
                                     <td>
                                         <button type="button" class="ti-btn ti-btn-soft-primary"

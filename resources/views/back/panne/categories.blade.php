@@ -64,8 +64,8 @@
                         <tbody>
                             @foreach ($categories as $category)
                                 <tr>
-                                    <td>{{ $category->id }}</td>
-                                    <td>{{ $category->name }}</td>
+                                    <td>#{{ $category->id }}</td>
+                                    <td class="font-bold">{{ $category->name }}</td>
                                     <td>{{ Str::limit($category->description, 100, '...') }}</td>
                                     <td>
                                         <button type="button" class="ti-btn ti-btn-soft-primary"
