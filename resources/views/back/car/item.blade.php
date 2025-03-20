@@ -237,19 +237,19 @@
                             <div class="box-body space-y-4">
 
                                 <div class="flex space-x-3 rtl:space-x-reverse">
-                                    <h5 class="font-normal text-gray-500 dark:text-white/70 text-sm my-auto w-28 font-bold">
+                                    <h5 class="text-gray-500 dark:text-white/70 text-sm my-auto w-28 font-bold">
                                         Transmission :
                                     </h5>
                                     <p class="font-medium text-sm">{{ Str::upper($car->transmission) }}</p>
                                 </div>
                                 <div class="flex space-x-3 rtl:space-x-reverse">
-                                    <h5 class="font-normal text-gray-500 dark:text-white/70 text-sm my-auto w-28 font-bold">Type de
+                                    <h5 class="ftext-gray-500 dark:text-white/70 text-sm my-auto w-28 font-bold">Type de
                                         carburant
                                         :</h5>
                                     <p class="font-medium text-sm">{{ Str::upper($car->type_carburant) }}</p>
                                 </div>
                                 <div class="sm:flex sm:space-x-3">
-                                    <h5 class="font-normal text-gray-500 dark:text-white/70 text-sm my-auto w-28 font-bold">
+                                    <h5 class="text-gray-500 dark:text-white/70 text-sm my-auto w-28 font-bold">
                                         Kilométrage
                                         :</h5>
                                     <p class="font-medium text-sm">{{ $car->kilometrage }} KM</p>
