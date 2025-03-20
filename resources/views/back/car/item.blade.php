@@ -59,22 +59,22 @@
                         <div class="swiper mySwiper2">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img alt="photo_avant" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_avant) : url('public/back/img/ecommerce/product-details/1.png') }}">
+                                    <img alt="photo_avant" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_avant) : url('back/img/ecommerce/product-details/1.png') }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_arriere" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_arriere) : url('public/back/img/ecommerce/product-details/2.png') }}">
+                                    <img alt="photo_arriere" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_arriere) : url('back/img/ecommerce/product-details/2.png') }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_gauche" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_gauche) : url('public/back/img/ecommerce/product-details/3.png') }}">
+                                    <img alt="photo_gauche" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_gauche) : url('back/img/ecommerce/product-details/3.png') }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_droite" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_droite) : url('public/back/img/ecommerce/product-details/4.png') }}">
+                                    <img alt="photo_droite" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_droite) : url('back/img/ecommerce/product-details/4.png') }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_dashboard" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_dashboard) : url('public/back/img/ecommerce/product-details/5.png') }}">
+                                    <img alt="photo_dashboard" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_dashboard) : url('back/img/ecommerce/product-details/5.png') }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_interieur" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_interieur) : url('public/back/img/ecommerce/product-details/6.png') }}">
+                                    <img alt="photo_interieur" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_interieur) : url('back/img/ecommerce/product-details/6.png') }}">
                                 </div>
                             </div>
                             <div class="swiper-button-next"></div>
@@ -83,22 +83,22 @@
                         <div class="swiper mySwiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img alt="photo_avant" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_avant) : url('public/back/img/ecommerce/product-details/1.png') }}">
+                                    <img alt="photo_avant" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_avant) : url('back/img/ecommerce/product-details/1.png') }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_arriere" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_arriere) : url('public/back/img/ecommerce/product-details/2.png') }}">
+                                    <img alt="photo_arriere" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_arriere) : url('back/img/ecommerce/product-details/2.png') }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_gauche" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_gauche) : url('public/back/img/ecommerce/product-details/3.png') }}">
+                                    <img alt="photo_gauche" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_gauche) : url('back/img/ecommerce/product-details/3.png') }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_droite" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_droite) : url('public/back/img/ecommerce/product-details/4.png') }}">
+                                    <img alt="photo_droite" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_droite) : url('back/img/ecommerce/product-details/4.png') }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_dashboard" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_dashboard) : url('public/back/img/ecommerce/product-details/5.png') }}">
+                                    <img alt="photo_dashboard" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_dashboard) : url('back/img/ecommerce/product-details/5.png') }}">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img alt="photo_interieur" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_interieur) : url('public/back/img/ecommerce/product-details/6.png') }}">
+                                    <img alt="photo_interieur" src="{{ isset($car->vehicule_medias[0]) ? asset($car->vehicule_medias[0]->photo_interieur) : url('back/img/ecommerce/product-details/6.png') }}">
                                 </div>
                             </div>
                         </div>
