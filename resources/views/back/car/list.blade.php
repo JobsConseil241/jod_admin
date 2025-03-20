@@ -122,7 +122,11 @@
                         data: 'name',
                         name: 'name',
                         orderable: true,
-                        searchable: true
+                        searchable: true,
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return `<span class="font-bold">`+ data +`</span>`;
+                        },
                     },
                     {
                         data: 'marque_id',
@@ -150,6 +154,10 @@
                         name: 'immatriculation',
                         orderable: false,
                         searchable: true,
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return `<span class="font-bold">`+ data +`</span>`;
+                        },
 
                     },
                     {
