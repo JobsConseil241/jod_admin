@@ -52,7 +52,7 @@
                     <h5 class="box-title">Liste des Pannes</h5>
                     <div class="flex justify-end">
                         <button type="button" class="hs-dropdown-toggle ti-btn ti-btn-primary"
-                            data-hs-overlay="#hs-basic-modal">
+                            data-hs-overlay="#cardModalView">
                             Ajouter une panne
                         </button>
                     </div>
