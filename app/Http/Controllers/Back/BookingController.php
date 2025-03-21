@@ -89,7 +89,13 @@ class BookingController extends Controller
             "Authorization" => "Bearer " . $access_token
         ])->get(env('SERVER_PC') . 'get_users', ['user_type_id' => 1000002]);
 
+        $resp = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_pannes');
+
         $object = json_decode($response->body());
+
+        $objec = json_decode($resp->body());
 
         $objects = json_decode($responses->body());
 
@@ -105,7 +111,13 @@ class BookingController extends Controller
             $users = [];
         }
 
-        $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes')->get();
+        if ($resp->successful() && isset($objec['success']) && $objec['success'] === true) {
+            $pannes = $objec['data']['pannes'] ?? [];
+        } else {
+            $pannes = [];
+        }
+
+        $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes', 'reference')->get();
 
 //        $respond = Http::withHeaders([
 //            "Authorization" => "Bearer " . $access_token
@@ -119,7 +131,27 @@ class BookingController extends Controller
 //            $users = [];
 //        }
 
-        return view('back.booking.detail', compact('booking', 'cars', 'users', 'reference'));
+        return view('back.booking.detail', compact('booking', 'cars', 'users', 'reference', 'pannes'));
+
+    }
+
+    public function assign_pannes(Request $request, $carId)
+    {
+
+        $access_token = Session::get('personnalToken');
+        $data = $request->all();
+
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->post(env('SERVER_PC') . 'assign_pannes_location', $data);
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            return redirect('backend/booking/detail/' . $carId)->with('success', "L'état du véhicule a été mis à jour avec succès.");
+        } else {
+            return back()->with('error', $object->message ?? 'Une erreur s\'est produite.')->withInput();
+        }
 
     }
 

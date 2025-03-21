@@ -113,6 +113,12 @@ Route::group([
     Route::post('/update_pannes_location', [BookingController::class, 'update_pannes_locations'])->name('API-UPDATE-PANNES-LOCATIONS');
     Route::delete('/delete_pannes_location', [BookingController::class, 'delete_pannes_locations'])->name('API-DELETE-PANNES-LOCATIONS');
 
+    //Locations Pannes
+    Route::get('/get_location_pannes', [PanneController::class, 'get_location_pannes'])->name('API-GET-ALL-PANNES-LOCATION');
+    Route::post('/assign_pannes_location', [PanneController::class, 'assign_pannes_location'])->name('API-ASSIGN-PANNES-LOCATION');
+    Route::post('/update_pannes_location', [PanneController::class, 'update_pannes_location'])->name('API-UPDATE-PANNES-LOCATION');
+    Route::delete('/delete_pannes_location', [PanneController::class, 'delete_pannes_location'])->name('API-DELETE-PANNES-LOCATION');
+
     // Paiements Values
     Route::get('/get_all_paiements', [PaymentController::class, 'get_all_paiements'])->name('API-GET-ALL-PAYMENTS');
 
