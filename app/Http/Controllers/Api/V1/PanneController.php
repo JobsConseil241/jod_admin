@@ -319,7 +319,7 @@ class PanneController extends BaseController
             Log::debug('Assign Pannes to Location Endpoint - All Params: ' . json_encode($request->all()));
             $data = $request->all();
             $rules = [
-                'id_location' => ['required', 'integer'],
+                'id_location' => ['required', 'string'],
                 'ids_pannes' => ['required', 'array'],
                 'ids_pannes.*' => ['string', 'exists:pannes,id'],
                 'status' => ['required', 'string'],
