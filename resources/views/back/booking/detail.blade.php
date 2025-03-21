@@ -495,7 +495,7 @@
     <div id="cardModalView" class="hs-overlay ti-modal hidden">
         <div class="ti-modal-box">
             <div class="ti-modal-content">
-                <form action="{{ route('backend.booking.assign.pannes', ['id_location' => $reference]) }}" method="POST">
+                <form action="{{ route('backend.booking.assign.pannes', ['reference' => $reference]) }}" method="POST">
                     @csrf
                     <div class="ti-modal-header">
                         <h3 class="ti-modal-title">
