@@ -171,7 +171,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('booking/car/pannes/{voiture}/ajax', [BookingController::class, 'getPannesByVoiture'])->name('backend.booking.pannes.ajax');
 
         // location pannes
-        Route::get('booking/detail/{reference}/assign-panne', [BookingController::class, 'assign_pannes'])->name('backend.booking.assign.pannes');
+        Route::post('booking/detail/{reference}/assign-panne', [BookingController::class, 'assign_pannes'])->name('backend.booking.assign.pannes');
 
         //recouvrements issues
         Route::resource('recouvrements', RecouvrementController::class);
