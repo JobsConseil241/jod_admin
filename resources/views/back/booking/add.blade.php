@@ -394,59 +394,31 @@
         let prixLocation = 0
         let netPaie = 0
 
-        // Variable pour suivre l'état des options
-        let livraisonActive = false;
-        let commissionActive = false;
-        const fraisLivraison = 5000;
-        const fraisCommission = 5000;
-
-        // Fonction pour mettre à jour le montant
-        function updateMontant() {
-            let inputMontant = document.querySelector('input[name="mntant_a_payer"]');
-
-            // Vérifier si le champ n'est pas vide
-            if (!inputMontant.value || isNaN(parseInt(inputMontant.value))) {
-                inputMontant.value = 0;
-            }
-
-            // Calculer le montant de base (sans livraison ni commission)
-            let montantBase = parseInt(inputMontant.value);
-            if (livraisonActive) {
-                montantBase -= fraisLivraison;
-            }
-            if (commissionActive) {
-                montantBase -= fraisCommission;
-            }
-
-            // Appliquer les frais selon les options actuelles
-            if (livraisonActive) {
-                montantBase += fraisLivraison;
-            }
-            if (commissionActive) {
-                montantBase += fraisCommission;
-            }
-
-            // Mettre à jour le champ avec le nouveau montant
-            inputMontant.value = montantBase;
-        }
-
-        // Écouteur pour la livraison
-        $('input[name="livraison"]').change(function() {
-            livraisonActive = $(this).val() == 'true';
-            updateMontant();
-        });
-
-        // Écouteur pour la commission
-        $('input[name="comission"]').change(function() {
-            commissionActive = $(this).val() == 'true';
-            updateMontant();
-        });
-
         $(document).ready(function() {
+
             let inputMontant = document.querySelector('input[name="mntant_a_payer"]');
             if (!inputMontant.value || isNaN(parseInt(inputMontant.value))) {
                 inputMontant.value = 0;
             }
+
+            $('input[name="livraison"]').change(function() {
+                let livraison = $(this).val();
+                if (livraison == 'true') {
+                    document.querySelector('input[name="mntant_a_payer"]').value = parseInt(document.querySelector('input[name="mntant_a_payer"]').value) + 5000
+                }else{
+                    (prixLocation === 0) ? document.querySelector('input[name="mntant_a_payer"]').value = parseInt(document.querySelector('input[name="mntant_a_payer"]').value) - 0 : document.querySelector('input[name="mntant_a_payer"]').value = parseInt(document.querySelector('input[name="mntant_a_payer"]').value) - 5000
+                }
+            });
+
+            $('input[name="comission"]').change(function() {
+                let commission = $(this).val();
+                console.log(commission == 'true')
+                if (commission == 'true') {
+                    document.querySelector('input[name="mntant_a_payer"]').value = parseInt(document.querySelector('input[name="mntant_a_payer"]').value) + 5000
+                }else{
+                    (prixLocation === 0) ? document.querySelector('input[name="mntant_a_payer"]').value = parseInt(document.querySelector('input[name="mntant_a_payer"]').value) - 0 : document.querySelector('input[name="mntant_a_payer"]').value = parseInt(document.querySelector('input[name="mntant_a_payer"]').value) - 5000
+                }
+            });
 
             $('#voiture_select').on('change', function() {
                 var voitureId = $(this).val();
