@@ -321,7 +321,7 @@ class PanneController extends BaseController
             $rules = [
                 'id_location' => ['required', 'integer'],
                 'ids_pannes' => ['required', 'array'],
-                'ids_pannes.*' => ['integer', 'exists:pannes,id'],
+                'ids_pannes.*' => ['string', 'exists:pannes,id'],
                 'status' => ['required', 'string'],
                 'montant' => ['sometimes', 'integer', 'min:0'],
             ];
