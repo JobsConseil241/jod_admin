@@ -117,7 +117,7 @@ class BookingController extends Controller
             $users = [];
         }
 
-        $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes', 'reference')->get();
+        $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes')->get();
 
 //        $respond = Http::withHeaders([
 //            "Authorization" => "Bearer " . $access_token
