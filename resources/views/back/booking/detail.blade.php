@@ -437,11 +437,6 @@
                                             </svg>
                                         </button>
 
-                                        <button type="button" class="hs-dropdown-toggle ti-btn ti-btn-primary"
-                                                data-hs-overlay="#hs-basic-modal">
-                                            Ajouter une panne
-                                        </button>
-
                                         <button class="w-full flex items-center justify-between px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-red-600 bg-white hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
                                             <span class="flex items-center">
                                               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
