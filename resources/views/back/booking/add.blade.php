@@ -399,12 +399,16 @@
 
             $('input[name="livraison"]').change(function() {
                 let livraison = $(this).val();
-                console.log('Livraison changed to:', livraison);
+                if (livraison == 'true') {
+                    prixLocation += 5000
+                }
             });
 
             $('input[name="comission"]').change(function() {
                 let commission = $(this).val();
-                console.log('Commission changed to:', commission);
+                if (commission == 'true') {
+                    prixLocation += 5000
+                }
             });
 
             $('#voiture_select').on('change', function() {
@@ -412,7 +416,7 @@
                 car_id = voitureId
                 $('#panne_select').empty();
 
-                prixLocation = $('option:selected', this).data('value');
+                prixLocation += $('option:selected', this).data('value');
 
                 if(voitureId) {
                     $.ajax({
