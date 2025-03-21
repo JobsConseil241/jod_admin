@@ -397,6 +397,15 @@
         $(document).ready(function() {
 
 
+            $('input[name="livraison"]').change(function() {
+                let livraison = $(this).val();
+                console.log('Livraison changed to:', livraison);
+            });
+
+            $('input[name="comission"]').change(function() {
+                let commission = $(this).val();
+                console.log('Commission changed to:', commission);
+            });
 
             $('#voiture_select').on('change', function() {
                 var voitureId = $(this).val();
