@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Location;
+use App\Models\LocationPanne;
 use App\Models\Panne;
 use App\Models\Vehicule;
 use App\Models\VehiculePanne;
@@ -313,12 +314,12 @@ class PanneController extends BaseController
     public function assign_pannes_location(Request $request)
     {
         try {
-            Log::info('Assign Pannes to Vehicules Endpoint Entered.');
+            Log::info('Assign Pannes to Location Endpoint Entered.');
 
-            Log::debug('Assign Pannes to Vehicules Endpoint - All Params: ' . json_encode($request->all()));
+            Log::debug('Assign Pannes to Location Endpoint - All Params: ' . json_encode($request->all()));
             $data = $request->all();
             $rules = [
-                'id_vehicule' => ['required', 'integer'],
+                'id_location' => ['required', 'integer'],
                 'ids_pannes' => ['required', 'array'],
                 'ids_pannes.*' => ['integer', 'exists:pannes,id'],
                 'status' => ['required', 'string'],
@@ -333,10 +334,10 @@ class PanneController extends BaseController
             }
 
 
-            $car = Vehicule::find($data['id_vehicule']);
+            $car = Location::where('reference', $data['id_location'])->first();
 
             if ($car == null) {
-                return $this->sendError("Vehicule not found");
+                return $this->sendError("Location not found");
             }
 
             $data = $car->pannes()->attach($data['ids_pannes'], [
@@ -344,14 +345,14 @@ class PanneController extends BaseController
                 'montant' => $data['montant'] ?? 0,
             ]);
 
-            Log::debug('Add pannes to vehicules Endpoint - Response: ' . json_encode($data));
+            Log::debug('Add pannes to location Endpoint - Response: ' . json_encode($data));
 
             return $this->sendResponse($data, "Add Panne successfully");
         } catch (Exception $e) {
-            Log::error('Assign Pannes to Vehicules Endpoint - Exception: ' . $e);
+            Log::error('Assign Pannes to Location Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");
         } finally {
-            Log::info('Assign Pannes to Vehicules Endpoint Exited.');
+            Log::info('Assign Pannes to Location Endpoint Exited.');
         }
     }
 
@@ -439,9 +440,9 @@ class PanneController extends BaseController
     public function update_pannes_location(Request $request)
     {
         try {
-            Log::info('Update Pannes to Vehicules Endpoint Entered.');
+            Log::info('Update Pannes to Location Endpoint Entered.');
 
-            Log::debug('Assign Pannes to Vehicules Endpoint - All Params: ' . json_encode($request->all()));
+            Log::debug('Assign Pannes to Location Endpoint - All Params: ' . json_encode($request->all()));
             $data = $request->all();
             $rules = [
                 'id_panne' => ['required', 'integer'],
@@ -457,25 +458,25 @@ class PanneController extends BaseController
             }
 
 
-            $panne = VehiculePanne::find($data['id_panne']);
+            $panne = LocationPanne::find($data['id_panne']);
 
             if ($panne == null) {
-                return $this->sendError("panne associate to vehicule not found");
+                return $this->sendError("panne associate to location not found");
             }
 
-            $vehiculePanne = VehiculePanne::find($data['id_panne']);
+            $vehiculePanne = LocationPanne::find($data['id_panne']);
             $vehiculePanne->status = $data['status'] ?? 'EN COURS';
             $vehiculePanne->montant = $data['montant'] ?? 0;
             $data = $vehiculePanne->save();
 
-            Log::debug('update state pannes aasociate to vehicules Endpoint - Response: ' . json_encode($data));
+            Log::debug('update state pannes aasociate to location Endpoint - Response: ' . json_encode($data));
 
             return $this->sendResponse($data, "Update successfully");
         } catch (Exception $e) {
-            Log::error('Update Pannes to Vehicules Endpoint - Exception: ' . $e);
+            Log::error('Update Pannes to location Endpoint - Exception: ' . $e);
             return $this->sendError("Unexpected error occurred, please try again later.");
         } finally {
-            Log::info('Update Pannes to Vehicules Endpoint Exited.');
+            Log::info('Update Pannes to location Endpoint Exited.');
         }
     }
 
