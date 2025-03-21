@@ -519,13 +519,13 @@
                             <select name="ids_pannes[]" class="ti-form-select" required>
                                 <option>--- Choisissez la panne ---</option>
                                 @foreach ($pannes as $item)
-                                    <option value="{{ $item['id'] }}"
-                                        {{ old('panne_id') == $item['id'] ? 'selected' : '' }}>
-                                        {{ $item['name'] }}
+                                    <option value="{{ $item->id }}"
+                                        {{ old('panne_id') == $item->id  ? 'selected' : '' }}>
+                                        {{ $item->name  }}
                                     </option>
                                 @endforeach
                             </select>
-                            <input type="hidden" name="id_location" value="{{$car['id']}}">
+                            <input type="hidden" name="id_location" value="{{ $reference }}">
                         </div>
 
                         <div class="mb-3">
