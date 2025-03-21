@@ -70,6 +70,7 @@
                                 <th>Année</th>
                                 <th>Immatriculation</th>
                                 <th>Tarif</th>
+                                <th>Statut</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -115,7 +116,7 @@
                         name: 'category_id',
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
-                            return row.categorie ? row.categorie.name : '';
+                            return `<span class="font-bold text-primary">` + row.categorie ? row.categorie.name : '' +`</span>`;
                         },
                     },
                     {
@@ -141,7 +142,11 @@
                         data: 'modele',
                         name: 'modele',
                         orderable: true,
-                        searchable: true
+                        searchable: true,
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            return `<span class="font-bold">`+ data +`</span>`;
+                        },
                     },
                     {
                         data: 'annee',
@@ -166,6 +171,18 @@
                         render: function(data, type, row) {
                             // Customize this function to generate content for your custom column
                             return formatAmount(row.prix_location) + ' FCFA';
+                        },
+                    },
+                    {
+                        data: 'statut_location',
+                        name: 'statut_location',
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            if(data === 1){
+                                return `<span class="badge bg-success/10 leading-none text-success rounded-sm">Disponible</span>`;
+                            }else{
+                                return `<span class="badge bg-danger/10 leading-none text-danger rounded-sm">InDisponible</span>`;
+                            }
                         },
                     },
                     {
