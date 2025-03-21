@@ -401,6 +401,8 @@
                 let livraison = $(this).val();
                 if (livraison == 'true') {
                     prixLocation += 5000
+                }else{
+                    (prixLocation === 0) ? prixLocation = 0 : prixLocation -= 5000
                 }
             });
 
@@ -408,6 +410,8 @@
                 let commission = $(this).val();
                 if (commission == 'true') {
                     prixLocation += 5000
+                }else{
+                    (prixLocation === 0) ? prixLocation = 0 : prixLocation -= 5000
                 }
             });
 
