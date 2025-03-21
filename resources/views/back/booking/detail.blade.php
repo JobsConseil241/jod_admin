@@ -516,7 +516,7 @@
                                         <select name="ids_pannes[]" class="ti-form-select" required>
                                             <option>--- Choisissez la panne ---</option>
                                             @foreach ($pannes as $item)
-                                                <option value="{{ $item->id }}"
+                                                <option value="{{ (int)$item->id }}"
                                                     {{ old('panne_id') == $item->id  ? 'selected' : '' }}>
                                                     {{ $item->name  }}
                                                 </option>
