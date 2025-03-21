@@ -105,16 +105,16 @@ class BookingController extends Controller
             $booking = [];
         }
 
+        if ($objec && $objec->success == true) {
+            $pannes = $objec->data->pannes;
+        } else {
+            $pannes = [];
+        }
+
         if ($objects && $objects->success == true) {
             $users = $objects->data->users;
         } else {
             $users = [];
-        }
-
-        if ($resp->successful() && isset($objec['success']) && $objec['success'] === true) {
-            $pannes = $objec['data']['pannes'] ?? [];
-        } else {
-            $pannes = [];
         }
 
         $cars = Vehicule::with('categorie', 'marque', 'vehiculeMedias', 'etats', 'pannes', 'reference')->get();
