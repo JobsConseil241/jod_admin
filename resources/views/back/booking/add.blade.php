@@ -410,16 +410,6 @@
                 }
             });
 
-            $('input[name="comission"]').change(function() {
-                let commission = $(this).val();
-                console.log(commission == 'true')
-                if (commission == 'true') {
-                    inputMontant.value = parseInt(inputMontant.value) + 5000
-                }else{
-                    (inputMontant.value === 0) ? (inputMontant.value = parseInt(inputMontant.value) - 0) : (inputMontant.value = parseInt(inputMontant.value) - 5000)
-                }
-            });
-
             $('#voiture_select').on('change', function() {
                 var voitureId = $(this).val();
                 car_id = voitureId
