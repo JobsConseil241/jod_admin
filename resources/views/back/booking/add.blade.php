@@ -404,9 +404,9 @@
             $('input[name="livraison"]').change(function() {
                 let livraison = $(this).val();
                 if (livraison == 'true') {
-                    document.querySelector('input[name="mntant_a_payer"]').value = parseInt(document.querySelector('input[name="mntant_a_payer"]').value) + 5000
+                    inputMontant.value = parseInt(inputMontant.value) + 5000
                 }else{
-                    (prixLocation === 0) ? document.querySelector('input[name="mntant_a_payer"]').value = parseInt(document.querySelector('input[name="mntant_a_payer"]').value) - 0 : document.querySelector('input[name="mntant_a_payer"]').value = parseInt(document.querySelector('input[name="mntant_a_payer"]').value) - 5000
+                    (inputMontant.value === 0) ? (inputMontant.value = parseInt(inputMontant.value) - 0) : (inputMontant.value = parseInt(inputMontant.value) - 5000)
                 }
             });
 
@@ -414,9 +414,9 @@
                 let commission = $(this).val();
                 console.log(commission == 'true')
                 if (commission == 'true') {
-                    document.querySelector('input[name="mntant_a_payer"]').value = parseInt(document.querySelector('input[name="mntant_a_payer"]').value) + 5000
+                    inputMontant.value = parseInt(inputMontant.value) + 5000
                 }else{
-                    (prixLocation === 0) ? document.querySelector('input[name="mntant_a_payer"]').value = parseInt(document.querySelector('input[name="mntant_a_payer"]').value) - 0 : document.querySelector('input[name="mntant_a_payer"]').value = parseInt(document.querySelector('input[name="mntant_a_payer"]').value) - 5000
+                    (inputMontant.value === 0) ? (inputMontant.value = parseInt(inputMontant.value) - 0) : (inputMontant.value = parseInt(inputMontant.value) - 5000)
                 }
             });
 
