@@ -432,13 +432,13 @@
 
         // Écouteur pour la livraison
         $('input[name="livraison"]').change(function() {
-            livraisonActive = $(this).val() === 'true';
+            livraisonActive = $(this).val() == 'true';
             updateMontant();
         });
 
         // Écouteur pour la commission
         $('input[name="comission"]').change(function() {
-            commissionActive = $(this).val() === 'true';
+            commissionActive = $(this).val() == 'true';
             updateMontant();
         });
 
