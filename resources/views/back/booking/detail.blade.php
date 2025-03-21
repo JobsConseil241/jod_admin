@@ -514,7 +514,7 @@
                                     <div class="mb-3">
                                         <label class="ti-form-label mb-0">Panne associe</label>
                                         <select name="ids_pannes[]" class="ti-form-select" required>
-                                            <option>--- Choisissez la panne ---</option>
+                                            <option selected disabled>--- Choisissez la panne ---</option>
                                             @foreach ($pannes as $item)
                                                 <option value="{{ (int)$item->id }}"
                                                     {{ old('panne_id') == $item->id  ? 'selected' : '' }}>
