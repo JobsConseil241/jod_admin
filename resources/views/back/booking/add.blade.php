@@ -400,9 +400,9 @@
             $('input[name="livraison"]').change(function() {
                 let livraison = $(this).val();
                 if (livraison == 'true') {
-                    prixLocation += 5000
+                    document.querySelector('input[name="mntant_a_payer"]').value += 5000
                 }else{
-                    (prixLocation === 0) ? prixLocation = 0 : prixLocation -= 5000
+                    (prixLocation === 0) ? document.querySelector('input[name="mntant_a_payer"]').value = 0 : document.querySelector('input[name="mntant_a_payer"]').value -= 5000
                 }
             });
 
@@ -411,7 +411,7 @@
                 if (commission == 'true') {
                     prixLocation += 5000
                 }else{
-                    (prixLocation === 0) ? prixLocation = 0 : prixLocation -= 5000
+                    (prixLocation === 0) ? document.querySelector('input[name="mntant_a_payer"]').value = 0 : document.querySelector('input[name="mntant_a_payer"]').value -= 5000
                 }
             });
 
