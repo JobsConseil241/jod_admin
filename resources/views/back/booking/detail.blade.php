@@ -423,7 +423,8 @@
                                         </a>
 
 
-                                        <button class="w-full flex items-center justify-between px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 hs-dropdown-toggle"
+                                        <button class="w-full flex items-center justify-between px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                type="button"
                                                 data-hs-overlay="#hs-basic-modal">
                                             <span class="flex items-center">
                                               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -609,8 +610,6 @@
 
         $(document).ready(function() {
 
-
-
             $('#voiture_select').on('change', function() {
                 var voitureId = $(this).val();
                 car_id = voitureId
@@ -660,75 +659,6 @@
                     $('#panne_select').append('<option value="">Sélectionnez d\'abord une voiture</option>');
                 }
             });
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Récupérer les champs d'entrée
-            const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
-            const montantPaye = document.querySelector('input[name="mntant_paye"]');
-            const resteAPayer = document.querySelector('input[name="montant_restant"]');
-
-            const dateDebut = document.querySelector('input[name="date_debut"]');
-            const dateRetour = document.querySelector('input[name="date_retour"]');
-
-            // Fonction pour calculer la différence en jours entre deux dates
-            function calculerNombreJours() {
-                // Vérifier que les deux dates sont remplies
-                if (!dateDebut.value || !dateRetour.value) return;
-
-                // Convertir les chaînes en objets Date
-                const dateDebutObj = new Date(dateDebut.value);
-                const dateRetourObj = new Date(dateRetour.value);
-
-                // Calculer la différence en millisecondes
-                const differenceMs = dateRetourObj - dateDebutObj;
-
-                // Convertir en jours (1 jour = 24 * 60 * 60 * 1000 ms)
-                const differenceJours = Math.ceil(differenceMs / (1000 * 60 * 60 * 24));
-
-                jours = differenceJours
-
-                $('#jours').val(jours)
-
-                netPaie  = parseInt(prixLocation) * parseInt(jours)
-
-                const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
-                montantAPayer.value = netPaie
-
-            }
-
-            function calculerResteAPayer() {
-                // Récupérer les valeurs et convertir en nombres
-                const montantAPayerValue = parseInt(montantAPayer.value.replace(/[^\d.-]/g, '')) || 0;
-                const montantPayeValue = parseInt(montantPaye.value.replace(/[^\d.-]/g, '')) || 0;
-
-                // Calculer le reste à payer
-                // Mettre à jour le champ du reste à payer
-                resteAPayer.value = Math.max(0, montantAPayerValue - montantPayeValue);
-            }
-
-            // Ajouter des écouteurs d'événements pour les deux premiers champs
-            montantAPayer.addEventListener('input', calculerResteAPayer);
-            montantPaye.addEventListener('input', calculerResteAPayer);
-
-            flatpickr("#limitdatetime", {
-                enableTime: true,
-                minTime: "08:00",
-                maxTime: "20:00"
-            });
-
-            flatpickr("#limitdatetimes", {
-                enableTime: true,
-                minTime: "08:00",
-                maxTime: "20:00",
-                onChange: function(selectedDates, dateStr, instance) {
-                    calculerNombreJours();
-                }
-            });
-
-
-            // Calculer initialement au chargement de la page
-            calculerResteAPayer();
         });
 
         function formatDate(date) {
