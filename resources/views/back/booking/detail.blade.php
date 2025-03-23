@@ -292,14 +292,21 @@
                                             </tr>
                                             </thead>
                                             <tbody class="bg-white divide-y divide-gray-200">
-{{--                                                <tr>--}}
-{{--                                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">16/03/2025 14:32</td>--}}
-{{--                                                    <td class="px-6 py-4 whitespace-nowrap">--}}
-{{--                                                        <span class="px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-blue-100 text-blue-800">Paiement reçu</span>--}}
-{{--                                                    </td>--}}
-{{--                                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Système</td>--}}
-{{--                                                    <td class="px-6 py-4 text-sm text-gray-500">Paiement en ligne confirmé</td>--}}
-{{--                                                </tr>--}}
+                                                @if($booking->pannes->count() > 0)
+                                                    @foreach($booking->pannes as $pan)
+                                                        <tr>
+                                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                                                {{ $pan->name }}</td>
+                                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                                <span class="px-2 inline-flex text-xs leading-5 font-medium rounded-full bg-blue-100 text-blue-800">{{ $pan->pivot->status }}</span>
+                                                            </td>
+                                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $pan->pivot->montant }} FCFA</td>
+                                                            <td class="px-6 py-4 text-sm text-gray-500">{{ Carbon::parse($pan->pivot->created_at)->locale('fr')->isoFormat('D MMMM YYYY') }}</td>
+                                                        </tr>
+                                                    @endforeach
+
+
+                                                @endif
                                             </tbody>
                                         </table>
                                     </div>
