@@ -84,7 +84,6 @@
                         </div>
                     </div>
 
-                    {{ dd($booking) }}
                     <!-- Rental status card -->
                     <div class="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
                         <div class="p-6">
