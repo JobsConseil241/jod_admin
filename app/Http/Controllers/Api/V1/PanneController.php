@@ -334,7 +334,7 @@ class PanneController extends BaseController
             }
 
 
-            $car = Location::where('reference', $data['id_location'])->first();
+            $car = Location::where('code_contrat', $data['id_location'])->first();
 
             if ($car == null) {
                 return $this->sendError("Location not found");
