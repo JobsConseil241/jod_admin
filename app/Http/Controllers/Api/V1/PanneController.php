@@ -320,8 +320,8 @@ class PanneController extends BaseController
             $data = $request->all();
             $rules = [
                 'id_location' => ['required', 'string'],
-                'ids_pannes' => ['required', 'array'],
-                'ids_pannes.*' => ['string', 'exists:pannes,id'],
+                'ids_pannes' => ['required', 'exists:pannes,id'],
+//                'ids_pannes.*' => ['string', 'exists:pannes,id'],
                 'status' => ['required', 'string'],
                 'montant' => ['sometimes', 'string', 'min:0'],
             ];
@@ -445,7 +445,7 @@ class PanneController extends BaseController
             Log::debug('Assign Pannes to Location Endpoint - All Params: ' . json_encode($request->all()));
             $data = $request->all();
             $rules = [
-                'id_panne' => ['required', 'integer'],
+                'id_location' => ['required', 'integer'],
                 'status' => ['sometimes', 'string'],
                 'montant' => ['sometimes', 'integer']
             ];
@@ -458,13 +458,13 @@ class PanneController extends BaseController
             }
 
 
-            $panne = LocationPanne::find($data['id_panne']);
+            $panne = LocationPanne::find($data['id_location']);
 
             if ($panne == null) {
                 return $this->sendError("panne associate to location not found");
             }
 
-            $vehiculePanne = LocationPanne::find($data['id_panne']);
+            $vehiculePanne = LocationPanne::find($data['id_location']);
             $vehiculePanne->status = $data['status'] ?? 'EN COURS';
             $vehiculePanne->montant = $data['montant'] ?? 0;
             $data = $vehiculePanne->save();
@@ -488,7 +488,7 @@ class PanneController extends BaseController
             Log::debug('Delete Pannes to Vehicules Endpoint - All Params: ' . json_encode($request->all()));
             $data = $request->all();
             $rules = [
-                'id_panne' => ['required', 'integer']
+                'id_location' => ['required', 'integer']
             ];
 
             $validator = Validator::make($request->all(), $rules);
@@ -499,13 +499,13 @@ class PanneController extends BaseController
             }
 
 
-            $panne = VehiculePanne::find($data['id_panne']);
+            $panne = VehiculePanne::find($data['id_location']);
 
             if ($panne == null) {
                 return $this->sendError("panne associate to vehicule not found");
             }
 
-            $data = VehiculePanne::find($data['id_panne'])->delete();
+            $data = VehiculePanne::find($data['id_location'])->delete();
 
             Log::debug('delete pannes aasociate to vehicules Endpoint - Response: ' . json_encode($data));
 

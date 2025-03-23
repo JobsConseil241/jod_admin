@@ -492,7 +492,7 @@
                 <div id="hs-basic-modal" class="hs-overlay ti-modal hidden">
                     <div class="ti-modal-box">
                         <div class="ti-modal-content">
-                            <form action="{{ route('backend.booking.assign.pannes', ['reference' => $reference]) }}" method="POST">
+                            <form action="{{ route('backend.booking.assign.pannes', ['reference' => $reference]) }}" method="post">
                                 @csrf
                                 <div class="ti-modal-header">
                                     <h3 class="ti-modal-title">
@@ -513,7 +513,7 @@
 
                                     <div class="mb-3">
                                         <label class="ti-form-label mb-0">Panne associe</label>
-                                        <select name="ids_pannes[]" class="ti-form-select" required>
+                                        <select name="ids_pannes" class="ti-form-select" required>
                                             <option selected disabled>--- Choisissez la panne ---</option>
                                             @foreach ($pannes as $item)
                                                 <option value="{{ (int)$item->id }}"
