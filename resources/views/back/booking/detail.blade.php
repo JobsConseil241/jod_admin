@@ -322,12 +322,12 @@
                                                             <td>
                                                                 <button type="button" class="ti-btn ti-btn-soft-primary"
                                                                         data-hs-overlay="#cardModalView{{ $pan->id }}">
-                                                                    <i class="ri-pencil-fill align-bottom me-2"></i> Modifier
+                                                                    <i class="ri-pencil-fill align-bottom me-2"></i>
                                                                 </button>
 
                                                                 <button type="button" class="ti-btn ti-btn-soft-danger"
                                                                         data-hs-overlay="#cardModalDelete{{ $pan->id }}">
-                                                                    <i class="ri-delete-bin-fill align-bottom me-2"></i> Supprimer
+                                                                    <i class="ri-delete-bin-fill align-bottom me-2"></i>
                                                                 </button>
                                                             </td>
                                                         </tr>
