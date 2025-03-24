@@ -172,6 +172,7 @@ Route::middleware(['auth'])->group(function () {
 
         // location pannes
         Route::post('booking/detail/{reference}/assign-panne', [BookingController::class, 'assign_pannes'])->name('backend.booking.assign.pannes');
+        Route::post('booking/detail/{reference}/assign_update', [BookingController::class, 'update_assign_pannes'])->name('backend.booking.update.assign.pannes');
 
         //recouvrements issues
         Route::resource('recouvrements', RecouvrementController::class);
