@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use App\Models\LocationPanne;
 use Illuminate\Http\Request;
 use App\Models\Location;
 use App\Models\Vehicule;
@@ -178,12 +179,22 @@ class DashboardController extends Controller
             ->distinct('vehicule_id')
             ->count('vehicule_id');
 
+        $vehiclesInMaintenance += LocationPanne::where('status', 'EN COURS')
+            ->distinct('location_id')
+            ->count('location_id');
+
         // Calcul de l'évolution par rapport au mois dernier
         $lastMonthVehiclesInMaintenance = VehiculePanne::where('status', 'EN COURS')
             ->whereMonth('created_at', Carbon::now()->subMonth()->month)
             ->whereYear('created_at', Carbon::now()->subMonth()->year)
             ->distinct('vehicule_id')
             ->count('vehicule_id');
+
+        $lastMonthVehiclesInMaintenance += LocationPanne::where('status', 'EN COURS')
+            ->whereMonth('created_at', Carbon::now()->subMonth()->month)
+            ->whereYear('created_at', Carbon::now()->subMonth()->year)
+            ->distinct('location_id')
+            ->count('location_id');
 
         $evolution = 0;
         if ($lastMonthVehiclesInMaintenance > 0) {
