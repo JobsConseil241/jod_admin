@@ -364,8 +364,8 @@
                                                                                         </option>
                                                                                     @endforeach
                                                                                 </select>
-                                                                                <input type="hidden" name="id_location" value="{{$reference}}">
-                                                                                <input type="hidden" name="id_panne" value="{{$index}}">
+{{--                                                                                <input type="hidden" name="id_location" value="{{$reference}}">--}}
+                                                                                <input type="hidden" name="id_location" value="{{$index}}">
                                                                             </div>
 
                                                                             <div class="mb-3">
