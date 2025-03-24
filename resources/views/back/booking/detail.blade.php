@@ -412,7 +412,7 @@
                                                                 <div class="ti-modal-content">
                                                                     <div class="ti-modal-header">
                                                                         <h3 class="ti-modal-title">
-                                                                            Supprimer une Panne associé à {{ $car['name'] }}
+                                                                            Supprimer une Panne associé à {{ $reference }}
                                                                         </h3>
                                                                         <button type="button" class="hs-dropdown-toggle ti-modal-clode-btn"
                                                                                 data-hs-overlay="#cardModalDelete{{ $pan->id }}">
@@ -431,7 +431,7 @@
                                                                         </p>
                                                                     </div>
                                                                     <div class="ti-modal-footer">
-                                                                        <form action="{{ url('backend/car/pannes/' . $booking->reference .'/delete_update') }}" method="POST">
+                                                                        <form action="{{ url('backend/car/pannes/' . $reference .'/delete_update') }}" method="POST">
                                                                             @csrf
                                                                             <input type="hidden" name="delete" value="true" />
                                                                             <button type="button"
