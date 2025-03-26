@@ -160,7 +160,21 @@
                         data: 'statut',
                         name: 'statut',
                         orderable: true,
-                        searchable: true
+                        searchable: true,
+                        render: function(data, type, row) {
+                            // Customize this function to generate content for your custom column
+                            if(data === 5){
+                                return `<span class="badge bg-success/10 leading-none text-success rounded-sm">Terminée</span>`;
+                            }else if(data === 4) {
+                                return `<span class="badge bg-danger/10 leading-none text-danger rounded-sm">Refusée</span>`;
+                            }else if(data === 3) {
+                                return `<span class="badge bg-primary/10 leading-none text-primary rounded-sm">Acceptée</span>`;
+                            }else if(data === 2) {
+                                return `<span class="badge bg-warning/10 leading-none text-warning rounded-sm">Annulée</span>`;
+                            }else if(data === 1) {
+                                return `<span class="badge bg-secondary/10 leading-none text-secondary rounded-sm">En attente</span>`;
+                            }
+                        },
                     },
                     {
                         targets: -1,
