@@ -91,9 +91,17 @@
                                 <div>
                                     <div class="flex items-center">
                                         <h3 class="text-lg font-semibold text-gray-900">Réservation {{ $booking->code_contrat }}</h3>
-                                        <span class="ml-3 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                            En cours
-                                        </span>
+                                        @if($booking->statut === 5)
+                                            <span class="badge bg-success/10 leading-none text-success rounded-sm">Terminée</span>
+                                        @elseif($booking->statut === 4)
+                                            <span class="badge bg-danger/10 leading-none text-danger rounded-sm">Refusée</span>
+                                        @elseif($booking->statut === 3)
+                                            <span class="badge bg-primary/10 leading-none text-primary rounded-sm">Acceptée</span>
+                                        @elseif($booking->statut === 2)
+                                            <span class="badge bg-warning/10 leading-none text-warning rounded-sm">Annulée</span>
+                                        @elseif($booking->statut === 1)
+                                            <span class="badge bg-secondary/10 leading-none text-secondary rounded-sm">En attente</span>
+                                        @endif
                                     </div>
                                     <p class="mt-1 text-sm text-gray-500">Créée le {{ Carbon::parse($booking->created_at)->locale('fr')->isoFormat('D MMMM YYYY')  }}</p>
                                 </div>
@@ -156,9 +164,15 @@
                                                     <h4 class="text-lg font-semibold text-gray-900">{{ $booking->vehicule->marque->name }} {{ $booking->vehicule->modele }} {{ $booking->vehicule->couleur }}</h4>
                                                     <p class="mt-1 text-sm text-gray-500">Immatriculation: {{ $booking->vehicule->immatriculation }}</p>
                                                 </div>
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                    Disponible
-                  </span>
+                                                @if($booking->vehicule->statut_location === 1)
+                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                                        Disponible
+                                                    </span>
+                                                @else
+                                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                                        Indisponible
+                                                    </span>
+                                                @endif
                                             </div>
 
                                             <div class="mt-4 grid grid-cols-2 gap-4">

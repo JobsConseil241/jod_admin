@@ -105,6 +105,23 @@ class BookingController extends BaseController
 
                 ]);
 
+                $today = Carbon::today()->format('Y-m-d');
+                $end_day = Carbon::parse($datas['date_retour'])->locale('fr')->isoFormat('Y-m-d');
+
+                if ($today == $end_day) {
+                    $disponible = true;
+                }
+                if ($today > $end_day) {
+                    $disponible = true;
+                }
+                if ($today < $end_day) {
+                    $disponible = false;
+                }
+
+                $vehicule = Vehicule::find($datas['vehicule']);
+                $vehicule->statut_location = $disponible;
+                $vehicule->save();
+
                 $location = Location::create([
                     'code_contrat' => Location::generateUniqueCode(),
                     'date_heure_debut' => $datas['date_debut'],
@@ -158,6 +175,25 @@ class BookingController extends BaseController
                     'statut' => ($datas['montant_restant'] == 0) ? 1 : 0,
 
                 ]);
+
+
+                $today = Carbon::today()->format('Y-m-d');
+                $end_day = Carbon::parse($datas['date_retour'])->locale('fr')->isoFormat('Y-m-d');
+
+                if ($today == $end_day) {
+                    $disponible = true;
+                }
+                if ($today > $end_day) {
+                    $disponible = true;
+                }
+                if ($today < $end_day) {
+                    $disponible = false;
+                }
+
+                $vehicule = Vehicule::find($datas['vehicule']);
+                $vehicule->statut_location = $disponible;
+                $vehicule->save();
+
 
                 $location = Location::create([
                     'code_contrat' => Location::generateUniqueCode(),
