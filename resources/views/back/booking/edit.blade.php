@@ -398,7 +398,7 @@
         let prixLocation = 0
         let netPaie = 0
 
-        let location = {{ $booking }}
+        let location = @json($booking)
 
         $(document).ready(function() {
 
