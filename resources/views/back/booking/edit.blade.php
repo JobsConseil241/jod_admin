@@ -398,7 +398,7 @@
         let prixLocation = 0
         let netPaie = 0
 
-        let location = @json($booking)
+        let rental = @json($booking)
 
         $(document).ready(function() {
 
@@ -478,8 +478,8 @@
                                 var dateObj = new Date(panne.date);
                                 var formattedDate = formatDate(dateObj);
 
-                                $('#panne_select').append('<option value="' + panne.id + '" ' + ((location.etat_livraison_id == panne.id) ? 'selected' : '') + '> Etat du ' + formattedDate + '</option>');
-                                $('#panne_selects').append('<option value="' + panne.id + '" ' + ((location.etat_restitution_id == panne.id) ? 'selected' : '') + '> Etat du ' + formattedDate + '</option>');
+                                $('#panne_select').append('<option value="' + panne.id + '" ' + ((rental.etat_livraison_id == panne.id) ? 'selected' : '') + '> Etat du ' + formattedDate + '</option>');
+                                $('#panne_selects').append('<option value="' + panne.id + '" ' + ((rental.etat_restitution_id == panne.id) ? 'selected' : '') + '> Etat du ' + formattedDate + '</option>');
                             });
 
                             $('.tett').each(function(index) {
