@@ -170,9 +170,11 @@
                             }else if(data === 3) {
                                 return `<span class="badge bg-primary/10 leading-none text-primary rounded-sm">Acceptée</span>`;
                             }else if(data === 2) {
-                                return `<span class="badge bg-warning/10 leading-none text-warning rounded-sm">Annulée</span>`;
+                                return `<span class="badge bg-danger/10 leading-none text-danger rounded-sm">Annulée</span>`;
                             }else if(data === 1) {
                                 return `<span class="badge bg-secondary/10 leading-none text-secondary rounded-sm">En attente</span>`;
+                            }else if(data === 7) {
+                                return `<span class="badge bg-warning/10 leading-none text-warning rounded-sm">En cours</span>`;
                             }
                         },
                     },

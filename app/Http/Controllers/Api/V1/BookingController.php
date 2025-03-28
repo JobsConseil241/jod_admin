@@ -105,14 +105,17 @@ class BookingController extends BaseController
 
                 ]);
 
+                $state_resa = 7;
                 $today = Carbon::today()->format('Y-m-d');
                 $end_day = Carbon::parse($datas['date_retour'])->locale('fr')->isoFormat('Y-m-d');
 
                 if ($today == $end_day) {
                     $disponible = true;
+                    $state_resa = 5;
                 }
                 if ($today > $end_day) {
                     $disponible = true;
+                    $state_resa = 5;
                 }
                 if ($today < $end_day) {
                     $disponible = false;
@@ -129,7 +132,7 @@ class BookingController extends BaseController
                     'vehicule_id' => $datas['vehicule'],
                     'type_location' => $datas['type_loca'],
                     'jours' => $datas['jours'],
-                    'statut' => 5,
+                    'statut' => $state_resa,
                     'comission' => $datas['comission'],
                     'etat_livraison_id' => $datas['etat_avant'],
                     'livraison' => $datas['livraison'],
@@ -176,15 +179,17 @@ class BookingController extends BaseController
 
                 ]);
 
-
+                $state_resa = 7;
                 $today = Carbon::today()->format('Y-m-d');
                 $end_day = Carbon::parse($datas['date_retour'])->locale('fr')->isoFormat('Y-m-d');
 
                 if ($today == $end_day) {
                     $disponible = true;
+                    $state_resa = 5;
                 }
                 if ($today > $end_day) {
                     $disponible = true;
+                    $state_resa = 5;
                 }
                 if ($today < $end_day) {
                     $disponible = false;
@@ -202,7 +207,7 @@ class BookingController extends BaseController
                     'vehicule_id' => $datas['vehicule'],
                     'type_location' => $datas['type_loca'],
                     'jours' => $datas['jours'],
-                    'statut' => 5,
+                    'statut' => $state_resa,
                     'comission' => $datas['comission'],
                     'etat_livraison_id' => $datas['etat_avant'],
                     'livraison' => $datas['livraison'],

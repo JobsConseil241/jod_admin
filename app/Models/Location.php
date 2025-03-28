@@ -69,4 +69,8 @@ class Location extends Model
     {
         return $this->hasMany(Recouvrement::class);
     }
+
+    public function notes() {
+        return $this->hasMany(Note::class);
+    }
 }
