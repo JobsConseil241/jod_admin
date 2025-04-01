@@ -518,6 +518,158 @@
     </div>
     <!-- Perfect Fleets Section End -->
 
+    <!-- App Store Section Start -->
+    <div class="app-download bg-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!-- App Download Content Start -->
+                    <div class="app-download-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">Application Mobile</h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Disponible sur PlayStore et AppStore</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">Profitez de notre service de location où que vous soyez grâce à notre application mobile. Réservez, suivez et gérez vos locations en quelques clics.</p>
+                        </div>
+                        <!-- Section Title End -->
+
+                        <!-- App Store Buttons Start -->
+                        <div class="app-store-buttons wow fadeInUp" data-wow-delay="0.5s">
+                            <a href="#" class="app-btn">
+                                <div class="app-btn-icon">
+                                    <i class="fab fa-google-play"></i>
+                                </div>
+                                <div class="app-btn-content">
+                                    <span>Télécharger sur</span>
+                                    <h3>Google Play</h3>
+                                </div>
+                            </a>
+                            <a href="#" class="app-btn">
+                                <div class="app-btn-icon">
+                                    <i class="fab fa-apple"></i>
+                                </div>
+                                <div class="app-btn-content">
+                                    <span>Télécharger sur</span>
+                                    <h3>App Store</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- App Store Buttons End -->
+
+                        <!-- App Features Start -->
+                        <div class="app-features wow fadeInUp" data-wow-delay="0.75s">
+                            <div class="feature-item">
+                                <div class="icon-box">
+                                    <img src="{{asset('front/images/icon-service-1.svg')}}" alt="">
+                                </div>
+                                <p>Réservation rapide</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="icon-box">
+                                    <img src="{{asset('front/images/icon-service-2.svg')}}" alt="">
+                                </div>
+                                <p>Suivi en temps réel</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="icon-box">
+                                    <img src="{{asset('front/images/icon-service-4.svg')}}" alt="">
+                                </div>
+                                <p>Support 24/7</p>
+                            </div>
+                        </div>
+                        <!-- App Features End -->
+                    </div>
+                    <!-- App Download Content End -->
+                </div>
+                <div class="col-lg-6">
+                    <!-- App Download Image Start -->
+                    <div class="app-download-image wow fadeInUp" data-wow-delay="0.5s">
+                        <figure class="reveal">
+                            <img src="{{asset('front/images/mockup-phone.png')}}" alt="Application Mobile">
+                        </figure>
+                    </div>
+                    <!-- App Download Image End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- App Store Section End -->
+
+    <!-- Vehicle Owners Section Start -->
+    <div class="vehicle-owners">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!-- Vehicle Owners Image Start -->
+                    <div class="vehicle-owners-image">
+                        <div class="owners-img-1">
+                            <figure class="image-anime">
+                                <img src="{{asset('front/images/handsome-elegant-man.jpg')}}" alt="Propriétaire de véhicule">
+                            </figure>
+                        </div>
+                        <div class="owners-img-2">
+                            <figure class="image-anime">
+                                <img src="{{asset('front/images/2148685321-min.jpg')}}" alt="Véhicule de location">
+                            </figure>
+                        </div>
+                    </div>
+                    <!-- Vehicle Owners Image End -->
+                </div>
+                <div class="col-lg-6">
+                    <!-- Vehicle Owners Content Start -->
+                    <div class="vehicle-owners-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">Partenariat</h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Êtes-vous propriétaire de véhicule ?</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">Rejoignez notre réseau de partenaires et rentabilisez votre véhicule lorsque vous ne l'utilisez pas. Nous offrons des conditions avantageuses et une gestion complète.</p>
+                        </div>
+                        <!-- Section Title End -->
+
+                        <!-- Benefits List Start -->
+                        <div class="benefits-list wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="benefit-item">
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-money-bill-wave"></i>
+                                </div>
+                                <div class="benefit-content">
+                                    <h3>Revenus complémentaires</h3>
+                                    <p>Générez un revenu régulier grâce à votre véhicule pendant qu'il n'est pas utilisé</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-shield-alt"></i>
+                                </div>
+                                <div class="benefit-content">
+                                    <h3>Assurance complète</h3>
+                                    <p>Nous assurons votre véhicule pendant toute la durée de la location</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="icon-box">
+                                    <i class="fa-solid fa-car-side"></i>
+                                </div>
+                                <div class="benefit-content">
+                                    <h3>Entretien régulier</h3>
+                                    <p>Nous prenons en charge l'entretien et la maintenance de votre véhicule</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Benefits List End -->
+
+                        <!-- CTA Button Start -->
+                        <div class="vehicle-owners-cta wow fadeInUp" data-wow-delay="0.75s">
+                            <a href="#" class="btn-default">Devenir partenaire</a>
+                        </div>
+                        <!-- CTA Button End -->
+                    </div>
+                    <!-- Vehicle Owners Content End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Vehicle Owners Section End -->
 
     <!-- Our FAQs Section Start -->
     <div class="our-faqs bg-section">
