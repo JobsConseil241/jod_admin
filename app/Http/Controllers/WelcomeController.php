@@ -12,7 +12,7 @@ class WelcomeController extends Controller
     public function index()
     {
         $car_categories = Category::all();
-        $vehicules = Vehicule::with(['categorie', 'marque'])->get();
+        $vehicules = Vehicule::with(['categorie', 'marque', 'vehiculeMedias'])->get();
 
         return view('welcome', compact('car_categories', 'vehicules'));
     }

@@ -449,9 +449,11 @@
                                         <!-- Perfect Fleets Item Start -->
                                         <div class="perfect-fleet-item">
                                             <!-- Image Box Start -->
-                                            <div class="image-box">
-                                                <img src="{{asset('front/images/perfect-fleet-img-1.png')}}" alt="">
-                                            </div>
+                                            @if($car->vehiculeMedias)
+                                                <div class="image-box">
+                                                    <img src="{{asset($car->vehiculeMedias[0]->photo_avant)}}" alt="">
+                                                </div>
+                                            @endif
                                             <!-- Image Box End -->
 
                                             <!-- Perfect Fleets Content Start -->
