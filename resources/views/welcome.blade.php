@@ -695,16 +695,23 @@
     <!-- Section App Store Start -->
     <div class="app-store my-2">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row section-row">
+                <div class="col-lg-12">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">Application Mobile</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Disponible sur PlayStore et AppStore</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.25s">Simplifiez votre expérience de location de voiture avec notre application mobile intuitive. Réservez, modifiez et gérez vos locations en quelques clics, où que vous soyez.</p>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center mt-2">
                 <div class="col-lg-6">
                     <!-- App Store Content Start -->
                     <div class="app-store-content">
                         <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">Application Mobile</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Disponible sur PlayStore et AppStore</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.25s">Simplifiez votre expérience de location de voiture avec notre application mobile intuitive. Réservez, modifiez et gérez vos locations en quelques clics, où que vous soyez.</p>
-                        </div>
+
                         <!-- Section Title End -->
 
                         <!-- App Store Buttons Start -->
@@ -712,7 +719,7 @@
                             <a href="#" class="btn-default">
                                 <i class="fa-brands fa-google-play me-2"></i> Google Play
                             </a>
-                            <a href="#" class="btn-default btn-highlighted">
+                            <a href="#" class="btn-default">
                                 <i class="fa-brands fa-apple me-2"></i> App Store
                             </a>
                         </div>
