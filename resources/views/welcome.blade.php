@@ -519,7 +519,7 @@
     <!-- Perfect Fleets Section End -->
 
     <!-- Section Propriétaires de Véhicules Start -->
-    <div class="vehicle-owners my-3">
+    <div class="vehicle-owners my-2">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
@@ -693,7 +693,7 @@
 
 
     <!-- Section App Store Start -->
-    <div class="app-store bg-section my-3">
+    <div class="app-store my-2">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
@@ -718,39 +718,32 @@
                         </div>
                         <!-- App Store Buttons End -->
 
-                        <!-- App Features Start -->
-                        <div class="about-content-body wow fadeInUp" data-wow-delay="0.75s">
-                            <div class="about-trusted-booking">
-                                <div class="icon-box">
-                                    <img src="{{asset('front/images/icon-about-trusted-1.svg')}}" alt="">
-                                </div>
-                                <div class="trusted-booking-content">
-                                    <h3>Réservation rapide</h3>
-                                    <p>Trouvez et réservez la voiture idéale en quelques minutes, sans paperasse ni attente.</p>
-                                </div>
-                            </div>
-                            <div class="about-trusted-booking">
-                                <div class="icon-box">
-                                    <img src="{{asset('front/images/icon-about-trusted-2.svg')}}" alt="">
-                                </div>
-                                <div class="trusted-booking-content">
-                                    <h3>Suivi en temps réel</h3>
-                                    <p>Suivez l'état de vos réservations et recevez des notifications importantes directement sur votre téléphone.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- App Features End -->
                     </div>
                     <!-- App Store Content End -->
                 </div>
                 <div class="col-lg-6">
-                    <!-- App Store Image Start -->
-                    <div class="app-store-image wow fadeInUp" data-wow-delay="0.5s">
-                        <figure class="reveal">
-                            <img src="{{asset('front/images/mockup-phone.png')}}" alt="Application Mobile JOD Trade & Co">
-                        </figure>
+                    <!-- App Features Start -->
+                    <div class="about-content-body wow fadeInUp" data-wow-delay="0.75s">
+                        <div class="about-trusted-booking">
+                            <div class="icon-box">
+                                <img src="{{asset('front/images/icon-about-trusted-1.svg')}}" alt="">
+                            </div>
+                            <div class="trusted-booking-content">
+                                <h3>Réservation rapide</h3>
+                                <p>Trouvez et réservez la voiture idéale en quelques minutes, sans paperasse ni attente.</p>
+                            </div>
+                        </div>
+                        <div class="about-trusted-booking">
+                            <div class="icon-box">
+                                <img src="{{asset('front/images/icon-about-trusted-2.svg')}}" alt="">
+                            </div>
+                            <div class="trusted-booking-content">
+                                <h3>Suivi en temps réel</h3>
+                                <p>Suivez l'état de vos réservations et recevez des notifications importantes directement sur votre téléphone.</p>
+                            </div>
+                        </div>
                     </div>
-                    <!-- App Store Image End -->
+                    <!-- App Features End -->
                 </div>
             </div>
         </div>
