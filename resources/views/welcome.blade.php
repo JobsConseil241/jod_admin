@@ -519,6 +519,61 @@
     <!-- Perfect Fleets Section End -->
 
 
+    <!-- Section téléchargement application -->
+    <section class="app-download bg-section" style="background-color: #FFF8F6;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6">
+                    <div class="app-download-content">
+                        <div class="section-title">
+                            <h3 style="color: #02172C;">Application Mobile</h3>
+                            <h2>Disponible sur PlayStore et AppStore</h2>
+                            <p>Téléchargez notre application pour réserver votre voiture en quelques clics, suivre votre location et profiter de nos offres exclusives. Une expérience de location simplifiée dans votre poche.</p>
+                        </div>
+                        <div class="app-download-buttons">
+                            <a href="#" class="store-button">
+                                <img src="/public/front/images/google-play.png" alt="Google Play">
+                            </a>
+                            <a href="#" class="store-button">
+                                <img src="/public/front/images/app-store.png" alt="App Store">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="app-download-image">
+                        <img src="/api/placeholder/400/520" alt="Application Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section propriétaires de véhicules -->
+    <section class="car-owners cta-box bg-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6">
+                    <div class="cat-box-image">
+                        <img src="/api/placeholder/450/350" alt="Devenez propriétaire partenaire">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="cta-box-content">
+                        <div class="section-title">
+                            <h3>Partenariat</h3>
+                            <h2>Êtes-vous propriétaire de véhicule ?</h2>
+                            <p>Rentabilisez votre véhicule en le mettant à disposition sur notre plateforme. Profitez d'une gestion simplifiée, d'une assurance complète et de revenus réguliers. Rejoignez notre communauté de propriétaires partenaires dès aujourd'hui.</p>
+                        </div>
+                        <div class="cta-box-btn">
+                            <a href="#" class="btn-default">Devenir partenaire</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Our FAQs Section Start -->
     <div class="our-faqs bg-section">
         <div class="container">
