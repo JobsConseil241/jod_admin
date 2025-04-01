@@ -518,73 +518,8 @@
     </div>
     <!-- Perfect Fleets Section End -->
 
-    <!-- Section App Store Start -->
-    <div class="app-store bg-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <!-- App Store Content Start -->
-                    <div class="app-store-content">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">Application Mobile</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Disponible sur PlayStore et AppStore</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.25s">Simplifiez votre expérience de location de voiture avec notre application mobile intuitive. Réservez, modifiez et gérez vos locations en quelques clics, où que vous soyez.</p>
-                        </div>
-                        <!-- Section Title End -->
-
-                        <!-- App Store Buttons Start -->
-                        <div class="app-store-buttons wow fadeInUp" data-wow-delay="0.5s">
-                            <a href="#" class="btn-default">
-                                <i class="fa-brands fa-google-play me-2"></i> Google Play
-                            </a>
-                            <a href="#" class="btn-default btn-highlighted">
-                                <i class="fa-brands fa-apple me-2"></i> App Store
-                            </a>
-                        </div>
-                        <!-- App Store Buttons End -->
-
-                        <!-- App Features Start -->
-                        <div class="about-content-body wow fadeInUp" data-wow-delay="0.75s">
-                            <div class="about-trusted-booking">
-                                <div class="icon-box">
-                                    <img src="{{asset('front/images/icon-about-trusted-1.svg')}}" alt="">
-                                </div>
-                                <div class="trusted-booking-content">
-                                    <h3>Réservation rapide</h3>
-                                    <p>Trouvez et réservez la voiture idéale en quelques minutes, sans paperasse ni attente.</p>
-                                </div>
-                            </div>
-                            <div class="about-trusted-booking">
-                                <div class="icon-box">
-                                    <img src="{{asset('front/images/icon-about-trusted-2.svg')}}" alt="">
-                                </div>
-                                <div class="trusted-booking-content">
-                                    <h3>Suivi en temps réel</h3>
-                                    <p>Suivez l'état de vos réservations et recevez des notifications importantes directement sur votre téléphone.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- App Features End -->
-                    </div>
-                    <!-- App Store Content End -->
-                </div>
-                <div class="col-lg-6">
-                    <!-- App Store Image Start -->
-                    <div class="app-store-image wow fadeInUp" data-wow-delay="0.5s">
-                        <figure class="reveal">
-                            <img src="{{asset('front/images/mockup-phone.png')}}" alt="Application Mobile JOD Trade & Co">
-                        </figure>
-                    </div>
-                    <!-- App Store Image End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Section App Store End -->
-
     <!-- Section Propriétaires de Véhicules Start -->
-    <div class="vehicle-owners">
+    <div class="vehicle-owners my-3">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
@@ -593,15 +528,7 @@
                         <!-- Vehicle Image Start -->
                         <div class="about-img-1">
                             <figure class="reveal">
-                                <img src="{{asset('front/images/handsome-elegant-man.jpg')}}" alt="Propriétaire de véhicule">
-                            </figure>
-                        </div>
-                        <!-- Vehicle Image End -->
-
-                        <!-- Vehicle Image Start -->
-                        <div class="about-img-2">
-                            <figure class="reveal">
-                                <img src="{{asset('front/images/2148685321-min.jpg')}}" alt="Véhicule de location">
+                                <img src="{{asset('front/images/2148685321-min.jpg')}}" alt="Propriétaire de véhicule">
                             </figure>
                         </div>
                         <!-- Vehicle Image End -->
@@ -763,6 +690,72 @@
         </div>
     </div>
     <!-- Our FAQs Section End -->
+
+
+    <!-- Section App Store Start -->
+    <div class="app-store bg-section my-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!-- App Store Content Start -->
+                    <div class="app-store-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">Application Mobile</h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Disponible sur PlayStore et AppStore</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">Simplifiez votre expérience de location de voiture avec notre application mobile intuitive. Réservez, modifiez et gérez vos locations en quelques clics, où que vous soyez.</p>
+                        </div>
+                        <!-- Section Title End -->
+
+                        <!-- App Store Buttons Start -->
+                        <div class="app-store-buttons wow fadeInUp" data-wow-delay="0.5s">
+                            <a href="#" class="btn-default">
+                                <i class="fa-brands fa-google-play me-2"></i> Google Play
+                            </a>
+                            <a href="#" class="btn-default btn-highlighted">
+                                <i class="fa-brands fa-apple me-2"></i> App Store
+                            </a>
+                        </div>
+                        <!-- App Store Buttons End -->
+
+                        <!-- App Features Start -->
+                        <div class="about-content-body wow fadeInUp" data-wow-delay="0.75s">
+                            <div class="about-trusted-booking">
+                                <div class="icon-box">
+                                    <img src="{{asset('front/images/icon-about-trusted-1.svg')}}" alt="">
+                                </div>
+                                <div class="trusted-booking-content">
+                                    <h3>Réservation rapide</h3>
+                                    <p>Trouvez et réservez la voiture idéale en quelques minutes, sans paperasse ni attente.</p>
+                                </div>
+                            </div>
+                            <div class="about-trusted-booking">
+                                <div class="icon-box">
+                                    <img src="{{asset('front/images/icon-about-trusted-2.svg')}}" alt="">
+                                </div>
+                                <div class="trusted-booking-content">
+                                    <h3>Suivi en temps réel</h3>
+                                    <p>Suivez l'état de vos réservations et recevez des notifications importantes directement sur votre téléphone.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- App Features End -->
+                    </div>
+                    <!-- App Store Content End -->
+                </div>
+                <div class="col-lg-6">
+                    <!-- App Store Image Start -->
+                    <div class="app-store-image wow fadeInUp" data-wow-delay="0.5s">
+                        <figure class="reveal">
+                            <img src="{{asset('front/images/mockup-phone.png')}}" alt="Application Mobile JOD Trade & Co">
+                        </figure>
+                    </div>
+                    <!-- App Store Image End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Section App Store End -->
 
     <!-- Our Testiminial Start -->
     <div class="our-testimonial">
