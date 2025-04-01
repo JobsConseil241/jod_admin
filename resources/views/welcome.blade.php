@@ -701,7 +701,6 @@
                     <div class="section-title">
                         <h3 class="wow fadeInUp">Application Mobile</h3>
                         <h2 class="text-anime-style-3" data-cursor="-opaque">Disponible sur PlayStore et AppStore</h2>
-                        <p class="wow fadeInUp" data-wow-delay="0.25s">Simplifiez votre expérience de location de voiture avec notre application mobile intuitive. Réservez, modifiez et gérez vos locations en quelques clics, où que vous soyez.</p>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -711,7 +710,7 @@
                     <!-- App Store Content Start -->
                     <div class="app-store-content">
                         <!-- Section Title Start -->
-
+                        <p class="wow fadeInUp" data-wow-delay="0.25s">Simplifiez votre expérience de location de voiture avec notre application mobile intuitive. Réservez, modifiez et gérez vos locations en quelques clics, où que vous soyez.</p>
                         <!-- Section Title End -->
 
                         <!-- App Store Buttons Start -->
