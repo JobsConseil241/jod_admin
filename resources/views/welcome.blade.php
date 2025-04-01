@@ -243,7 +243,7 @@
                         <!-- About Image Start -->
                         <div class="about-img-1">
                             <figure class="reveal">
-                                <img src="{{ asset('front/images/about-img-1.jpg') }}" alt="">
+                                <img src="{{ asset('front/images/30189-min.jpg') }}" alt="">
                             </figure>
                         </div>
                         <!-- About Image End -->
@@ -251,7 +251,7 @@
                         <!-- About Image Start -->
                         <div class="about-img-2">
                             <figure class="reveal">
-                                <img src="{{ asset('front/images/about-img-2.jpg') }}" alt="">
+                                <img src="{{ asset('front/images/handsome-elegant-man-car-salon-min.jpg') }}" alt="">
                             </figure>
                         </div>
                         <!-- About Image End -->
@@ -528,13 +528,13 @@
                     <div class="our-faqs-image">
                         <div class="faqs-img-1">
                             <figure class="image-anime">
-                                <img src="{{asset('front/images/our-faqs-img-1.jpg')}}" alt="">
+                                <img src="{{asset('front/images/lbv-one.jpg')}}" alt="">
                             </figure>
                         </div>
 
                         <div class="faqs-img-2">
                             <figure class="image-anime">
-                                <img src="{{asset('front/images/our-faqs-img-2.jpg')}}" alt="">
+                                <img src="{{asset('front/images/lbv-deux.jpg')}}" alt="">
                             </figure>
                         </div>
                     </div>
