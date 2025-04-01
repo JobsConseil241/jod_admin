@@ -39,75 +39,6 @@
     <!-- Main Custom Css -->
     <link href="{{ asset('front/css/custom.css') }}" rel="stylesheet" media="screen">
 
-
-    <style>
-        .app-download {
-            padding: 100px 0;
-        }
-
-        .app-download-content {
-            padding-right: 30px;
-        }
-
-        .app-download-buttons {
-            display: flex;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .store-button img {
-            max-width: 180px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .store-button:hover img {
-            transform: translateY(-5px);
-        }
-
-        .app-download-image img {
-            max-width: 100%;
-            border-radius: 30px;
-        }
-
-        /* Styles supplémentaires pour la section Car Owners */
-        .car-owners {
-            background-position: center center;
-            background-size: cover;
-        }
-
-        /* Styles pour les écrans de petite taille */
-        @media only screen and (max-width: 767px) {
-            .app-download {
-                padding: 50px 0;
-            }
-
-            .app-download-content {
-                padding-right: 0;
-                margin-bottom: 30px;
-            }
-
-            .app-download-buttons {
-                justify-content: center;
-            }
-
-            .store-button img {
-                max-width: 140px;
-            }
-
-            .app-download-image {
-                text-align: center;
-            }
-
-            .app-download-image img {
-                max-width: 80%;
-            }
-
-            .car-owners .cat-box-image {
-                margin-bottom: 30px;
-            }
-        }
-    </style>
-
     @php
         $user = Auth::user();
     @endphp
@@ -320,7 +251,7 @@
                         <!-- About Image Start -->
                         <div class="about-img-2">
                             <figure class="reveal">
-                                <img src="{{ asset('front/images/30189-min.jpg') }}" alt="">
+                                <img src="{{ asset('front/images/handsome-elegant-man.jpg') }}" alt="">
                             </figure>
                         </div>
                         <!-- About Image End -->
@@ -587,61 +518,6 @@
     </div>
     <!-- Perfect Fleets Section End -->
 
-
-    <!-- Section téléchargement application -->
-    <section class="app-download bg-section" style="background-color: #FFF8F6;">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-md-6">
-                    <div class="app-download-content">
-                        <div class="section-title">
-                            <h3 style="color: #02172C;">Application Mobile</h3>
-                            <h2>Disponible sur PlayStore et AppStore</h2>
-                            <p>Téléchargez notre application pour réserver votre voiture en quelques clics, suivre votre location et profiter de nos offres exclusives. Une expérience de location simplifiée dans votre poche.</p>
-                        </div>
-                        <div class="app-download-buttons">
-                            <a href="#" class="store-button">
-                                <img src="/public/front/images/google-play.png" alt="Google Play">
-                            </a>
-                            <a href="#" class="store-button">
-                                <img src="/public/front/images/app-store.png" alt="App Store">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="app-download-image">
-                        <img src="/api/placeholder/400/520" alt="Application Mobile">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section propriétaires de véhicules -->
-    <section class="car-owners cta-box bg-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-md-6">
-                    <div class="cat-box-image">
-                        <img src="/api/placeholder/450/350" alt="Devenez propriétaire partenaire">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="cta-box-content">
-                        <div class="section-title">
-                            <h3>Partenariat</h3>
-                            <h2>Êtes-vous propriétaire de véhicule ?</h2>
-                            <p>Rentabilisez votre véhicule en le mettant à disposition sur notre plateforme. Profitez d'une gestion simplifiée, d'une assurance complète et de revenus réguliers. Rejoignez notre communauté de propriétaires partenaires dès aujourd'hui.</p>
-                        </div>
-                        <div class="cta-box-btn">
-                            <a href="#" class="btn-default">Devenir partenaire</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Our FAQs Section Start -->
     <div class="our-faqs bg-section">
