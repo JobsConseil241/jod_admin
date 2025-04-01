@@ -39,6 +39,75 @@
     <!-- Main Custom Css -->
     <link href="{{ asset('front/css/custom.css') }}" rel="stylesheet" media="screen">
 
+
+    <style>
+        .app-download {
+            padding: 100px 0;
+        }
+
+        .app-download-content {
+            padding-right: 30px;
+        }
+
+        .app-download-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .store-button img {
+            max-width: 180px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .store-button:hover img {
+            transform: translateY(-5px);
+        }
+
+        .app-download-image img {
+            max-width: 100%;
+            border-radius: 30px;
+        }
+
+        /* Styles supplémentaires pour la section Car Owners */
+        .car-owners {
+            background-position: center center;
+            background-size: cover;
+        }
+
+        /* Styles pour les écrans de petite taille */
+        @media only screen and (max-width: 767px) {
+            .app-download {
+                padding: 50px 0;
+            }
+
+            .app-download-content {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .app-download-buttons {
+                justify-content: center;
+            }
+
+            .store-button img {
+                max-width: 140px;
+            }
+
+            .app-download-image {
+                text-align: center;
+            }
+
+            .app-download-image img {
+                max-width: 80%;
+            }
+
+            .car-owners .cat-box-image {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+
     @php
         $user = Auth::user();
     @endphp
