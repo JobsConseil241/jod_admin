@@ -243,17 +243,17 @@
                         <!-- About Image Start -->
                         <div class="about-img-1">
                             <figure class="reveal">
-                                <img src="{{ asset('front/images/2148685321-min.jpg') }}" alt="">
+                                <img src="{{ asset('front/images/handsome-elegant-man.jpg') }}" alt="">
                             </figure>
                         </div>
                         <!-- About Image End -->
 
                         <!-- About Image Start -->
-                        <div class="about-img-2">
-                            <figure class="reveal">
-                                <img src="{{ asset('front/images/handsome-elegant-man.jpg') }}" alt="">
-                            </figure>
-                        </div>
+{{--                        <div class="about-img-2">--}}
+{{--                            <figure class="reveal">--}}
+{{--                                <img src="{{ asset('front/images/handsome-elegant-man.jpg') }}" alt="">--}}
+{{--                            </figure>--}}
+{{--                        </div>--}}
                         <!-- About Image End -->
                     </div>
                     <!-- About Us Image End -->
