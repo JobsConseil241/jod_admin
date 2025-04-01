@@ -518,158 +518,147 @@
     </div>
     <!-- Perfect Fleets Section End -->
 
-    <!-- App Store Section Start -->
-    <div class="app-download bg-section">
+    <!-- Section App Store Start -->
+    <div class="app-store bg-section">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <!-- App Download Content Start -->
-                    <div class="app-download-content">
+                    <!-- App Store Content Start -->
+                    <div class="app-store-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
                             <h3 class="wow fadeInUp">Application Mobile</h3>
                             <h2 class="text-anime-style-3" data-cursor="-opaque">Disponible sur PlayStore et AppStore</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.25s">Profitez de notre service de location où que vous soyez grâce à notre application mobile. Réservez, suivez et gérez vos locations en quelques clics.</p>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">Simplifiez votre expérience de location de voiture avec notre application mobile intuitive. Réservez, modifiez et gérez vos locations en quelques clics, où que vous soyez.</p>
                         </div>
                         <!-- Section Title End -->
 
                         <!-- App Store Buttons Start -->
                         <div class="app-store-buttons wow fadeInUp" data-wow-delay="0.5s">
-                            <a href="#" class="app-btn">
-                                <div class="app-btn-icon">
-                                    <i class="fab fa-google-play"></i>
-                                </div>
-                                <div class="app-btn-content">
-                                    <span>Télécharger sur</span>
-                                    <h3>Google Play</h3>
-                                </div>
+                            <a href="#" class="btn-default">
+                                <i class="fa-brands fa-google-play me-2"></i> Google Play
                             </a>
-                            <a href="#" class="app-btn">
-                                <div class="app-btn-icon">
-                                    <i class="fab fa-apple"></i>
-                                </div>
-                                <div class="app-btn-content">
-                                    <span>Télécharger sur</span>
-                                    <h3>App Store</h3>
-                                </div>
+                            <a href="#" class="btn-default btn-highlighted">
+                                <i class="fa-brands fa-apple me-2"></i> App Store
                             </a>
                         </div>
                         <!-- App Store Buttons End -->
 
                         <!-- App Features Start -->
-                        <div class="app-features wow fadeInUp" data-wow-delay="0.75s">
-                            <div class="feature-item">
+                        <div class="about-content-body wow fadeInUp" data-wow-delay="0.75s">
+                            <div class="about-trusted-booking">
                                 <div class="icon-box">
-                                    <img src="{{asset('front/images/icon-service-1.svg')}}" alt="">
+                                    <img src="{{asset('front/images/icon-about-trusted-1.svg')}}" alt="">
                                 </div>
-                                <p>Réservation rapide</p>
+                                <div class="trusted-booking-content">
+                                    <h3>Réservation rapide</h3>
+                                    <p>Trouvez et réservez la voiture idéale en quelques minutes, sans paperasse ni attente.</p>
+                                </div>
                             </div>
-                            <div class="feature-item">
+                            <div class="about-trusted-booking">
                                 <div class="icon-box">
-                                    <img src="{{asset('front/images/icon-service-2.svg')}}" alt="">
+                                    <img src="{{asset('front/images/icon-about-trusted-2.svg')}}" alt="">
                                 </div>
-                                <p>Suivi en temps réel</p>
-                            </div>
-                            <div class="feature-item">
-                                <div class="icon-box">
-                                    <img src="{{asset('front/images/icon-service-4.svg')}}" alt="">
+                                <div class="trusted-booking-content">
+                                    <h3>Suivi en temps réel</h3>
+                                    <p>Suivez l'état de vos réservations et recevez des notifications importantes directement sur votre téléphone.</p>
                                 </div>
-                                <p>Support 24/7</p>
                             </div>
                         </div>
                         <!-- App Features End -->
                     </div>
-                    <!-- App Download Content End -->
+                    <!-- App Store Content End -->
                 </div>
                 <div class="col-lg-6">
-                    <!-- App Download Image Start -->
-                    <div class="app-download-image wow fadeInUp" data-wow-delay="0.5s">
+                    <!-- App Store Image Start -->
+                    <div class="app-store-image wow fadeInUp" data-wow-delay="0.5s">
                         <figure class="reveal">
-                            <img src="{{asset('front/images/mockup-phone.png')}}" alt="Application Mobile">
+                            <img src="{{asset('front/images/mockup-phone.png')}}" alt="Application Mobile JOD Trade & Co">
                         </figure>
                     </div>
-                    <!-- App Download Image End -->
+                    <!-- App Store Image End -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- App Store Section End -->
+    <!-- Section App Store End -->
 
-    <!-- Vehicle Owners Section Start -->
+    <!-- Section Propriétaires de Véhicules Start -->
     <div class="vehicle-owners">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <!-- Vehicle Owners Image Start -->
-                    <div class="vehicle-owners-image">
-                        <div class="owners-img-1">
-                            <figure class="image-anime">
+                    <div class="about-image">
+                        <!-- Vehicle Image Start -->
+                        <div class="about-img-1">
+                            <figure class="reveal">
                                 <img src="{{asset('front/images/handsome-elegant-man.jpg')}}" alt="Propriétaire de véhicule">
                             </figure>
                         </div>
-                        <div class="owners-img-2">
-                            <figure class="image-anime">
+                        <!-- Vehicle Image End -->
+
+                        <!-- Vehicle Image Start -->
+                        <div class="about-img-2">
+                            <figure class="reveal">
                                 <img src="{{asset('front/images/2148685321-min.jpg')}}" alt="Véhicule de location">
                             </figure>
                         </div>
+                        <!-- Vehicle Image End -->
                     </div>
                     <!-- Vehicle Owners Image End -->
                 </div>
                 <div class="col-lg-6">
                     <!-- Vehicle Owners Content Start -->
-                    <div class="vehicle-owners-content">
+                    <div class="about-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
                             <h3 class="wow fadeInUp">Partenariat</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Êtes-vous propriétaire de véhicule ?</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.25s">Rejoignez notre réseau de partenaires et rentabilisez votre véhicule lorsque vous ne l'utilisez pas. Nous offrons des conditions avantageuses et une gestion complète.</p>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Êtes-vous propriétaire de véhicules ?</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">Rejoignez notre réseau de partenaires et transformez votre véhicule en source de revenus. Nous offrons des conditions avantageuses et une gestion complète pour maximiser votre rentabilité en toute sécurité.</p>
                         </div>
                         <!-- Section Title End -->
 
-                        <!-- Benefits List Start -->
-                        <div class="benefits-list wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="benefit-item">
+                        <!-- About Content Body Start -->
+                        <div class="about-content-body">
+                            <!-- About Trusted Booking Start -->
+                            <div class="about-trusted-booking wow fadeInUp" data-wow-delay="0.5s">
                                 <div class="icon-box">
-                                    <i class="fa-solid fa-money-bill-wave"></i>
+                                    <img src="{{asset('front/images/icon-about-trusted-1.svg')}}" alt="">
                                 </div>
-                                <div class="benefit-content">
-                                    <h3>Revenus complémentaires</h3>
-                                    <p>Générez un revenu régulier grâce à votre véhicule pendant qu'il n'est pas utilisé</p>
+                                <div class="trusted-booking-content">
+                                    <h3>Revenus garantis</h3>
+                                    <p>Générez des revenus supplémentaires grâce à votre véhicule, même lorsque vous ne l'utilisez pas. Nous vous garantissons un revenu minimum mensuel.</p>
                                 </div>
                             </div>
-                            <div class="benefit-item">
-                                <div class="icon-box">
-                                    <i class="fa-solid fa-shield-alt"></i>
-                                </div>
-                                <div class="benefit-content">
-                                    <h3>Assurance complète</h3>
-                                    <p>Nous assurons votre véhicule pendant toute la durée de la location</p>
-                                </div>
-                            </div>
-                            <div class="benefit-item">
-                                <div class="icon-box">
-                                    <i class="fa-solid fa-car-side"></i>
-                                </div>
-                                <div class="benefit-content">
-                                    <h3>Entretien régulier</h3>
-                                    <p>Nous prenons en charge l'entretien et la maintenance de votre véhicule</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Benefits List End -->
+                            <!-- About Trusted Booking End -->
 
-                        <!-- CTA Button Start -->
-                        <div class="vehicle-owners-cta wow fadeInUp" data-wow-delay="0.75s">
+                            <!-- About Trusted Booking Start -->
+                            <div class="about-trusted-booking wow fadeInUp" data-wow-delay="0.75s">
+                                <div class="icon-box">
+                                    <img src="{{asset('front/images/icon-about-trusted-2.svg')}}" alt="">
+                                </div>
+                                <div class="trusted-booking-content">
+                                    <h3>Gestion sans souci</h3>
+                                    <p>Nous prenons en charge l'entretien, l'assurance et la gestion des clients. Vous n'avez qu'à profiter des bénéfices sans les contraintes.</p>
+                                </div>
+                            </div>
+                            <!-- About Trusted Booking End -->
+                        </div>
+                        <!-- About Content Body End -->
+
+                        <!-- About Content Footer Start -->
+                        <div class="about-content-footer wow fadeInUp" data-wow-delay="1s">
                             <a href="#" class="btn-default">Devenir partenaire</a>
                         </div>
-                        <!-- CTA Button End -->
+                        <!-- About Content Footer End -->
                     </div>
                     <!-- Vehicle Owners Content End -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- Vehicle Owners Section End -->
+    <!-- Section Propriétaires de Véhicules End -->
 
     <!-- Our FAQs Section Start -->
     <div class="our-faqs bg-section">
