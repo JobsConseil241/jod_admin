@@ -243,7 +243,7 @@
                         <!-- About Image Start -->
                         <div class="about-img-1">
                             <figure class="reveal">
-                                <img src="{{ asset('front/images/30189-min.jpg') }}" alt="">
+                                <img src="{{ asset('front/images/2148685321-min.jpg') }}" alt="">
                             </figure>
                         </div>
                         <!-- About Image End -->
@@ -251,7 +251,7 @@
                         <!-- About Image Start -->
                         <div class="about-img-2">
                             <figure class="reveal">
-                                <img src="{{ asset('front/images/2148685321-min.jpg') }}" alt="">
+                                <img src="{{ asset('front/images/30189-min.jpg') }}" alt="">
                             </figure>
                         </div>
                         <!-- About Image End -->
