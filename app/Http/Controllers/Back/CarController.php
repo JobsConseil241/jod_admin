@@ -238,7 +238,20 @@ class CarController extends Controller
             $marques = [];
         }
 
-        return view('back.car.edit', compact('car', 'categories', 'marques'));
+        //suppliers get all data
+        $response_supp = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->get(env('SERVER_PC') . 'get_suppliers');
+
+        $object_sp = json_decode($response_supp->body());
+
+        if ($object_sp && $object_sp->success == true) {
+            $suppliers = $object_sp->data->users;
+        } else {
+            $suppliers = [];
+        }
+
+        return view('back.car.edit', compact('car', 'categories', 'marques', 'suppliers'));
     }
 
     public function update(Request $request, $car)
