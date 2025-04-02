@@ -28,6 +28,7 @@ class Vehicule extends Model
         'latitude',
         'category_id',
         'marque_id',
+        'fournisseur_id',
         'note'
     ];
 

@@ -109,6 +109,20 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div class="col-span-12 lg:col-span-12">
+                                                    <div class="space-y-2  product-1">
+                                                        <label class="ti-form-label mb-0">Fournisseurs</label>
+                                                        <select name="supplier_id" class="ti-form-select" required>
+                                                            <option selected disabled>Choisissez</option>
+                                                            @foreach ($suppliers as $item)
+                                                                <option value="{{ $item->id }}"
+                                                                    {{ $car->fournisseur_id == $item->id ? 'selected' : '' }}>
+                                                                    {{ $item->first_name }} {{ $item->last_name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <div class="space-y-2">
