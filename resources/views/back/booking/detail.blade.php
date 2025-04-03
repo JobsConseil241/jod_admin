@@ -783,7 +783,7 @@
                                 <div class="ti-modal-body">
 
                                     <div class="mb-3">
-                                        <label class="ti-form-label mb-0">Etats du vehicule ({{ $booking->name }})</label>
+                                        <label class="ti-form-label mb-0">Etats du vehicule ({{ $booking->vehicule->name }})</label>
                                         <select name="id_etat_vehicule" class="ti-form-select" required>
                                             <option selected readonly>--- Choisissez l'état associe ---</option>
                                         </select>
