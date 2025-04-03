@@ -113,7 +113,7 @@
                                                     <div class="space-y-2  product-1">
                                                         <label class="ti-form-label mb-0">Fournisseurs</label>
                                                         <select name="supplier_id" class="ti-form-select" required>
-                                                            <option selected disabled>Choisissez</option>
+                                                            <option selected readonly>Choisissez</option>
                                                             @foreach ($suppliers as $item)
                                                                 <option value="{{ $item->id }}"
                                                                     {{ $car->fournisseur_id == $item->id ? 'selected' : '' }}>
