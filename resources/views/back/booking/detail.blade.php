@@ -873,7 +873,10 @@
         });
 
         $(document).ready(function() {
-            $('[data-hs-overlay="#hs-vehicle-state-modal"]').on('click', function() {
+            $('[data-hs-overlay="#hs-vehicle-state-modal"]').on('click', function(event) {
+
+                event.preventDefault()
+
                 $('#hs-vehicle-state-modal').modal('show');
 
                 fetchPannes();
