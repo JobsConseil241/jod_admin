@@ -847,7 +847,7 @@
     <script>
         "use strict";
 
-        let location = @json($booking)
+        let booking = @json($booking)
 
         $(document).on("click", ".delete_action", function() {
             var id = $(this).data('id');
@@ -885,7 +885,7 @@
 
             function fetchPannes() {
                 $.ajax({
-                    url: '/public/backend/booking/car/pannes/' + location.vehicule.id + '/ajax',
+                    url: '/public/backend/booking/car/pannes/' + booking.vehicule.id + '/ajax',
                     type: 'GET',
                     dataType: 'json',
                     success: function(data) {
@@ -902,7 +902,7 @@
                         $('.tett').each(function(index) {
                             // Créer un lien
                             var lien = $('<a>', {
-                                href: '/public/backend/car/etat/' + location.vehicule.id,
+                                href: '/public/backend/car/etat/' + booking.vehicule.id,
                                 text: 'ICI',
                                 class: 'lien-ajouter-etat text-success',
                                 'data-index': index
