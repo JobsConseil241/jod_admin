@@ -784,7 +784,7 @@
 
                                     <div class="mb-3">
                                         <label class="ti-form-label mb-0">Etats du vehicule ({{ $booking->vehicule->name }})</label>
-                                        <select name="id_etat_vehicule" class="ti-form-select" required>
+                                        <select  id="id_etat_vehicule" name="etat_vehicule" class="ti-form-select" required>
                                             <option selected readonly>--- Choisissez l'état associe ---</option>
                                         </select>
                                         <input type="hidden" name="id_location" value="{{ $reference }}">
@@ -889,6 +889,10 @@
                     type: 'GET',
                     dataType: 'json',
                     success: function(data) {
+
+                        // Sélectionner le select où les pannes seront ajoutées
+                        const $selectPannes = $('#id_etat_vehicule');
+                        $selectPannes.empty();
 
                         $('#id_etat_vehicule').append('<option value="">Sélectionnez un etat</option>');
 
