@@ -878,7 +878,7 @@
                 event.preventDefault()
                 console.log(event)
 
-                $('#hs-vehicle-state-modal').modal('show');
+                // $('#hs-vehicle-state-modal').modal('show');
 
                 fetchPannes();
             });
