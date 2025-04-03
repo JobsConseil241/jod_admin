@@ -876,6 +876,7 @@
             $('[data-hs-overlay="#hs-vehicle-state-modal"]').on('click', function(event) {
 
                 event.preventDefault()
+                console.log(event)
 
                 $('#hs-vehicle-state-modal').modal('show');
 
