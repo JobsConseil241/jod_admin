@@ -475,7 +475,7 @@
                 $('#panne_select').empty();
                 $('#panne_selects').empty();
 
-                prixLocation = $('option:selected', this).data('value');
+                prixLocation += $('option:selected', $('#voiture_select')).data('value');
 
                 if(voitureId) {
                     $.ajax({
