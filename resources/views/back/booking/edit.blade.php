@@ -397,6 +397,7 @@
         let jours = 0
         let prixLocation = 0
         let netPaie = 0
+        let livraisonMontant = 0
 
         let rental = @json($booking)
 
@@ -411,8 +412,10 @@
                 let livraison = $(this).val();
                 if (livraison == 'true') {
                     inputMontant.value = parseInt(inputMontant.value) + 5000
+                    livraisonMontant = 5000
                 }else{
                     (inputMontant.value === 0) ? (inputMontant.value = parseInt(inputMontant.value) - 0) : (inputMontant.value = parseInt(inputMontant.value) - 5000)
+                    livraisonMontant = 0
                 }
             });
 
@@ -475,7 +478,7 @@
                 $('#panne_select').empty();
                 $('#panne_selects').empty();
 
-                prixLocation += $('option:selected', $('#voiture_select')).data('value');
+                prixLocation = $('option:selected', $('#voiture_select')).data('value');
 
                 if(voitureId) {
                     $.ajax({
@@ -618,7 +621,7 @@
                 netPaie  = parseInt(prixLocation) * parseInt(jours)
 
                 const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
-                montantAPayer.value = netPaie
+                montantAPayer.value = netPaie + livraisonMontant
 
             }
 
