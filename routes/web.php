@@ -169,6 +169,7 @@ Route::middleware(['auth'])->group(function () {
 //        Route::post('booking/detail/{reference}', [BookingController::class, 'add'])->name('backend.booking.add');
         Route::post('booking/add', [BookingController::class, 'Store'])->name('backend.booking.store');
         Route::get('booking/car/pannes/{voiture}/ajax', [BookingController::class, 'getPannesByVoiture'])->name('backend.booking.pannes.ajax');
+        Route::post('booking/detail/{reference}/update', [BookingController::class, 'update_booking_data'])->name('backend.booking.update');
 
         // location pannes
         Route::post('booking/detail/{reference}/assign-panne', [BookingController::class, 'assign_pannes'])->name('backend.booking.assign.pannes');

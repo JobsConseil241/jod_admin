@@ -763,14 +763,14 @@
                 <div id="hs-vehicle-state-modal" class="hs-overlay ti-modal hidden">
                     <div class="ti-modal-box">
                         <div class="ti-modal-content">
-                            <form action="{{ route('backend.booking.assign.pannes', ['reference' => $reference]) }}" method="post">
+                            <form action="{{ route('backend.booking.update', ['reference' => $reference]) }}" method="post">
                                 @csrf
                                 <div class="ti-modal-header">
                                     <h3 class="ti-modal-title">
                                         Ajouter l'etat final du vehicule
                                     </h3>
                                     <button type="button" class="hs-dropdown-toggle ti-modal-clode-btn"
-                                            data-hs-overlay="#hs-basic-modal">
+                                            data-hs-overlay="#hs-vehicle-state-modal">
                                         <span class="sr-only">Close</span>
                                         <svg class="w-3.5 h-3.5" width="8" height="8" viewBox="0 0 8 8" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -784,7 +784,7 @@
 
                                     <div class="mb-3">
                                         <label class="ti-form-label mb-0">Etats du vehicule ({{ $booking->vehicule->name }})</label>
-                                        <select  id="id_etat_vehicule" name="etat_vehicule" class="ti-form-select" required>
+                                        <select  id="id_etat_vehicule" name="etat_vehicule_final" class="ti-form-select" required>
                                             <option selected readonly>--- Choisissez l'état associe ---</option>
                                         </select>
                                         <input type="hidden" name="id_location" value="{{ $reference }}">
@@ -794,7 +794,7 @@
                                 <div class="ti-modal-footer">
                                     <button type="button"
                                             class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
-                                            data-hs-overlay="#hs-basic-modal">
+                                            data-hs-overlay="#hs-vehicle-state-modal">
                                         Annuler
                                     </button>
                                     <button class="ti-btn ti-btn-primary" type="submit">
