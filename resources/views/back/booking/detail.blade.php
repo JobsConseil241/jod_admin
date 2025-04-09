@@ -74,12 +74,13 @@
                                 <p class="mt-1 text-sm text-gray-500">Informations détaillées sur la location de véhicule</p>
                             </div>
                             <div class="mt-4 md:mt-0 flex space-x-3">
-                                <button class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <a href="#" class="inline-block px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     <span>Exporter</span>
-                                </button>
-                                <button class="px-4 py-2 bg-indigo-600 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                </a>
+                                <a href="{{ route('backend.booking.details.view', ['reference' => $reference]) }}" class="inline-block px-4 py-2 bg-indigo-600 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     <span>Modifier</span>
-                                </button>
+                                </a>
+
                             </div>
                         </div>
                     </div>

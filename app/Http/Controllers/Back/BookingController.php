@@ -168,7 +168,7 @@ class BookingController extends Controller
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            return redirect('backend/booking/detail/' . $carId)->with('success', "L'état du véhicule a été mis à jour avec succès.");
+            return redirect('backend/booking/detail/' . $carId)->with('success', "L'état de la location a été mis à jour avec succès.");
         } else {
             return back()->with('error', $object->message ?? 'Une erreur s\'est produite.')->withInput();
         }

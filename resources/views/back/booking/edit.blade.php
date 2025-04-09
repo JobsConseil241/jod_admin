@@ -61,7 +61,7 @@
     <div class="grid grid-cols-12 gap-x-6">
         <div class="col-span-12">
             <div class="box !bg-transparent border-0 shadow-none">
-                <form method="post" action="{{ route('backend.booking.details.view', ['reference' => $reference]) }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('backend.booking.update', ['reference' => $reference]) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="box-body p-0">
                         <div class="grid grid-cols-12 gap-x-6">
@@ -345,8 +345,8 @@
                     </div>
                     <div class="box-footer text-end border-t-0 px-0">
 
-                        <button type="submit" class="ti-btn ti-btn-primary"><i
-                                class="ri-add-line"></i>Enregistrer</button>
+                        <button type="submit" class="ti-btn ti-btn-warning"><i
+                                class="ri-add-line"></i>Modifier</button>
 
                         <button type="reset" class="ti-btn ti-btn-danger"><i
                                 class="ri-delete-bin-line"></i>Annuler</button>

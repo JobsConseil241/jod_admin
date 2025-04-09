@@ -237,21 +237,29 @@ class BookingController extends BaseController
             Log::info('Edit Booking vehicules  Endpoint Entered.');
 
             Log::debug('Edit Booking Vehicules Endpoint - All Params: ' . json_encode($request->all()));
+
+
             $data = $request->all();
+
             $rules = [
-                'date_heure_debut' => 'sometimes|date|after_or_equal:today',
-                'date_heure_fin' => 'sometimes|date|after:date_heure_debut',
-                'vehicule_id' => 'sometimes|integer',
-                'type_location' => 'sometimes|string|in:courte,longue',
-                'comission' => 'sometimes|boolean',
-                'etat_livraison_id' => 'sometimes|integer',
-                'etat_restitution_id' => 'sometimes|integer',
-                'livraison' => 'sometimes|boolean',
-                'client_id' => 'sometimes|integer',
-                'id_location' => 'required|string'
+                'date_debut' => 'sometimes|date_format:Y-m-d H:i',
+                'date_retour' => 'sometimes|date_format:Y-m-d H:i|after:date_debut',
+                'vehicule' => 'sometimes|integer',
+                'type_loca' => 'sometimes|string|in:courte,longue',
+                'comission' => 'sometimes|in:true,false',
+                'jours' => 'sometimes|integer',
+                'etat_avant' => 'sometimes|integer',
+                'livraison' => 'sometimes|in:true,false',
+                'id_location' => 'sometimes|string',
+                'method_paie' => 'sometimes|string',
+                'mntant_a_payer' => 'sometimes|integer',
+                'mntant_paye' => 'sometimes|integer',
+                'montant_restant' => 'sometimes|integer',
+                'client_id' => 'sometimes|numeric|nullable',
             ];
 
             $validator = Validator::make($request->all(), $rules);
+
 
             if ($validator->fails()) {
                 $errors = $validator->errors();
@@ -259,13 +267,62 @@ class BookingController extends BaseController
             }
 
 
+            // Convertir les chaînes en booléens
+            $data['comission'] = $data['comission'] === 'true';
+            $data['livraison'] = $data['livraison'] === 'true';
+
             $category = Location::where('code_contrat',$data['id_location'])->first();
 
             if ($category == null) {
                 return $this->sendError("Contrat de Location not found");
             }
 
-            $category->update($data);
+            if ($request->has('vehicule')) {
+                $paie = Paiement::find( $category->paiement_id);
+                $paie->methode_paiement = $data['method_paie'];
+                $paie->montant_total = $data['mntant_a_payer'];
+                $paie->montant_paye = $data['mntant_paye'];
+                $paie->montant_restant = $data['montant_restant'];
+                $paie->statut = ($data['montant_restant'] == 0) ? 1 : 0;
+                $paie->save();
+
+                $state_resa = 7;
+                $today = Carbon::today()->format('Y-m-d');
+                $end_day = Carbon::parse($data['date_retour'])->locale('fr')->isoFormat('Y-m-d');
+
+                if ($today == $end_day) {
+                    $disponible = true;
+                    $state_resa = 5;
+                }
+                if ($today > $end_day) {
+                    $disponible = true;
+                    $state_resa = 5;
+                }
+                if ($today < $end_day) {
+                    $disponible = false;
+                }
+
+                $vehicule = Vehicule::find($data['vehicule']);
+                $vehicule->statut_location = $disponible;
+                $vehicule->save();
+
+                $category->date_heure_debut = $data['date_debut'];
+                $category->date_heure_fin = $data['date_retour'];
+                $category->vehicule_id = $data['vehicule'];
+                $category->type_location = $data['type_loca'];
+                $category->jours = $data['jours'];
+                $category->statut = $state_resa;
+                $category->comission = $data['comission'];
+                $category->etat_livraison_id = $data['etat_avant'];
+                $category->etat_restitution_id = $data['etat_apres'];
+                $category->livraison = $data['livraison'];
+                $category->client_id = $data['client_id'];
+                $category->save();
+
+            } else {
+                $category->update($data);
+            }
+
             Log::debug('Edit Contrat de Location Endpoint - Response: ' . json_encode($data));
 
             return $this->sendResponse($category, "Edit Contrat de Location successfully");
