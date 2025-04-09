@@ -397,7 +397,7 @@
         let jours = 0
         let prixLocation = 0
         let netPaie = 0
-        let livraisonMontant = 0
+        let livraisonMontant = $('input[name="livraison"]:checked').val() ? 5000 : 0
 
         let rental = @json($booking)
 
@@ -599,6 +599,7 @@
             const dateDebut = document.querySelector('input[name="date_debut"]');
             const dateRetour = document.querySelector('input[name="date_retour"]');
 
+
             // Fonction pour calculer la différence en jours entre deux dates
             function calculerNombreJours() {
                 // Vérifier que les deux dates sont remplies
@@ -618,10 +619,10 @@
 
                 $('#jours').val(jours)
 
-                netPaie  = parseInt(prixLocation) * parseInt(jours)
+                netPaie  = (parseInt(prixLocation) * parseInt(jours) ) + livraisonMontant
 
                 const montantAPayer = document.querySelector('input[name="mntant_a_payer"]');
-                montantAPayer.value = netPaie + livraisonMontant
+                montantAPayer.value = netPaie
 
             }
 
