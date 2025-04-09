@@ -248,7 +248,7 @@ class BookingController extends BaseController
                 'etat_vehicule_final' => 'sometimes|integer',
                 'livraison' => 'sometimes|boolean',
                 'client_id' => 'sometimes|integer',
-                'id_location' => 'required|integer'
+                'id_location' => 'required|string'
             ];
 
             $validator = Validator::make($request->all(), $rules);
@@ -259,7 +259,7 @@ class BookingController extends BaseController
             }
 
 
-            $category = Location::find($data['id_location']);
+            $category = Location::where('code_contrat',$data['id_location'])->first();
 
             if ($category == null) {
                 return $this->sendError("Contrat de Location not found");
