@@ -402,7 +402,19 @@
 
         $(document).ready(function() {
 
+            let inputMontant = document.querySelector('input[name="mntant_a_payer"]');
+            if (!inputMontant.value || isNaN(parseInt(inputMontant.value))) {
+                inputMontant.value = 0;
+            }
 
+            $('input[name="livraison"]').change(function() {
+                let livraison = $(this).val();
+                if (livraison == 'true') {
+                    inputMontant.value = parseInt(inputMontant.value) + 5000
+                }else{
+                    (inputMontant.value === 0) ? (inputMontant.value = parseInt(inputMontant.value) - 0) : (inputMontant.value = parseInt(inputMontant.value) - 5000)
+                }
+            });
 
             //     $('#voiture_select').on('change', function() {
             //         var voitureId = $(this).val();
