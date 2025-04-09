@@ -245,7 +245,7 @@ class BookingController extends BaseController
                 'type_location' => 'sometimes|string|in:courte,longue',
                 'comission' => 'sometimes|boolean',
                 'etat_livraison_id' => 'sometimes|integer',
-                'etat_vehicule_final' => 'sometimes|integer',
+                'etat_restitution_id' => 'sometimes|integer',
                 'livraison' => 'sometimes|boolean',
                 'client_id' => 'sometimes|integer',
                 'id_location' => 'required|string'
