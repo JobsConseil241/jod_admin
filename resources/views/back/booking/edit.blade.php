@@ -80,6 +80,9 @@
                                                     @endforeach
                                                 </select>
                                             </div>
+                                            <div class="space-y-2 d-none">
+                                                <input type="text" name="id_location" id="id_location" value="{{ $reference }}" readonly>
+                                            </div>
                                             <div class="space-y-2">
                                                 <label class="ti-form-label mb-0">Noms</label>
                                                 <input type="text" name="name" class="my-auto ti-form-input"
