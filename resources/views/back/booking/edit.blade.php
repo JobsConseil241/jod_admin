@@ -80,7 +80,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="space-y-2 d-none">
+                                            <div class="space-y-2" style="display: none">
                                                 <input type="text" name="id_location" id="id_location" value="{{ $reference }}" readonly>
                                             </div>
                                             <div class="space-y-2">
