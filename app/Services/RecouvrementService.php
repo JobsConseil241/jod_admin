@@ -30,12 +30,12 @@ class RecouvrementService
         $locationsAvecRetard = Location::whereHas('paiementAssocie', function($query) {
             $query->where('montant_restant', '>', 0);
         })
-            ->where(function($query) {
-                // Locations avec date de fin dépassée
-                $query->where('date_heure_fin', '<', now())
-                    ->where('statut', '!=', 0); // Non terminées/annulées
-            })
-            ->get();
+        ->where(function($query) {
+            // Locations avec date de fin dépassée
+            $query->where('date_heure_fin', '<', now())
+                ->where('statut', '!=', 5); // Non terminées/annulées
+        })
+        ->get();
 
         return $locationsAvecRetard;
     }

@@ -634,11 +634,12 @@
                 const montantAPayerValue = parseInt(montantAPayer.value.replace(/[^\d.-]/g, '')) || 0;
                 const montantPayeValue = parseInt(montantPaye.value.replace(/[^\d.-]/g, '')) || 0;
 
-                console.log(montantAPayerValue, montantPayeValue)
 
                 // Calculer le reste à payer
                 // Mettre à jour le champ du reste à payer
                 resteAPayer.value = Math.max(0, montantAPayerValue - montantPayeValue);
+
+                console.log(montantAPayerValue, montantPayeValue, resteAPayer.value)
             }
 
             // Ajouter des écouteurs d'événements pour les deux premiers champs
