@@ -57,11 +57,6 @@ class DetecterRetardsPaiement extends Command
                 );
 
                 $count++;
-            } else {
-                Log::info($existingRecouvrement);
-                $montantDu = $location->paiementAssocie->montant_restant;
-                $existingRecouvrement->montant_du = $montantDu;
-                $existingRecouvrement->save();
             }
         }
 
