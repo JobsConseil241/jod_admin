@@ -637,7 +637,7 @@
 
                 // Calculer le reste à payer
                 // Mettre à jour le champ du reste à payer
-                resteAPayer.value = Math.max(0, montantAPayerValue - montantPayeValue);
+                resteAPayer.value = parseInt(Math.max(0, montantAPayerValue - montantPayeValue));
 
                 console.log(montantAPayerValue, montantPayeValue, resteAPayer.value)
             }
