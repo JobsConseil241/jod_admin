@@ -40,10 +40,13 @@ class DetecterRetardsPaiement extends Command
 
         $count = 0;
         foreach ($locationsAvecRetard as $location) {
+
             // Vérifier si un recouvrement existe déjà pour cette location
             $existingRecouvrement = $location->recouvrements()
                 ->where('statut', '!=', 'recouvre')
                 ->first();
+
+            Log::info("Recouvrement {$location->id} - {$location->name}", $existingRecouvrement);
 
             if (!$existingRecouvrement) {
                 // Créer un nouveau recouvrement avec échéance dans 7 jours
