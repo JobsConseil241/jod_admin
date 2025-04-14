@@ -58,7 +58,7 @@ class DetecterRetardsPaiement extends Command
 
                 $count++;
             } else {
-                $this->recouvrementService->verifierEtMettreAJourMontant($existingRecouvrement);
+                $this->recouvrementServicentService->verifierEtMettreAJourMontantRestant($location);
             }
         }
 

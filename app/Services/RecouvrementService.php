@@ -82,6 +82,62 @@ class RecouvrementService
         return false;
     }
 
+    public function verifierEtMettreAJourMontantRestant(Location $location)
+    {
+        // Récupérer le paiement associé
+        $paiement = $location->paiementAssocie;
+
+        if (!$paiement) {
+            return false;
+        }
+
+        // Récupérer le dernier recouvrement actif pour cette location
+        $recouvrement = $location->recouvrements()
+            ->whereIn('statut', ['en_attente', 'partiellement_recouvre'])
+            ->latest()
+            ->first();
+
+        // Si pas de recouvrement actif et qu'il y a un montant restant, on pourrait en créer un nouveau
+        // mais c'est géré par la commande DetecterRetardsPaiement, donc on ne fait rien ici
+        if (!$recouvrement) {
+            return false;
+        }
+
+        // Calculer la différence entre le montant dû dans le recouvrement et le montant restant actuel
+        $montantRestantActuel = $paiement->montant_restant;
+        $montantDuRecouvrement = $recouvrement->montant_du - $recouvrement->montant_recouvre;
+
+        // Si le montant restant a changé
+        if ($montantRestantActuel != $montantDuRecouvrement) {
+            // Mettre à jour le montant dû
+            $recouvrement->montant_du = $montantRestantActuel + $recouvrement->montant_recouvre;
+
+            // Mise à jour du statut
+            if ($montantRestantActuel <= 0) {
+                $recouvrement->statut = 'recouvre';
+                $recouvrement->date_recouvrement = Carbon::now();
+                $recouvrement->commentaire = ($recouvrement->commentaire ? $recouvrement->commentaire . "\n" : "") .
+                    "Recouvrement finalisé automatiquement suite à mise à jour du paiement.";
+            } else {
+                // Vérifier si le montant est partiellement ou pas du tout recouvré
+                if ($recouvrement->montant_recouvre > 0) {
+                    $recouvrement->statut = 'partiellement_recouvre';
+                } else {
+                    $recouvrement->statut = 'en_attente';
+                }
+
+                $recouvrement->commentaire = ($recouvrement->commentaire ? $recouvrement->commentaire . "\n" : "") .
+                    "Montant ajusté suite à mise à jour du paiement.";
+            }
+
+            $recouvrement->save();
+
+            return $recouvrement;
+        }
+
+        return false;
+    }
+
     /**
      * Enregistrer un paiement de recouvrement
      */
