@@ -58,6 +58,7 @@ class DetecterRetardsPaiement extends Command
 
                 $count++;
             } else {
+                Log::info('detecter');
                 $this->recouvrementService->verifierEtMettreAJourMontantRestant($location);
             }
         }
