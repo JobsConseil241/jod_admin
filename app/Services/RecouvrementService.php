@@ -34,7 +34,7 @@ class RecouvrementService
             ->where(function($query) {
                 // Locations avec date de fin dépassée
                 $query->where('date_heure_fin', '<', now())
-                    ->where('statut', '!=', 5); // Non terminées/annulées
+                    ->where('statut', '!=', 6); // Non terminées/annulées
             })
             ->get();
 
