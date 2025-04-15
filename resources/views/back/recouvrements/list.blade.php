@@ -174,7 +174,7 @@
                             // Customize this function to generate content for your custom column
                             return `<a href="{{ url('backend/booking/detail/') }}/` + row.location.code_contrat + `" >
                                        <button type="button" class="ti-btn ti-btn-soft-primary btn-sm">
-                                            <i class="ti ti-eye align-bottom me-2"></i> Consuler
+                                            <i class="ti ti-eye align-bottom me-2"></i> Consulter
                                         </button>
                                     </a>`;
                         },
@@ -184,11 +184,15 @@
                         data: 'null',
                         name: 'customColumn',
                         render: function(data, type, row) {
-                            return `<a href="{{ url('backend/car/view/') }}/` + row.id + `" >
-                                       <button type="button" class="ti-btn ti-btn-soft-primary">
-                                            <i class="ti ti-eye align-bottom me-2"></i> Voir
-                                        </button>
-                                    </a>`;
+                            return `<button type="button" class="ti-btn ti-btn-soft-primary"
+                                            data-hs-overlay="#cardModalView` + row.id + `">
+                                        <i class="ri-pencil-fill align-bottom me-2"></i> Modifier
+                                    </button>
+                                    <button type="button" class="ti-btn ti-btn-soft-danger"
+                                            data-hs-overlay="#cardModalDelete` + row.id + `">
+                                        <i class="ri-delete-bin-fill align-bottom me-2"></i> Supprimer
+                                    </button>
+                                    `;
 
                         },
                         orderable: false,
