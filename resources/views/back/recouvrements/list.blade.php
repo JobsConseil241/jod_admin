@@ -327,7 +327,7 @@
 
             $('#data').on('click', '.edit-btn', function() {
                 var row = $(this).closest('tr');
-                var rowData = $('.datatables-basic').DataTable().row(row).data();
+                var rowData = $('#data').DataTable().row(row).data();
 
                 // Now, you can use the rowData for editing
 
@@ -342,9 +342,9 @@
             });
 
 
-            $('#data').on('click', '.add-res', function() {
+            $('#data').on('click', '.delete-record', function() {
                 var row = $(this).closest('tr');
-                var rowData = $('.datatables-basic').DataTable().row(row).data();
+                var rowData = $('#data').DataTable().row(row).data();
 
                 // Now, you can use the rowData for editing
                 // console.log("Edit data:", rowData);
