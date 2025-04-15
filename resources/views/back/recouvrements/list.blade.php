@@ -184,13 +184,13 @@
                         data: 'null',
                         name: 'customColumn',
                         render: function(data, type, row) {
-                            return `<button type="button" class="ti-btn ti-btn-soft-primary"
+                            return `<button type="button" class="ti-btn ti-btn-soft-primary ti-btn rounded-full p-0 transition-none focus:outline-none ti-btn-soft-secondary"
                                             data-hs-overlay="#cardModalView` + row.id + `">
-                                        <i class="ri-pencil-fill align-bottom me-2"></i> Modifier
+                                        <i class="ti ti-pencil"></i>
                                     </button>
-                                    <button type="button" class="ti-btn ti-btn-soft-danger"
+                                    <button type="button" class="ti-btn ti-btn-soft-danger rounded-full p-0 transition-none focus:outline-none ti-btn-soft-danger"
                                             data-hs-overlay="#cardModalDelete` + row.id + `">
-                                        <i class="ri-delete-bin-fill align-bottom me-2"></i> Supprimer
+                                        <i class="ti ti-trash"></i>
                                     </button>
                                     `;
 
