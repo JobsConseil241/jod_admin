@@ -241,6 +241,37 @@
 
                 ]
             })
+
+
+            $('#data').on('click', '.edit-btn', function() {
+                var row = $(this).closest('tr');
+                var rowData = $('#data').DataTable().row(row).data();
+
+                // Now, you can use the rowData for editing
+
+                // Example: Open a modal to edit the row's data
+                // $("#titres").val(rowData.titre);
+                // $("#id").val(rowData.id);
+                //
+                // $('#EditModal').modal('show');
+
+                console.log(rowData)
+                // Populate the modal with rowData for editing
+            });
+
+
+            $('#data').on('click', '.delete-record', function() {
+                var row = $(this).closest('tr');
+                var rowData = $('#data').DataTable().row(row).data();
+
+                // Now, you can use the rowData for editing
+                // console.log("Edit data:", rowData);
+                // console.log($(this).closest('tr'));
+
+                console.log(rowData)
+                // window.location.replace("/dashboard/faq-manage/"+rowData.id+"/reponses" );
+                // Populate the modal with rowData for editing
+            });
         });
 
         const phoneInputField = document.querySelector("#phone");
@@ -322,37 +353,6 @@
                     $('#cardModalView .ti-modal-content').html(body); //url to delete item
                     $('#cardModalView').removeClass('hidden').addClass('open');
                 }
-            });
-
-
-            $('#data').on('click', '.edit-btn', function() {
-                var row = $(this).closest('tr');
-                var rowData = $('#data').DataTable().row(row).data();
-
-                // Now, you can use the rowData for editing
-
-                // Example: Open a modal to edit the row's data
-                // $("#titres").val(rowData.titre);
-                // $("#id").val(rowData.id);
-                //
-                // $('#EditModal').modal('show');
-
-                console.log(rowData)
-                // Populate the modal with rowData for editing
-            });
-
-
-            $('#data').on('click', '.delete-record', function() {
-                var row = $(this).closest('tr');
-                var rowData = $('#data').DataTable().row(row).data();
-
-                // Now, you can use the rowData for editing
-                // console.log("Edit data:", rowData);
-                // console.log($(this).closest('tr'));
-
-                console.log(rowData)
-                // window.location.replace("/dashboard/faq-manage/"+rowData.id+"/reponses" );
-                // Populate the modal with rowData for editing
             });
         });
     </script>
