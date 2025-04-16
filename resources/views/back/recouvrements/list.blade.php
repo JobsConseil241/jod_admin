@@ -272,7 +272,7 @@
                 $("#montant_du").val(rowData.montant_du);
                 $("#paiement_id").val(rowData.paiement_id);
 
-                $('#cardModalEdit').removeClass('hidden').addClass('open');
+                $('#cardModalEdit').removeClass('hidden').addClass('flex');
 
                 // Populate the modal with rowData for editing
             });
