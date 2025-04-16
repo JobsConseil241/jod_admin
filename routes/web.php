@@ -179,6 +179,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('recouvrements', RecouvrementController::class);
         Route::get('recouvrement/list/ajax', [RecouvrementController::class, 'ajax_get_recouvrements'])->name('backend.recouvrement.ajax');
         Route::post('recouvrements/{recouvrement}/paiement', [RecouvrementController::class, 'enregistrerPaiement'])->name('recouvrements.paiement');
+        Route::post('recouvrement/update', [RecouvrementController::class, 'update_recouvrement_data'])->name('recouvrement.update');
 
         //Paiements Management
         Route::get('paiements/list', [PaymentController::class, 'index'])->name('backend.paiements.list');

@@ -124,6 +124,7 @@ Route::group([
 
     // Recouvrements Values
     Route::get('/get_all_recouvrements', [RecouvrementController::class, 'get_all_recouvrements'])->name('API-GET-ALL-RECOUVREMENTS');
+    Route::post('/update_recouvrement', [RecouvrementController::class, 'edit_recouvrement'])->name('API-UPDATE-RECOUVREMENT');
 
     // categories pannes
     Route::get('/get_category_pannes', [CategoriePanneController::class, 'get_categories_pannes'])->name('API-GET-CATEGORIES-PANNES');

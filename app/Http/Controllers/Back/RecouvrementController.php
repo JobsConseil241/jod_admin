@@ -96,6 +96,27 @@ class RecouvrementController extends Controller
             ->with('success', 'Paiement enregistré avec succès');
     }
 
+    public function update_recouvrement_data(Request $request)
+    {
+
+        $access_token = Session::get('personnalToken');
+        $data = $request->all();
+
+        $response = Http::withHeaders([
+            "Authorization" => "Bearer " . $access_token
+        ])->post(env('SERVER_PC') . 'update_recouvrement', $data);
+
+        $object = json_decode($response->body());
+
+        if ($object && $object->success == true) {
+            return redirect('recouvrements')->with('success', "L'état de la location a été mis à jour avec succès.");
+        } else {
+            return back()->with('error', $object->message ?? 'Une erreur s\'est produite.')->withInput();
+        }
+
+    }
+
+
     public function dashboard()
     {
         $aujourdhui = Carbon::today();
