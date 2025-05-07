@@ -57,13 +57,13 @@ class RecouvrementController extends BaseController
             }
 
 
-            $category = Recouvrement::find($datas['id']);
+            $category = Recouvrement::find($datas['id_recouvrement']);
 
             if ($category == null) {
                 return $this->sendError("Recouvrement Value not found");
             }
 
-            $paiement = Paiement::find($datas['paiement_id']);
+            $paiement = Paiement::find($datas['id_paiement']);
             $paiement->montant_paye = $paiement->montant_paye + $category->montant_re;
             $paiement->montant_restant = $paiement->montant_rest - $category->montant_re;
             $paiement->save();
