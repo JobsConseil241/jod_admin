@@ -102,8 +102,8 @@
 
                                 <div class="mb-3">
                                     <label class="ti-form-label mb-0" id="montant_re">Montant Recouvré</label>
-                                    <input type="text" name="montant_re" id="montant_re" class="ti-form-input" readonly inputmode="numeric" >
-                                    <input type="text" name="id_paiement" id="id_paiement" class="ti-form-input" readonly>
+                                    <input type="text" name="montant_re" id="montant_re" class="ti-form-input" inputmode="numeric" >
+                                    <input type="text" name="id_paiement" id="id_paiement" class="ti-form-input" readonly style="display: none" >
                                 </div>
                             </div>
                             <div class="ti-modal-footer">
