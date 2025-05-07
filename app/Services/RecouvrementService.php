@@ -110,12 +110,36 @@ class RecouvrementService
         $montantRestantActuel = $paiement->montant_restant;
         $montantDuRecouvrement = $recouvrement->montant_du - $recouvrement->montant_recouvre;
 
-        Log::info($montantRestantActuel);
-        Log::info($montantDuRecouvrement);
 
         // Si le montant restant a changé
         if ($montantRestantActuel != $montantDuRecouvrement) {
             // Mettre à jour le montant dû
+            $recouvrement->montant_du = $montantRestantActuel + $recouvrement->montant_recouvre;
+
+
+            // Mise à jour du statut
+            if ($montantRestantActuel <= 0) {
+                $recouvrement->statut = 'recouvre';
+                $recouvrement->date_recouvrement = Carbon::now();
+                $recouvrement->commentaire = ($recouvrement->commentaire ? $recouvrement->commentaire . "\n" : "") .
+                    "Recouvrement finalisé automatiquement suite à mise à jour du paiement.";
+            } else {
+                // Vérifier si le montant est partiellement ou pas du tout recouvré
+                if ($recouvrement->montant_recouvre > 0) {
+                    $recouvrement->statut = 'partiellement_recouvre';
+                } else {
+                    $recouvrement->statut = 'en_attente';
+                }
+
+                $recouvrement->commentaire = ($recouvrement->commentaire ? $recouvrement->commentaire . "\n" : "") .
+                    "Montant ajusté suite à mise à jour du paiement.";
+            }
+
+            $recouvrement->save();
+
+            return $recouvrement;
+        } elseif ($montantRestantActuel == $montantDuRecouvrement) {
+
             $recouvrement->montant_du = $montantRestantActuel + $recouvrement->montant_recouvre;
 
 
