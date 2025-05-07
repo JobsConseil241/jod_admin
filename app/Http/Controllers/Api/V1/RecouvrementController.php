@@ -63,11 +63,15 @@ class RecouvrementController extends BaseController
                 return $this->sendError("Recouvrement Value not found");
             }
 
-            $paiement = Paiement::find($datas['id_paiement']);
-            Log::info($paiement);
-            $paiement->montant_paye = (int)$paiement->montant_paye + (int)$category->montant_re;
-            $paiement->montant_restant = (int)$paiement->montant_restant - (int)$category->montant_re;
-            $paiement->save();
+            $paie = Paiement::find($datas['id_paiement']);
+            Log::info($paie);
+
+            $nouveauMontantPaye = (int)$paie->montant_paye + (int)$datas['montant_re'];
+            $nouveauMontantRestant = (int)$paie->montant_restant - (int)$datas['montant_re'];
+
+            $paie->montant_paye = $nouveauMontantPaye;
+            $paie->montant_restant = $nouveauMontantRestant;
+            $paie->save();
 
             $category->montant_recouvre = (int)$datas['montant_re'];
             $category->date_recouvrement = date('Y-m-d H:i:s');
