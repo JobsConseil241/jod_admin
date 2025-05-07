@@ -64,8 +64,9 @@ class RecouvrementController extends BaseController
             }
 
             $paiement = Paiement::find($datas['id_paiement']);
+            Log::info($paiement);
             $paiement->montant_paye = $paiement->montant_paye + $category->montant_re;
-            $paiement->montant_restant = $paiement->montant_rest - $category->montant_re;
+            $paiement->montant_restant = $paiement->montant_restant - $category->montant_re;
             $paiement->save();
 
             $category->montant_recouvre = $datas['montant_re'];
@@ -74,7 +75,7 @@ class RecouvrementController extends BaseController
             $data = $category->save();
 
 
-            Log::debug('Edit Recouvrement Endpoint - Response: ' . json_encode($data));
+            Log::debug('Edit Recouvrement Endpoint - Response: ' . json_encode($datas));
 
             return $this->sendResponse($data, "Edit Recouvrement successfully");
         } catch (Exception $e) {
