@@ -68,7 +68,7 @@ class RecouvrementController extends BaseController
             $paiement->montant_restant = $paiement->montant_rest - $category->montant_re;
             $paiement->save();
 
-            $category->montant_re = $datas['montant_re'];
+            $category->montant_recouvre = $datas['montant_re'];
             $category->date_recouvrement = date('Y-m-d H:i:s');
             $category->statut = ($category->montant_du == $datas['montant_re']) ? 'recouvre' : 'partiellement_recouvre';
             $data = $category->save();
