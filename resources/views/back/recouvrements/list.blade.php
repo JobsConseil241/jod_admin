@@ -279,6 +279,7 @@
                 // }
 
                 const modal = document.getElementById('cardModalEdit');
+                console.log(modal);
 
                 if (modal) {
                     // Ajouter la classe 'open' pour afficher le modal
