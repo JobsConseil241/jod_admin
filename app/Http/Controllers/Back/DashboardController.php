@@ -216,6 +216,11 @@ class DashboardController extends Controller
         $amountToRecover = Recouvrement::where('statut', 'en_attente')
             ->sum('montant_du');
 
+        $amountToRecoverPartiel = Recouvrement::where('statut', 'partiellement_recouvre')
+            ->sum('montant_du');
+
+        $amountToRecover = $amountToRecover + $amountToRecoverPartiel;
+
         return [
             'value' => $amountToRecover,
             'evolution' => 0,
