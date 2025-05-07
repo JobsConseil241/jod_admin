@@ -78,8 +78,7 @@
                 </div>
             </div>
 
-
-            <div id="cardModalEdit" class="hs-overlay ti-modal hidden">
+            <div id="cardModalEdit" class="hs-overlay ti-modal hidden" aria-overlay="true" tabindex="-1">
                 <div class="ti-modal-box">
                     <div class="ti-modal-content">
                         <form action="{{ url('recouvrement.update') }}" method="POST">
@@ -272,11 +271,22 @@
                 $("#montant_du").val(rowData.montant_du);
                 $("#paiement_id").val(rowData.paiement_id);
 
-                if (typeof HSOverlay !== 'undefined') {
-                    HSOverlay.open('#cardModalEdit');
-                } else {
-                    $('#cardModalEdit').addClass('show');
-                    $('#cardModalEdit').removeClass('hidden');
+                // if (typeof HSOverlay !== 'undefined') {
+                //     HSOverlay.open('#cardModalEdit');
+                // } else {
+                //     $('#cardModalEdit').addClass('show');
+                //     $('#cardModalEdit').removeClass('hidden');
+                // }
+
+                const modal = document.getElementById('cardModalEdit');
+
+                if (modal) {
+                    // Ajouter la classe 'open' pour afficher le modal
+                    modal.classList.add('open');
+                    modal.setAttribute('aria-overlay', 'true');
+
+                    // Empêcher le défilement du body
+                    document.body.classList.add('overflow-hidden');
                 }
 
                 // $('#cardModalEdit').removeClass('hidden').addClass('flex');

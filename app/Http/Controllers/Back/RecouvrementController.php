@@ -98,7 +98,6 @@ class RecouvrementController extends Controller
 
     public function update_recouvrement_data(Request $request)
     {
-
         $access_token = Session::get('personnalToken');
         $data = $request->all();
 
