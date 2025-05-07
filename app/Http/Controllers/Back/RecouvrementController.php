@@ -108,7 +108,7 @@ class RecouvrementController extends Controller
         $object = json_decode($response->body());
 
         if ($object && $object->success == true) {
-            return redirect('recouvrements')->with('success', "L'état de la location a été mis à jour avec succès.");
+            return redirect()->route('recouvrements.index')->with('success', "L'état de la location a été mis à jour avec succès.");
         } else {
             return back()->with('error', $object->message ?? 'Une erreur s\'est produite.')->withInput();
         }
