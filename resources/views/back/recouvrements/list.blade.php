@@ -81,7 +81,7 @@
             <div id="cardModalEdit" class="hs-overlay ti-modal hidden" aria-overlay="true" tabindex="-1">
                 <div class="ti-modal-box">
                     <div class="ti-modal-content">
-                        <form action="{{ url('recouvrement.update') }}" method="POST">
+                        <form action="{{ route('recouvrement.update') }}" method="POST">
                             @csrf
                             <div class="ti-modal-header">
                                 <h3 class="ti-modal-title">
@@ -101,21 +101,9 @@
                             <div class="ti-modal-body">
 
                                 <div class="mb-3">
-                                    <label class="ti-form-label mb-0" id="montant_du">Montant Du Par le Client</label>
-                                    <input type="text" name="montant_du" id="montant_du" class="ti-form-input" readonly>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="montant_recouvre" class="ti-form-label">Nom</label>
-                                    <input type="text" name="montant_recouvre"  id="montant_recouvre" class="ti-form-input">
-                                    <input type="text" name="paiement_id"  id="paiement_id" class="ti-form-input" style="display: none">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="date_recouvrement" class="ti-form-label">Description</label>
-                                    <input type="text"
-                                           class="ti-form-input ltr:rounded-l-none rtl:rounded-r-none focus:z-10 flatpickr-input"
-                                           id="date_recouvrement" name="date_recouvrement" placeholder="Choississez une date" readonly>
+                                    <label class="ti-form-label mb-0" id="montant_re">Montant Recouvré</label>
+                                    <input type="text" name="montant_re" id="montant_re" class="ti-form-input" readonly inputmode="numeric" >
+                                    <input type="text" name="id_paiement" id="id_paiement" class="ti-form-input" readonly>
                                 </div>
                             </div>
                             <div class="ti-modal-footer">
@@ -125,7 +113,7 @@
                                     Annuler
                                 </button>
                                 <button class="ti-btn ti-btn-primary" type="submit">
-                                    Enregistrer
+                                    Mettre a jour
                                 </button>
                             </div>
                         </form>
@@ -260,26 +248,7 @@
                         searchable: false
                     }
 
-                ],
-                "drawCallback": function() {
-                    // Attacher les gestionnaires d'événements après chaque dessin du tableau
-                    $('.edit-btn').on('click', function() {
-                        const data = table.row($(this).parents('tr')).data();
-
-                        // Ouvrir le modal
-                        const modal = document.getElementById('hs-vertically-centered-modal');
-                        if (window.HSOverlay) {
-                            window.HSOverlay.open(modal);
-                        } else {
-                            modal.classList.add('open');
-                            modal.setAttribute('aria-overlay', 'true');
-                            document.body.classList.add('overflow-hidden');
-                        }
-
-                        // Remplir le modal avec les données si nécessaire
-                        // fillModalWithData(data);
-                    });
-                }
+                ]
             })
 
 
@@ -290,32 +259,57 @@
                 // Now, you can use the rowData for editing
 
                 // Example: Open a modal to edit the row's data
-                $("#montant_du").val(rowData.montant_du);
-                $("#paiement_id").val(rowData.paiement_id);
+                $("#montant_re").val(rowData.montant_du);
+                $("#id_paiement").val(rowData.paiement_id);
 
-                // if (typeof HSOverlay !== 'undefined') {
-                //     HSOverlay.open('#cardModalEdit');
-                // } else {
-                //     $('#cardModalEdit').addClass('show');
-                //     $('#cardModalEdit').removeClass('hidden');
-                // }
+                $("#montant_re").on('input', function() {
+                    // Récupérer la valeur et supprimer tout ce qui n'est pas un chiffre
+                    let valeur = $(this).val().replace(/\D/g, '');
 
-                const modal = document.getElementById('cardModalEdit');
-                if (window.HSOverlay) {
-                    window.HSOverlay.open(modal);
-                    console.log(rowData);
-                } else {
-                    console.log(modal);
-                    modal.classList.add('open');
-                    modal.setAttribute('aria-overlay', 'true');
-                    document.body.classList.add('overflow-hidden');
+                    // Convertir en nombre entier
+                    let montant = parseInt(valeur, 10);
 
-                }
+                    // Vérifier si c'est un nombre valide
+                    if (!isNaN(montant)) {
+                        // Limiter au montant maximum
+                        if (montant > rowData.montant_du) {
+                            montant = rowData.montant_du;
+                            // Optionnel: afficher un message
+                            alert("Le montant ne peut pas dépasser " + rowData.montant_du);
+                        }
 
-                // $('#cardModalEdit').removeClass('hidden').addClass('flex');
+                        // Mettre à jour la valeur dans l'input
+                        $(this).val(montant);
+                    } else if (valeur === '') {
+                        // Si l'input est vide, laisser le champ vide
+                        $(this).val('');
+                    } else {
+                        // Si ce n'est pas un nombre valide, mettre 0 ou laisser vide
+                        $(this).val('0');
+                    }
+                });
+                    // if (typeof HSOverlay !== 'undefined') {
+                    //     HSOverlay.open('#cardModalEdit');
+                    // } else {
+                    //     $('#cardModalEdit').addClass('show');
+                    //     $('#cardModalEdit').removeClass('hidden');
+                    // }
 
-                // Populate the modal with rowData for editing
-            });
+                    const modal = document.getElementById('cardModalEdit');
+                    if (window.HSOverlay) {
+                        window.HSOverlay.open(modal);
+                        console.log(rowData);
+                    } else {
+                        console.log(modal);
+                        modal.classList.add('open');
+                        modal.setAttribute('aria-overlay', 'true');
+                        document.body.classList.add('overflow-hidden');
+                    }
+
+                    // $('#cardModalEdit').removeClass('hidden').addClass('flex');
+
+                    // Populate the modal with rowData for editing
+                });
 
 
             $('#data').on('click', '.delete-record', function() {
