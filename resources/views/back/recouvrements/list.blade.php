@@ -257,43 +257,62 @@
                         searchable: false
                     }
 
-                ]
+                ],
+                "drawCallback": function() {
+                    // Attacher les gestionnaires d'événements après chaque dessin du tableau
+                    $('.edit-btn').on('click', function() {
+                        const data = table.row($(this).parents('tr')).data();
+
+                        // Ouvrir le modal
+                        const modal = document.getElementById('hs-vertically-centered-modal');
+                        if (window.HSOverlay) {
+                            window.HSOverlay.open(modal);
+                        } else {
+                            modal.classList.add('open');
+                            modal.setAttribute('aria-overlay', 'true');
+                            document.body.classList.add('overflow-hidden');
+                        }
+
+                        // Remplir le modal avec les données si nécessaire
+                        // fillModalWithData(data);
+                    });
+                }
             })
 
 
-            $('#data').on('click', '.edit-btn', function() {
-                var row = $(this).closest('tr');
-                var rowData = $('#data').DataTable().row(row).data();
-
-                // Now, you can use the rowData for editing
-
-                // Example: Open a modal to edit the row's data
-                $("#montant_du").val(rowData.montant_du);
-                $("#paiement_id").val(rowData.paiement_id);
-
-                // if (typeof HSOverlay !== 'undefined') {
-                //     HSOverlay.open('#cardModalEdit');
-                // } else {
-                //     $('#cardModalEdit').addClass('show');
-                //     $('#cardModalEdit').removeClass('hidden');
-                // }
-
-                const modal = document.getElementById('cardModalEdit');
-                console.log(modal);
-
-                if (modal) {
-                    // Ajouter la classe 'open' pour afficher le modal
-                    modal.classList.add('open');
-                    modal.setAttribute('aria-overlay', 'true');
-
-                    // Empêcher le défilement du body
-                    document.body.classList.add('overflow-hidden');
-                }
-
-                // $('#cardModalEdit').removeClass('hidden').addClass('flex');
-
-                // Populate the modal with rowData for editing
-            });
+            // $('#data').on('click', '.edit-btn', function() {
+            //     var row = $(this).closest('tr');
+            //     var rowData = $('#data').DataTable().row(row).data();
+            //
+            //     // Now, you can use the rowData for editing
+            //
+            //     // Example: Open a modal to edit the row's data
+            //     $("#montant_du").val(rowData.montant_du);
+            //     $("#paiement_id").val(rowData.paiement_id);
+            //
+            //     // if (typeof HSOverlay !== 'undefined') {
+            //     //     HSOverlay.open('#cardModalEdit');
+            //     // } else {
+            //     //     $('#cardModalEdit').addClass('show');
+            //     //     $('#cardModalEdit').removeClass('hidden');
+            //     // }
+            //
+            //     const modal = document.getElementById('cardModalEdit');
+            //     console.log(modal);
+            //
+            //     if (modal) {
+            //         // Ajouter la classe 'open' pour afficher le modal
+            //         modal.classList.add('open');
+            //         modal.setAttribute('aria-overlay', 'true');
+            //
+            //         // Empêcher le défilement du body
+            //         document.body.classList.add('overflow-hidden');
+            //     }
+            //
+            //     // $('#cardModalEdit').removeClass('hidden').addClass('flex');
+            //
+            //     // Populate the modal with rowData for editing
+            // });
 
 
             $('#data').on('click', '.delete-record', function() {
