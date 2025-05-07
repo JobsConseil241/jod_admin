@@ -65,11 +65,11 @@ class RecouvrementController extends BaseController
 
             $paiement = Paiement::find($datas['id_paiement']);
             Log::info($paiement);
-            $paiement->montant_paye = $paiement->montant_paye + $category->montant_re;
-            $paiement->montant_restant = $paiement->montant_restant - $category->montant_re;
+            $paiement->montant_paye = (int)$paiement->montant_paye + (int)$category->montant_re;
+            $paiement->montant_restant = (int)$paiement->montant_restant - (int)$category->montant_re;
             $paiement->save();
 
-            $category->montant_recouvre = $datas['montant_re'];
+            $category->montant_recouvre = (int)$datas['montant_re'];
             $category->date_recouvrement = date('Y-m-d H:i:s');
             $category->statut = ($category->montant_du == $datas['montant_re']) ? 'recouvre' : 'partiellement_recouvre';
             $data = $category->save();
