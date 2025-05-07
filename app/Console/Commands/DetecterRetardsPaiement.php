@@ -46,7 +46,7 @@ class DetecterRetardsPaiement extends Command
                 ->where('statut', '!=', 'recouvre')
                 ->first();
 
-            Log::info("Recouvrement {$location->id} - {$location->name}");
+            Log::info("Recouvrement {$location->id} - {$location->code_contrat}");
 
             if (!$existingRecouvrement) {
                 // Créer un nouveau recouvrement avec échéance dans 7 jours
@@ -61,7 +61,6 @@ class DetecterRetardsPaiement extends Command
 
                 $count++;
             } else {
-                Log::info('detecter');
                 $this->recouvrementService->verifierEtMettreAJourMontantRestant($location);
             }
         }

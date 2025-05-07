@@ -103,14 +103,21 @@ class RecouvrementService
             return false;
         }
 
+        Log::info($recouvrement);
+        Log::info($paiement);
+
         // Calculer la différence entre le montant dû dans le recouvrement et le montant restant actuel
         $montantRestantActuel = $paiement->montant_restant;
         $montantDuRecouvrement = $recouvrement->montant_du - $recouvrement->montant_recouvre;
+
+        Log::info($montantRestantActuel);
+        Log::info($montantDuRecouvrement);
 
         // Si le montant restant a changé
         if ($montantRestantActuel != $montantDuRecouvrement) {
             // Mettre à jour le montant dû
             $recouvrement->montant_du = $montantRestantActuel + $recouvrement->montant_recouvre;
+
 
             // Mise à jour du statut
             if ($montantRestantActuel <= 0) {
