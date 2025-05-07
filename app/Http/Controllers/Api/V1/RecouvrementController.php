@@ -44,10 +44,9 @@ class RecouvrementController extends BaseController
             Log::debug('Edit Recouvrement Endpoint - All Params: ' . json_encode($request->all()));
             $datas = $request->all();
             $rules = [
-                'montant_recouvre' => ['required', 'integer', 'nullable'],
-                'date_recouvrement' => ['required', 'date'],
-                'paiement_id' => ['required', 'exists:paiements,id'],
-                'id' => ['required', 'integer']
+                'montant_re' => ['required', 'integer', 'nullable'],
+                'id_paiement' => ['required', 'exists:paiements,id'],
+                'id_recouvrement' => ['required', 'integer']
             ];
 
             $validator = Validator::make($request->all(), $rules);
@@ -61,16 +60,16 @@ class RecouvrementController extends BaseController
             $category = Recouvrement::find($datas['id']);
 
             if ($category == null) {
-                return $this->sendError("Category Panne not found");
+                return $this->sendError("Recouvrement Value not found");
             }
 
             $paiement = Paiement::find($datas['paiement_id']);
-            $paiement->montant_paye = $paiement->montant_paye + $category->montant_recouvre;
-            $paiement->montant_restant = $paiement->montant_rest - $category->montant_recouvre;
+            $paiement->montant_paye = $paiement->montant_paye + $category->montant_re;
+            $paiement->montant_restant = $paiement->montant_rest - $category->montant_re;
             $paiement->save();
 
-            $category->montant_recouvre = $datas['montant_recouvre'];
-            $category->date_recouvrement = $datas['date_recouvrement'];
+            $category->montant_re = $datas['montant_recouvre'];
+            $category->date_recouvrement = date('Y-m-d H:i:s');
             $category->statut = ($category->montant_du == $datas['montant_recouvre']) ? 'recouvre' : 'partiellement_recouvre';
             $data = $category->save();
 

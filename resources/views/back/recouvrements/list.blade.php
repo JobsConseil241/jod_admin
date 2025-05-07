@@ -104,6 +104,7 @@
                                     <label class="ti-form-label mb-0" for="montant_re">Montant Recouvré</label>
                                     <input type="text" name="montant_re" id="montant_re" class="ti-form-input" inputmode="numeric" >
                                     <input type="text" name="id_paiement" id="id_paiement" class="ti-form-input" readonly style="display: none" >
+                                    <input type="text" name="id_recouvrement" id="id_recouvrement" class="ti-form-input" readonly style="display: none" >
                                 </div>
                             </div>
                             <div class="ti-modal-footer">
@@ -261,6 +262,7 @@
                 // Example: Open a modal to edit the row's data
                 $("#montant_re").val(rowData.montant_du);
                 $("#id_paiement").val(rowData.paiement_id);
+                $("#id_recouvrement").val(rowData.id);
 
                 $("#montant_re").on('input', function() {
                     // Récupérer la valeur et supprimer tout ce qui n'est pas un chiffre
