@@ -126,7 +126,7 @@
                 </div>
             </div>
 
-            <div class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;">
+            <div class="swal2-container swal2-center swal2-backdrop-hide" style="overflow-y: auto;">
                 <div aria-labelledby="swal2-title" aria-describedby="swal2-html-container"
                      class="swal2-popup swal2-modal animate__animated animate__fadeInDown" tabindex="-1" role="dialog"
                      aria-live="assertive" aria-modal="true" style="display: grid;">
