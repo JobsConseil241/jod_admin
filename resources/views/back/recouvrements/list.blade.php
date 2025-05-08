@@ -325,7 +325,7 @@
                         className: 'ti-btn ti-btn-info'
                     }
                 ],
-                responsive: true,
+                // responsive: true,
                 order: [
                     [0, 'desc']
                 ],
