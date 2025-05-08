@@ -72,13 +72,14 @@ class RecouvrementController extends BaseController
 
             $paie->montant_paye = $nouveauMontantPaye;
             $paie->montant_restant = $nouveauMontantRestant;
+            $paie->statut = ($nouveauMontantRestant == 0) ? 1 : 0;
             $paie->save();
 
             $category->montant_recouvre = (int)$datas['montant_re'];
             $category->montant_old = (int)$datas['montant_du'];
             $category->montant_du = $nouveauMontantRestant;
             $category->date_recouvrement = date('Y-m-d H:i:s');
-            $category->statut = ($category->montant_du == $datas['montant_re']) ? 'recouvre' : 'partiellement_recouvre';
+            $category->statut = ($nouveauMontantRestant == 0) ? 'recouvre' : 'partiellement_recouvre';
             $data = $category->save();
 
 
