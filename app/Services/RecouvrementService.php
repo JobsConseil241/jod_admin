@@ -140,7 +140,7 @@ class RecouvrementService
             return $recouvrement;
         } elseif ($montantRestantActuel == $montantDuRecouvrement) {
 
-            $recouvrement->montant_du = $montantRestantActuel + $recouvrement->montant_recouvre;
+            $recouvrement->montant_du = $montantRestantActuel;
 
 
             // Mise à jour du statut

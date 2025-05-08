@@ -45,6 +45,7 @@ class RecouvrementController extends BaseController
             $datas = $request->all();
             $rules = [
                 'montant_re' => ['required', 'integer', 'nullable'],
+                'montant_du' => ['required', 'integer', 'nullable'],
                 'id_paiement' => ['required', 'exists:paiements,id'],
                 'id_recouvrement' => ['required', 'integer']
             ];
@@ -74,6 +75,7 @@ class RecouvrementController extends BaseController
             $paie->save();
 
             $category->montant_recouvre = (int)$datas['montant_re'];
+            $category->montant_old = (int)$datas['montant_du'];
             $category->date_recouvrement = date('Y-m-d H:i:s');
             $category->statut = ($category->montant_du == $datas['montant_re']) ? 'recouvre' : 'partiellement_recouvre';
             $data = $category->save();

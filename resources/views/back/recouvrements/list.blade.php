@@ -101,10 +101,14 @@
                             <div class="ti-modal-body">
 
                                 <div class="mb-3">
-                                    <label class="ti-form-label mb-0" for="montant_re">Montant Recouvré</label>
-                                    <input type="text" name="montant_re" id="montant_re" class="ti-form-input" inputmode="numeric" >
+                                    <label class="ti-form-label mb-0" for="montant_du">Montant Du</label>
+                                    <input type="text" name="montant_du" id="montant_du" class="ti-form-input" inputmode="numeric" >
                                     <input type="text" name="id_paiement" id="id_paiement" class="ti-form-input" readonly style="display: none" >
                                     <input type="text" name="id_recouvrement" id="id_recouvrement" class="ti-form-input" readonly style="display: none" >
+                                </div>
+                                <div class="mb-3">
+                                    <label class="ti-form-label mb-0" for="montant_re">Montant Recouvré</label>
+                                    <input type="text" name="montant_re" id="montant_re" class="ti-form-input" inputmode="numeric" >
                                 </div>
                             </div>
                             <div class="ti-modal-footer">
@@ -261,6 +265,7 @@
 
                 // Example: Open a modal to edit the row's data
                 $("#montant_re").val(rowData.montant_du);
+                $("#montant_du").val(rowData.montant_du);
                 $("#id_paiement").val(rowData.paiement_id);
                 $("#id_recouvrement").val(rowData.id);
 
