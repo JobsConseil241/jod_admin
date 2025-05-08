@@ -102,7 +102,7 @@
 
                                 <div class="mb-3">
                                     <label class="ti-form-label mb-0" for="montant_du">Montant Du</label>
-                                    <input type="text" name="montant_du" id="montant_du" class="ti-form-input" inputmode="numeric" >
+                                    <input type="text" name="montant_du" id="montant_du" class="ti-form-input" inputmode="numeric" readonly>
                                     <input type="text" name="id_paiement" id="id_paiement" class="ti-form-input" readonly style="display: none" >
                                     <input type="text" name="id_recouvrement" id="id_recouvrement" class="ti-form-input" readonly style="display: none" >
                                 </div>

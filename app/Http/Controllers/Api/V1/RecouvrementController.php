@@ -76,6 +76,7 @@ class RecouvrementController extends BaseController
 
             $category->montant_recouvre = (int)$datas['montant_re'];
             $category->montant_old = (int)$datas['montant_du'];
+            $category->montant_du = $nouveauMontantRestant;
             $category->date_recouvrement = date('Y-m-d H:i:s');
             $category->statut = ($category->montant_du == $datas['montant_re']) ? 'recouvre' : 'partiellement_recouvre';
             $data = $category->save();
