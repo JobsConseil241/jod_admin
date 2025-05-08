@@ -58,19 +58,6 @@
                             </button>
                         </a>
                     </div>
-                    <div class="flex flex-wrap gap-4 mb-5">
-                        <div class="relative min-w-[200px]">
-                            <div class="flex">
-                                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                    <i class="ri-calendar-line text-gray-500 dark:text-white/70"></i>
-                                </div>
-                                <input type="text" id="date-range-filter" class="ti-form-input ps-10" placeholder="Filtrer par date">
-                            </div>
-                        </div>
-                        <button id="reset-filters" class="ti-btn ti-btn-secondary">
-                            <i class="ri-refresh-line me-1"></i> Réinitialiser
-                        </button>
-                    </div>
                 </div>
                 <div class="box-body">
                     <table id="data" class="table table-bordered dt-responsive nowrap table-striped align-middle w-full divide-y divide-gray-200 shadow-sm border-gray-200 border rounded"
@@ -139,51 +126,48 @@
                 </div>
             </div>
 
-{{--            <div class="swal2-container swal2-center swal2-backdrop-hide" style="overflow-y: auto;">--}}
-{{--                <div aria-labelledby="swal2-title" aria-describedby="swal2-html-container"--}}
-{{--                     class="swal2-popup swal2-modal animate__animated animate__fadeInDown" tabindex="-1" role="dialog"--}}
-{{--                     aria-live="assertive" aria-modal="true" style="display: grid;">--}}
-{{--                    <button type="button" class="swal2-close" aria-label="Close this dialog" style="display: none;">×--}}
-{{--                    </button>--}}
-{{--                    <ul class="swal2-progress-steps" style="display: none;"></ul>--}}
-{{--                    <div class="swal2-icon" style="display: none;"></div>--}}
-{{--                    <img class="swal2-image" style="display: none;">--}}
-{{--                    <h2 class="swal2-title" id="swal2-title" style="display: block;">Custom animation with--}}
-{{--                        Animate.css--}}
-{{--                    </h2>--}}
-{{--                    <div class="swal2-html-container" id="swal2-html-container" style="display: none;"></div>--}}
-{{--                    <input id="swal2-input" class="swal2-input" style="display: none;"><input type="file"--}}
-{{--                                                                                              class="swal2-file"--}}
-{{--                                                                                              style="display: none;">--}}
-{{--                    <div class="swal2-range" style="display: none;"><input type="range">--}}
-{{--                        <output></output>--}}
-{{--                    </div>--}}
-{{--                    <select id="swal2-select" class="swal2-select" style="display: none;"></select>--}}
-{{--                    <div class="swal2-radio" style="display: none;"></div>--}}
-{{--                    <label class="swal2-checkbox" style="display: none;">--}}
-{{--                        <input type="checkbox" id="swal2-checkbox">--}}
-{{--                        <span class="swal2-label"></span>--}}
-{{--                    </label>--}}
-{{--                    <textarea id="swal2-textarea" class="swal2-textarea"--}}
-{{--                              style="display: none;"></textarea>--}}
-{{--                    <div class="swal2-validation-message" id="swal2-validation-message" style="display: none;"></div>--}}
-{{--                    <div class="swal2-actions" style="display: flex;">--}}
-{{--                        <div class="swal2-loader"></div>--}}
-{{--                        <button type="button" class="swal2-confirm swal2-styled" aria-label=""--}}
-{{--                                style="display: inline-block;">OK--}}
-{{--                        </button>--}}
-{{--                        <button type="button" class="swal2-deny swal2-styled" aria-label="" style="display: none;">No--}}
-{{--                        </button>--}}
-{{--                        <button type="button" class="swal2-cancel swal2-styled" aria-label="" style="display: none;">--}}
-{{--                            Cancel--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-{{--                    <div class="swal2-footer" style="display: none;"></div>--}}
-{{--                    <div class="swal2-timer-progress-bar-container">--}}
-{{--                        <div class="swal2-timer-progress-bar" style="display: none;"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <div class="swal2-container swal2-center swal2-backdrop-show" style="overflow-y: auto;">
+                <div aria-labelledby="swal2-title" aria-describedby="swal2-html-container"
+                     class="swal2-popup swal2-modal animate__animated animate__fadeInDown" tabindex="-1" role="dialog"
+                     aria-live="assertive" aria-modal="true" style="display: grid;">
+                    <button type="button" class="swal2-close" aria-label="Close this dialog" style="display: none;">×
+                    </button>
+                    <ul class="swal2-progress-steps" style="display: none;"></ul>
+                    <div class="swal2-icon" style="display: none;"></div>
+                    <img class="swal2-image" style="display: none;">
+                    <h2 class="swal2-title" id="swal2-title" style="display: block;">Custom animation with
+                        Animate.css</h2>
+                    <div class="swal2-html-container" id="swal2-html-container" style="display: none;"></div>
+                    <input id="swal2-input" class="swal2-input" style="display: none;"><input type="file"
+                                                                                              class="swal2-file"
+                                                                                              style="display: none;">
+                    <div class="swal2-range" style="display: none;"><input type="range">
+                        <output></output>
+                    </div>
+                    <select id="swal2-select" class="swal2-select" style="display: none;"></select>
+                    <div class="swal2-radio" style="display: none;"></div>
+                    <label class="swal2-checkbox" style="display: none;"><input type="checkbox"
+                                                                                id="swal2-checkbox"><span
+                            class="swal2-label"></span></label><textarea id="swal2-textarea" class="swal2-textarea"
+                                                                         style="display: none;"></textarea>
+                    <div class="swal2-validation-message" id="swal2-validation-message" style="display: none;"></div>
+                    <div class="swal2-actions" style="display: flex;">
+                        <div class="swal2-loader"></div>
+                        <button type="button" class="swal2-confirm swal2-styled" aria-label=""
+                                style="display: inline-block;">OK
+                        </button>
+                        <button type="button" class="swal2-deny swal2-styled" aria-label="" style="display: none;">No
+                        </button>
+                        <button type="button" class="swal2-cancel swal2-styled" aria-label="" style="display: none;">
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="swal2-footer" style="display: none;"></div>
+                    <div class="swal2-timer-progress-bar-container">
+                        <div class="swal2-timer-progress-bar" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
@@ -192,16 +176,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.tailwindcss.js"></script>
-{{--    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>--}}
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         "use strict";
@@ -218,118 +193,15 @@
 
             const table = document.getElementById('data');
 
-            $('#date-range-filter').daterangepicker({
-                opens: 'left',
-                autoUpdateInput: false,
-                locale: {
-                    format: 'DD/MM/YYYY',
-                    cancelLabel: 'Effacer',
-                    applyLabel: 'Appliquer',
-                    fromLabel: 'Du',
-                    toLabel: 'Au'
-                }
-            });
-
-            // Mise à jour de l'input lorsqu'une plage de dates est sélectionnée
-            $('#date-range-filter').on('apply.daterangepicker', function(ev, picker) {
-                $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
-                table.draw(); // Redessine la table pour appliquer le filtre
-            });
-
-            // Effacer le filtre de date
-            $('#date-range-filter').on('cancel.daterangepicker', function() {
-                $(this).val('');
-                table.draw(); // Redessine la table pour retirer le filtre
-            });
-
-            // Extension personnalisée pour le filtrage par date
-            $.fn.dataTable.ext.search.push(
-                function(settings, data, dataIndex) {
-                    var dateRange = $('#date-range-filter').val();
-
-                    // Si aucun filtre n'est défini, afficher toutes les lignes
-                    if (!dateRange) {
-                        return true;
-                    }
-
-                    var dates = dateRange.split(' - ');
-                    var startDate = moment(dates[0], 'DD/MM/YYYY');
-                    var endDate = moment(dates[1], 'DD/MM/YYYY');
-
-                    // Colonne contenant la date (ajustez l'index selon votre structure)
-                    var dateCol = data[2]; // Supposons que la date est dans la 3ème colonne (index 2)
-                    var rowDate = moment(dateCol, 'DD/MM/YYYY');
-
-                    // Vérifier si la date de la ligne est dans la plage sélectionnée
-                    return rowDate.isBetween(startDate, endDate, null, '[]'); // Inclure les bornes
-                }
-            );
-
             $("#data").DataTable({
                 language: {
                     'url': "https://cdn.datatables.net/plug-ins/1.10.25/i18n/French.json"
                 },
                 processing: true,
-                dom: 'Bfrtip',
-                buttons: [
-                    {
-                        extend: 'pdfHtml5',
-                        text: '<i class="ri-file-pdf-line"></i> PDF',
-                        titleAttr: 'Exporter en PDF',
-                        className: 'ti-btn ti-btn-danger',
-                        title: 'Rapport de données',
-                        orientation: 'landscape', // Format paysage
-                        pageSize: 'A4',
-                        exportOptions: {
-                            columns: ':visible' // Exporter uniquement les colonnes visibles
-                        },
-                        customize: function(doc) {
-                            // Personnalisation du PDF
-                            doc.defaultStyle.fontSize = 10;
-                            doc.styles.tableHeader.fontSize = 11;
-                            doc.styles.tableHeader.alignment = 'left';
-
-                            // Ajout d'un en-tête avec logo et date
-                            doc.content.splice(0, 1, {
-                                    margin: [0, 0, 0, 12],
-                                    alignment: 'center',
-                                    text: 'Rapport de données',
-                                    style: 'header'
-                                },
-                                {
-                                    margin: [0, 0, 0, 12],
-                                    alignment: 'right',
-                                    text: 'Date: ' + moment().format('DD/MM/YYYY'),
-                                    style: 'subheader'
-                                });
-
-                            // Alternance de couleurs pour les lignes
-                            let rowCount = doc.content[2].table.body.length;
-                            for (let i = 1; i < rowCount; i++) {
-                                doc.content[2].table.body[i].forEach(function(cell) {
-                                    cell.fillColor = i % 2 === 0 ? '#f8f9fa' : null;
-                                });
-                            }
-                        }
-                    },
-                    {
-                        extend: 'excel',
-                        text: '<i class="ri-file-excel-line"></i> Excel',
-                        titleAttr: 'Exporter en Excel',
-                        className: 'ti-btn ti-btn-success'
-                    },
-                    {
-                        extend: 'print',
-                        text: '<i class="ri-printer-line"></i> Imprimer',
-                        titleAttr: 'Imprimer',
-                        className: 'ti-btn ti-btn-info'
-                    }
-                ],
-                // responsive: true,
+                responsive: true,
                 order: [
                     [0, 'desc']
                 ],
-                info: true,
                 serverSide: true,
                 searching: true,
                 ajax: "{{ route('backend.recouvrement.ajax') }}",
@@ -427,11 +299,6 @@
                 ]
             })
 
-            $('#reset-filters').on('click', function() {
-                $('#date-range-filter').val('');
-                $('#data').DataTable().search('').columns().search('').draw();
-            });
-
 
             $('#data').on('click', '.edit-btn', function() {
                 var row = $(this).closest('tr');
@@ -503,40 +370,24 @@
                 // console.log("Edit data:", rowData);
                 // console.log($(this).closest('tr'));
 
-                // Swal.fire({
-                //     showCancelButton: true,
-                //     buttonsStyling: false,
-                //     icon: 'warning',
-                //     iconHtml: iconSvg,
-                //     customClass: {
-                //         popup: "!relative !transform !overflow-hidden !rounded-lg !bg-white !text-left !shadow-xl !transition-all sm:!my-8 sm:!w-full sm:!max-w-lg !p-0 !grid-cols-none",
-                //         icon: '!m-0 !mx-auto !flex !h-12 !w-12 !flex-shrink-0 !items-center !justify-center !rounded-full !border-0 !bg-red-100 sm:!h-10 sm:!w-10 !mt-5 sm!mt-6 sm:!ml-6 !col-start-1 !col-end-3 sm:!col-end-2',
-                //         title: "!p-0 !pt-3 !text-center sm:!text-left !text-base !font-semibold !leading-6 !text-gray-900 !pl-4 !pr-4 sm:!pr-6 sm:!pl-0 sm:!pt-6 sm:!ml-4 !col-start-1 sm:!col-start-2 !col-end-3",
-                //         htmlContainer: "!mt-2 sm:!mt-0 !m-0 !text-center sm:!text-left !text-sm !text-gray-500 !pl-4 sm:!pl-0 !pr-4 !pb-4 sm:!pr-6 sm:!pb-4 sm:!ml-4 !col-start-1 sm:!col-start-2 !col-end-3",
-                //         actions: "!bg-gray-50 !px-4 !py-3 sm:!flex sm:!flex-row-reverse sm:!px-6 !w-full !justify-start !mt-0 !col-start-1 !col-end-3",
-                //         confirmButton: "inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto",
-                //         cancelButton: "mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto",
-                //     },
-                //     title: "Deactivate account",
-                //     text: "Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.",
-                //     confirmButtonText: "Deactivate",
-                //     cancelButtonText: "Cancel",
-                // });
                 Swal.fire({
-                    title: 'Custom animation with Animate.css',
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    },
-                    confirmButtonText: 'OK',
-                    showCancelButton: false,
-                    showDenyButton: false,
-                    backdrop: false, // Désactiver le backdrop comme dans votre HTML (swal2-backdrop-hide)
+                    showCancelButton: true,
+                    buttonsStyling: false,
+                    icon: 'warning',
+                    iconHtml: iconSvg,
                     customClass: {
-                        container: 'swal2-center'
-                    }
+                        popup: "!relative !transform !overflow-hidden !rounded-lg !bg-white !text-left !shadow-xl !transition-all sm:!my-8 sm:!w-full sm:!max-w-lg !p-0 !grid-cols-none",
+                        icon: '!m-0 !mx-auto !flex !h-12 !w-12 !flex-shrink-0 !items-center !justify-center !rounded-full !border-0 !bg-red-100 sm:!h-10 sm:!w-10 !mt-5 sm!mt-6 sm:!ml-6 !col-start-1 !col-end-3 sm:!col-end-2',
+                        title: "!p-0 !pt-3 !text-center sm:!text-left !text-base !font-semibold !leading-6 !text-gray-900 !pl-4 !pr-4 sm:!pr-6 sm:!pl-0 sm:!pt-6 sm:!ml-4 !col-start-1 sm:!col-start-2 !col-end-3",
+                        htmlContainer: "!mt-2 sm:!mt-0 !m-0 !text-center sm:!text-left !text-sm !text-gray-500 !pl-4 sm:!pl-0 !pr-4 !pb-4 sm:!pr-6 sm:!pb-4 sm:!ml-4 !col-start-1 sm:!col-start-2 !col-end-3",
+                        actions: "!bg-gray-50 !px-4 !py-3 sm:!flex sm:!flex-row-reverse sm:!px-6 !w-full !justify-start !mt-0 !col-start-1 !col-end-3",
+                        confirmButton: "inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto",
+                        cancelButton: "mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto",
+                    },
+                    title: "Deactivate account",
+                    text: "Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.",
+                    confirmButtonText: "Deactivate",
+                    cancelButtonText: "Cancel",
                 });
                 // window.location.replace("/dashboard/faq-manage/"+rowData.id+"/reponses" );
                 // Populate the modal with rowData for editing
