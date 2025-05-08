@@ -23,6 +23,12 @@
     <!-- Simplebar Css -->
     <link rel="stylesheet" href="{{ asset('back/libs/simplebar/simplebar.min.css') }}">
 
+    <!-- SweetAlert Css -->
+    <link rel="stylesheet" href="{{ asset('back/libs/sweetalert2/sweetalert2.min.css') }}">
+
+    <!-- Animate Css -->
+    <link rel="stylesheet" href="{{ asset('back/libs/animate.css/animate.min.css') }}">
+
     <!-- Color Picker Css -->
     <link rel="stylesheet" href="{{ asset('back/libs/@simonwep/pickr/themes/nano.min.css') }}">
 
@@ -666,6 +672,10 @@
 
     <!-- Simplebar JS -->
     <script src="{{ asset('back/libs/simplebar/simplebar.min.js') }}"></script>
+
+    <!-- Sweet Alert JS -->
+    <script src="{{ asset('back/libs/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('back/js/swetalert.js') }}"></script>
 
     <!-- Custom JS -->
     @stack('scripts')

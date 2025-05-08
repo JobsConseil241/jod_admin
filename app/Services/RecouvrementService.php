@@ -114,7 +114,7 @@ class RecouvrementService
         // Si le montant restant a changé
         if ($montantRestantActuel != $montantDuRecouvrement) {
             // Mettre à jour le montant dû
-            $recouvrement->montant_du = $montantRestantActuel + $recouvrement->montant_recouvre;
+            $recouvrement->montant_du = $montantRestantActuel;
 
 
             // Mise à jour du statut
