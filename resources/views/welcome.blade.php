@@ -249,11 +249,11 @@
                         <!-- About Image End -->
 
                         <!-- About Image Start -->
-{{--                        <div class="about-img-2">--}}
-{{--                            <figure class="reveal">--}}
-{{--                                <img src="{{ asset('front/images/handsome-elegant-man.jpg') }}" alt="">--}}
-{{--                            </figure>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="about-img-2">--}}
+                        {{--                            <figure class="reveal">--}}
+                        {{--                                <img src="{{ asset('front/images/handsome-elegant-man.jpg') }}" alt="">--}}
+                        {{--                            </figure>--}}
+                        {{--                        </div>--}}
                         <!-- About Image End -->
                     </div>
                     <!-- About Us Image End -->
@@ -265,9 +265,11 @@
                         <!-- Section Title Start -->
                         <div class="section-title">
                             <h3 class="wow fadeInUp">A Propos de Nous</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Votre partenaire de confiance en voiture fiable
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Votre partenaire de confiance en
+                                voiture fiable
                                 de location</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.25s">Notre engagement est simple : vous offrir une expérience de location sans souci avec des véhicules fiables
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">Notre engagement est simple : vous offrir une
+                                expérience de location sans souci avec des véhicules fiables
                                 et un service client irréprochable</p>
                         </div>
                         <!-- Section Title End -->
@@ -281,7 +283,8 @@
                                 </div>
                                 <div class="trusted-booking-content">
                                     <h3>processus de réservation facile</h3>
-                                    <p>Nous avons optimisé le processus de réservation afin que nos clients puissent profiter du
+                                    <p>Nous avons optimisé le processus de réservation afin que nos clients puissent
+                                        profiter du
                                         Le service le plus simple et le plus sûr</p>
                                 </div>
                             </div>
@@ -294,7 +297,8 @@
                                 </div>
                                 <div class="trusted-booking-content">
                                     <h3>processus de ramassage et de retour pratique</h3>
-                                    <p>Présents à Libreville et dans les principales villes du Gabon, nous accompagnons aussi bien les touristes que les professionnels dans leurs déplacements.
+                                    <p>Présents à Libreville et dans les principales villes du Gabon, nous accompagnons
+                                        aussi bien les touristes que les professionnels dans leurs déplacements.
                                         Notre équipe expérimentée assure un service personnalisé 24h/24 et 7j/7.</p>
                                 </div>
                             </div>

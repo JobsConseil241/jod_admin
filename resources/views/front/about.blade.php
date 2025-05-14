@@ -13,11 +13,11 @@
                 <div class="col-lg-12">
                     <!-- Page Header Box Start -->
                     <div class="page-header-box">
-                        <h1 class="text-anime-style-3" data-cursor="-opaque">About Us</h1>
+                        <h1 class="text-anime-style-3" data-cursor="-opaque">A-Propos de nous</h1>
                         <nav class="wow fadeInUp">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index-2.html">home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">about us</li>
+                                <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Accueil</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">A-Propos/li>
                             </ol>
                         </nav>
                     </div>
@@ -38,17 +38,17 @@
                         <!-- About Image Start -->
                         <div class="about-img-1">
                             <figure class="reveal">
-                                <img src="images/about-img-1.jpg" alt="">
+                                <img src="{{ asset('front/images/handsome-elegant-man.jpg') }}" alt="">
                             </figure>
                         </div>
                         <!-- About Image End -->
 
                         <!-- About Image Start -->
-                        <div class="about-img-2">
-                            <figure class="reveal">
-                                <img src="images/about-img-2.jpg" alt="">
-                            </figure>
-                        </div>
+                        {{--                        <div class="about-img-2">--}}
+                        {{--                            <figure class="reveal">--}}
+                        {{--                                <img src="{{ asset('front/images/handsome-elegant-man.jpg') }}" alt="">--}}
+                        {{--                            </figure>--}}
+                        {{--                        </div>--}}
                         <!-- About Image End -->
                     </div>
                     <!-- About Us Image End -->
@@ -59,11 +59,11 @@
                     <div class="about-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            <h3 class="wow fadeInUp">about us</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Your trusted partner in reliable car rental
-                            </h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.25s">Aqestic Optio Amet A Ququam Saepe Aliquid Voluate
-                                Dicta Fuga Dolor Saerror Sed Earum A Magni Soluta Quam Minus Dolor Dolor</p>
+                            <h3 class="wow fadeInUp">A Propos de Nous</h3>
+                            <h2 class="text-anime-style-3" data-cursor="-opaque">Votre partenaire de confiance en voiture fiable
+                                de location</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.25s">Notre engagement est simple : vous offrir une expérience de location sans souci avec des véhicules fiables
+                                et un service client irréprochable</p>
                         </div>
                         <!-- Section Title End -->
 
@@ -72,12 +72,12 @@
                             <!-- About Trusted Booking Start -->
                             <div class="about-trusted-booking wow fadeInUp" data-wow-delay="0.5s">
                                 <div class="icon-box">
-                                    <img src="images/icon-about-trusted-1.svg" alt="">
+                                    <img src="{{asset('front/images/icon-about-trusted-1.svg')}}" alt="">
                                 </div>
                                 <div class="trusted-booking-content">
-                                    <h3>easy booking process</h3>
-                                    <p>We Have Optimized The Booking Process So That Our Clients Can Experience The Easiest
-                                        And The Safest Service</p>
+                                    <h3>processus de réservation facile</h3>
+                                    <p>Nous avons optimisé le processus de réservation afin que nos clients puissent profiter du
+                                        Le service le plus simple et le plus sûr</p>
                                 </div>
                             </div>
                             <!-- About Trusted Booking End -->
@@ -85,17 +85,23 @@
                             <!-- About Trusted Booking Start -->
                             <div class="about-trusted-booking wow fadeInUp" data-wow-delay="0.75s">
                                 <div class="icon-box">
-                                    <img src="images/icon-about-trusted-2.svg" alt="">
+                                    <img src="{{asset('front/images/icon-about-trusted-2.svg')}}" alt="">
                                 </div>
                                 <div class="trusted-booking-content">
-                                    <h3>convenient pick-up & return process</h3>
-                                    <p>We Have Optimized The Booking Process So That Our Clients Can Experience The Easiest
-                                        And The Safest Service</p>
+                                    <h3>processus de ramassage et de retour pratique</h3>
+                                    <p>Présents à Libreville et dans les principales villes du Gabon, nous accompagnons aussi bien les touristes que les professionnels dans leurs déplacements.
+                                        Notre équipe expérimentée assure un service personnalisé 24h/24 et 7j/7.</p>
                                 </div>
                             </div>
                             <!-- About Trusted Booking End -->
                         </div>
                         <!-- About Content Body End -->
+
+                        <!-- About Content Footer Start -->
+                        <div class="about-content-footer wow fadeInUp" data-wow-delay="1s">
+                            <a href="#" class="btn-default">Nous Contacter </a>
+                        </div>
+                        <!-- About Content Footer End -->
                     </div>
                     <!-- About Us Content End -->
                 </div>
@@ -194,9 +200,8 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h3 class="wow fadeInUp">vision mission</h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">Driving excellence and innovation in car
-                            rental services</h2>
+                        <h3 class="wow fadeInUp">Notre Vision</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Favoriser l'excellence et l'innovation dans les services de location de voitures</h2>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -209,17 +214,16 @@
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
-                                    data-bs-target="#vision" type="button" role="tab" aria-selected="true">our
-                                    vision</button>
+                                    data-bs-target="#vision" type="button" role="tab" aria-selected="true">Note Vision
+                                    </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#mission"
-                                    type="button" role="tab" aria-selected="false">our mission</button>
+                                    type="button" role="tab" aria-selected="false">Notre Mission</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
-                                    data-bs-target="#approach" type="button" role="tab" aria-selected="false">our
-                                    approach</button>
+                                    data-bs-target="#approach" type="button" role="tab" aria-selected="false">Notre Approche</button>
                             </li>
                         </ul>
                     </div>
@@ -235,24 +239,23 @@
                                     <div class="vision-mission-content">
                                         <!-- Section Title Start -->
                                         <div class="section-title">
-                                            <h3 class="wow fadeInUp">our vision</h3>
-                                            <h2 class="text-anime-style-3" data-cursor="-opaque">Pioneering excellence in
-                                                car rental services</h2>
-                                            <p class="wow fadeInUp" data-wow-delay="0.25s">We aim to continually innovate
-                                                and integrate the latest technology into our services. From easy online
-                                                bookings to advanced vehicle tracking systems, our goal is to make the car
-                                                rental process seamless and efficient for our customers. Quality is at the
-                                                heart of everything we do. We maintain a diverse fleet of well-maintained
-                                                vehicles that meet the highest standards of safety and comfort.</p>
+                                            <h3 class="wow fadeInUp">Notre vision</h3>
+                                            <h2 class="text-anime-style-3" data-cursor="-opaque">Pionnier de l'excellence dans les services de location de voitures</h2>
+                                            <p class="wow fadeInUp" data-wow-delay="0.25s">Nous visons à innover en permanence et à intégrer les dernières technologies à nos services.
+                                                Des réservations en ligne simplifiées aux systèmes avancés de localisation des véhicules,
+                                                notre objectif est de rendre le processus de location de voiture
+                                                fluide et efficace pour nos clients.
+                                                La qualité est au cœur de toutes nos activités. Nous disposons d'une flotte diversifiée de véhicules bien entretenus,
+                                                répondant aux normes de sécurité et de confort les plus strictes.</p>
                                         </div>
                                         <!-- Section Title End -->
 
                                         <!-- Vision Mission List Start -->
                                         <div class="vision-mission-list wow fadeInUp" data-wow-delay="0.5s">
                                             <ul>
-                                                <li>Our customers are our top priority</li>
-                                                <li>Quality is at the heart of everything we do</li>
-                                                <li>every vehicle leaves care looking its absolute best</li>
+                                                <li>Nos clients sont notre priorité absolue</li>
+                                                <li>La qualité est au cœur de tout ce que nous faisons</li>
+                                                <li>Chaque véhicule quitte les soins dans son plus bel état</li>
                                             </ul>
                                         </div>
                                         <!-- Vision Mission List End -->
@@ -264,7 +267,7 @@
                                     <!-- Vision Image Start -->
                                     <div class="vision-image">
                                         <figure class="image-anime reveal">
-                                            <img src="images/our-vision-img.jpg" alt="">
+                                            <img src="{{ asset('front/images/7I2A0359.jpg') }}" alt="">
                                         </figure>
                                     </div>
                                     <!-- Vision Image End -->
@@ -281,23 +284,22 @@
                                     <div class="vision-mission-content">
                                         <!-- Section Title Start -->
                                         <div class="section-title">
-                                            <h3>our mission</h3>
-                                            <h2 data-cursor="-opaque">Pioneering excellence in car rental services</h2>
-                                            <p>We aim to continually innovate and integrate the latest technology into our
-                                                services. From easy online bookings to advanced vehicle tracking systems,
-                                                our goal is to make the car rental process seamless and efficient for our
-                                                customers. Quality is at the heart of everything we do. We maintain a
-                                                diverse fleet of well-maintained vehicles that meet the highest standards of
-                                                safety and comfort.</p>
+                                            <h3>Notre mission</h3>
+                                            <h2 data-cursor="-opaque">Pionnier de l'excellence dans les services de location de voitures</h2>
+                                            <p>Notre mission est de transformer l'expérience de location de véhicules au Gabon en offrant un service d'excellence qui allie innovation,
+                                                qualité et satisfaction client.
+                                                Nous nous engageons à être plus qu'un simple fournisseur de véhicules - nous sommes votre partenaire de mobilité de confiance.</p>
                                         </div>
                                         <!-- Section Title End -->
 
                                         <!-- Vision Mission List Start -->
                                         <div class="vision-mission-list">
                                             <ul>
-                                                <li>Our customers are our top priority</li>
-                                                <li>Quality is at the heart of everything we do</li>
-                                                <li>every vehicle leaves care looking its absolute best</li>
+                                                <li>Innovation technologique - Nous intégrons les dernières technologies pour simplifier votre expérience, des réservations en ligne aux systèmes avancés de localisation des véhicules.</li>
+                                                <li>Excellence de service - Notre équipe dévouée est disponible 24/7 pour répondre à vos besoins avec professionnalisme et attention.</li>
+                                                <li>Qualité supérieure - Notre flotte diversifiée est rigoureusement entretenue selon les normes de sécurité et de confort les plus strictes.</li>
+                                                <li>Transparence totale - Nous pratiquons une politique de tarification claire, sans frais cachés ni surprises.</li>
+                                                <li>Responsabilité environnementale - Nous investissons dans des véhicules à faible émission et adoptons des pratiques durables.</li>
                                             </ul>
                                         </div>
                                         <!-- Vision Mission List End -->
@@ -309,7 +311,7 @@
                                     <!-- Vision Image Start -->
                                     <div class="vision-image">
                                         <figure class="image-anime reveal">
-                                            <img src="images/our-mission-img.jpg" alt="">
+                                            <img src="{{asset('front/images/7I2A0322.jpg')}}" alt="">
                                         </figure>
                                     </div>
                                     <!-- Vision Image End -->
@@ -326,23 +328,26 @@
                                     <div class="vision-mission-content">
                                         <!-- Section Title Start -->
                                         <div class="section-title">
-                                            <h3>our approach</h3>
-                                            <h2 data-cursor="-opaque">Pioneering excellence in car rental services</h2>
-                                            <p>We aim to continually innovate and integrate the latest technology into our
-                                                services. From easy online bookings to advanced vehicle tracking systems,
-                                                our goal is to make the car rental process seamless and efficient for our
-                                                customers. Quality is at the heart of everything we do. We maintain a
-                                                diverse fleet of well-maintained vehicles that meet the highest standards of
-                                                safety and comfort.</p>
+                                            <h3>Notre Approche</h3>
+                                            <h2 data-cursor="-opaque">Pionnier de l'excellence dans les services de location de voitures</h2>
+                                            <p>Notre philosophie repose sur une conviction simple mais forte : chaque client mérite bien plus qu’un simple service de location.
+                                                C’est pourquoi nous avons repensé chaque aspect de notre activité pour qu’il serve un seul objectif : vous offrir une expérience exceptionnelle,
+                                                fluide et sans stress, à chaque étape de votre parcours.
+
+                                                Notre approche va au-delà de la simple mise à disposition de véhicules. Elle incarne une vision centrée sur le client,
+                                                où écoute, réactivité, personnalisation et excellence opérationnelle sont au cœur de nos priorités.notre philosophie repose sur une conviction simple mais forte :
+                                                chaque client mérite bien plus qu’un simple service de location. C’est pourquoi nous avons repensé chaque aspect de notre activité pour qu’il serve un seul objectif : vous offrir une expérience exceptionnelle, fluide et sans stress, à chaque étape de votre parcours.
+
+                                                Notre approche va au-delà de la simple mise à disposition de véhicules. Elle incarne une vision centrée sur le client, où écoute, réactivité, personnalisation et excellence opérationnelle sont au cœur de nos priorités.</p>
                                         </div>
                                         <!-- Section Title End -->
 
                                         <!-- Vision Mission List Start -->
                                         <div class="vision-mission-list">
                                             <ul>
-                                                <li>Our customers are our top priority</li>
-                                                <li>Quality is at the heart of everything we do</li>
-                                                <li>every vehicle leaves care looking its absolute best</li>
+                                                <li>Satisfaction totale du client : Offrir un service personnalisé, réactif et à l’écoute de vos besoins.</li>
+                                                <li>Qualité et fiabilité : Proposer une flotte moderne, entretenue et diversifiée, pour répondre à toutes les situations.</li>
+                                                <li>Confiance et sérénité : Assurer votre tranquillité d’esprit grâce à des assurances claires, un service client disponible et des engagements respectés.</li>
                                             </ul>
                                         </div>
                                         <!-- Vision Mission List End -->
@@ -354,7 +359,7 @@
                                     <!-- Vision Image Start -->
                                     <div class="vision-image">
                                         <figure class="image-anime reveal">
-                                            <img src="images/our-approach-img.jpg" alt="">
+                                            <img src="{{ asset('front/images/7I2A0345.jpg') }}" alt="">
                                         </figure>
                                     </div>
                                     <!-- Vision Image End -->
@@ -371,72 +376,71 @@
     <!-- Vision Mission Section End -->
 
     <!-- Our Video Section Start -->
-    <div class="our-video bg-section">
-        <div class="container">
-            <div class="row section-row">
-                <div class="col-lg-12">
-                    <!-- Section Title Start -->
-                    <div class="section-title">
-                        <h3 class="wow fadeInUp">watch our video</h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">Discover what sets us apart in the car rental
-                            industry</h2>
-                    </div>
-                    <!-- Section Title End -->
-                </div>
-            </div>
+{{--    <div class="our-video bg-section">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row section-row">--}}
+{{--                <div class="col-lg-12">--}}
+{{--                    <!-- Section Title Start -->--}}
+{{--                    <div class="section-title">--}}
+{{--                        <h3 class="wow fadeInUp">Regardez notre video</h3>--}}
+{{--                        <h2 class="text-anime-style-3" data-cursor="-opaque">Découvrez ce qui nous distingue dans le secteur de la location de voitures</h2>--}}
+{{--                    </div>--}}
+{{--                    <!-- Section Title End -->--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div class="row">
-                <div class="col-lg-4 col-md-5">
-                    <!-- Customer Counter Item Start -->
-                    <div class="customer-counter-item">
-                        <!-- Customer Counter Image Start -->
-                        <div class="customer-counter-image">
-                            <img src="images/video-counter-img-1.jpg" alt="">
-                        </div>
-                        <!-- Customer Counter Image End -->
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-4 col-md-5">--}}
+{{--                    <!-- Customer Counter Item Start -->--}}
+{{--                    <div class="customer-counter-item">--}}
+{{--                        <!-- Customer Counter Image Start -->--}}
+{{--                        <div class="customer-counter-image">--}}
+{{--                            <img src="{{ asset("images/video-counter-img-1.jpg")}}" alt="">--}}
+{{--                        </div>--}}
+{{--                        <!-- Customer Counter Image End -->--}}
 
-                        <!-- Satisfied Customer Counter Start -->
-                        <div class="satisfied-customer-counter">
-                            <h3><span class="counter">3100</span>+</h3>
-                            <p>satisfied customer</p>
-                        </div>
-                        <!-- Satisfied Customer Counter End -->
+{{--                        <!-- Satisfied Customer Counter Start -->--}}
+{{--                        <div class="satisfied-customer-counter">--}}
+{{--                            <h3><span class="counter">400</span>+</h3>--}}
+{{--                            <p>Clients satisfaits</p>--}}
+{{--                        </div>--}}
+{{--                        <!-- Satisfied Customer Counter End -->--}}
 
-                        <!-- Satisfied Customer Image Start -->
-                        <div class="satisfied-customer-image">
-                            <img src="images/satisfied-customer-img.png" alt="">
-                        </div>
-                        <!-- Satisfied Customer Image End -->
-                    </div>
-                    <!-- Customer Counter Item End -->
-                </div>
+{{--                        <!-- Satisfied Customer Image Start -->--}}
+{{--                        <div class="satisfied-customer-image">--}}
+{{--                            <img src="{{ asset("front/images/satisfied-customer-img.png")}}" alt="">--}}
+{{--                        </div>--}}
+{{--                        <!-- Satisfied Customer Image End -->--}}
+{{--                    </div>--}}
+{{--                    <!-- Customer Counter Item End -->--}}
+{{--                </div>--}}
 
-                <div class="col-lg-8 col-md-7">
-                    <!-- Video Image Box Start -->
-                    <div class="video-image-box">
-                        <!-- Video Image Start -->
-                        <div class="video-image" data-cursor-text="Play">
-                            <figure>
-                                <a href="https://www.youtube.com/watch?v=Y-x0efG1seA" class="popup-video">
-                                    <img src="images/video-counter-img-2.jpg" alt="">
-                                </a>
-                            </figure>
-                        </div>
-                        <!-- Video Image End -->
+{{--                <div class="col-lg-8 col-md-7">--}}
+{{--                    <!-- Video Image Box Start -->--}}
+{{--                    <div class="video-image-box">--}}
+{{--                        <!-- Video Image Start -->--}}
+{{--                        <div class="video-image" data-cursor-text="Play">--}}
+{{--                            <figure>--}}
+{{--                                <a href="https://www.youtube.com/watch?v=Y-x0efG1seA" class="popup-video">--}}
+{{--                                    <img src="images/video-counter-img-2.jpg" alt="">--}}
+{{--                                </a>--}}
+{{--                            </figure>--}}
+{{--                        </div>--}}
+{{--                        <!-- Video Image End -->--}}
 
-                        <!-- Video Image Play Button Start -->
-                        <div class="video-image-play-button" data-cursor-text="Play">
-                            <a href="https://www.youtube.com/watch?v=Y-x0efG1seA" class="popup-video">
-                                <i class="fa-solid fa-play"></i>
-                            </a>
-                        </div>
-                        <!-- Video Image Play Button End -->
-                    </div>
-                    <!-- Video Image Box End -->
-                </div>
-            </div>
-        </div>
-    </div>
+{{--                        <!-- Video Image Play Button Start -->--}}
+{{--                        <div class="video-image-play-button" data-cursor-text="Play">--}}
+{{--                            <a href="https://www.youtube.com/watch?v=Y-x0efG1seA" class="popup-video">--}}
+{{--                                <i class="fa-solid fa-play"></i>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                        <!-- Video Image Play Button End -->--}}
+{{--                    </div>--}}
+{{--                    <!-- Video Image Box End -->--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <!-- Our Video Section End -->
 
     <!-- Why Choose Us Section Start -->
@@ -446,8 +450,8 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h3 class="wow fadeInUp">why choose us</h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">Unmatched quality and service for your needs
+                        <h3 class="wow fadeInUp">Pourquoi nous choisir ? </h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Une qualité et un service inégalés pour vos besoins
                         </h2>
                     </div>
                     <!-- Section Title End -->
@@ -459,11 +463,11 @@
                     <!-- Why Choose Item Start -->
                     <div class="why-choose-item wow fadeInUp">
                         <div class="icon-box">
-                            <img src="images/icon-why-choose-1.svg" alt="">
+                            <img src="{{ asset('front/images/icon-why-choose-1.svg') }}" alt="Flotte étendue">
                         </div>
                         <div class="why-choose-content">
-                            <h3>extensive fleet options</h3>
-                            <p>Quisque Sollicitudin Feugiat Risus, Eu Posuere Ex Euismod Eu. Phasellus Hendrerit, Massa</p>
+                            <h3>Flotte étendue et diversifiée</h3>
+                            <p>Des citadines économiques aux SUV haut de gamme, nous vous proposons une large gamme de véhicules récents pour répondre à tous vos besoins.</p>
                         </div>
                     </div>
                     <!-- Why Choose Item End -->
@@ -471,11 +475,11 @@
                     <!-- Why Choose Item Start -->
                     <div class="why-choose-item wow fadeInUp" data-wow-delay="0.25s">
                         <div class="icon-box">
-                            <img src="images/icon-why-choose-2.svg" alt="">
+                            <img src="{{ asset('front/images/icon-why-choose-2.svg') }}" alt="Service client">
                         </div>
                         <div class="why-choose-content">
-                            <h3>exceptional customer service</h3>
-                            <p>Quisque Sollicitudin Feugiat Risus, Eu Posuere Ex Euismod Eu. Phasellus Hendrerit, Massa</p>
+                            <h3>Service client réactif et à l'écoute</h3>
+                            <p>Notre équipe est disponible 7j/7 pour vous accompagner, répondre à vos questions et vous garantir une expérience sans stress.</p>
                         </div>
                     </div>
                     <!-- Why Choose Item End -->
@@ -484,7 +488,7 @@
                 <div class="col-lg-4 col-md-12 order-lg-2 order-md-3 order-2">
                     <div class="why-choose-image">
                         <figure class="reveal">
-                            <img src="images/why-choose-img.jpg" alt="">
+                            <img src="{{ asset('front/images/why-choose-img.jpg') }}" alt="Pourquoi nous choisir">
                         </figure>
                     </div>
                 </div>
@@ -493,11 +497,11 @@
                     <!-- Why Choose Item Start -->
                     <div class="why-choose-item wow fadeInUp">
                         <div class="icon-box">
-                            <img src="images/icon-why-choose-3.svg" alt="">
+                            <img src="{{ asset('front/images/icon-why-choose-3.svg') }}" alt="Agences accessibles">
                         </div>
                         <div class="why-choose-content">
-                            <h3>convenient locations</h3>
-                            <p>Quisque Sollicitudin Feugiat Risus, Eu Posuere Ex Euismod Eu. Phasellus Hendrerit, Massa</p>
+                            <h3>Agences accessibles facilement</h3>
+                            <p>Nos points de retrait sont idéalement situés pour vous permettre de récupérer votre véhicule rapidement, en centre-ville ou à proximité des aéroports.</p>
                         </div>
                     </div>
                     <!-- Why Choose Item End -->
@@ -505,183 +509,20 @@
                     <!-- Why Choose Item Start -->
                     <div class="why-choose-item wow fadeInUp" data-wow-delay="0.25s">
                         <div class="icon-box">
-                            <img src="images/icon-why-choose-4.svg" alt="">
+                            <img src="{{ asset('front/images/icon-why-choose-4.svg') }}" alt="Fiabilité et sécurité">
                         </div>
                         <div class="why-choose-content">
-                            <h3>reliability and safety</h3>
-                            <p>Quisque Sollicitudin Feugiat Risus, Eu Posuere Ex Euismod Eu. Phasellus Hendrerit, Massa</p>
+                            <h3>Fiabilité et sécurité garanties</h3>
+                            <p>Tous nos véhicules sont entretenus régulièrement et inspectés avant chaque location pour garantir votre sécurité et votre tranquillité d'esprit.</p>
                         </div>
                     </div>
-                    <!-- Why Choose Item End -->
                 </div>
+                <!-- Why Choose Item End -->
             </div>
         </div>
     </div>
     <!-- Why Choose Us Section End -->
 
-    <!-- Our Team Start -->
-    <div class="our-team bg-section">
-        <div class="container">
-            <div class="row align-items-center section-row">
-                <div class="col-lg-12">
-                    <!-- Section Title Start -->
-                    <div class="section-title">
-                        <h3 class="wow fadeInUp">our experienced drivers</h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">Ensuring your safety and comfort on every
-                            journey</h2>
-                    </div>
-                    <!-- Section Title End -->
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <!-- Team Member Item Start -->
-                    <div class="team-member-item wow fadeInUp">
-                        <!-- Team Image Start -->
-                        <div class="team-image">
-                            <figure class="image-anime">
-                                <img src="images/team-1.jpg" alt="">
-                            </figure>
-
-                            <!-- Team Social Icon Start -->
-                            <div class="team-social-icon">
-                                <ul>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                                    </li>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
-                                    </li>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                                    </li>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Team Social Icon End -->
-                        </div>
-                        <!-- Team Image End -->
-
-                        <!-- Team Content Start -->
-                        <div class="team-content">
-                            <h3>john smith</h3>
-                            <p>senior chauffeur</p>
-                        </div>
-                        <!-- Team Content End -->
-                    </div>
-                    <!-- Team Member Item End -->
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <!-- Team Member Item Start -->
-                    <div class="team-member-item wow fadeInUp" data-wow-delay="0.25s">
-                        <!-- Team Image Start -->
-                        <div class="team-image">
-                            <figure class="image-anime">
-                                <img src="images/team-2.jpg" alt="">
-                            </figure>
-
-                            <!-- Team Social Icon Start -->
-                            <div class="team-social-icon">
-                                <ul>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                                    </li>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
-                                    </li>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                                    </li>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Team Social Icon End -->
-                        </div>
-                        <!-- Team Image End -->
-
-                        <!-- Team Content Start -->
-                        <div class="team-content">
-                            <h3>taylor smith</h3>
-                            <p>city tour guide</p>
-                        </div>
-                        <!-- Team Content End -->
-                    </div>
-                    <!-- Team Member Item End -->
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <!-- Team Member Item Start -->
-                    <div class="team-member-item wow fadeInUp" data-wow-delay="0.5s">
-                        <!-- Team Image Start -->
-                        <div class="team-image">
-                            <figure class="image-anime">
-                                <img src="images/team-3.jpg" alt="">
-                            </figure>
-
-                            <!-- Team Social Icon Start -->
-                            <div class="team-social-icon">
-                                <ul>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                                    </li>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
-                                    </li>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                                    </li>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Team Social Icon End -->
-                        </div>
-                        <!-- Team Image End -->
-
-                        <!-- Team Content Start -->
-                        <div class="team-content">
-                            <h3>jordan brown</h3>
-                            <p>distance driver</p>
-                        </div>
-                        <!-- Team Content End -->
-                    </div>
-                    <!-- Team Member Item End -->
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <!-- Team Member Item Start -->
-                    <div class="team-member-item wow fadeInUp" data-wow-delay="0.75s">
-                        <!-- Team Image Start -->
-                        <div class="team-image">
-                            <figure class="image-anime">
-                                <img src="images/team-4.jpg" alt="">
-                            </figure>
-
-                            <!-- Team Social Icon Start -->
-                            <div class="team-social-icon">
-                                <ul>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                                    </li>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
-                                    </li>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                                    </li>
-                                    <li><a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Team Social Icon End -->
-                        </div>
-                        <!-- Team Image End -->
-
-                        <!-- Team Content Start -->
-                        <div class="team-content">
-                            <h3>davis casey</h3>
-                            <p>travel specialist</p>
-                        </div>
-                        <!-- Team Content End -->
-                    </div>
-                    <!-- Team Member Item End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Our Team End -->
 
     <!-- Our Testiminial Start -->
     <div class="our-testimonial">
@@ -690,8 +531,9 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h3 class="wow fadeInUp">testimonials</h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">What our customers are saying about us</h2>
+                        <h3 class="wow fadeInUp">Temoignages</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Ce que nos clients disent de nous
+                        </h2>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -715,15 +557,15 @@
                                                 <i class="fa-solid fa-star"></i>
                                             </div>
                                             <div class="testimonial-content">
-                                                <p>Renting a car from nova ride was a great decision. Not only did I get a
-                                                    reliable and comfortable vehicle, but the prices were also very
-                                                    competitive.</p>
+                                                <p>Louer une voiture chez JOD Trade&Co était une excellente décision. Non seulement j'ai eu
+                                                    un véhicule fiable et confortable, mais les prix étaient également très
+                                                    compétitif.</p>
                                             </div>
                                         </div>
                                         <div class="testimonial-body">
                                             <div class="author-image">
                                                 <figure class="image-anime">
-                                                    <img src="images/author-1.jpg" alt="">
+                                                    <img src="{{asset('front/images/author-1.jpg')}}" alt="">
                                                 </figure>
                                             </div>
                                             <div class="author-content">
@@ -747,15 +589,15 @@
                                                 <i class="fa-regular fa-star"></i>
                                             </div>
                                             <div class="testimonial-content">
-                                                <p>Renting a car from nova ride was a great decision. Not only did I get a
-                                                    reliable and comfortable vehicle, but the prices were also very
-                                                    competitive.</p>
+                                                <p>Louer une voiture chez JOD Trade&Co était une excellente décision. Non seulement j'ai eu
+                                                    un véhicule fiable et confortable, mais les prix étaient également très
+                                                    compétitif.</p>
                                             </div>
                                         </div>
                                         <div class="testimonial-body">
                                             <div class="author-image">
                                                 <figure class="image-anime">
-                                                    <img src="images/author-2.jpg" alt="">
+                                                    <img src="{{asset('front/images/author-2.jpg')}}" alt="">
                                                 </figure>
                                             </div>
                                             <div class="author-content">
@@ -779,15 +621,15 @@
                                                 <i class="fa-regular fa-star"></i>
                                             </div>
                                             <div class="testimonial-content">
-                                                <p>Renting a car from nova ride was a great decision. Not only did I get a
-                                                    reliable and comfortable vehicle, but the prices were also very
-                                                    competitive.</p>
+                                                <p>Louer une voiture chez JOD Trade&Co était une excellente décision. Non seulement j'ai eu
+                                                    un véhicule fiable et confortable, mais les prix étaient également très
+                                                    compétitif.</p>
                                             </div>
                                         </div>
                                         <div class="testimonial-body">
                                             <div class="author-image">
                                                 <figure class="image-anime">
-                                                    <img src="images/author-3.jpg" alt="">
+                                                    <img src="{{asset('front/images/author-3.jpg')}}" alt="">
                                                 </figure>
                                             </div>
                                             <div class="author-content">
@@ -811,15 +653,15 @@
                                                 <i class="fa-solid fa-star"></i>
                                             </div>
                                             <div class="testimonial-content">
-                                                <p>Renting a car from nova ride was a great decision. Not only did I get a
-                                                    reliable and comfortable vehicle, but the prices were also very
-                                                    competitive.</p>
+                                                <p>Louer une voiture chez JOD Trade&Co était une excellente décision. Non seulement j'ai eu
+                                                    un véhicule fiable et confortable, mais les prix étaient également très
+                                                    compétitif.</p>
                                             </div>
                                         </div>
                                         <div class="testimonial-body">
                                             <div class="author-image">
                                                 <figure class="image-anime">
-                                                    <img src="images/author-4.jpg" alt="">
+                                                    <img src="{{asset('front/images/author-4.jpg')}}" alt="">
                                                 </figure>
                                             </div>
                                             <div class="author-content">
