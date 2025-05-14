@@ -17,7 +17,7 @@
                         <nav class="wow fadeInUp">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Accueil</a></li>
-                                <li class="breadcrumb-item" aria-current="page">fleets</li>
+                                <li class="breadcrumb-item" aria-current="page">Flotte</li>
                             </ol>
                         </nav>
                     </div>
@@ -39,7 +39,7 @@
                         <div class="fleets-search-box">
                             <form id="fleetsForm" action="#" method="POST">
                                 <div class="form-group">
-                                    <input type="text" name="search" class="form-control" id="search"
+                                    <input type="text" name="rechercher" class="form-control" id="search"
                                         placeholder="Rechercher..." required>
                                     <button type="submit" class="section-icon-btn"><i
                                             class="fa-solid fa-magnifying-glass"></i></button>
@@ -136,7 +136,7 @@
 
                                                 <!-- Perfect Fleets Btn Start -->
                                                 <div class="perfect-fleet-btn">
-                                                    <a href="#" class="section-icon-btn"><img
+                                                    <a href="{{ route('car-details', ['name' => strtolower($crs->name)]) }}" class="section-icon-btn"><img
                                                             src="{{asset('front/images/arrow-white.svg')}}" alt=""></a>
                                                 </div>
                                                 <!-- Perfect Fleets Btn End -->
@@ -149,19 +149,19 @@
                                 </div>
 
                             @endforeach
-                            <div class="col-lg-12">
-                                <!-- Fleets Pagination Start -->
-                                <div class="fleets-pagination wow fadeInUp" data-wow-delay="0.5s">
-                                    <ul class="pagination">
-                                        <li><a href="#"><i class="fa-solid fa-arrow-left-long"></i></a></li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#"><i class="fa-solid fa-arrow-right-long"></i></a></li>
-                                    </ul>
-                                </div>
-                                <!-- Fleets Pagination End -->
-                            </div>
+{{--                            <div class="col-lg-12">--}}
+{{--                                <!-- Fleets Pagination Start -->--}}
+{{--                                <div class="fleets-pagination wow fadeInUp" data-wow-delay="0.5s">--}}
+{{--                                    <ul class="pagination">--}}
+{{--                                        <li><a href="#"><i class="fa-solid fa-arrow-left-long"></i></a></li>--}}
+{{--                                        <li class="active"><a href="#">1</a></li>--}}
+{{--                                        <li><a href="#">2</a></li>--}}
+{{--                                        <li><a href="#">3</a></li>--}}
+{{--                                        <li><a href="#"><i class="fa-solid fa-arrow-right-long"></i></a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                                <!-- Fleets Pagination End -->--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                     <!-- Fleets Collection Box End -->

@@ -17,7 +17,7 @@
                         <nav class="wow fadeInUp">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Accueil</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">A-Propos/li>
+                                <li class="breadcrumb-item active" aria-current="page">A-Propos</li>
                             </ol>
                         </nav>
                     </div>
