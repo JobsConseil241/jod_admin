@@ -110,88 +110,6 @@
     </div>
     <!-- Page About Us Section End -->
 
-    <!-- Exclusive Partners Section Start -->
-    <div class="exclusive-partners bg-section">
-        <div class="container">
-            <div class="row section-row">
-                <div class="col-lg-12">
-                    <!-- Section Title Start -->
-                    <div class="section-title">
-                        <h3 class="wow fadeInUp">executive partners</h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">Trusted by leading brands</h2>
-                    </div>
-                    <!-- Section Title End -->
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-3 col-6">
-                    <!-- Partners Logo Start -->
-                    <div class="partners-logo wow fadeInUp" data-wow-delay="0.2s">
-                        <img src="images/icon-partners-1.svg" alt="">
-                    </div>
-                    <!-- Partners Logo End -->
-                </div>
-
-                <div class="col-lg-3 col-6">
-                    <!-- Partners Logo Start -->
-                    <div class="partners-logo wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="images/icon-partners-2.svg" alt="">
-                    </div>
-                    <!-- Partners Logo End -->
-                </div>
-
-                <div class="col-lg-3 col-6">
-                    <!-- Partners Logo Start -->
-                    <div class="partners-logo wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="images/icon-partners-3.svg" alt="">
-                    </div>
-                    <!-- Partners Logo End -->
-                </div>
-
-                <div class="col-lg-3 col-6">
-                    <!-- Partners Logo Start -->
-                    <div class="partners-logo wow fadeInUp" data-wow-delay="0.8s">
-                        <img src="images/icon-partners-4.svg" alt="">
-                    </div>
-                    <!-- Partners Logo End -->
-                </div>
-
-                <div class="col-lg-3 col-6">
-                    <!-- Partners Logo Start -->
-                    <div class="partners-logo wow fadeInUp" data-wow-delay="1s">
-                        <img src="images/icon-partners-3.svg" alt="">
-                    </div>
-                    <!-- Partners Logo End -->
-                </div>
-
-                <div class="col-lg-3 col-6">
-                    <!-- Partners Logo Start -->
-                    <div class="partners-logo wow fadeInUp" data-wow-delay="1.2s">
-                        <img src="images/icon-partners-4.svg" alt="">
-                    </div>
-                    <!-- Partners Logo End -->
-                </div>
-
-                <div class="col-lg-3 col-6">
-                    <!-- Partners Logo Start -->
-                    <div class="partners-logo wow fadeInUp" data-wow-delay="1.4s">
-                        <img src="images/icon-partners-1.svg" alt="">
-                    </div>
-                    <!-- Partners Logo End -->
-                </div>
-
-                <div class="col-lg-3 col-6">
-                    <!-- Partners Logo Start -->
-                    <div class="partners-logo wow fadeInUp" data-wow-delay="1.6s">
-                        <img src="images/icon-partners-2.svg" alt="">
-                    </div>
-                    <!-- Partners Logo End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Exclusive Partners Section End -->
 
     <!-- Vision Mission Section Start -->
     <div class="vision-mission">
@@ -295,11 +213,11 @@
                                         <!-- Vision Mission List Start -->
                                         <div class="vision-mission-list">
                                             <ul>
-                                                <li>Innovation technologique - Nous intégrons les dernières technologies pour simplifier votre expérience, des réservations en ligne aux systèmes avancés de localisation des véhicules.</li>
-                                                <li>Excellence de service - Notre équipe dévouée est disponible 24/7 pour répondre à vos besoins avec professionnalisme et attention.</li>
-                                                <li>Qualité supérieure - Notre flotte diversifiée est rigoureusement entretenue selon les normes de sécurité et de confort les plus strictes.</li>
-                                                <li>Transparence totale - Nous pratiquons une politique de tarification claire, sans frais cachés ni surprises.</li>
-                                                <li>Responsabilité environnementale - Nous investissons dans des véhicules à faible émission et adoptons des pratiques durables.</li>
+                                                <li>Innovation technologique </li>
+                                                <li>Excellence de service </li>
+                                                <li>Qualité supérieure</li>
+                                                <li>Transparence totale</li>
+                                                <li>Responsabilité environnementale</li>
                                             </ul>
                                         </div>
                                         <!-- Vision Mission List End -->
@@ -330,11 +248,7 @@
                                         <div class="section-title">
                                             <h3>Notre Approche</h3>
                                             <h2 data-cursor="-opaque">Pionnier de l'excellence dans les services de location de voitures</h2>
-                                            <p>Notre philosophie repose sur une conviction simple mais forte : chaque client mérite bien plus qu’un simple service de location.
-                                                C’est pourquoi nous avons repensé chaque aspect de notre activité pour qu’il serve un seul objectif : vous offrir une expérience exceptionnelle,
-                                                fluide et sans stress, à chaque étape de votre parcours.
-
-                                                Notre approche va au-delà de la simple mise à disposition de véhicules. Elle incarne une vision centrée sur le client,
+                                            <p>Notre approche va au-delà de la simple mise à disposition de véhicules. Elle incarne une vision centrée sur le client,
                                                 où écoute, réactivité, personnalisation et excellence opérationnelle sont au cœur de nos priorités.notre philosophie repose sur une conviction simple mais forte :
                                                 chaque client mérite bien plus qu’un simple service de location. C’est pourquoi nous avons repensé chaque aspect de notre activité pour qu’il serve un seul objectif : vous offrir une expérience exceptionnelle, fluide et sans stress, à chaque étape de votre parcours.
 
@@ -345,9 +259,9 @@
                                         <!-- Vision Mission List Start -->
                                         <div class="vision-mission-list">
                                             <ul>
-                                                <li>Satisfaction totale du client : Offrir un service personnalisé, réactif et à l’écoute de vos besoins.</li>
-                                                <li>Qualité et fiabilité : Proposer une flotte moderne, entretenue et diversifiée, pour répondre à toutes les situations.</li>
-                                                <li>Confiance et sérénité : Assurer votre tranquillité d’esprit grâce à des assurances claires, un service client disponible et des engagements respectés.</li>
+                                                <li>Satisfaction totale du client </li>
+                                                <li>Qualité et fiabilité </li>
+                                                <li>Confiance et sérénité </li>
                                             </ul>
                                         </div>
                                         <!-- Vision Mission List End -->
