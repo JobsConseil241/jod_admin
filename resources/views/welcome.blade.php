@@ -175,7 +175,7 @@
                                             <img src="images/icon-rent-details-3.svg" alt="">
                                         </div>
                                         <div class="rent-details-content">
-                                            <h3>Du</h3>
+                                            <h3>📅 Du</h3>
                                             <p><input type="text" name="date" placeholder="mm/dd/yyyy"
                                                     class="rent-details-form datepicker" required></p>
                                         </div>
@@ -204,7 +204,7 @@
                                             <img src="images/icon-rent-details-5.svg" alt="">
                                         </div>
                                         <div class="rent-details-content">
-                                            <h3>Au</h3>
+                                            <h3>📅 Au</h3>
                                             <p><input type="text" name="date" placeholder="mm/dd/yyyy"
                                                     class="rent-details-form datepicker" required></p>
                                         </div>
