@@ -159,9 +159,9 @@
                                             <img src="images/icon-rent-details-2.svg" alt="">
                                         </div>
                                         <div class="rent-details-content">
-                                            <h3>Lieu de récupération</h3>
+                                            <h3>↙️ Récupération</h3>
                                             <select class="rent-details-form form-select">
-                                                <option value="" disabled selected>-- Lieu de recuperation --</option>
+                                                <option value="" disabled selected>-- Lieu remise --</option>
                                                 <option value="agence">A l'agence</option>
                                                 <option value="livraison">Livraison</option>
                                             </select>
@@ -175,7 +175,7 @@
                                             <img src="images/icon-rent-details-3.svg" alt="">
                                         </div>
                                         <div class="rent-details-content">
-                                            <h3>Date de début</h3>
+                                            <h3>Du</h3>
                                             <p><input type="text" name="date" placeholder="mm/dd/yyyy"
                                                     class="rent-details-form datepicker" required></p>
                                         </div>
@@ -188,9 +188,9 @@
                                             <img src="images/icon-rent-details-4.svg" alt="">
                                         </div>
                                         <div class="rent-details-content">
-                                            <h3>Lieu de remise</h3>
+                                            <h3>↗️ Remise</h3>
                                             <select class="rent-details-form form-select">
-                                                <option value="" disabled selected>-- Lieu de Remise du vehicule --</option>
+                                                <option value="" disabled selected>-- Lieu retour --</option>
                                                 <option value="agence">A l'agence</option>
                                                 <option value="livraison">Livraison</option>
                                             </select>
@@ -204,7 +204,7 @@
                                             <img src="images/icon-rent-details-5.svg" alt="">
                                         </div>
                                         <div class="rent-details-content">
-                                            <h3>Date de fin</h3>
+                                            <h3>Au</h3>
                                             <p><input type="text" name="date" placeholder="mm/dd/yyyy"
                                                     class="rent-details-form datepicker" required></p>
                                         </div>
