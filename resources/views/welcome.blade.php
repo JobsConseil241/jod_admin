@@ -117,7 +117,7 @@
                             </div>
 
                             <div class="hero-content-body wow fadeInUp" data-wow-delay="0.5s">
-                                <a href="#" class="btn-default">Réserver</a>
+                                <a href="https://wa.me/77093539" class="btn-default">Réserver</a>
                                 <a href="#" class="btn-default btn-highlighted">En savoir plus</a>
                             </div>
                         </div>
@@ -144,13 +144,10 @@
                                         <div class="rent-details-content">
                                             <h3>Type de Véhicule</h3>
                                             <select class="rent-details-form form-select">
-                                                <option value="" disabled selected>Choose Car Type</option>
-                                                <option value="sport_car">sport car</option>
-                                                <option value="convertible_car">convertible car</option>
-                                                <option value="sedan_car">sedan car</option>
-                                                <option value="luxury_car">luxury car</option>
-                                                <option value="electric_car">electric car</option>
-                                                <option value="coupe_car">coupe car</option>
+                                                <option value="" disabled selected>-- Choisissez la Categorie --</option>
+                                                @foreach($car_categories as $data)
+                                                    <option value="{{ $data->id }}">{{ $data->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -164,11 +161,9 @@
                                         <div class="rent-details-content">
                                             <h3>Lieu de récupération</h3>
                                             <select class="rent-details-form form-select">
-                                                <option value="" disabled selected>Pick Up Location</option>
-                                                <option value="abu_dhabi">abu dhabi</option>
-                                                <option value="alain">alain</option>
-                                                <option value="dubai">dubai</option>
-                                                <option value="sharjah">sharjah</option>
+                                                <option value="" disabled selected>-- Lieu de recuperation --</option>
+                                                <option value="agence">A l'agence</option>
+                                                <option value="livraison">Livraison</option>
                                             </select>
                                         </div>
                                     </div>
@@ -195,10 +190,9 @@
                                         <div class="rent-details-content">
                                             <h3>Lieu de remise</h3>
                                             <select class="rent-details-form form-select">
-                                                <option value="" disabled selected>Drop Off Location</option>
-                                                <option value="abu_dhabi">abu dhabi</option>
-                                                <option value="alain">alain</option>
-                                                <option value="sharjah">sharjah</option>
+                                                <option value="" disabled selected>-- Lieu de Remise du vehicule --</option>
+                                                <option value="agence">A l'agence</option>
+                                                <option value="livraison">Livraison</option>
                                             </select>
                                         </div>
                                     </div>
