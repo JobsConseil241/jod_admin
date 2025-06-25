@@ -49,7 +49,7 @@
             'kilometrage' => ['label' => 'Kilométrage', 'type' => 'integer'],
             'proprete_int' => ['label' => 'Propreté intérieure', 'type' => 'integer', 'max' => 10, 'text'=> 'Valeur Entre (0 - 10)'],
             'propreter_exte' => ['label' => 'Propreté extérieure', 'type' => 'integer', 'max' => 10, 'text'=> 'Valeur Entre (0 - 10)'],
-            'carburant' => ['label' => 'Carburant', 'type' => 'integer'],
+            'carburant' => ['label' => 'Carburant', 'type' => 'select'],
             'cle_vehicule' => ['label' => 'Clé du véhicule', 'type' => 'boolean'],
             'carte_grise' => ['label' => 'Carte grise', 'type' => 'boolean'],
             'carte_assurance' => ['label' => 'Carte d\'assurance', 'type' => 'boolean'],
@@ -83,6 +83,18 @@
                                                             name="{{ $field }}"
                                                             value="{{ old($field) }}" min="0" @if(isset($meta['max'])) max="{{$meta['max']}}" @endif
                                                             class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70">
+                                                    @elseif ($meta['type'] === 'boolean')
+                                                        <select name="{{ $field }}" class="ti-form-select product-search">
+                                                            <option value="plein"
+                                                                {{ old($field) == 'plein' ? 'selected' : '' }}>
+                                                                Plein</option>
+                                                            <option value="longue"
+                                                                {{ old($field) == '1/2' ? 'selected' : '' }}>
+                                                                1/2</option>
+                                                            <option value="longue"
+                                                                {{ old($field) == '1/4' ? 'selected' : '' }}>
+                                                                1/4</option>
+                                                        </select>
                                                     @elseif ($meta['type'] === 'boolean')
                                                         <!-- Switch -->
                                                         <div class="flex items-center">

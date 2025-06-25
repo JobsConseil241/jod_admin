@@ -177,7 +177,7 @@
 
                             <div class="sm:flex sm:space-x-2">
                                 <h5 class="font-bold text-sm my-auto w-28 text-gray-800 dark:text-white">Tarif :</h5>
-                                <h5 class="text-xl font-semibold text-primary">{{ $car->prix_location }} FCFA</h5>
+                                <h5 class="text-xl font-semibold text-primary">{{ separatorMoney($car->prix_location) }}</h5>
                             </div>
 
                             <div class="space-y-4">

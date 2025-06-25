@@ -13,11 +13,11 @@
                 <div class="col-lg-12">
                     <!-- Page Header Box Start -->
                     <div class="page-header-box">
-                        <h1 class="text-anime-style-3" data-cursor="-opaque">Contact Us</h1>
+                        <h1 class="text-anime-style-3" data-cursor="-opaque">Contactez nous</h1>
                         <nav class="wow fadeInUp">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index-2.html">home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">contact us</li>
+                                <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Accueil</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">contactez nous</li>
                             </ol>
                         </nav>
                     </div>
@@ -38,8 +38,8 @@
                         <div class="contact-information">
                             <!-- Contact Information Title Start -->
                             <div class="section-title">
-                                <h2 class="text-anime-style-3" data-cursor="-opaque">Contact information</h2>
-                                <p>Say something to start a live chat!</p>
+                                <h2 class="text-anime-style-3" data-cursor="-opaque">Informations pour Contact</h2>
+                                <p>Dites quelque chose pour commencer à discuter!</p>
                             </div>
                             <!-- Contact Information Title End -->
 
@@ -49,13 +49,13 @@
                                 <div class="contact-info-item wow fadeInUp" data-wow-delay="0.25s">
                                     <!-- Icon Box Start -->
                                     <div class="icon-box">
-                                        <img src="images/icon-phone.svg" alt="">
+                                        <img src="{{ asset('images/icon-phone.svg') }}" alt="">
                                     </div>
                                     <!-- Icon Box End -->
 
                                     <!-- Contact Info Content Start -->
                                     <div class="contact-info-content">
-                                        <p>(+01) 789 854 856</p>
+                                        <p>(+241) 789 854 856</p>
                                     </div>
                                     <!-- Contact Info Content End -->
                                 </div>
@@ -65,13 +65,13 @@
                                 <div class="contact-info-item wow fadeInUp" data-wow-delay="0.5s">
                                     <!-- Icon Box Start -->
                                     <div class="icon-box">
-                                        <img src="images/icon-mail.svg" alt="">
+                                        <img src="{{ asset('images/icon-mail.svg') }}" alt="">
                                     </div>
                                     <!-- Icon Box End -->
 
                                     <!-- Contact Info Content Start -->
                                     <div class="contact-info-content">
-                                        <p>info@domain.com</p>
+                                        <p>jod@jobs-conseil.host</p>
                                     </div>
                                     <!-- Contact Info Content End -->
                                 </div>
@@ -81,13 +81,13 @@
                                 <div class="contact-info-item wow fadeInUp" data-wow-delay="0.75s">
                                     <!-- Icon Box Start -->
                                     <div class="icon-box">
-                                        <img src="images/icon-location.svg" alt="">
+                                        <img src="{{ asset('images/icon-location.svg') }}" alt="">
                                     </div>
                                     <!-- Icon Box End -->
 
                                     <!-- Contact Info Content Start -->
                                     <div class="contact-info-content">
-                                        <p>1234 Elm Street, Suite 567 Springfield, United States</p>
+                                        <p>Avenue le Cointet, Libreville, Gabon</p>
                                     </div>
                                     <!-- Contact Info Content End -->
                                 </div>
@@ -116,42 +116,42 @@
                                 class="wow fadeInUp" data-wow-delay="0.5s">
                                 <div class="row">
                                     <div class="form-group col-md-6 mb-4">
-                                        <label>first name</label>
+                                        <label>Prenoms</label>
                                         <input type="text" name="name" class="form-control" id="fname"
-                                            placeholder="Enter Your Name" required>
+                                            placeholder="Entrez votre prenom" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
 
                                     <div class="form-group col-md-6 mb-4">
-                                        <label>last name</label>
+                                        <label>Noms</label>
                                         <input type="text" name="name" class="form-control" id="lname"
-                                            placeholder="Enter Your Name" required>
+                                            placeholder="Entrez votre nom" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
 
                                     <div class="form-group col-md-6 mb-4">
                                         <label>email</label>
                                         <input type="email" name ="email" class="form-control" id="email"
-                                            placeholder="Enter Your Email" required>
+                                            placeholder="Entrez votre email" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
 
                                     <div class="form-group col-md-6 mb-4">
-                                        <label>phone</label>
+                                        <label>Telephone</label>
                                         <input type="text" name="phone" class="form-control" id="phone"
-                                            placeholder="Enter Your Number" required>
+                                            placeholder="Entrez votre Numero de telephone" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
 
                                     <div class="form-group col-md-12 mb-4">
                                         <label>message</label>
-                                        <textarea name="msg" class="form-control" id="msg" rows="4" placeholder="Write Your Message" required></textarea>
+                                        <textarea name="msg" class="form-control" id="msg" rows="4" placeholder="Laissez nous un message" required></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="contact-form-btn">
-                                            <button type="submit" class="btn-default">send message</button>
+                                            <button type="submit" class="btn-default">Envoyer un Message!</button>
                                             <div id="msgSubmit" class="h3 hidden"></div>
                                         </div>
                                     </div>
@@ -173,8 +173,8 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h3 class="wow fadeInUp">location</h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">How to reach our location</h2>
+                        <h3 class="wow fadeInUp">Localisation</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Comment nous rejoindre?</h2>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -183,9 +183,9 @@
                 <div class="col-lg-12">
                     <!-- Google Map Iframe Start -->
                     <div class="google-map-iframe">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96737.10562045308!2d-74.08535042841811!3d40.739265258395164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1703158537552!5m2!1sen!2sin"
-                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2227.086035068027!2d9.447285952391784!3d0.3898061504474474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x107f3b906bc6b4c9%3A0x4d178487bf5e6771!2sJOBS%20CONSEIL!5e0!3m2!1sfr!2sga!4v1750779226714!5m2!1sfr!2sga" 
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                     <!-- Google Map Iframe End -->
                 </div>
