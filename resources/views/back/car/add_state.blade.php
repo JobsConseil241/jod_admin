@@ -83,15 +83,15 @@
                                                             name="{{ $field }}"
                                                             value="{{ old($field) }}" min="0" @if(isset($meta['max'])) max="{{$meta['max']}}" @endif
                                                             class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70">
-                                                    @elseif ($meta['type'] === 'boolean')
-                                                        <select name="{{ $field }}" class="ti-form-select product-search">
+                                                    @elseif ($meta['type'] === 'select')
+                                                        <select name="{{ $field }}" class="ti-form-select">
                                                             <option value="plein"
                                                                 {{ old($field) == 'plein' ? 'selected' : '' }}>
                                                                 Plein</option>
-                                                            <option value="longue"
+                                                            <option value="1/2"
                                                                 {{ old($field) == '1/2' ? 'selected' : '' }}>
                                                                 1/2</option>
-                                                            <option value="longue"
+                                                            <option value="1/4"
                                                                 {{ old($field) == '1/4' ? 'selected' : '' }}>
                                                                 1/4</option>
                                                         </select>
