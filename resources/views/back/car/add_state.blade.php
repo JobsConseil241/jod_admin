@@ -84,7 +84,10 @@
                                                             value="{{ old($field) }}" min="0" @if(isset($meta['max'])) max="{{$meta['max']}}" @endif
                                                             class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70">
                                                     @elseif ($meta['type'] === 'select')
-                                                        <select name="{{ $field }}" class="ti-form-select">
+                                                        <label class="ti-form-label"
+                                                            for="input-{{ $field }}">{{ $meta['label'] }} <span class="text-xs text-danger">@if(isset($meta['text'])) ({{$meta['text']}}) @endif</span></label>
+                                                    
+                                                        <select name="{{ $field }}" class="ti-form-select" id="input-{{ $field }}>
                                                             <option value="plein"
                                                                 {{ old($field) == 'plein' ? 'selected' : '' }}>
                                                                 Plein</option>
