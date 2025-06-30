@@ -46,7 +46,7 @@ class DetecterRetardsPaiement extends Command
                 ->where('statut', '!=', 'recouvre')
                 ->first();
 
-            Log::info("Recouvrement {$location->id} - {$location->code_contrat}");
+            // Log::info("Recouvrement {$location->id} - {$location->code_contrat}");
 
             if (!$existingRecouvrement) {
                 // Créer un nouveau recouvrement avec échéance dans 7 jours
@@ -65,7 +65,7 @@ class DetecterRetardsPaiement extends Command
             }
         }
 
-        Log::info("{$count} nouveaux recouvrements ont été créés.");
+        // Log::info("{$count} nouveaux recouvrements ont été créés.");
         $this->info("{$count} nouveaux recouvrements ont été créés.");
 
         return Command::SUCCESS;

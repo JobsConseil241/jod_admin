@@ -74,7 +74,7 @@ class RecouvrementService
 
             $recouvrement->save();
 
-            Log::info("Recouvrement #{$recouvrement->id} : montant mis à jour de {$ancienMontant} à {$montantTotalDu}");
+            // Log::info("Recouvrement #{$recouvrement->id} : montant mis à jour de {$ancienMontant} à {$montantTotalDu}");
 
             return true;
         }
@@ -103,8 +103,8 @@ class RecouvrementService
             return false;
         }
 
-        Log::info($recouvrement);
-        Log::info($paiement);
+        // Log::info($recouvrement);
+        // Log::info($paiement);
 
         // Calculer la différence entre le montant dû dans le recouvrement et le montant restant actuel
         $montantRestantActuel = $paiement->montant_restant;
