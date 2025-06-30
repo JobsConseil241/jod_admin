@@ -87,7 +87,7 @@
                                                         <label class="ti-form-label"
                                                             for="input-{{ $field }}">{{ $meta['label'] }} <span class="text-xs text-danger">@if(isset($meta['text'])) ({{$meta['text']}}) @endif</span></label>
                                                     
-                                                        <select name="{{ $field }}" class="ti-form-select" id="input-{{ $field }}>
+                                                        <select name="{{ $field }}" class="ti-form-select" id="input-{{ $field }}">
                                                             <option value="plein"
                                                                 {{ old($field) == 'plein' ? 'selected' : '' }}>
                                                                 Plein</option>
@@ -115,10 +115,10 @@
                                                         <!-- Input date -->
                                                         <label class="ti-form-label"
                                                             for="input-{{ $field }}">{{ $meta['label'] }}</label>
-                                                        <input type="date"
+                                                        <input type="datetime"
                                                                id="input-{{ $field }}"
                                                                name="{{ $field }}"
-                                                               value="{{ date('Y-m-d') }}"
+                                                               value="{{ date('Y-m-d H:m') }}"
                                                                class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70">
                                                     @endif
                                                 </div>

@@ -65,7 +65,7 @@ class EtatVehiculeController extends BaseController
                 'kilometrage' => ['required', 'integer'],
                 'proprete_int' => ['required', 'integer'],
                 'propreter_exte' => ['required', 'integer'],
-                'carburant' => ['required', 'integer'],
+                'carburant' => ['required', 'string'],
                 'cle_vehicule' => ['required', 'boolean'],
                 'carte_grise' => ['required', 'boolean'],
                 'carte_assurance' => ['required', 'boolean'],
@@ -83,7 +83,7 @@ class EtatVehiculeController extends BaseController
                 'tournevis' => ['required', 'boolean'],
                 'compresseur' => ['required', 'boolean'],
                 'roue_secours' => ['required', 'boolean'],
-                'date' => ['required', 'date'],
+                'date' => ['required', 'datetime'],
                 'etat_general' => ['required', 'boolean'],
                 'vehicule_id' => ['required', 'integer', 'exists:vehicules,id']
             ];
@@ -147,7 +147,7 @@ class EtatVehiculeController extends BaseController
                 'kilometrage' => ['sometimes', 'integer'],
                 'proprete_int' => ['sometimes', 'integer'],
                 'propreter_exte' => ['sometimes', 'integer'],
-                'carburant' => ['sometimes', 'integer'],
+                'carburant' => ['sometimes', 'string'],
                 'cle_vehicule' => ['sometimes', 'boolean'],
                 'carte_grise' => ['sometimes', 'boolean'],
                 'carte_assurance' => ['sometimes', 'boolean'],
