@@ -115,7 +115,7 @@
                                                         <!-- Input date -->
                                                         <label class="ti-form-label"
                                                             for="input-{{ $field }}">{{ $meta['label'] }}</label>
-                                                        <input type="datetime"
+                                                        <input type="date"
                                                                id="input-{{ $field }}"
                                                                name="{{ $field }}"
                                                                value="{{ date('Y-m-d H:m') }}"
