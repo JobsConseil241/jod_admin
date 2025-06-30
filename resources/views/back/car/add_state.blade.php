@@ -118,7 +118,7 @@
                                                         <input type="datetime-local"
                                                                id="input-{{ $field }}"
                                                                name="{{ $field }}"
-                                                               value="{{ date('Y-m-d H:m') }}"
+                                                               value="{{ date('Y-m-d H:m:s') }}"
                                                                class="block w-full border border-gray-200 focus:shadow-sm dark:focus:shadow-white/10 rounded-sm text-sm focus:z-10 focus:outline-0 focus:border-gray-200 dark:focus:border-white/10 dark:border-white/10 dark:text-white/70">
                                                     @endif
                                                 </div>
