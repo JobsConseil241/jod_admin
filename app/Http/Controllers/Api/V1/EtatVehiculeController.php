@@ -83,7 +83,7 @@ class EtatVehiculeController extends BaseController
                 'tournevis' => ['required', 'boolean'],
                 'compresseur' => ['required', 'boolean'],
                 'roue_secours' => ['required', 'boolean'],
-                'date' => ['required', 'datetime'],
+                'date' => ['required', 'date_format:Y-m-d H:i:s'],
                 'etat_general' => ['required', 'boolean'],
                 'vehicule_id' => ['required', 'integer', 'exists:vehicules,id']
             ];
@@ -165,7 +165,7 @@ class EtatVehiculeController extends BaseController
                 'tournevis' => ['sometimes', 'boolean'],
                 'compresseur' => ['sometimes', 'boolean'],
                 'roue_secours' => ['sometimes', 'boolean'],
-                'date' => ['sometimes', 'date'],
+                'date' => ['sometimes', 'date_format:Y-m-d H:i:s'],
                 'etat_general' => ['sometimes', 'boolean'],
                 'vehicule_id' => ['sometimes', 'integer', 'exists:vehicules,id'],
                 'id' => ['sometimes', 'integer']
