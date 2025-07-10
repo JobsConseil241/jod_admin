@@ -66,7 +66,7 @@ class DetecterRetardsPaiement extends Command
         }
 
         // Log::info("{$count} nouveaux recouvrements ont été créés.");
-        $this->info("{$count} nouveaux recouvrements ont été créés.");
+        // $this->info("{$count} nouveaux recouvrements ont été créés.");
 
         return Command::SUCCESS;
     }
